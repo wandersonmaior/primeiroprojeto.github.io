@@ -333,16 +333,16 @@ toda a interface gráfica do navegador&lt;/em&gt;&lt;/dd&gt;
 &lt;h2&gt;Criando um teste simples com a famosa Selenium IDE lo/&lt;/h2&gt;
 &lt;p&gt;Após instalar a Selenium IDE dentro do Firefox e reiniciar o navegador, clique no ícone da ferramenta que está no
 canto superior direito do Navegador.&lt;/p&gt;
-&lt;img alt="" src="images/test-ff-sel-btn.png" /&gt;
+&lt;img alt="Botão para iniciar a Selenium IDE" src="images/test-ff-sel-btn.png" /&gt;
 &lt;p&gt;Note que na Selenium IDE, a opção de gravar já vem selecionada por padrão.&lt;/p&gt;
-&lt;img alt="" src="images/test-ff-sel-gravar-ligado.png" /&gt;
+&lt;img alt="Botão de gravar ligado" src="images/test-ff-sel-gravar-ligado.png" /&gt;
 &lt;p&gt;E para nossa alegria, a URL do site atual que está em nosso Firefox, já está definida no campo &amp;quot;URL Base&amp;quot; da Selenium IDE.&lt;/p&gt;
 &lt;p&gt;Cliquei no link &amp;quot;Como apoiar o IFIC&amp;quot; e acessei a seguinte página.&lt;/p&gt;
-&lt;img alt="" src="images/test-ff-sel-clicar-no-link.png" /&gt;
+&lt;img alt="Clicando no link" src="images/test-ff-sel-clicar-no-link.png" /&gt;
 &lt;p&gt;Ao ver o que está acontecendo na Selenium IDE, notamos que ela está gravando tudo o que está acontecendo no navegador.&lt;/p&gt;
-&lt;img alt="" src="images/test-ff-sel-initial-view.png" /&gt;
+&lt;img alt="Visualização inicial" src="images/test-ff-sel-initial-view.png" /&gt;
 &lt;p&gt;Retorno ao navegador e faço um simples assert para ver se ao entrar na página o título H1 está correto.&lt;/p&gt;
-&lt;img alt="" src="images/test-ff-sel-assert-h1.png" /&gt;
+&lt;img alt="Assert no H1" src="images/test-ff-sel-assert-h1.png" /&gt;
 &lt;p&gt;Veja como é simples ver as propriedades que podem ser usadas para certificar que você realmente está na tela correta e
 verificar se os textos estão corretamente aplicados em seus devidos lugares.&lt;/p&gt;
 &lt;p&gt;Nesse exemplo eu verifico se o título H1 da página contém &amp;quot;Como Apoiar o IFIC&amp;quot;, para isso foi necessário:&lt;/p&gt;
@@ -355,13 +355,13 @@ verificar se os textos estão corretamente aplicados em seus devidos lugares.&lt
 &lt;/ol&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Agora veja o que a Selenium IDE gravou:&lt;/p&gt;
-&lt;img alt="" src="images/test-ff-sel-assert-h1-view.png" /&gt;
+&lt;img alt="Vendo o resultado do assert no H1" src="images/test-ff-sel-assert-h1-view.png" /&gt;
 &lt;p&gt;Como era de se esperar, apenas o que você fez no navegador ;)&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;em&gt;Note que se você já for um usuário experiente da Selenium IDE, souber usar os seletores e conhecer bem o código HTML
 da página, você poderá escrever todo o seu código na própria Selenium IDE e depois executar.&lt;/em&gt;&lt;/blockquote&gt;
 &lt;p&gt;Para executar o teste criado, basta clicar no botão &amp;quot;Play entire test suite&amp;quot; como na imagem abaixo:&lt;/p&gt;
-&lt;img alt="" src="images/test-ff-sel-play-test.png" /&gt;
+&lt;img alt="Botão para executar os testes" src="images/test-ff-sel-play-test.png" /&gt;
 &lt;p&gt;Note que o teste foi executado com sucesso, pois está tudo verdinho :) . Logo abaixo existem algumas mensagens
 na sequência que foram executadas.&lt;/p&gt;
 &lt;/div&gt;
@@ -373,7 +373,7 @@ na sequência que foram executadas.&lt;/p&gt;
 se o sistema continua funcionando como deveria.&lt;/p&gt;
 &lt;p&gt;Para salvar é muito simples, se estiver no Windows ou Linux, basta dar um Ctrl+S e no Mac Command+S, escolher
 uma pasta e clicar em Salvar.&lt;/p&gt;
-&lt;img alt="" src="images/test-ff-sel-save.png" /&gt;
+&lt;img alt="Salvando teste" src="images/test-ff-sel-save.png" /&gt;
 &lt;p&gt;Sinceramente, se você sempre quiser executar seus testes usando o Mozilla Firefox eu aconselho usar a própria
 Selenium IDE para esse propósito, pois com ela você salva seus testes em HTML e os executa tranquilamente com
 opção de rodar todo um Test Case de uma vez. Observe que após salvar o teste ele fica disponível na coluna
@@ -387,7 +387,7 @@ Java e C#.&lt;/p&gt;
 ao código de teste desenvolvido pelos programadores já que os testes exportados pela Selenium IDE são
 codificados utilizando a lib unittest, ou seja, na forma de testes unitários.&lt;/p&gt;
 &lt;p&gt;A imagem abaixo mostra como exportar o teste para uma das linguagens disponíveis:&lt;/p&gt;
-&lt;img alt="" src="images/test-ff-sel-export-lang.png" /&gt;
+&lt;img alt="Exportando o teste" src="images/test-ff-sel-export-lang.png" /&gt;
 &lt;p&gt;No caso, Python 2 / unittest / Webdriver, mas o teste poderia ser exportado para qualquer outra linguagem disponível.
 Clique nesse item e salve na pasta que desejar com um nome sucinto e seguido da extensão .py (por exemplo: test_como_apoiar.py)&lt;/p&gt;
 &lt;p&gt;Veja abaixo o código gerado pela exportação do teste para Python (48 linhas):&lt;/p&gt;
@@ -531,7 +531,7 @@ peso de sua interface gráfica, para isso vamos alterar a primeira linha do mét
 &lt;div class="highlight"&gt;&lt;pre&gt;python test_como_apoiar.py
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;O arquivo é executado como na imagem abaixo:&lt;/p&gt;
-&lt;img alt="" src="images/test-ff-change-webdriver.png" /&gt;
+&lt;img alt="Teste executado com um webdriver headless" src="images/test-ff-change-webdriver.png" /&gt;
 &lt;p&gt;Bem amigos, a leitura foi uma breve descrição sobre os seguintes tópicos:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul class="simple"&gt;

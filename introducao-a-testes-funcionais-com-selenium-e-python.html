@@ -43,6 +43,42 @@
                 </a>
                 <h2 class="article-info">Mário Chaves</h2>
     			<ul class="author-social">
+                    <li>
+                        <a target="_blank" href="https://github.com/macndesign">
+                            <i class="fa fa-lg fa-fw fa-github"></i>
+                            <strong>Github</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://bitbucket.org/macndesign">
+                            <i class="fa fa-lg fa-fw fa-bitbucket"></i>
+                            <strong>Bitbucket</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://twitter.com/macndesign">
+                            <i class="fa fa-lg fa-fw fa-twitter"></i>
+                            <strong>Twitter</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://www.linkedin.com/in/macndesign">
+                            <i class="fa fa-lg fa-fw fa-linkedin"></i>
+                            <strong>Linkedin</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/macndesign">
+                            <i class="fa fa-lg fa-fw fa-facebook"></i>
+                            <strong>Facebook</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://www.xsd.com.br/blog/">
+                            <i class="fa fa-lg fa-fw fa-globe"></i>
+                            <strong>Site</strong>
+                        </a>
+                    </li>
                 </ul>
                 <h5>Publicado em:</h5>
                 <p>Fri 09 May 2014</p>
@@ -174,16 +210,16 @@ toda a interface gráfica do navegador</em></dd>
 <h2>Criando um teste simples com a famosa Selenium IDE lo/</h2>
 <p>Após instalar a Selenium IDE dentro do Firefox e reiniciar o navegador, clique no ícone da ferramenta que está no
 canto superior direito do Navegador.</p>
-<img alt="" src="images/test-ff-sel-btn.png" />
+<img alt="Botão para iniciar a Selenium IDE" src="images/test-ff-sel-btn.png" />
 <p>Note que na Selenium IDE, a opção de gravar já vem selecionada por padrão.</p>
-<img alt="" src="images/test-ff-sel-gravar-ligado.png" />
+<img alt="Botão de gravar ligado" src="images/test-ff-sel-gravar-ligado.png" />
 <p>E para nossa alegria, a URL do site atual que está em nosso Firefox, já está definida no campo &quot;URL Base&quot; da Selenium IDE.</p>
 <p>Cliquei no link &quot;Como apoiar o IFIC&quot; e acessei a seguinte página.</p>
-<img alt="" src="images/test-ff-sel-clicar-no-link.png" />
+<img alt="Clicando no link" src="images/test-ff-sel-clicar-no-link.png" />
 <p>Ao ver o que está acontecendo na Selenium IDE, notamos que ela está gravando tudo o que está acontecendo no navegador.</p>
-<img alt="" src="images/test-ff-sel-initial-view.png" />
+<img alt="Visualização inicial" src="images/test-ff-sel-initial-view.png" />
 <p>Retorno ao navegador e faço um simples assert para ver se ao entrar na página o título H1 está correto.</p>
-<img alt="" src="images/test-ff-sel-assert-h1.png" />
+<img alt="Assert no H1" src="images/test-ff-sel-assert-h1.png" />
 <p>Veja como é simples ver as propriedades que podem ser usadas para certificar que você realmente está na tela correta e
 verificar se os textos estão corretamente aplicados em seus devidos lugares.</p>
 <p>Nesse exemplo eu verifico se o título H1 da página contém &quot;Como Apoiar o IFIC&quot;, para isso foi necessário:</p>
@@ -196,13 +232,13 @@ verificar se os textos estão corretamente aplicados em seus devidos lugares.</p
 </ol>
 </blockquote>
 <p>Agora veja o que a Selenium IDE gravou:</p>
-<img alt="" src="images/test-ff-sel-assert-h1-view.png" />
+<img alt="Vendo o resultado do assert no H1" src="images/test-ff-sel-assert-h1-view.png" />
 <p>Como era de se esperar, apenas o que você fez no navegador ;)</p>
 <blockquote>
 <em>Note que se você já for um usuário experiente da Selenium IDE, souber usar os seletores e conhecer bem o código HTML
 da página, você poderá escrever todo o seu código na própria Selenium IDE e depois executar.</em></blockquote>
 <p>Para executar o teste criado, basta clicar no botão &quot;Play entire test suite&quot; como na imagem abaixo:</p>
-<img alt="" src="images/test-ff-sel-play-test.png" />
+<img alt="Botão para executar os testes" src="images/test-ff-sel-play-test.png" />
 <p>Note que o teste foi executado com sucesso, pois está tudo verdinho :) . Logo abaixo existem algumas mensagens
 na sequência que foram executadas.</p>
 </div>
@@ -214,7 +250,7 @@ na sequência que foram executadas.</p>
 se o sistema continua funcionando como deveria.</p>
 <p>Para salvar é muito simples, se estiver no Windows ou Linux, basta dar um Ctrl+S e no Mac Command+S, escolher
 uma pasta e clicar em Salvar.</p>
-<img alt="" src="images/test-ff-sel-save.png" />
+<img alt="Salvando teste" src="images/test-ff-sel-save.png" />
 <p>Sinceramente, se você sempre quiser executar seus testes usando o Mozilla Firefox eu aconselho usar a própria
 Selenium IDE para esse propósito, pois com ela você salva seus testes em HTML e os executa tranquilamente com
 opção de rodar todo um Test Case de uma vez. Observe que após salvar o teste ele fica disponível na coluna
@@ -228,7 +264,7 @@ Java e C#.</p>
 ao código de teste desenvolvido pelos programadores já que os testes exportados pela Selenium IDE são
 codificados utilizando a lib unittest, ou seja, na forma de testes unitários.</p>
 <p>A imagem abaixo mostra como exportar o teste para uma das linguagens disponíveis:</p>
-<img alt="" src="images/test-ff-sel-export-lang.png" />
+<img alt="Exportando o teste" src="images/test-ff-sel-export-lang.png" />
 <p>No caso, Python 2 / unittest / Webdriver, mas o teste poderia ser exportado para qualquer outra linguagem disponível.
 Clique nesse item e salve na pasta que desejar com um nome sucinto e seguido da extensão .py (por exemplo: test_como_apoiar.py)</p>
 <p>Veja abaixo o código gerado pela exportação do teste para Python (48 linhas):</p>
@@ -372,7 +408,7 @@ peso de sua interface gráfica, para isso vamos alterar a primeira linha do mét
 <div class="highlight"><pre>python test_como_apoiar.py
 </pre></div>
 <p>O arquivo é executado como na imagem abaixo:</p>
-<img alt="" src="images/test-ff-change-webdriver.png" />
+<img alt="Teste executado com um webdriver headless" src="images/test-ff-change-webdriver.png" />
 <p>Bem amigos, a leitura foi uma breve descrição sobre os seguintes tópicos:</p>
 <blockquote>
 <ul class="simple">
