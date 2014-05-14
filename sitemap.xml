@@ -5,35 +5,35 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/index.html</loc>
-<lastmod>2014-05-14T04:34:12-00:00</lastmod>
+<lastmod>2014-05-14T13:28:08-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/archives.html</loc>
-<lastmod>2014-05-14T04:34:12-00:00</lastmod>
+<lastmod>2014-05-14T13:28:08-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tags.html</loc>
-<lastmod>2014-05-14T04:34:12-00:00</lastmod>
+<lastmod>2014-05-14T13:28:08-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/categories.html</loc>
-<lastmod>2014-05-14T04:34:12-00:00</lastmod>
+<lastmod>2014-05-14T13:28:08-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/pages/about.html</loc>
-<lastmod>2014-05-14T04:34:12-00:00</lastmod>
+<lastmod>2014-05-14T13:28:08-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -55,6 +55,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html</loc>
 <lastmod>2014-05-13T22:00:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/instalacao-python-django-windows.html</loc>
+<lastmod>2014-05-13T17:20:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -138,7 +145,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/category/tutoriais.html</loc>
-<lastmod>2014-05-13T01:40:00-00:00</lastmod>
+<lastmod>2014-05-13T17:20:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -298,8 +305,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/djangobook.html</loc>
-<lastmod>2014-05-01T13:16:00-00:00</lastmod>
+<loc>http://pythonclub.com.br/tag/windows.html</loc>
+<lastmod>2014-05-13T17:20:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -307,6 +314,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/tag/django.html</loc>
 <lastmod>2014-05-13T23:00:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/tag/djangobook.html</loc>
+<lastmod>2014-05-01T13:16:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -391,6 +405,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/author/romulo-collopy.html</loc>
 <lastmod>2014-05-13T16:00:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/author/thiago-coroa.html</loc>
+<lastmod>2014-05-13T17:20:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
