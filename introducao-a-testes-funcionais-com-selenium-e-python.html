@@ -17,7 +17,7 @@
     <meta property="og:site_name" content="PythonClub" />
     <meta property="og:url" content="http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html" />
     <meta property="og:description" content="Nesse post darei apenas uma introdução básica focada em auxiliar testadores a usar a linguagem de programação Python para executar e guardar seus scripts de teste. Porquê usar a linguagem Python nos testes funcionais? Como sabemos os testes funcionais são em sua grande parte desenvolvidos por Analistas de Testes e ..." />
-    <!-- <meta property="og:image" content="" /> -->
+    <meta property="og:image" content="http://res.cloudinary.com/diu8g9l0s/image/upload/v1399599503/pythonclub/logo_275x130.png" />
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
@@ -435,44 +435,14 @@ peso de sua interface gráfica, para isso vamos alterar a primeira linha do mét
             <div class="sharing">
                 <!-- Facebook sharing -->
                 <div id="fb-root"></div>
-                <script type="text/javascript">
-                window.fbAsyncInit = function() {
-                    // init the FB JS SDK
-                    FB.init({
-                      appId      : '1487080281503641', // App ID from the App Dashboard
-                      status     : true, // check the login status upon init?
-                      cookie     : true, // set sessions cookies to allow your server to access the session?
-                      xfbml      : true  // parse XFBML tags on this page?
-                    });
-                    // customize share dialog
-                    FB.ui({
-                        method: 'feed',
-                        name: 'PythonClub',
-                        link: 'http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html',
-                        picture: 'http://res.cloudinary.com/diu8g9l0s/image/upload/v1399599503/pythonclub/logo_275x130.png',
-                        caption: 'Caption',
-                        description: 'description'
-
-                    }, function(response) {
-                        if(response && response.post_id){
-                        } else {
-                        }
-                    });
-                }
-
-                // Load the SDK asynchronously
-                function fb_callout() {(
-                    function(d){
-                        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-                        if (d.getElementById(id)) {return;}
-                        js = d.createElement('script'); js.id = id; js.async = true;
-                        js.src = "//connect.facebook.net/en_US/all.js";
-                        ref.parentNode.insertBefore(js, ref);
-                    }(document));
-                }
-                </script>
-                
-                <div class="fb-share-button" data-href="http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html" data-type="button_count" onclick="fb_callout()"></div>
+                <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&appId=1487080281503641&version=v2.0";
+                fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+                <div class="fb-share-button" data-href="http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html" data-type="button_count"></div>
 
                 <!-- Twitter sharing -->
                 <a href="https://twitter.com/share" class="twitter-share-button" data-lang="pt">Tweetar</a>
