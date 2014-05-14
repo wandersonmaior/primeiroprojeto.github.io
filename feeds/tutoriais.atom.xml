@@ -2,12 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/tutoriais.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-05-14T10:30:00-03:00</updated><entry><title>Instalando e Configurando o Python e Django no Windows</title><link href="http://pythonclub.com.br/instalacao-python-django-windows.html" rel="alternate"></link><updated>2014-05-14T10:30:00-03:00</updated><author><name>Thiago Corôa</name></author><id>tag:pythonclub.com.br,2014-05-14:instalacao-python-django-windows.html</id><summary type="html">&lt;div class="section" id="instalacao-do-python-2-7"&gt;
 &lt;h2&gt;Instalação do Python 2.7&lt;/h2&gt;
 &lt;p&gt;Para começar a desenvolver algo em Python, devemos baixar o Python(Nossa, que descoberta!),
-sendo a versão mais indicada o 2.7, por ser mais estável, possuir mais bibliotecas disponíveis&lt;/p&gt;
-&lt;div class="system-message"&gt;
-&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/travis/build/pythonclub/pythonclub.github.io/content/instalando_configurando_python_django_no_windows.rst&lt;/tt&gt;, line 17)&lt;/p&gt;
-Unexpected indentation.&lt;/div&gt;
-&lt;blockquote&gt;
-e compatíveis e ser utilizada por mais desenvolvedores no mundo pythonico.&lt;/blockquote&gt;
+sendo a versão mais indicada o 2.7, por ser mais estável, possuir mais bibliotecas disponíveis
+e compatíveis e ser utilizada por mais desenvolvedores no mundo pythonico.&lt;/p&gt;
 &lt;div class="section" id="vejamos-como-fazer-esta-instalacao"&gt;
 &lt;h3&gt;Vejamos como fazer esta instalação:&lt;/h3&gt;
 &lt;ul class="simple"&gt;
