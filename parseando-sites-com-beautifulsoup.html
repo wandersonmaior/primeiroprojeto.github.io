@@ -44,9 +44,21 @@
                 <h2 class="article-info">Gilmar Soares</h2>
     			<ul class="author-social">
                     <li>
-                        <a target="_blank" href="https://github.com/github.com/linuxsoares">
+                        <a target="_blank" href="https://github.com/linuxsoares">
                             <i class="fa fa-lg fa-fw fa-github"></i>
                             <strong>Github</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://twitter.com/@linux_soares">
+                            <i class="fa fa-lg fa-fw fa-twitter"></i>
+                            <strong>Twitter</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/linux.soares">
+                            <i class="fa fa-lg fa-fw fa-facebook"></i>
+                            <strong>Facebook</strong>
                         </a>
                     </li>
                 </ul>
@@ -120,14 +132,12 @@
 <p>Para as informações desse título:</p>
 <div class="highlight"><pre><span class="nv">$ </span>soup.title.string: este comando irá trazer o <span class="nv">seguinte</span> <span class="o">=</span>&gt; Exemplo de Beautifulsoup
 </pre></div>
-<p>Para os “P” de HTML:
-.. code-block:: bash</p>
-<blockquote>
-$ soup.p: este comando irá trazer o seguinte =&gt; &lt;p class=&quot;title&quot;&gt;&lt;b&gt;Exemplo de Beautifulsoup&lt;/b&gt;&lt;/p&gt;</blockquote>
-<p>Para pegar o nome da classe usada no “P”:
-.. code-block:: bash</p>
-<blockquote>
-$ soup.p['class']: este comando irá trazer o seguinte =&gt; u'title'</blockquote>
+<p>Para os “P” de HTML:</p>
+<div class="highlight"><pre><span class="nv">$ </span>soup.p: este comando irá trazer o <span class="nv">seguinte</span> <span class="o">=</span>&gt; &lt;p <span class="nv">class</span><span class="o">=</span><span class="s2">&quot;title&quot;</span>&gt;&lt;b&gt;Exemplo de Beautifulsoup&lt;/b&gt;&lt;/p&gt;
+</pre></div>
+<p>Para pegar o nome da classe usada no “P”:</p>
+<div class="highlight"><pre><span class="nv">$ </span>soup.p<span class="o">[</span><span class="s1">&#39;class&#39;</span><span class="o">]</span>: este comando irá trazer o <span class="nv">seguinte</span> <span class="o">=</span>&gt; u<span class="s1">&#39;title&#39;</span>
+</pre></div>
 <p>Vamos agora demonstrar como fazer uma busca no documento HTML, digamos que tenhamos a necessidade de pegar todos os &lt;a&gt;&lt;/a&gt; do nosso arquivo HTML, então usaremos o Beautifulsoup da seguinte maneira:</p>
 <div class="highlight"><pre><span class="nv">$ </span>soup.find_all<span class="o">(</span><span class="s1">&#39;a&#39;</span><span class="o">)</span>: este comando irá trazer o <span class="nv">seguinte</span> <span class="o">=</span>&gt;
 <span class="nv">$ </span><span class="o">[</span>
@@ -147,8 +157,6 @@ nesse Script implementei bastante coisa do Beautifulsoup e algumas outras coisas
 <dt>Qualquer dúvida pode entrar em contato:</dt>
 <dd><ul class="first last simple">
 <li>Email: <a class="reference external" href="mailto:linux.soares&#64;gmail.com">linux.soares&#64;gmail.com</a></li>
-<li>Twitter: <a class="reference external" href="https://twitter.com/gilmar_soares">&#64;gilmar_soares</a></li>
-<li>Facebook: <a class="reference external" href="https://www.facebook.com/linux.soares">facebook.com/linux.soares</a></li>
 </ul>
 </dd>
 </dl>

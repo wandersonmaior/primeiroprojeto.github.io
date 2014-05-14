@@ -53,14 +53,12 @@
 &lt;p&gt;Para as informações desse título:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;soup.title.string: este comando irá trazer o &lt;span class="nv"&gt;seguinte&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&amp;gt; Exemplo de Beautifulsoup
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Para os “P” de HTML:
-.. code-block:: bash&lt;/p&gt;
-&lt;blockquote&gt;
-$ soup.p: este comando irá trazer o seguinte =&amp;gt; &amp;lt;p class=&amp;quot;title&amp;quot;&amp;gt;&amp;lt;b&amp;gt;Exemplo de Beautifulsoup&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;&lt;/blockquote&gt;
-&lt;p&gt;Para pegar o nome da classe usada no “P”:
-.. code-block:: bash&lt;/p&gt;
-&lt;blockquote&gt;
-$ soup.p['class']: este comando irá trazer o seguinte =&amp;gt; u'title'&lt;/blockquote&gt;
+&lt;p&gt;Para os “P” de HTML:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;soup.p: este comando irá trazer o &lt;span class="nv"&gt;seguinte&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&amp;gt; &amp;lt;p &lt;span class="nv"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;title&amp;quot;&lt;/span&gt;&amp;gt;&amp;lt;b&amp;gt;Exemplo de Beautifulsoup&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para pegar o nome da classe usada no “P”:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;soup.p&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;class&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;: este comando irá trazer o &lt;span class="nv"&gt;seguinte&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&amp;gt; u&lt;span class="s1"&gt;&amp;#39;title&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Vamos agora demonstrar como fazer uma busca no documento HTML, digamos que tenhamos a necessidade de pegar todos os &amp;lt;a&amp;gt;&amp;lt;/a&amp;gt; do nosso arquivo HTML, então usaremos o Beautifulsoup da seguinte maneira:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;soup.find_all&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;: este comando irá trazer o &lt;span class="nv"&gt;seguinte&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&amp;gt;
 &lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;
@@ -80,8 +78,6 @@ nesse Script implementei bastante coisa do Beautifulsoup e algumas outras coisas
 &lt;dt&gt;Qualquer dúvida pode entrar em contato:&lt;/dt&gt;
 &lt;dd&gt;&lt;ul class="first last simple"&gt;
 &lt;li&gt;Email: &lt;a class="reference external" href="mailto:linux.soares&amp;#64;gmail.com"&gt;linux.soares&amp;#64;gmail.com&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Twitter: &lt;a class="reference external" href="https://twitter.com/gilmar_soares"&gt;&amp;#64;gilmar_soares&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Facebook: &lt;a class="reference external" href="https://www.facebook.com/linux.soares"&gt;facebook.com/linux.soares&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/dd&gt;
 &lt;/dl&gt;
