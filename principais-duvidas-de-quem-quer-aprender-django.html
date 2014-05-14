@@ -67,23 +67,25 @@
                         </p>
                 </header>
             </section>
-            <p>Vou começar este post fazendo um pequeno depoimento:
-Quando eu ouvi falar de Django pela primeira vez eu me perguntei:
-<a class="reference internal" href="#o-que-e-django">O que é Django?</a>
-Daí eu comecei a procurar pela resposta, e surgiram outras perguntas. Eu precisei criar uma apresentação para a faculdade e consequentemente uma página com um <strong>formulário</strong> para inserção de dados, <strong>gravação no banco de dados</strong> e uma <strong>lista</strong> que retornasse os dados já gravados.
-Procurei por vários materiais, inclusive a documentação oficial do [Django](<a class="reference external" href="https://www.djangoproject.com/">https://www.djangoproject.com/</a>) mas encontrei muitas dificuldades para aprender do zero, só consegui entender o que era Django depois que fiz o curso [Welcome to the Django](<a class="reference external" href="http://welcometothedjango.com.br/">http://welcometothedjango.com.br/</a>). Então vejamos:</p>
-<p><a class="reference internal" href="#o-que-e-django">O que é Django?</a>
-<a class="reference internal" href="#instalando-o-django">Instalando o Django</a>
-<a class="reference internal" href="#o-que-e-mtv">O que é MTV?</a>
-<a class="reference internal" href="#o-que-e-virtualenv-e-requirements">O que é Virtualenv e Requirements?</a>
-[Como criar um site com formulário e lista em 30 minutos?]()</p>
+            <p>Vou começar este post fazendo um pequeno depoimento:</p>
+<p>Quando eu ouvi falar de Django pela primeira vez eu me perguntei:</p>
+<p><a class="reference internal" href="#o-que-e-django">O que é Django?</a></p>
+<p>Daí eu comecei a procurar pela resposta, e surgiram outras perguntas. Eu precisei criar uma apresentação para a faculdade e consequentemente uma página com um <strong>formulário</strong> para inserção de dados, <strong>gravação no banco de dados</strong> e uma <strong>lista</strong> que retornasse os dados já gravados.
+Procurei por vários materiais, inclusive a documentação oficial do <a class="reference external" href="https://www.djangoproject.com/">Django</a> mas encontrei muitas dificuldades para aprender do zero, só consegui entender o que era Django depois que fiz o curso <a class="reference external" href="http://welcometothedjango.com.br/">Welcome to the Django</a>. Então vejamos:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#o-que-e-django">O que é Django?</a></li>
+<li><a class="reference internal" href="#instalando-o-django">Instalando o Django</a></li>
+<li><a class="reference internal" href="#o-que-e-mtv">O que é MTV?</a></li>
+<li><a class="reference internal" href="#o-que-e-virtualenv-e-requirements">O que é Virtualenv e Requirements?</a></li>
+<li><a class="reference external" href="http://pythonclub.com.br/criar-site-com-form-lista-30-min.html">Como criar um site com formulário e lista em 30 minutos?</a></li>
+</ul>
 <div class="section" id="o-que-e-django">
 <h2>O que é Django?</h2>
-<p>Segundo [Django Brasil](<a class="reference external" href="http://www.djangobrasil.org/">http://www.djangobrasil.org/</a>),</p>
+<p>Segundo <a class="reference external" href="http://www.djangobrasil.org/">Django Brasil</a>,</p>
 <p>&gt; <em>Django é um framework web de alto nível escrito em Python que estimula o desenvolvimento rápido e limpo.</em></p>
 <p>Foi criado por <em>Adrian Holovaty</em> numa agência publicitária.</p>
 <p>Django segue o princípio <strong>DRY</strong> <em>(Dont repeat yourself)</em> &quot;Não se repita&quot;.</p>
-<p>Adota o padrão MTV, possui [mapeamento objeto-relacional](<a class="reference external" href="http://turing.com.br/material/acpython/mod3/django/orm1.html">http://turing.com.br/material/acpython/mod3/django/orm1.html</a>) [ORM](<a class="reference external" href="http://pt.wikipedia.org/wiki/Django_(framework_web">http://pt.wikipedia.org/wiki/Django_(framework_web</a>)#Mapeamento_Objeto-<a href="#id1"><span class="problematic" id="id2">Relacional_</span></a>.28ORM.29), orientação à objeto, sistema de [administração](<a class="reference external" href="https://docs.djangoproject.com/en/1.6/ref/contrib/admin/">https://docs.djangoproject.com/en/1.6/ref/contrib/admin/</a>) automático e completo, sistema de [templates](<a class="reference external" href="https://docs.djangoproject.com/en/1.6/topics/templates/">https://docs.djangoproject.com/en/1.6/topics/templates/</a>) e é <em>open source</em>.</p>
+<p>Adota o padrão MTV, possui <a class="reference external" href="http://turing.com.br/material/acpython/mod3/django/orm1.html">mapeamento objeto-relacional</a> <a class="reference external" href="http://pt.wikipedia.org/wiki/Django_(framework_web)#Mapeamento_Objeto-Relacional_.28ORM.29">ORM</a>, orientação à objeto, sistema de <a class="reference external" href="https://docs.djangoproject.com/en/1.6/ref/contrib/admin/">administração</a> automático e completo, sistema de <a class="reference external" href="https://docs.djangoproject.com/en/1.6/topics/templates/">templates</a> e é <em>open source</em>.</p>
 </div>
 <div class="section" id="instalando-o-django">
 <h2>Instalando o Django</h2>
@@ -93,22 +95,21 @@ Procurei por vários materiais, inclusive a documentação oficial do [Django](<
 <li><strong>Django</strong> - Até a data de lançamento deste post a versão é Django 1.6.4.</li>
 <li><strong>Git</strong> - Sistema de controle de versão distribuído.</li>
 </ul>
-<p>E segundo [PyPA](<a class="reference external" href="https://python-packaging-user-guide.readthedocs.org/en/latest/current.html">https://python-packaging-user-guide.readthedocs.org/en/latest/current.html</a>) é recomendável a instalação das seguintes ferramentas:</p>
+<p>E segundo <a class="reference external" href="https://python-packaging-user-guide.readthedocs.org/en/latest/current.html">PyPA</a> é recomendável a instalação das seguintes ferramentas:</p>
 <ul class="simple">
-<li><strong>Pip</strong> - O [Pip](<a class="reference external" href="http://pip.readthedocs.org/en/latest/">http://pip.readthedocs.org/en/latest/</a>) é uma ferramenta para instalar e gerenciar pacotes Python.</li>
-<li><strong>Virtualenv</strong> - O [Virtualenv](<a class="reference external" href="https://python-packaging-user-guide.readthedocs.org/en/latest/projects.html#virtualenv">https://python-packaging-user-guide.readthedocs.org/en/latest/projects.html#virtualenv</a>) é um ambiente virtual de desenvolvimento que isola o projeto com suas dependências específicas. Ou seja, você pode ter vários projetos com bibliotecas diferentes, versões diferentes; e um não interfere no outro, consequentemente não interfere nas configurações padrões do sistema operacional. Exemplo, você pode ter um projeto com Django 1.6 e outro com Django 1.5, cada um no seu ambiente de desenvolvimento.</li>
+<li><strong>Pip</strong> - O <a class="reference external" href="http://pip.readthedocs.org/en/latest/">Pip</a> é uma ferramenta para instalar e gerenciar pacotes Python.</li>
+<li><strong>Virtualenv</strong> - O <a class="reference external" href="https://python-packaging-user-guide.readthedocs.org/en/latest/projects.html#virtualenv">Virtualenv</a> é um ambiente virtual de desenvolvimento que isola o projeto com suas dependências específicas. Ou seja, você pode ter vários projetos com bibliotecas diferentes, versões diferentes; e um não interfere no outro, consequentemente não interfere nas configurações padrões do sistema operacional. Exemplo, você pode ter um projeto com Django 1.6 e outro com Django 1.5, cada um no seu ambiente de desenvolvimento.</li>
 </ul>
 <div class="section" id="instalando-o-django-no-windows">
 <h3>Instalando o Django no Windows</h3>
-<p>Veja o post de [Thiago Côroa](#).</p>
+<p>Veja o post de <strong>Thiago Côroa</strong> (em breve).</p>
 </div>
 <div class="section" id="instalando-o-django-no-linux">
 <h3>Instalando o Django no Linux</h3>
 <p>Use o <strong>terminal</strong>.</p>
 <ul class="simple">
-<li><strong>Python 2.7</strong></li>
+<li><strong>Python 2.7</strong> - Já vem instalado no Linux! :) Digite:</li>
 </ul>
-<p>Já vem instalado no Linux!:) Digite:</p>
 <div class="highlight"><pre><span class="nv">$ </span>python --V
 </pre></div>
 <ul class="simple">
@@ -117,22 +118,27 @@ Procurei por vários materiais, inclusive a documentação oficial do [Django](<
 <div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install -y git
 </pre></div>
 <ul class="simple">
-<li><strong>Curl</strong></li>
+<li><strong>Curl</strong> - Talvez precise.</li>
 </ul>
-<p>Talvez precise.</p>
 <div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install -y curl
 </pre></div>
-<p>Pip</p>
-<p><em>Curl menos letra Ó</em></p>
+<ul class="simple">
+<li><strong>Pip</strong></li>
+</ul>
+<p><em>&quot;Curl menos letra Ó&quot;</em></p>
 <div class="highlight"><pre><span class="nv">$ </span>curl -O http://python-distribute.org/distribute_setup.py
 <span class="nv">$ </span>sudo python -y distribute_setup.py
 <span class="nv">$ </span>sudo easy_install pip
 </pre></div>
-<p>Fonte: [Welcome to the Django](<a class="reference external" href="http://welcometothedjango.com.br/">http://welcometothedjango.com.br/</a>) Curso</p>
-<p>Virtualenv</p>
+<p>Fonte: <a class="reference external" href="http://welcometothedjango.com.br/">Welcome to the Django</a> Curso</p>
+<ul class="simple">
+<li><strong>Virtualenv</strong></li>
+</ul>
 <div class="highlight"><pre><span class="nv">$ </span>sudo pip install virtualenv
 </pre></div>
-<p>Django 1.6</p>
+<ul class="simple">
+<li><strong>Django 1.6</strong></li>
+</ul>
 <div class="highlight"><pre><span class="nv">$ </span>sudo pip install <span class="nv">django</span><span class="o">==</span>1.6
 </pre></div>
 <p>Obs: repare que instalamos o Django direto no sistema, mas na verdade ele deverá ser instalado dentro de cada virtualenv. Leia sobre <a class="reference internal" href="#o-que-e-virtualenv-e-requirements">O que é Virtualenv e Requirements?</a>.</p>
@@ -150,7 +156,7 @@ Procurei por vários materiais, inclusive a documentação oficial do [Django](<
 <li><em>View</em> (visão), no Django, é uma função <em>python</em> que recebe uma <em>request</em> (requisição) e retorna uma <em>response</em> (resposta) web. Equivale ao <em>controller</em> de outros frameworks.</li>
 <li><em>Templates</em> (prefiro não traduzir) são as páginas html, apesar de que a saída pode ser um simples texto no terminal. O legal é que templates no Django proporciona facilidade e flexibilidade, podemos criar um modelo <em>base</em> e estender sua reutilização, por exemplo.</li>
 </ul>
-<p>Leia mais sobre MTV em [Entendendo como o Django trabalha](<a class="reference external" href="http://www.aprendendodjango.com/entendendo-como-o-django-trabalha/">http://www.aprendendodjango.com/entendendo-como-o-django-trabalha/</a>). E veja o diagrama.</p>
+<p>Leia mais sobre MTV em <a class="reference external" href="http://www.aprendendodjango.com/entendendo-como-o-django-trabalha/">Entendendo como o Django trabalha</a>. E veja o diagrama.</p>
 </div>
 <div class="section" id="o-que-e-virtualenv-e-requirements">
 <h2>O que é Virtualenv e Requirements?</h2>
@@ -169,13 +175,7 @@ Então o que é <em>requirements</em>?
 <span class="n">django</span><span class="o">-</span><span class="n">extensions</span>
 <span class="n">pygraphviz</span>
 </pre></div>
-<p>Leia a continuação deste post em [Como criar um site com formulário e lista em 30 minutos?]().</p>
-</div>
-<div class="system-messages section">
-<h2>Docutils System Messages</h2>
-<div class="system-message" id="id1">
-<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">/home/travis/build/pythonclub/pythonclub.github.io/content/principais-duvidas-de-quem-quer-aprender-django.rst</tt>, line 37); <em><a href="#id2">backlink</a></em></p>
-Unknown target name: &quot;relacional&quot;.</div>
+<p>Leia a continuação deste post em <a class="reference external" href="http://pythonclub.com.br/criar-site-com-form-lista-30-min.html">Como criar um site com formulário e lista em 30 minutos?</a>.</p>
 </div>
 
             <div class="sharing">

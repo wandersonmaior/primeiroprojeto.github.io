@@ -67,7 +67,7 @@
                         </p>
                 </header>
             </section>
-            <p>Se você já leu as [principais dúvidas de quem quer aprender Django]() agora você já está pronto para criar um site com:</p>
+            <p>Se você já leu as <a class="reference external" href="http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html">principais dúvidas de quem quer aprender Django</a> agora você já está pronto para criar um site com:</p>
 <ul class="simple">
 <li>um <strong>modelo de dados</strong> simples</li>
 <li>um <strong>formulário</strong> para inserção dos dados</li>
@@ -117,7 +117,7 @@ Atributos: nome, cpf, idade, email, telefone, criado_em</blockquote>
 <p>Rodando o projeto.</p>
 <div class="highlight"><pre><span class="nv">$ </span>python manage.py runserver
 </pre></div>
-<p>Abra o navegador e digite [<a class="reference external" href="http://127.0.0.1:8000/](http://127.0.0.1:8000/">http://127.0.0.1:8000/](http://127.0.0.1:8000/</a>). Parabéns, seu projeto está funcionando.</p>
+<p>Abra o navegador e digite <a class="reference external" href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a>. Parabéns, seu projeto está funcionando.</p>
 <p>Agora vamos criar todos os demais elementos. Considere que estamos na pasta <em>env_crm/crm</em>.</p>
 <p>Criando <strong>forms.py</strong></p>
 <div class="highlight"><pre><span class="nv">$ </span>touch cadastro/forms.py
@@ -127,19 +127,8 @@ Atributos: nome, cpf, idade, email, telefone, criado_em</blockquote>
 <span class="nv">$ </span>touch cadastro/templates/<span class="o">{</span>base.html,index.html,cadastro.html,lista.html<span class="o">}</span>
 </pre></div>
 <p>Veja no diagrama abaixo a relação de dependência entre os arquivos.</p>
-<div class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">/home/travis/build/pythonclub/pythonclub.github.io/content/como-criar-um-site-em-30-minutos.rst</tt>, line 104)</p>
-<p>Error in &quot;image&quot; directive:
-no content permitted.</p>
-<pre class="literal-block">
-.. image:: images/regisdasilva/diagrama.png
-
-        :alt: diagrama.html
-
-</pre>
-</div>
-<p>![diagrama](./images/regisdasilva/diagrama.png)</p>
-<p>Agora vamos editar alguns arquivos usando o [Sublime Text 3](<a class="reference external" href="http://www.sublimetext.com/3">http://www.sublimetext.com/3</a>), leia também [Seu primeiro projeto Django com Sublime Text no Linux](<a class="reference external" href="http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html">http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html</a>) de [Fabiano Góes](<a class="reference external" href="http://pythonclub.com.br/author/fabiano-goes.html">http://pythonclub.com.br/author/fabiano-goes.html</a>).</p>
+<img alt="diagrama.html" src="images/regisdasilva/diagrama.png" />
+<p>Agora vamos editar alguns arquivos usando o <a class="reference external" href="http://www.sublimetext.com/3">Sublime Text 3</a>, leia também <a class="reference external" href="http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html">Seu primeiro projeto Django com Sublime Text no Linux</a> de <a class="reference external" href="http://pythonclub.com.br/author/fabiano-goes.html">Fabiano Góes</a>.</p>
 <p>Vamos carregar a pasta <em>env_crm</em> clicando em</p>
 <blockquote>
 File &gt; Open Folder...</blockquote>
@@ -181,7 +170,7 @@ File &gt; Open Folder...</blockquote>
 <p>Vamos criar o banco de dados através do comando <strong>syncdb</strong>.</p>
 <div class="highlight"><pre><span class="nv">$ </span>python manage.py syncdb
 </pre></div>
-<p>Agora vamos editar <em>crm/cadastro/views.py</em>. Vamos usar [Generic Views](<a class="reference external" href="https://docs.djangoproject.com/en/1.2/ref/generic-views/">https://docs.djangoproject.com/en/1.2/ref/generic-views/</a>).</p>
+<p>Agora vamos editar <em>crm/cadastro/views.py</em>. Vamos usar <a class="reference external" href="https://docs.djangoproject.com/en/1.2/ref/generic-views/">Generic Views</a>.</p>
 <div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
 <span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
 <span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">CreateView</span><span class="p">,</span> <span class="n">ListView</span>
@@ -261,18 +250,7 @@ File &gt; Open Folder...</blockquote>
         <span class="nt">&lt;h1&gt;</span>Cadastro de Clientes<span class="nt">&lt;/h1&gt;</span>
 {% endblock content %}
 </pre></div>
-<div class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">/home/travis/build/pythonclub/pythonclub.github.io/content/como-criar-um-site-em-30-minutos.rst</tt>, line 258)</p>
-<p>Error in &quot;image&quot; directive:
-no content permitted.</p>
-<pre class="literal-block">
-.. image:: images/regisdasilva/index.png
-
-        :alt: index.html
-
-</pre>
-</div>
-<p>![index.html](./images/regisdasilva/index.png)</p>
+<img alt="index.html" src="images/regisdasilva/index.png" />
 <p>Agora vamos editar <em>crm/cadastro/templates/cadastro.html</em>.</p>
 <div class="highlight"><pre>{% extends &#39;base.html&#39; %}
 
@@ -284,19 +262,8 @@ no content permitted.</p>
         <span class="nt">&lt;/form&gt;</span>
 {% endblock content %}
 </pre></div>
-<div class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">/home/travis/build/pythonclub/pythonclub.github.io/content/como-criar-um-site-em-30-minutos.rst</tt>, line 278)</p>
-<p>Error in &quot;image&quot; directive:
-no content permitted.</p>
-<pre class="literal-block">
-.. image:: images/regisdasilva/cadastro.png
-
-        :alt: cadastro.html
-
-</pre>
-</div>
-<p>![cadastro.html](./images/regisdasilva/cadastro.png)</p>
-<p>Leia sobre [as_p](<a class="reference external" href="http://docs.djangobrasil.org/topics/forms/#mostrando-um-formul-rio-usando-um-template">http://docs.djangobrasil.org/topics/forms/#mostrando-um-formul-rio-usando-um-template</a>) que significa que os campos ficarão em parágrafos, e [crsf_token (en)](<a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/contrib/csrf/">https://docs.djangoproject.com/en/dev/ref/contrib/csrf/</a>) que é uma proteção usada durante a inserção de dados.</p>
+<img alt="cadastro.html" src="images/regisdasilva/cadastro.png" />
+<p>Leia sobre <a class="reference external" href="http://docs.djangobrasil.org/topics/forms/#mostrando-um-formul-rio-usando-um-template">as_p</a> que significa que os campos ficarão em parágrafos, e <a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/contrib/csrf/">crsf_token (en)</a> que é uma proteção usada durante a inserção de dados.</p>
 <p>Agora vamos editar <em>crm/cadastro/templates/lista.html</em>.</p>
 <div class="highlight"><pre>{% extends &#39;base.html&#39; %}
 
@@ -327,20 +294,9 @@ no content permitted.</p>
                 <span class="nt">&lt;/table&gt;</span>
 {% endblock content %}
 </pre></div>
-<div class="system-message">
-<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">/home/travis/build/pythonclub/pythonclub.github.io/content/como-criar-um-site-em-30-minutos.rst</tt>, line 319)</p>
-<p>Error in &quot;image&quot; directive:
-no content permitted.</p>
-<pre class="literal-block">
-.. image:: images/regisdasilva/lista.png
-
-        :alt: lista.html
-
-</pre>
-</div>
-<p>![lista.html](./images/regisdasilva/lista.png)</p>
-<p>Leia também [Seu primeiro projeto Django com Sublime Text no Linux](<a class="reference external" href="http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime">http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime</a>. html) de [Fabiano Góes](<a class="reference external" href="http://pythonclub.com.br/author/fabiano-goes.html">http://pythonclub.com.br/author/fabiano-goes.html</a>).</p>
-<p>Baixe o projeto no ![github.com/rg3915/crm](<a class="reference external" href="https://github.com/rg3915/crm">https://github.com/rg3915/crm</a>).</p>
+<img alt="lista.html" src="images/regisdasilva/lista.png" />
+<p>Leia também <a class="reference external" href="http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html">Seu primeiro projeto Django com Sublime Text no Linux</a> de <a class="reference external" href="http://pythonclub.com.br/author/fabiano-goes.html">Fabiano Góes</a>.</p>
+<p>Baixe o projeto no <a class="reference external" href="https://github.com/rg3915/crm">github.com/rg3915/crm</a>.</p>
 
             <div class="sharing">
                 <!-- Facebook sharing -->

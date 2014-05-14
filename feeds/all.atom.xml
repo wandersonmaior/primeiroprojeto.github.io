@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/all.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-05-13T23:00:00-03:00</updated><entry><title>Como criar um site com formulário e lista em 30 minutos?</title><link href="http://pythonclub.com.br/criar-site-com-form-lista-30-min.html" rel="alternate"></link><updated>2014-05-13T23:00:00-03:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2014-05-13:criar-site-com-form-lista-30-min.html</id><summary type="html">&lt;p&gt;Se você já leu as [principais dúvidas de quem quer aprender Django]() agora você já está pronto para criar um site com:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/all.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-05-13T23:00:00-03:00</updated><entry><title>Como criar um site com formulário e lista em 30 minutos?</title><link href="http://pythonclub.com.br/criar-site-com-form-lista-30-min.html" rel="alternate"></link><updated>2014-05-13T23:00:00-03:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2014-05-13:criar-site-com-form-lista-30-min.html</id><summary type="html">&lt;p&gt;Se você já leu as &lt;a class="reference external" href="http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html"&gt;principais dúvidas de quem quer aprender Django&lt;/a&gt; agora você já está pronto para criar um site com:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;um &lt;strong&gt;modelo de dados&lt;/strong&gt; simples&lt;/li&gt;
 &lt;li&gt;um &lt;strong&gt;formulário&lt;/strong&gt; para inserção dos dados&lt;/li&gt;
@@ -49,7 +49,7 @@ Atributos: nome, cpf, idade, email, telefone, criado_em&lt;/blockquote&gt;
 &lt;p&gt;Rodando o projeto.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python manage.py runserver
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Abra o navegador e digite [&lt;a class="reference external" href="http://127.0.0.1:8000/](http://127.0.0.1:8000/"&gt;http://127.0.0.1:8000/](http://127.0.0.1:8000/&lt;/a&gt;). Parabéns, seu projeto está funcionando.&lt;/p&gt;
+&lt;p&gt;Abra o navegador e digite &lt;a class="reference external" href="http://127.0.0.1:8000/"&gt;http://127.0.0.1:8000/&lt;/a&gt;. Parabéns, seu projeto está funcionando.&lt;/p&gt;
 &lt;p&gt;Agora vamos criar todos os demais elementos. Considere que estamos na pasta &lt;em&gt;env_crm/crm&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Criando &lt;strong&gt;forms.py&lt;/strong&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;touch cadastro/forms.py
@@ -59,19 +59,8 @@ Atributos: nome, cpf, idade, email, telefone, criado_em&lt;/blockquote&gt;
 &lt;span class="nv"&gt;$ &lt;/span&gt;touch cadastro/templates/&lt;span class="o"&gt;{&lt;/span&gt;base.html,index.html,cadastro.html,lista.html&lt;span class="o"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Veja no diagrama abaixo a relação de dependência entre os arquivos.&lt;/p&gt;
-&lt;div class="system-message"&gt;
-&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/travis/build/pythonclub/pythonclub.github.io/content/como-criar-um-site-em-30-minutos.rst&lt;/tt&gt;, line 104)&lt;/p&gt;
-&lt;p&gt;Error in &amp;quot;image&amp;quot; directive:
-no content permitted.&lt;/p&gt;
-&lt;pre class="literal-block"&gt;
-.. image:: images/regisdasilva/diagrama.png
-
-        :alt: diagrama.html
-
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;![diagrama](./images/regisdasilva/diagrama.png)&lt;/p&gt;
-&lt;p&gt;Agora vamos editar alguns arquivos usando o [Sublime Text 3](&lt;a class="reference external" href="http://www.sublimetext.com/3"&gt;http://www.sublimetext.com/3&lt;/a&gt;), leia também [Seu primeiro projeto Django com Sublime Text no Linux](&lt;a class="reference external" href="http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html"&gt;http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html&lt;/a&gt;) de [Fabiano Góes](&lt;a class="reference external" href="http://pythonclub.com.br/author/fabiano-goes.html"&gt;http://pythonclub.com.br/author/fabiano-goes.html&lt;/a&gt;).&lt;/p&gt;
+&lt;img alt="diagrama.html" src="images/regisdasilva/diagrama.png" /&gt;
+&lt;p&gt;Agora vamos editar alguns arquivos usando o &lt;a class="reference external" href="http://www.sublimetext.com/3"&gt;Sublime Text 3&lt;/a&gt;, leia também &lt;a class="reference external" href="http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html"&gt;Seu primeiro projeto Django com Sublime Text no Linux&lt;/a&gt; de &lt;a class="reference external" href="http://pythonclub.com.br/author/fabiano-goes.html"&gt;Fabiano Góes&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Vamos carregar a pasta &lt;em&gt;env_crm&lt;/em&gt; clicando em&lt;/p&gt;
 &lt;blockquote&gt;
 File &amp;gt; Open Folder...&lt;/blockquote&gt;
@@ -113,7 +102,7 @@ File &amp;gt; Open Folder...&lt;/blockquote&gt;
 &lt;p&gt;Vamos criar o banco de dados através do comando &lt;strong&gt;syncdb&lt;/strong&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python manage.py syncdb
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Agora vamos editar &lt;em&gt;crm/cadastro/views.py&lt;/em&gt;. Vamos usar [Generic Views](&lt;a class="reference external" href="https://docs.djangoproject.com/en/1.2/ref/generic-views/"&gt;https://docs.djangoproject.com/en/1.2/ref/generic-views/&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Agora vamos editar &lt;em&gt;crm/cadastro/views.py&lt;/em&gt;. Vamos usar &lt;a class="reference external" href="https://docs.djangoproject.com/en/1.2/ref/generic-views/"&gt;Generic Views&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.shortcuts&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;render&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;CreateView&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ListView&lt;/span&gt;
@@ -193,18 +182,7 @@ File &amp;gt; Open Folder...&lt;/blockquote&gt;
         &lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Cadastro de Clientes&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
 {% endblock content %}
 &lt;/pre&gt;&lt;/div&gt;
-&lt;div class="system-message"&gt;
-&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/travis/build/pythonclub/pythonclub.github.io/content/como-criar-um-site-em-30-minutos.rst&lt;/tt&gt;, line 258)&lt;/p&gt;
-&lt;p&gt;Error in &amp;quot;image&amp;quot; directive:
-no content permitted.&lt;/p&gt;
-&lt;pre class="literal-block"&gt;
-.. image:: images/regisdasilva/index.png
-
-        :alt: index.html
-
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;![index.html](./images/regisdasilva/index.png)&lt;/p&gt;
+&lt;img alt="index.html" src="images/regisdasilva/index.png" /&gt;
 &lt;p&gt;Agora vamos editar &lt;em&gt;crm/cadastro/templates/cadastro.html&lt;/em&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;{% extends &amp;#39;base.html&amp;#39; %}
 
@@ -216,19 +194,8 @@ no content permitted.&lt;/p&gt;
         &lt;span class="nt"&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
 {% endblock content %}
 &lt;/pre&gt;&lt;/div&gt;
-&lt;div class="system-message"&gt;
-&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/travis/build/pythonclub/pythonclub.github.io/content/como-criar-um-site-em-30-minutos.rst&lt;/tt&gt;, line 278)&lt;/p&gt;
-&lt;p&gt;Error in &amp;quot;image&amp;quot; directive:
-no content permitted.&lt;/p&gt;
-&lt;pre class="literal-block"&gt;
-.. image:: images/regisdasilva/cadastro.png
-
-        :alt: cadastro.html
-
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;![cadastro.html](./images/regisdasilva/cadastro.png)&lt;/p&gt;
-&lt;p&gt;Leia sobre [as_p](&lt;a class="reference external" href="http://docs.djangobrasil.org/topics/forms/#mostrando-um-formul-rio-usando-um-template"&gt;http://docs.djangobrasil.org/topics/forms/#mostrando-um-formul-rio-usando-um-template&lt;/a&gt;) que significa que os campos ficarão em parágrafos, e [crsf_token (en)](&lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/contrib/csrf/"&gt;https://docs.djangoproject.com/en/dev/ref/contrib/csrf/&lt;/a&gt;) que é uma proteção usada durante a inserção de dados.&lt;/p&gt;
+&lt;img alt="cadastro.html" src="images/regisdasilva/cadastro.png" /&gt;
+&lt;p&gt;Leia sobre &lt;a class="reference external" href="http://docs.djangobrasil.org/topics/forms/#mostrando-um-formul-rio-usando-um-template"&gt;as_p&lt;/a&gt; que significa que os campos ficarão em parágrafos, e &lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/contrib/csrf/"&gt;crsf_token (en)&lt;/a&gt; que é uma proteção usada durante a inserção de dados.&lt;/p&gt;
 &lt;p&gt;Agora vamos editar &lt;em&gt;crm/cadastro/templates/lista.html&lt;/em&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;{% extends &amp;#39;base.html&amp;#39; %}
 
@@ -259,37 +226,28 @@ no content permitted.&lt;/p&gt;
                 &lt;span class="nt"&gt;&amp;lt;/table&amp;gt;&lt;/span&gt;
 {% endblock content %}
 &lt;/pre&gt;&lt;/div&gt;
-&lt;div class="system-message"&gt;
-&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/travis/build/pythonclub/pythonclub.github.io/content/como-criar-um-site-em-30-minutos.rst&lt;/tt&gt;, line 319)&lt;/p&gt;
-&lt;p&gt;Error in &amp;quot;image&amp;quot; directive:
-no content permitted.&lt;/p&gt;
-&lt;pre class="literal-block"&gt;
-.. image:: images/regisdasilva/lista.png
-
-        :alt: lista.html
-
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;![lista.html](./images/regisdasilva/lista.png)&lt;/p&gt;
-&lt;p&gt;Leia também [Seu primeiro projeto Django com Sublime Text no Linux](&lt;a class="reference external" href="http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime"&gt;http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime&lt;/a&gt;. html) de [Fabiano Góes](&lt;a class="reference external" href="http://pythonclub.com.br/author/fabiano-goes.html"&gt;http://pythonclub.com.br/author/fabiano-goes.html&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;Baixe o projeto no ![github.com/rg3915/crm](&lt;a class="reference external" href="https://github.com/rg3915/crm"&gt;https://github.com/rg3915/crm&lt;/a&gt;).&lt;/p&gt;
-</summary><category term="python"></category><category term="django"></category></entry><entry><title>Principais dúvidas de quem quer aprender Django</title><link href="http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html" rel="alternate"></link><updated>2014-05-13T23:00:00-03:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2014-05-13:principais-duvidas-de-quem-quer-aprender-django.html</id><summary type="html">&lt;p&gt;Vou começar este post fazendo um pequeno depoimento:
-Quando eu ouvi falar de Django pela primeira vez eu me perguntei:
-&lt;a class="reference internal" href="#o-que-e-django"&gt;O que é Django?&lt;/a&gt;
-Daí eu comecei a procurar pela resposta, e surgiram outras perguntas. Eu precisei criar uma apresentação para a faculdade e consequentemente uma página com um &lt;strong&gt;formulário&lt;/strong&gt; para inserção de dados, &lt;strong&gt;gravação no banco de dados&lt;/strong&gt; e uma &lt;strong&gt;lista&lt;/strong&gt; que retornasse os dados já gravados.
-Procurei por vários materiais, inclusive a documentação oficial do [Django](&lt;a class="reference external" href="https://www.djangoproject.com/"&gt;https://www.djangoproject.com/&lt;/a&gt;) mas encontrei muitas dificuldades para aprender do zero, só consegui entender o que era Django depois que fiz o curso [Welcome to the Django](&lt;a class="reference external" href="http://welcometothedjango.com.br/"&gt;http://welcometothedjango.com.br/&lt;/a&gt;). Então vejamos:&lt;/p&gt;
-&lt;p&gt;&lt;a class="reference internal" href="#o-que-e-django"&gt;O que é Django?&lt;/a&gt;
-&lt;a class="reference internal" href="#instalando-o-django"&gt;Instalando o Django&lt;/a&gt;
-&lt;a class="reference internal" href="#o-que-e-mtv"&gt;O que é MTV?&lt;/a&gt;
-&lt;a class="reference internal" href="#o-que-e-virtualenv-e-requirements"&gt;O que é Virtualenv e Requirements?&lt;/a&gt;
-[Como criar um site com formulário e lista em 30 minutos?]()&lt;/p&gt;
+&lt;img alt="lista.html" src="images/regisdasilva/lista.png" /&gt;
+&lt;p&gt;Leia também &lt;a class="reference external" href="http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html"&gt;Seu primeiro projeto Django com Sublime Text no Linux&lt;/a&gt; de &lt;a class="reference external" href="http://pythonclub.com.br/author/fabiano-goes.html"&gt;Fabiano Góes&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Baixe o projeto no &lt;a class="reference external" href="https://github.com/rg3915/crm"&gt;github.com/rg3915/crm&lt;/a&gt;.&lt;/p&gt;
+</summary><category term="python"></category><category term="django"></category></entry><entry><title>Principais dúvidas de quem quer aprender Django</title><link href="http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html" rel="alternate"></link><updated>2014-05-13T23:00:00-03:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2014-05-13:principais-duvidas-de-quem-quer-aprender-django.html</id><summary type="html">&lt;p&gt;Vou começar este post fazendo um pequeno depoimento:&lt;/p&gt;
+&lt;p&gt;Quando eu ouvi falar de Django pela primeira vez eu me perguntei:&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#o-que-e-django"&gt;O que é Django?&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Daí eu comecei a procurar pela resposta, e surgiram outras perguntas. Eu precisei criar uma apresentação para a faculdade e consequentemente uma página com um &lt;strong&gt;formulário&lt;/strong&gt; para inserção de dados, &lt;strong&gt;gravação no banco de dados&lt;/strong&gt; e uma &lt;strong&gt;lista&lt;/strong&gt; que retornasse os dados já gravados.
+Procurei por vários materiais, inclusive a documentação oficial do &lt;a class="reference external" href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; mas encontrei muitas dificuldades para aprender do zero, só consegui entender o que era Django depois que fiz o curso &lt;a class="reference external" href="http://welcometothedjango.com.br/"&gt;Welcome to the Django&lt;/a&gt;. Então vejamos:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#o-que-e-django"&gt;O que é Django?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#instalando-o-django"&gt;Instalando o Django&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#o-que-e-mtv"&gt;O que é MTV?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#o-que-e-virtualenv-e-requirements"&gt;O que é Virtualenv e Requirements?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://pythonclub.com.br/criar-site-com-form-lista-30-min.html"&gt;Como criar um site com formulário e lista em 30 minutos?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class="section" id="o-que-e-django"&gt;
 &lt;h2&gt;O que é Django?&lt;/h2&gt;
-&lt;p&gt;Segundo [Django Brasil](&lt;a class="reference external" href="http://www.djangobrasil.org/"&gt;http://www.djangobrasil.org/&lt;/a&gt;),&lt;/p&gt;
+&lt;p&gt;Segundo &lt;a class="reference external" href="http://www.djangobrasil.org/"&gt;Django Brasil&lt;/a&gt;,&lt;/p&gt;
 &lt;p&gt;&amp;gt; &lt;em&gt;Django é um framework web de alto nível escrito em Python que estimula o desenvolvimento rápido e limpo.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Foi criado por &lt;em&gt;Adrian Holovaty&lt;/em&gt; numa agência publicitária.&lt;/p&gt;
 &lt;p&gt;Django segue o princípio &lt;strong&gt;DRY&lt;/strong&gt; &lt;em&gt;(Dont repeat yourself)&lt;/em&gt; &amp;quot;Não se repita&amp;quot;.&lt;/p&gt;
-&lt;p&gt;Adota o padrão MTV, possui [mapeamento objeto-relacional](&lt;a class="reference external" href="http://turing.com.br/material/acpython/mod3/django/orm1.html"&gt;http://turing.com.br/material/acpython/mod3/django/orm1.html&lt;/a&gt;) [ORM](&lt;a class="reference external" href="http://pt.wikipedia.org/wiki/Django_(framework_web"&gt;http://pt.wikipedia.org/wiki/Django_(framework_web&lt;/a&gt;)#Mapeamento_Objeto-&lt;a href="#id1"&gt;&lt;span class="problematic" id="id2"&gt;Relacional_&lt;/span&gt;&lt;/a&gt;.28ORM.29), orientação à objeto, sistema de [administração](&lt;a class="reference external" href="https://docs.djangoproject.com/en/1.6/ref/contrib/admin/"&gt;https://docs.djangoproject.com/en/1.6/ref/contrib/admin/&lt;/a&gt;) automático e completo, sistema de [templates](&lt;a class="reference external" href="https://docs.djangoproject.com/en/1.6/topics/templates/"&gt;https://docs.djangoproject.com/en/1.6/topics/templates/&lt;/a&gt;) e é &lt;em&gt;open source&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Adota o padrão MTV, possui &lt;a class="reference external" href="http://turing.com.br/material/acpython/mod3/django/orm1.html"&gt;mapeamento objeto-relacional&lt;/a&gt; &lt;a class="reference external" href="http://pt.wikipedia.org/wiki/Django_(framework_web)#Mapeamento_Objeto-Relacional_.28ORM.29"&gt;ORM&lt;/a&gt;, orientação à objeto, sistema de &lt;a class="reference external" href="https://docs.djangoproject.com/en/1.6/ref/contrib/admin/"&gt;administração&lt;/a&gt; automático e completo, sistema de &lt;a class="reference external" href="https://docs.djangoproject.com/en/1.6/topics/templates/"&gt;templates&lt;/a&gt; e é &lt;em&gt;open source&lt;/em&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="instalando-o-django"&gt;
 &lt;h2&gt;Instalando o Django&lt;/h2&gt;
@@ -299,22 +257,21 @@ Procurei por vários materiais, inclusive a documentação oficial do [Django](&
 &lt;li&gt;&lt;strong&gt;Django&lt;/strong&gt; - Até a data de lançamento deste post a versão é Django 1.6.4.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Git&lt;/strong&gt; - Sistema de controle de versão distribuído.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;E segundo [PyPA](&lt;a class="reference external" href="https://python-packaging-user-guide.readthedocs.org/en/latest/current.html"&gt;https://python-packaging-user-guide.readthedocs.org/en/latest/current.html&lt;/a&gt;) é recomendável a instalação das seguintes ferramentas:&lt;/p&gt;
+&lt;p&gt;E segundo &lt;a class="reference external" href="https://python-packaging-user-guide.readthedocs.org/en/latest/current.html"&gt;PyPA&lt;/a&gt; é recomendável a instalação das seguintes ferramentas:&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;&lt;strong&gt;Pip&lt;/strong&gt; - O [Pip](&lt;a class="reference external" href="http://pip.readthedocs.org/en/latest/"&gt;http://pip.readthedocs.org/en/latest/&lt;/a&gt;) é uma ferramenta para instalar e gerenciar pacotes Python.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Virtualenv&lt;/strong&gt; - O [Virtualenv](&lt;a class="reference external" href="https://python-packaging-user-guide.readthedocs.org/en/latest/projects.html#virtualenv"&gt;https://python-packaging-user-guide.readthedocs.org/en/latest/projects.html#virtualenv&lt;/a&gt;) é um ambiente virtual de desenvolvimento que isola o projeto com suas dependências específicas. Ou seja, você pode ter vários projetos com bibliotecas diferentes, versões diferentes; e um não interfere no outro, consequentemente não interfere nas configurações padrões do sistema operacional. Exemplo, você pode ter um projeto com Django 1.6 e outro com Django 1.5, cada um no seu ambiente de desenvolvimento.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pip&lt;/strong&gt; - O &lt;a class="reference external" href="http://pip.readthedocs.org/en/latest/"&gt;Pip&lt;/a&gt; é uma ferramenta para instalar e gerenciar pacotes Python.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Virtualenv&lt;/strong&gt; - O &lt;a class="reference external" href="https://python-packaging-user-guide.readthedocs.org/en/latest/projects.html#virtualenv"&gt;Virtualenv&lt;/a&gt; é um ambiente virtual de desenvolvimento que isola o projeto com suas dependências específicas. Ou seja, você pode ter vários projetos com bibliotecas diferentes, versões diferentes; e um não interfere no outro, consequentemente não interfere nas configurações padrões do sistema operacional. Exemplo, você pode ter um projeto com Django 1.6 e outro com Django 1.5, cada um no seu ambiente de desenvolvimento.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="section" id="instalando-o-django-no-windows"&gt;
 &lt;h3&gt;Instalando o Django no Windows&lt;/h3&gt;
-&lt;p&gt;Veja o post de [Thiago Côroa](#).&lt;/p&gt;
+&lt;p&gt;Veja o post de &lt;strong&gt;Thiago Côroa&lt;/strong&gt; (em breve).&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="instalando-o-django-no-linux"&gt;
 &lt;h3&gt;Instalando o Django no Linux&lt;/h3&gt;
 &lt;p&gt;Use o &lt;strong&gt;terminal&lt;/strong&gt;.&lt;/p&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;&lt;strong&gt;Python 2.7&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Python 2.7&lt;/strong&gt; - Já vem instalado no Linux! :) Digite:&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Já vem instalado no Linux!:) Digite:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python --V
 &lt;/pre&gt;&lt;/div&gt;
 &lt;ul class="simple"&gt;
@@ -323,22 +280,27 @@ Procurei por vários materiais, inclusive a documentação oficial do [Django](&
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo apt-get install -y git
 &lt;/pre&gt;&lt;/div&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;&lt;strong&gt;Curl&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Curl&lt;/strong&gt; - Talvez precise.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Talvez precise.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo apt-get install -y curl
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Pip&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Curl menos letra Ó&lt;/em&gt;&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;strong&gt;Pip&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;&amp;quot;Curl menos letra Ó&amp;quot;&lt;/em&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;curl -O http://python-distribute.org/distribute_setup.py
 &lt;span class="nv"&gt;$ &lt;/span&gt;sudo python -y distribute_setup.py
 &lt;span class="nv"&gt;$ &lt;/span&gt;sudo easy_install pip
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Fonte: [Welcome to the Django](&lt;a class="reference external" href="http://welcometothedjango.com.br/"&gt;http://welcometothedjango.com.br/&lt;/a&gt;) Curso&lt;/p&gt;
-&lt;p&gt;Virtualenv&lt;/p&gt;
+&lt;p&gt;Fonte: &lt;a class="reference external" href="http://welcometothedjango.com.br/"&gt;Welcome to the Django&lt;/a&gt; Curso&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;strong&gt;Virtualenv&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo pip install virtualenv
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Django 1.6&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;strong&gt;Django 1.6&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo pip install &lt;span class="nv"&gt;django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;1.6
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Obs: repare que instalamos o Django direto no sistema, mas na verdade ele deverá ser instalado dentro de cada virtualenv. Leia sobre &lt;a class="reference internal" href="#o-que-e-virtualenv-e-requirements"&gt;O que é Virtualenv e Requirements?&lt;/a&gt;.&lt;/p&gt;
@@ -356,7 +318,7 @@ Procurei por vários materiais, inclusive a documentação oficial do [Django](&
 &lt;li&gt;&lt;em&gt;View&lt;/em&gt; (visão), no Django, é uma função &lt;em&gt;python&lt;/em&gt; que recebe uma &lt;em&gt;request&lt;/em&gt; (requisição) e retorna uma &lt;em&gt;response&lt;/em&gt; (resposta) web. Equivale ao &lt;em&gt;controller&lt;/em&gt; de outros frameworks.&lt;/li&gt;
 &lt;li&gt;&lt;em&gt;Templates&lt;/em&gt; (prefiro não traduzir) são as páginas html, apesar de que a saída pode ser um simples texto no terminal. O legal é que templates no Django proporciona facilidade e flexibilidade, podemos criar um modelo &lt;em&gt;base&lt;/em&gt; e estender sua reutilização, por exemplo.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Leia mais sobre MTV em [Entendendo como o Django trabalha](&lt;a class="reference external" href="http://www.aprendendodjango.com/entendendo-como-o-django-trabalha/"&gt;http://www.aprendendodjango.com/entendendo-como-o-django-trabalha/&lt;/a&gt;). E veja o diagrama.&lt;/p&gt;
+&lt;p&gt;Leia mais sobre MTV em &lt;a class="reference external" href="http://www.aprendendodjango.com/entendendo-como-o-django-trabalha/"&gt;Entendendo como o Django trabalha&lt;/a&gt;. E veja o diagrama.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="o-que-e-virtualenv-e-requirements"&gt;
 &lt;h2&gt;O que é Virtualenv e Requirements?&lt;/h2&gt;
@@ -375,13 +337,7 @@ Então o que é &lt;em&gt;requirements&lt;/em&gt;?
 &lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;extensions&lt;/span&gt;
 &lt;span class="n"&gt;pygraphviz&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Leia a continuação deste post em [Como criar um site com formulário e lista em 30 minutos?]().&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="system-messages section"&gt;
-&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
-&lt;div class="system-message" id="id1"&gt;
-&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/travis/build/pythonclub/pythonclub.github.io/content/principais-duvidas-de-quem-quer-aprender-django.rst&lt;/tt&gt;, line 37); &lt;em&gt;&lt;a href="#id2"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-Unknown target name: &amp;quot;relacional&amp;quot;.&lt;/div&gt;
+&lt;p&gt;Leia a continuação deste post em &lt;a class="reference external" href="http://pythonclub.com.br/criar-site-com-form-lista-30-min.html"&gt;Como criar um site com formulário e lista em 30 minutos?&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 </summary><category term="python"></category><category term="django"></category></entry><entry><title>Exemplo de como "Parsear" Sites com BeautifulSoup</title><link href="http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html" rel="alternate"></link><updated>2014-05-13T22:00:00-03:00</updated><author><name>Gilmar Soares</name></author><id>tag:pythonclub.com.br,2014-05-13:parseando-sites-com-beautifulsoup.html</id><summary type="html">&lt;div class="section" id="parseando-sites-com-beautifulsoup"&gt;
 &lt;h2&gt;Parseando Sites com BeautifulSoup&lt;/h2&gt;
