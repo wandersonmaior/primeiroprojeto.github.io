@@ -1,5 +1,389 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/django.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-05-11T02:00:00-03:00</updated><entry><title>Seu primeiro projeto Django com Sublime Text no Linux</title><link href="http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html" rel="alternate"></link><updated>2014-05-11T02:00:00-03:00</updated><author><name>Fabiano Góes</name></author><id>tag:pythonclub.com.br,2014-05-11:primeiro-projeto-django-no-linux-com-sublime.html</id><summary type="html">&lt;div class="section" id="o-objetivo-deste-artigo"&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/django.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-05-13T23:00:00-03:00</updated><entry><title>Como criar um site com formulário e lista em 30 minutos?</title><link href="http://pythonclub.com.br/criar-site-com-form-lista-30-min.html" rel="alternate"></link><updated>2014-05-13T23:00:00-03:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2014-05-13:criar-site-com-form-lista-30-min.html</id><summary type="html">&lt;p&gt;Se você já leu as [principais dúvidas de quem quer aprender Django]() agora você já está pronto para criar um site com:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;um &lt;strong&gt;modelo de dados&lt;/strong&gt; simples&lt;/li&gt;
+&lt;li&gt;um &lt;strong&gt;formulário&lt;/strong&gt; para inserção dos dados&lt;/li&gt;
+&lt;li&gt;uma &lt;strong&gt;lista&lt;/strong&gt; para exibição dos dados&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Não iremos mexer com CSS e nem imagens por enquanto, mas em breve farei um artigo sobre isso também.&lt;/p&gt;
+&lt;p&gt;Bom, abra o &lt;strong&gt;terminal&lt;/strong&gt; e vamos começar. Considere os seguintes nomes:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Ambiente: env_crm&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Projeto: crm&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;App: cadastro&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Classe: Inscricao&lt;/p&gt;
+&lt;blockquote&gt;
+Atributos: nome, cpf, idade, email, telefone, criado_em&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Criando um virtualenv&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;virtualenv env_crm
+&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;env_crm
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ativando o virtualenv no Windows&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;Scripts&lt;span class="se"&gt;\a&lt;/span&gt;ctivate
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Ativando o virtualenv no Linux ou Mac&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;source &lt;/span&gt;bin/activate
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Instalando as bibliotecas do Requirements.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;wget https://raw.githubusercontent.com/rg3915/wttd/master/requirements.txt
+&lt;span class="nv"&gt;$ &lt;/span&gt;pip install -r requirements.txt
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Se não quiser instalar tudo, &lt;em&gt;instale apenas o&lt;/em&gt; &lt;strong&gt;Django&lt;/strong&gt; &lt;em&gt;e o&lt;/em&gt; &lt;strong&gt;Unipath&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;pip install django
+&lt;span class="nv"&gt;$ &lt;/span&gt;pip install unipath
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Criando o projeto &lt;strong&gt;crm&lt;/strong&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;django-admin.py startproject crm
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Criando uma app &lt;strong&gt;cadastro&lt;/strong&gt; em &lt;em&gt;env_crm/crm&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;crm
+&lt;span class="nv"&gt;$ &lt;/span&gt;python manage.py startapp cadastro
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Rodando o projeto.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python manage.py runserver
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Abra o navegador e digite [&lt;a class="reference external" href="http://127.0.0.1:8000/](http://127.0.0.1:8000/"&gt;http://127.0.0.1:8000/](http://127.0.0.1:8000/&lt;/a&gt;). Parabéns, seu projeto está funcionando.&lt;/p&gt;
+&lt;p&gt;Agora vamos criar todos os demais elementos. Considere que estamos na pasta &lt;em&gt;env_crm/crm&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Criando &lt;strong&gt;forms.py&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;touch cadastro/forms.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Criando os &lt;em&gt;templates&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;mkdir cadastro/templates
+&lt;span class="nv"&gt;$ &lt;/span&gt;touch cadastro/templates/&lt;span class="o"&gt;{&lt;/span&gt;base.html,index.html,cadastro.html,lista.html&lt;span class="o"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Veja no diagrama abaixo a relação de dependência entre os arquivos.&lt;/p&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/travis/build/pythonclub/pythonclub.github.io/content/como-criar-um-site-em-30-minutos.rst&lt;/tt&gt;, line 104)&lt;/p&gt;
+&lt;p&gt;Error in &amp;quot;image&amp;quot; directive:
+no content permitted.&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+.. image:: images/regisdasilva/diagrama.png
+
+        :alt: diagrama.html
+
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;![diagrama](./images/regisdasilva/diagrama.png)&lt;/p&gt;
+&lt;p&gt;Agora vamos editar alguns arquivos usando o [Sublime Text 3](&lt;a class="reference external" href="http://www.sublimetext.com/3"&gt;http://www.sublimetext.com/3&lt;/a&gt;), leia também [Seu primeiro projeto Django com Sublime Text no Linux](&lt;a class="reference external" href="http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html"&gt;http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html&lt;/a&gt;) de [Fabiano Góes](&lt;a class="reference external" href="http://pythonclub.com.br/author/fabiano-goes.html"&gt;http://pythonclub.com.br/author/fabiano-goes.html&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Vamos carregar a pasta &lt;em&gt;env_crm&lt;/em&gt; clicando em&lt;/p&gt;
+&lt;blockquote&gt;
+File &amp;gt; Open Folder...&lt;/blockquote&gt;
+&lt;p&gt;Primeiro vamos editar &lt;em&gt;crm/settings.py&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+&lt;span class="s"&gt;&amp;#39;django.contrib.admin&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="s"&gt;&amp;#39;django.contrib.auth&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="s"&gt;&amp;#39;django.contrib.contenttypes&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="s"&gt;&amp;#39;django.contrib.sessions&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="s"&gt;&amp;#39;django.contrib.messages&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="s"&gt;&amp;#39;django.contrib.staticfiles&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="s"&gt;&amp;#39;cadastro&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;
+
+&lt;span class="n"&gt;LANGUAGE_CODE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;pt-br&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Agora vamos editar &lt;em&gt;crm/cadastro/models.py&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Inscricao&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Model&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;nome&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;cpf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;CPF&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;unique&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;idade&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;IntegerField&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="n"&gt;email&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;EmailField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;unique&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;telefone&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CharField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;max_length&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;20&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;blank&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;criado_em&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;models&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DateTimeField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;criado em&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;auto_now_add&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Meta&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="n"&gt;ordering&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;criado_em&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+                &lt;span class="n"&gt;verbose_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;u&amp;#39;nome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+                &lt;span class="n"&gt;verbose_name_plural&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;u&amp;#39;nomes&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__unicode__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+                &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Vamos criar o banco de dados através do comando &lt;strong&gt;syncdb&lt;/strong&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python manage.py syncdb
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Agora vamos editar &lt;em&gt;crm/cadastro/views.py&lt;/em&gt;. Vamos usar [Generic Views](&lt;a class="reference external" href="https://docs.djangoproject.com/en/1.2/ref/generic-views/"&gt;https://docs.djangoproject.com/en/1.2/ref/generic-views/&lt;/a&gt;).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.shortcuts&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;render&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;CreateView&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ListView&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;cadastro.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Inscricao&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;cadastro.forms&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;InscricaoForm&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;home&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;index.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Criar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;CreateView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;template_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;cadastro.html&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Inscricao&lt;/span&gt;
+        &lt;span class="n"&gt;success_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;../lista&amp;#39;&lt;/span&gt;
+
+        &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;form_valid&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;form&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+                &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;POST&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;nome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+                &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Criar&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;form_valid&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;form&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Lista&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ListView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="n"&gt;template_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;lista.html&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Inscricao&lt;/span&gt;
+        &lt;span class="n"&gt;context_object_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;nome&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Agora vamos editar &lt;em&gt;crm/urls.py&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.conf.urls&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;cadastro.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.contrib&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;admin&lt;/span&gt;
+&lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;autodiscover&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;urlpatterns&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;patterns&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;cadastro.views&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;home&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^cadastro/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Criar&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;cadastro&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^lista/$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Lista&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_view&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;lista&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;r&amp;#39;^admin/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;include&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;urls&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Agora vamos editar &lt;em&gt;crm/cadastro/forms.py&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;forms&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Inscricao&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;InscricaoForm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;forms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ModelForm&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+        &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Meta&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Inscricao&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Agora vamos editar &lt;em&gt;crm/cadastro/templates/base.html&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+        {% block title %}
+                &lt;span class="nt"&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Título&lt;span class="nt"&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+        {% endblock title %}
+&lt;span class="nt"&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+                        &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{% url &amp;#39;home&amp;#39; %}&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Início&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                        &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{% url &amp;#39;cadastro&amp;#39; %}&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Cadastro&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                        &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{% url &amp;#39;lista&amp;#39; %}&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Lista&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                &lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+
+        {% block content %}
+
+        {% endblock content %}
+&lt;span class="nt"&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Agora vamos editar &lt;em&gt;crm/cadastro/templates/index.html&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;{% extends &amp;#39;base.html&amp;#39; %}
+
+{% block content %}
+        &lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Cadastro de Clientes&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+{% endblock content %}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/travis/build/pythonclub/pythonclub.github.io/content/como-criar-um-site-em-30-minutos.rst&lt;/tt&gt;, line 258)&lt;/p&gt;
+&lt;p&gt;Error in &amp;quot;image&amp;quot; directive:
+no content permitted.&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+.. image:: images/regisdasilva/index.png
+
+        :alt: index.html
+
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;![index.html](./images/regisdasilva/index.png)&lt;/p&gt;
+&lt;p&gt;Agora vamos editar &lt;em&gt;crm/cadastro/templates/cadastro.html&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;{% extends &amp;#39;base.html&amp;#39; %}
+
+{% block content %}
+        &lt;span class="nt"&gt;&amp;lt;form&lt;/span&gt; &lt;span class="na"&gt;action=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;method=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;POST&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+                {% csrf_token %}
+                {{ form.as_p }}
+                &lt;span class="nt"&gt;&amp;lt;button&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;submit&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;Criar&lt;span class="nt"&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;lt;/form&amp;gt;&lt;/span&gt;
+{% endblock content %}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/travis/build/pythonclub/pythonclub.github.io/content/como-criar-um-site-em-30-minutos.rst&lt;/tt&gt;, line 278)&lt;/p&gt;
+&lt;p&gt;Error in &amp;quot;image&amp;quot; directive:
+no content permitted.&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+.. image:: images/regisdasilva/cadastro.png
+
+        :alt: cadastro.html
+
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;![cadastro.html](./images/regisdasilva/cadastro.png)&lt;/p&gt;
+&lt;p&gt;Leia sobre [as_p](&lt;a class="reference external" href="http://docs.djangobrasil.org/topics/forms/#mostrando-um-formul-rio-usando-um-template"&gt;http://docs.djangobrasil.org/topics/forms/#mostrando-um-formul-rio-usando-um-template&lt;/a&gt;) que significa que os campos ficarão em parágrafos, e [crsf_token (en)](&lt;a class="reference external" href="https://docs.djangoproject.com/en/dev/ref/contrib/csrf/"&gt;https://docs.djangoproject.com/en/dev/ref/contrib/csrf/&lt;/a&gt;) que é uma proteção usada durante a inserção de dados.&lt;/p&gt;
+&lt;p&gt;Agora vamos editar &lt;em&gt;crm/cadastro/templates/lista.html&lt;/em&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;{% extends &amp;#39;base.html&amp;#39; %}
+
+{% block content %}
+        &lt;span class="nt"&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;Lista de Clientes&lt;span class="nt"&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+
+                &lt;span class="nt"&gt;&amp;lt;table&amp;gt;&lt;/span&gt;
+                        &lt;span class="nt"&gt;&amp;lt;tr&amp;gt;&lt;/span&gt;
+                                &lt;span class="nt"&gt;&amp;lt;th&amp;gt;&lt;/span&gt;Nome&lt;span class="nt"&gt;&amp;lt;/th&amp;gt;&lt;/span&gt;
+                                &lt;span class="nt"&gt;&amp;lt;th&amp;gt;&lt;/span&gt;CPF&lt;span class="nt"&gt;&amp;lt;/th&amp;gt;&lt;/span&gt;
+                                &lt;span class="nt"&gt;&amp;lt;th&amp;gt;&lt;/span&gt;Idade&lt;span class="nt"&gt;&amp;lt;/th&amp;gt;&lt;/span&gt;
+                                &lt;span class="nt"&gt;&amp;lt;th&amp;gt;&lt;/span&gt;Email&lt;span class="nt"&gt;&amp;lt;/th&amp;gt;&lt;/span&gt;
+                                &lt;span class="nt"&gt;&amp;lt;th&amp;gt;&lt;/span&gt;Telefone&lt;span class="nt"&gt;&amp;lt;/th&amp;gt;&lt;/span&gt;
+                                &lt;span class="nt"&gt;&amp;lt;th&amp;gt;&lt;/span&gt;Criado em&lt;span class="nt"&gt;&amp;lt;/th&amp;gt;&lt;/span&gt;
+                        &lt;span class="nt"&gt;&amp;lt;/tr&amp;gt;&lt;/span&gt;
+                {% for nome in object_list %}
+                        &lt;span class="nt"&gt;&amp;lt;tr&amp;gt;&lt;/span&gt;
+                                &lt;span class="nt"&gt;&amp;lt;td&amp;gt;&lt;/span&gt;{{ nome.nome }}&lt;span class="nt"&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+                                &lt;span class="nt"&gt;&amp;lt;td&amp;gt;&lt;/span&gt;{{ nome.cpf }}&lt;span class="nt"&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+                                &lt;span class="nt"&gt;&amp;lt;td&amp;gt;&lt;/span&gt;{{ nome.idade }}&lt;span class="nt"&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+                                &lt;span class="nt"&gt;&amp;lt;td&amp;gt;&lt;/span&gt;{{ nome.email }}&lt;span class="nt"&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+                                &lt;span class="nt"&gt;&amp;lt;td&amp;gt;&lt;/span&gt;{{ nome.telefone }}&lt;span class="nt"&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+                                &lt;span class="nt"&gt;&amp;lt;td&amp;gt;&lt;/span&gt;{{ nome.criado_em|date:&amp;quot;d/m/Y&amp;quot; }}&lt;span class="nt"&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+                        &lt;span class="nt"&gt;&amp;lt;/tr&amp;gt;&lt;/span&gt;
+                {% empty %}
+                        &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&lt;/span&gt;Sem itens na lista.&lt;span class="nt"&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+                {% endfor %}
+                &lt;span class="nt"&gt;&amp;lt;/table&amp;gt;&lt;/span&gt;
+{% endblock content %}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/travis/build/pythonclub/pythonclub.github.io/content/como-criar-um-site-em-30-minutos.rst&lt;/tt&gt;, line 319)&lt;/p&gt;
+&lt;p&gt;Error in &amp;quot;image&amp;quot; directive:
+no content permitted.&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+.. image:: images/regisdasilva/lista.png
+
+        :alt: lista.html
+
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;![lista.html](./images/regisdasilva/lista.png)&lt;/p&gt;
+&lt;p&gt;Leia também [Seu primeiro projeto Django com Sublime Text no Linux](&lt;a class="reference external" href="http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime"&gt;http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime&lt;/a&gt;. html) de [Fabiano Góes](&lt;a class="reference external" href="http://pythonclub.com.br/author/fabiano-goes.html"&gt;http://pythonclub.com.br/author/fabiano-goes.html&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Baixe o projeto no ![github.com/rg3915/crm](&lt;a class="reference external" href="https://github.com/rg3915/crm"&gt;https://github.com/rg3915/crm&lt;/a&gt;).&lt;/p&gt;
+</summary><category term="python"></category><category term="django"></category></entry><entry><title>Principais dúvidas de quem quer aprender Django</title><link href="http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html" rel="alternate"></link><updated>2014-05-13T23:00:00-03:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2014-05-13:principais-duvidas-de-quem-quer-aprender-django.html</id><summary type="html">&lt;p&gt;Vou começar este post fazendo um pequeno depoimento:
+Quando eu ouvi falar de Django pela primeira vez eu me perguntei:
+&lt;a class="reference internal" href="#o-que-e-django"&gt;O que é Django?&lt;/a&gt;
+Daí eu comecei a procurar pela resposta, e surgiram outras perguntas. Eu precisei criar uma apresentação para a faculdade e consequentemente uma página com um &lt;strong&gt;formulário&lt;/strong&gt; para inserção de dados, &lt;strong&gt;gravação no banco de dados&lt;/strong&gt; e uma &lt;strong&gt;lista&lt;/strong&gt; que retornasse os dados já gravados.
+Procurei por vários materiais, inclusive a documentação oficial do [Django](&lt;a class="reference external" href="https://www.djangoproject.com/"&gt;https://www.djangoproject.com/&lt;/a&gt;) mas encontrei muitas dificuldades para aprender do zero, só consegui entender o que era Django depois que fiz o curso [Welcome to the Django](&lt;a class="reference external" href="http://welcometothedjango.com.br/"&gt;http://welcometothedjango.com.br/&lt;/a&gt;). Então vejamos:&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#o-que-e-django"&gt;O que é Django?&lt;/a&gt;
+&lt;a class="reference internal" href="#instalando-o-django"&gt;Instalando o Django&lt;/a&gt;
+&lt;a class="reference internal" href="#o-que-e-mtv"&gt;O que é MTV?&lt;/a&gt;
+&lt;a class="reference internal" href="#o-que-e-virtualenv-e-requirements"&gt;O que é Virtualenv e Requirements?&lt;/a&gt;
+[Como criar um site com formulário e lista em 30 minutos?]()&lt;/p&gt;
+&lt;div class="section" id="o-que-e-django"&gt;
+&lt;h2&gt;O que é Django?&lt;/h2&gt;
+&lt;p&gt;Segundo [Django Brasil](&lt;a class="reference external" href="http://www.djangobrasil.org/"&gt;http://www.djangobrasil.org/&lt;/a&gt;),&lt;/p&gt;
+&lt;p&gt;&amp;gt; &lt;em&gt;Django é um framework web de alto nível escrito em Python que estimula o desenvolvimento rápido e limpo.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Foi criado por &lt;em&gt;Adrian Holovaty&lt;/em&gt; numa agência publicitária.&lt;/p&gt;
+&lt;p&gt;Django segue o princípio &lt;strong&gt;DRY&lt;/strong&gt; &lt;em&gt;(Dont repeat yourself)&lt;/em&gt; &amp;quot;Não se repita&amp;quot;.&lt;/p&gt;
+&lt;p&gt;Adota o padrão MTV, possui [mapeamento objeto-relacional](&lt;a class="reference external" href="http://turing.com.br/material/acpython/mod3/django/orm1.html"&gt;http://turing.com.br/material/acpython/mod3/django/orm1.html&lt;/a&gt;) [ORM](&lt;a class="reference external" href="http://pt.wikipedia.org/wiki/Django_(framework_web"&gt;http://pt.wikipedia.org/wiki/Django_(framework_web&lt;/a&gt;)#Mapeamento_Objeto-&lt;a href="#id1"&gt;&lt;span class="problematic" id="id2"&gt;Relacional_&lt;/span&gt;&lt;/a&gt;.28ORM.29), orientação à objeto, sistema de [administração](&lt;a class="reference external" href="https://docs.djangoproject.com/en/1.6/ref/contrib/admin/"&gt;https://docs.djangoproject.com/en/1.6/ref/contrib/admin/&lt;/a&gt;) automático e completo, sistema de [templates](&lt;a class="reference external" href="https://docs.djangoproject.com/en/1.6/topics/templates/"&gt;https://docs.djangoproject.com/en/1.6/topics/templates/&lt;/a&gt;) e é &lt;em&gt;open source&lt;/em&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="instalando-o-django"&gt;
+&lt;h2&gt;Instalando o Django&lt;/h2&gt;
+&lt;p&gt;Na verdade não é só o Django, precisamos de:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;strong&gt;Python 2.7&lt;/strong&gt; - Poderia ser o 3.0, mas o Python 2.7 oferece maior estabilidade, por já ser consolidada entre os usuários, e por oferecer uma gama de bibliotecas e documentação.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Django&lt;/strong&gt; - Até a data de lançamento deste post a versão é Django 1.6.4.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Git&lt;/strong&gt; - Sistema de controle de versão distribuído.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;E segundo [PyPA](&lt;a class="reference external" href="https://python-packaging-user-guide.readthedocs.org/en/latest/current.html"&gt;https://python-packaging-user-guide.readthedocs.org/en/latest/current.html&lt;/a&gt;) é recomendável a instalação das seguintes ferramentas:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;strong&gt;Pip&lt;/strong&gt; - O [Pip](&lt;a class="reference external" href="http://pip.readthedocs.org/en/latest/"&gt;http://pip.readthedocs.org/en/latest/&lt;/a&gt;) é uma ferramenta para instalar e gerenciar pacotes Python.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Virtualenv&lt;/strong&gt; - O [Virtualenv](&lt;a class="reference external" href="https://python-packaging-user-guide.readthedocs.org/en/latest/projects.html#virtualenv"&gt;https://python-packaging-user-guide.readthedocs.org/en/latest/projects.html#virtualenv&lt;/a&gt;) é um ambiente virtual de desenvolvimento que isola o projeto com suas dependências específicas. Ou seja, você pode ter vários projetos com bibliotecas diferentes, versões diferentes; e um não interfere no outro, consequentemente não interfere nas configurações padrões do sistema operacional. Exemplo, você pode ter um projeto com Django 1.6 e outro com Django 1.5, cada um no seu ambiente de desenvolvimento.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="section" id="instalando-o-django-no-windows"&gt;
+&lt;h3&gt;Instalando o Django no Windows&lt;/h3&gt;
+&lt;p&gt;Veja o post de [Thiago Côroa](#).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="instalando-o-django-no-linux"&gt;
+&lt;h3&gt;Instalando o Django no Linux&lt;/h3&gt;
+&lt;p&gt;Use o &lt;strong&gt;terminal&lt;/strong&gt;.&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;strong&gt;Python 2.7&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Já vem instalado no Linux!:) Digite:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python --V
+&lt;/pre&gt;&lt;/div&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;strong&gt;Git&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo apt-get install -y git
+&lt;/pre&gt;&lt;/div&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;strong&gt;Curl&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Talvez precise.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo apt-get install -y curl
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Pip&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Curl menos letra Ó&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;curl -O http://python-distribute.org/distribute_setup.py
+&lt;span class="nv"&gt;$ &lt;/span&gt;sudo python -y distribute_setup.py
+&lt;span class="nv"&gt;$ &lt;/span&gt;sudo easy_install pip
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Fonte: [Welcome to the Django](&lt;a class="reference external" href="http://welcometothedjango.com.br/"&gt;http://welcometothedjango.com.br/&lt;/a&gt;) Curso&lt;/p&gt;
+&lt;p&gt;Virtualenv&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo pip install virtualenv
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Django 1.6&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sudo pip install &lt;span class="nv"&gt;django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;1.6
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Obs: repare que instalamos o Django direto no sistema, mas na verdade ele deverá ser instalado dentro de cada virtualenv. Leia sobre &lt;a class="reference internal" href="#o-que-e-virtualenv-e-requirements"&gt;O que é Virtualenv e Requirements?&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="instalando-o-django-no-mac"&gt;
+&lt;h3&gt;Instalando o Django no Mac&lt;/h3&gt;
+&lt;p&gt;É semelhante ao modo do Linux usando o terminal.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="o-que-e-mtv"&gt;
+&lt;h2&gt;O que é MTV?&lt;/h2&gt;
+&lt;p&gt;MTV significa &lt;em&gt;Model&lt;/em&gt;, &lt;em&gt;View&lt;/em&gt; e &lt;em&gt;Template&lt;/em&gt;. É o mesmo modelo de &lt;em&gt;arquitetura de software&lt;/em&gt; conhecido como MVC. Mas neste caso,&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;em&gt;Model&lt;/em&gt; (modelo) é a camada de abstração dos dados, regras de negócios, lógica e funções. É onde acontece o ORM.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;View&lt;/em&gt; (visão), no Django, é uma função &lt;em&gt;python&lt;/em&gt; que recebe uma &lt;em&gt;request&lt;/em&gt; (requisição) e retorna uma &lt;em&gt;response&lt;/em&gt; (resposta) web. Equivale ao &lt;em&gt;controller&lt;/em&gt; de outros frameworks.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Templates&lt;/em&gt; (prefiro não traduzir) são as páginas html, apesar de que a saída pode ser um simples texto no terminal. O legal é que templates no Django proporciona facilidade e flexibilidade, podemos criar um modelo &lt;em&gt;base&lt;/em&gt; e estender sua reutilização, por exemplo.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Leia mais sobre MTV em [Entendendo como o Django trabalha](&lt;a class="reference external" href="http://www.aprendendodjango.com/entendendo-como-o-django-trabalha/"&gt;http://www.aprendendodjango.com/entendendo-como-o-django-trabalha/&lt;/a&gt;). E veja o diagrama.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="o-que-e-virtualenv-e-requirements"&gt;
+&lt;h2&gt;O que é Virtualenv e Requirements?&lt;/h2&gt;
+&lt;p&gt;Como mencionado antes em &lt;a class="reference internal" href="#instalando-o-django"&gt;Instalando o Django&lt;/a&gt;, Virtualenv é um ambiente virtual que isola seu projeto junto com suas dependências.
+Então o que é &lt;em&gt;requirements&lt;/em&gt;?
+É um arquivo (&lt;em&gt;requirements.txt&lt;/em&gt;) que lista todas as bibliotecas que você precisa usar no seu projeto, por exemplo, eu gosto de usar:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mf"&gt;1.6&lt;/span&gt;
+&lt;span class="n"&gt;Unipath&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt;
+&lt;span class="n"&gt;dj&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;database&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mf"&gt;0.2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;span class="n"&gt;dj&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;static&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mf"&gt;0.0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;
+&lt;span class="n"&gt;gunicorn&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mf"&gt;18.0&lt;/span&gt;
+&lt;span class="n"&gt;psycopg2&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mf"&gt;2.5&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;decouple&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mf"&gt;2.1&lt;/span&gt;
+&lt;span class="n"&gt;South&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mf"&gt;0.8&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;
+&lt;span class="n"&gt;mock&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mf"&gt;1.0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;extensions&lt;/span&gt;
+&lt;span class="n"&gt;pygraphviz&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Leia a continuação deste post em [Como criar um site com formulário e lista em 30 minutos?]().&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id1"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/travis/build/pythonclub/pythonclub.github.io/content/principais-duvidas-de-quem-quer-aprender-django.rst&lt;/tt&gt;, line 37); &lt;em&gt;&lt;a href="#id2"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Unknown target name: &amp;quot;relacional&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="python"></category><category term="django"></category></entry><entry><title>Seu primeiro projeto Django com Sublime Text no Linux</title><link href="http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html" rel="alternate"></link><updated>2014-05-11T02:00:00-03:00</updated><author><name>Fabiano Góes</name></author><id>tag:pythonclub.com.br,2014-05-11:primeiro-projeto-django-no-linux-com-sublime.html</id><summary type="html">&lt;div class="section" id="o-objetivo-deste-artigo"&gt;
 &lt;h2&gt;O objetivo deste artigo:&lt;/h2&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Instalar/Verificar python instalado no Sistema Operacional.&lt;/li&gt;
