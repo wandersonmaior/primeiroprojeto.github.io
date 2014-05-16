@@ -67,6 +67,7 @@
 <li>um <strong>formulário</strong> para inserção dos dados</li>
 <li>uma <strong>lista</strong> para exibição dos dados</li>
 </ul>
+<p>Talvez seja em menos de 30 minutos, mas vai depender de você!</p>
 <p>Não iremos mexer com CSS e nem imagens por enquanto, mas em breve farei um artigo sobre isso também.</p>
 <p>Bom, abra o <strong>terminal</strong> e vamos começar. Considere os seguintes nomes:</p>
 <blockquote>
@@ -98,6 +99,7 @@ Atributos: nome, cpf, idade, email, telefone, criado_em</blockquote>
 <span class="nv">$ </span>pip install -r requirements.txt
 </pre></div>
 <p>Se não quiser instalar tudo, <em>instale apenas o</em> <strong>Django</strong> <em>e o</em> <strong>Unipath</strong>:</p>
+<p>O <a class="reference external" href="http://sluggo.scrapping.cc/python/unipath/">Unipath</a> é um pacote que trabalha com caminhos relativos de forma orientada à objetos. Segundo <a class="reference external" href="https://github.com/henriquebastos/slides-django-sem-trabalho/blob/master/settings.rst#n%C3%A3o-use-diret%C3%B3rios-hardcoded">Henrique Bastos</a>, ele evita diretórios <em>hardcoded</em>, ou seja, não usa caminho absoluto, e sim caminhos relativos. Em <em>settings.py</em> veremos o uso deste pacote. Mas como ele mesmo diz, o uso de <em>os.path</em> não é problema, mas o <em>Unipath</em> ajuda bastante.</p>
 <div class="highlight"><pre><span class="nv">$ </span>pip install django
 <span class="nv">$ </span>pip install unipath
 </pre></div>
@@ -127,7 +129,13 @@ Atributos: nome, cpf, idade, email, telefone, criado_em</blockquote>
 <blockquote>
 File &gt; Open Folder...</blockquote>
 <p>Primeiro vamos editar <em>crm/settings.py</em>.</p>
-<div class="highlight"><pre><span class="o">...</span>
+<div class="highlight"><pre><span class="c"># import os</span>
+<span class="c"># BASE_DIR = os.path.dirname(os.path.dirname(__file__))</span>
+<span class="c"># Unipath aqui</span>
+<span class="kn">from</span> <span class="nn">unipath</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="n">BASE_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span>
+
+<span class="o">...</span>
 <span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
 <span class="s">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
 <span class="s">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
@@ -138,6 +146,14 @@ File &gt; Open Folder...</blockquote>
 <span class="s">&#39;cadastro&#39;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="o">...</span>
+
+<span class="n">DATABASES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&#39;default&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&#39;ENGINE&#39;</span><span class="p">:</span> <span class="s">&#39;django.db.backends.sqlite3&#39;</span><span class="p">,</span>
+        <span class="c">#&#39;NAME&#39;: os.path.join(BASE_DIR, &#39;db.sqlite3&#39;),</span>
+        <span class="s">&#39;NAME&#39;</span><span class="p">:</span> <span class="n">BASE_DIR</span><span class="o">.</span><span class="n">child</span><span class="p">(</span><span class="s">&#39;db.sqlite3&#39;</span><span class="p">),</span> <span class="c"># Unipath aqui</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
 <span class="n">LANGUAGE_CODE</span> <span class="o">=</span> <span class="s">&#39;pt-br&#39;</span>
 </pre></div>
@@ -164,30 +180,27 @@ File &gt; Open Folder...</blockquote>
 <p>Vamos criar o banco de dados através do comando <strong>syncdb</strong>.</p>
 <div class="highlight"><pre><span class="nv">$ </span>python manage.py syncdb
 </pre></div>
-<p>Agora vamos editar <em>crm/cadastro/views.py</em>. Vamos usar <a class="reference external" href="https://docs.djangoproject.com/en/1.2/ref/generic-views/">Generic Views</a>.</p>
+<p>Agora vamos editar <em>crm/cadastro/views.py</em>. Vamos usar <a class="reference external" href="https://docs.djangoproject.com/en/1.2/ref/generic-views/">Generic Views</a>. Note o uso do <a href="#id3"><span class="problematic" id="id4">`reverse_lazy&lt;https://docs.djangoproject.com/en/1.5/ref/urlresolvers/#reverse&gt;`_</span></a>, que facilita no gerenciamento de urls nomeadas.</p>
 <div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
 <span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
 <span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">CreateView</span><span class="p">,</span> <span class="n">ListView</span>
+<span class="kn">from</span> <span class="nn">django.core.urlresolvers</span> <span class="kn">import</span> <span class="n">reverse_lazy</span>
 
 <span class="kn">from</span> <span class="nn">cadastro.models</span> <span class="kn">import</span> <span class="n">Inscricao</span>
 <span class="kn">from</span> <span class="nn">cadastro.forms</span> <span class="kn">import</span> <span class="n">InscricaoForm</span>
 
 <span class="k">def</span> <span class="nf">home</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s">&#39;index.html&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">render</span><span class="p">(</span><span class="n">request</span><span class="p">,</span><span class="s">&#39;index.html&#39;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">Criar</span><span class="p">(</span><span class="n">CreateView</span><span class="p">):</span>
         <span class="n">template_name</span> <span class="o">=</span> <span class="s">&#39;cadastro.html&#39;</span>
         <span class="n">model</span> <span class="o">=</span> <span class="n">Inscricao</span>
-        <span class="n">success_url</span> <span class="o">=</span> <span class="s">&#39;../lista&#39;</span>
-
-        <span class="k">def</span> <span class="nf">form_valid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">form</span><span class="p">):</span>
-                <span class="k">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="s">&#39;nome&#39;</span><span class="p">])</span>
-                <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">Criar</span><span class="p">,</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">form_valid</span><span class="p">(</span><span class="n">form</span><span class="p">)</span>
+        <span class="n">success_url</span> <span class="o">=</span> <span class="n">reverse_lazy</span><span class="p">(</span><span class="s">&#39;lista&#39;</span><span class="p">)</span>
 
 <span class="k">class</span> <span class="nc">Lista</span><span class="p">(</span><span class="n">ListView</span><span class="p">):</span>
         <span class="n">template_name</span> <span class="o">=</span> <span class="s">&#39;lista.html&#39;</span>
         <span class="n">model</span> <span class="o">=</span> <span class="n">Inscricao</span>
-        <span class="n">context_object_name</span> <span class="o">=</span> <span class="s">&#39;nome&#39;</span>
+        <span class="n">context_object</span> <span class="o">=</span> <span class="s">&#39;nome&#39;</span>
 </pre></div>
 <p>Agora vamos editar <em>crm/urls.py</em>.</p>
 <div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
@@ -291,6 +304,12 @@ File &gt; Open Folder...</blockquote>
 <img alt="lista.html" src="images/regisdasilva/lista.png" />
 <p>Leia também <a class="reference external" href="http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html">Seu primeiro projeto Django com Sublime Text no Linux</a> de <a class="reference external" href="http://pythonclub.com.br/author/fabiano-goes.html">Fabiano Góes</a>.</p>
 <p>Baixe o projeto no <a class="reference external" href="https://github.com/rg3915/crm">github.com/rg3915/crm</a>.</p>
+<div class="system-messages section">
+<h2>Docutils System Messages</h2>
+<div class="system-message" id="id3">
+<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">/home/travis/build/pythonclub/pythonclub.github.io/content/como-criar-um-site-em-30-minutos.rst</tt>, line 178); <em><a href="#id4">backlink</a></em></p>
+Unknown target name: &quot;reverse_lazy&lt;https://docs.djangoproject.com/en/1.5/ref/urlresolvers/#reverse&gt;&quot;.</div>
+</div>
 
             <div class="sharing">
                 <!-- Facebook sharing -->

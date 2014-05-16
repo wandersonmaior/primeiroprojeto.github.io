@@ -122,6 +122,7 @@
 &lt;li&gt;um &lt;strong&gt;formulário&lt;/strong&gt; para inserção dos dados&lt;/li&gt;
 &lt;li&gt;uma &lt;strong&gt;lista&lt;/strong&gt; para exibição dos dados&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Talvez seja em menos de 30 minutos, mas vai depender de você!&lt;/p&gt;
 &lt;p&gt;Não iremos mexer com CSS e nem imagens por enquanto, mas em breve farei um artigo sobre isso também.&lt;/p&gt;
 &lt;p&gt;Bom, abra o &lt;strong&gt;terminal&lt;/strong&gt; e vamos começar. Considere os seguintes nomes:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -153,6 +154,7 @@ Atributos: nome, cpf, idade, email, telefone, criado_em&lt;/blockquote&gt;
 &lt;span class="nv"&gt;$ &lt;/span&gt;pip install -r requirements.txt
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Se não quiser instalar tudo, &lt;em&gt;instale apenas o&lt;/em&gt; &lt;strong&gt;Django&lt;/strong&gt; &lt;em&gt;e o&lt;/em&gt; &lt;strong&gt;Unipath&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;O &lt;a class="reference external" href="http://sluggo.scrapping.cc/python/unipath/"&gt;Unipath&lt;/a&gt; é um pacote que trabalha com caminhos relativos de forma orientada à objetos. Segundo &lt;a class="reference external" href="https://github.com/henriquebastos/slides-django-sem-trabalho/blob/master/settings.rst#n%C3%A3o-use-diret%C3%B3rios-hardcoded"&gt;Henrique Bastos&lt;/a&gt;, ele evita diretórios &lt;em&gt;hardcoded&lt;/em&gt;, ou seja, não usa caminho absoluto, e sim caminhos relativos. Em &lt;em&gt;settings.py&lt;/em&gt; veremos o uso deste pacote. Mas como ele mesmo diz, o uso de &lt;em&gt;os.path&lt;/em&gt; não é problema, mas o &lt;em&gt;Unipath&lt;/em&gt; ajuda bastante.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;pip install django
 &lt;span class="nv"&gt;$ &lt;/span&gt;pip install unipath
 &lt;/pre&gt;&lt;/div&gt;
@@ -182,7 +184,13 @@ Atributos: nome, cpf, idade, email, telefone, criado_em&lt;/blockquote&gt;
 &lt;blockquote&gt;
 File &amp;gt; Open Folder...&lt;/blockquote&gt;
 &lt;p&gt;Primeiro vamos editar &lt;em&gt;crm/settings.py&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# import os&lt;/span&gt;
+&lt;span class="c"&gt;# BASE_DIR = os.path.dirname(os.path.dirname(__file__))&lt;/span&gt;
+&lt;span class="c"&gt;# Unipath aqui&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;unipath&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Path&lt;/span&gt;
+&lt;span class="n"&gt;BASE_DIR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Path&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__file__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parent&lt;/span&gt;
+
+&lt;span class="o"&gt;...&lt;/span&gt;
 &lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
 &lt;span class="s"&gt;&amp;#39;django.contrib.admin&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 &lt;span class="s"&gt;&amp;#39;django.contrib.auth&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -193,6 +201,14 @@ File &amp;gt; Open Folder...&lt;/blockquote&gt;
 &lt;span class="s"&gt;&amp;#39;cadastro&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="o"&gt;...&lt;/span&gt;
+
+&lt;span class="n"&gt;DATABASES&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;default&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;ENGINE&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;django.db.backends.sqlite3&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="c"&gt;#&amp;#39;NAME&amp;#39;: os.path.join(BASE_DIR, &amp;#39;db.sqlite3&amp;#39;),&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;NAME&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;BASE_DIR&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;child&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;db.sqlite3&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="c"&gt;# Unipath aqui&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
 
 &lt;span class="n"&gt;LANGUAGE_CODE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;pt-br&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -219,30 +235,27 @@ File &amp;gt; Open Folder...&lt;/blockquote&gt;
 &lt;p&gt;Vamos criar o banco de dados através do comando &lt;strong&gt;syncdb&lt;/strong&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python manage.py syncdb
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Agora vamos editar &lt;em&gt;crm/cadastro/views.py&lt;/em&gt;. Vamos usar &lt;a class="reference external" href="https://docs.djangoproject.com/en/1.2/ref/generic-views/"&gt;Generic Views&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Agora vamos editar &lt;em&gt;crm/cadastro/views.py&lt;/em&gt;. Vamos usar &lt;a class="reference external" href="https://docs.djangoproject.com/en/1.2/ref/generic-views/"&gt;Generic Views&lt;/a&gt;. Note o uso do &lt;a href="#id3"&gt;&lt;span class="problematic" id="id4"&gt;`reverse_lazy&amp;lt;https://docs.djangoproject.com/en/1.5/ref/urlresolvers/#reverse&amp;gt;`_&lt;/span&gt;&lt;/a&gt;, que facilita no gerenciamento de urls nomeadas.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.shortcuts&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;render&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.views.generic&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;CreateView&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ListView&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;django.core.urlresolvers&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;reverse_lazy&lt;/span&gt;
 
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;cadastro.models&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Inscricao&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;cadastro.forms&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;InscricaoForm&lt;/span&gt;
 
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;home&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;index.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;index.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Criar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;CreateView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="n"&gt;template_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;cadastro.html&amp;#39;&lt;/span&gt;
         &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Inscricao&lt;/span&gt;
-        &lt;span class="n"&gt;success_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;../lista&amp;#39;&lt;/span&gt;
-
-        &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;form_valid&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;form&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-                &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;POST&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;nome&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
-                &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Criar&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;form_valid&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;form&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="n"&gt;success_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;reverse_lazy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;lista&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Lista&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ListView&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="n"&gt;template_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;lista.html&amp;#39;&lt;/span&gt;
         &lt;span class="n"&gt;model&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Inscricao&lt;/span&gt;
-        &lt;span class="n"&gt;context_object_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;nome&amp;#39;&lt;/span&gt;
+        &lt;span class="n"&gt;context_object&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;nome&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Agora vamos editar &lt;em&gt;crm/urls.py&lt;/em&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
@@ -346,6 +359,12 @@ File &amp;gt; Open Folder...&lt;/blockquote&gt;
 &lt;img alt="lista.html" src="images/regisdasilva/lista.png" /&gt;
 &lt;p&gt;Leia também &lt;a class="reference external" href="http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html"&gt;Seu primeiro projeto Django com Sublime Text no Linux&lt;/a&gt; de &lt;a class="reference external" href="http://pythonclub.com.br/author/fabiano-goes.html"&gt;Fabiano Góes&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Baixe o projeto no &lt;a class="reference external" href="https://github.com/rg3915/crm"&gt;github.com/rg3915/crm&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="system-messages section"&gt;
+&lt;h2&gt;Docutils System Messages&lt;/h2&gt;
+&lt;div class="system-message" id="id3"&gt;
+&lt;p class="system-message-title"&gt;System Message: ERROR/3 (&lt;tt class="docutils"&gt;/home/travis/build/pythonclub/pythonclub.github.io/content/como-criar-um-site-em-30-minutos.rst&lt;/tt&gt;, line 178); &lt;em&gt;&lt;a href="#id4"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Unknown target name: &amp;quot;reverse_lazy&amp;lt;https://docs.djangoproject.com/en/1.5/ref/urlresolvers/#reverse&amp;gt;&amp;quot;.&lt;/div&gt;
+&lt;/div&gt;
 </summary><category term="python"></category><category term="django"></category></entry><entry><title>Principais dúvidas de quem quer aprender Django</title><link href="http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html" rel="alternate"></link><updated>2014-05-13T23:00:00-03:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2014-05-13:principais-duvidas-de-quem-quer-aprender-django.html</id><summary type="html">&lt;p&gt;Vou começar este post fazendo um pequeno depoimento:&lt;/p&gt;
 &lt;p&gt;Quando eu ouvi falar de Django pela primeira vez eu me perguntei:&lt;/p&gt;
 &lt;p&gt;&lt;a class="reference internal" href="#o-que-e-django"&gt;O que é Django?&lt;/a&gt;&lt;/p&gt;
@@ -381,7 +400,7 @@ Procurei por vários materiais, inclusive a documentação oficial do &lt;a clas
 &lt;/ul&gt;
 &lt;div class="section" id="instalando-o-django-no-windows"&gt;
 &lt;h3&gt;Instalando o Django no Windows&lt;/h3&gt;
-&lt;p&gt;Veja o post de &lt;strong&gt;Thiago Côroa&lt;/strong&gt; (em breve).&lt;/p&gt;
+&lt;p&gt;Veja o post de &lt;a class="reference external" href="http://pythonclub.com.br/instalacao-python-django-windows.html"&gt;Thiago Côroa&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="instalando-o-django-no-linux"&gt;
 &lt;h3&gt;Instalando o Django no Linux&lt;/h3&gt;
