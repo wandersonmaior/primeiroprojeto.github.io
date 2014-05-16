@@ -180,7 +180,7 @@ File &gt; Open Folder...</blockquote>
 <p>Vamos criar o banco de dados através do comando <strong>syncdb</strong>.</p>
 <div class="highlight"><pre><span class="nv">$ </span>python manage.py syncdb
 </pre></div>
-<p>Agora vamos editar <em>crm/cadastro/views.py</em>. Vamos usar <a class="reference external" href="https://docs.djangoproject.com/en/1.2/ref/generic-views/">Generic Views</a>. Note o uso do <a href="#id3"><span class="problematic" id="id4">`reverse_lazy&lt;https://docs.djangoproject.com/en/1.5/ref/urlresolvers/#reverse&gt;`_</span></a>, que facilita no gerenciamento de urls nomeadas.</p>
+<p>Agora vamos editar <em>crm/cadastro/views.py</em>. Vamos usar <a class="reference external" href="https://docs.djangoproject.com/en/1.2/ref/generic-views/">Generic Views</a>. Note o uso do <a class="reference external" href="https://docs.djangoproject.com/en/1.5/ref/urlresolvers/#reverse">reverse_lazy</a>, que facilita no gerenciamento de urls nomeadas.</p>
 <div class="highlight"><pre><span class="c"># -*- coding: utf-8 -*-</span>
 <span class="kn">from</span> <span class="nn">django.shortcuts</span> <span class="kn">import</span> <span class="n">render</span>
 <span class="kn">from</span> <span class="nn">django.views.generic</span> <span class="kn">import</span> <span class="n">CreateView</span><span class="p">,</span> <span class="n">ListView</span>
@@ -304,12 +304,6 @@ File &gt; Open Folder...</blockquote>
 <img alt="lista.html" src="images/regisdasilva/lista.png" />
 <p>Leia também <a class="reference external" href="http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html">Seu primeiro projeto Django com Sublime Text no Linux</a> de <a class="reference external" href="http://pythonclub.com.br/author/fabiano-goes.html">Fabiano Góes</a>.</p>
 <p>Baixe o projeto no <a class="reference external" href="https://github.com/rg3915/crm">github.com/rg3915/crm</a>.</p>
-<div class="system-messages section">
-<h2>Docutils System Messages</h2>
-<div class="system-message" id="id3">
-<p class="system-message-title">System Message: ERROR/3 (<tt class="docutils">/home/travis/build/pythonclub/pythonclub.github.io/content/como-criar-um-site-em-30-minutos.rst</tt>, line 178); <em><a href="#id4">backlink</a></em></p>
-Unknown target name: &quot;reverse_lazy&lt;https://docs.djangoproject.com/en/1.5/ref/urlresolvers/#reverse&gt;&quot;.</div>
-</div>
 
             <div class="sharing">
                 <!-- Facebook sharing -->
