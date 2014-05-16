@@ -5,35 +5,42 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/index.html</loc>
-<lastmod>2014-05-16T12:18:17-00:00</lastmod>
+<lastmod>2014-05-16T12:18:47-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/archives.html</loc>
-<lastmod>2014-05-16T12:18:17-00:00</lastmod>
+<lastmod>2014-05-16T12:18:47-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tags.html</loc>
-<lastmod>2014-05-16T12:18:17-00:00</lastmod>
+<lastmod>2014-05-16T12:18:47-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/categories.html</loc>
-<lastmod>2014-05-16T12:18:17-00:00</lastmod>
+<lastmod>2014-05-16T12:18:47-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/pages/about.html</loc>
-<lastmod>2014-05-16T12:18:17-00:00</lastmod>
+<lastmod>2014-05-16T12:18:47-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html</loc>
+<lastmod>2014-05-16T01:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -130,6 +137,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://pythonclub.com.br/category/banco-de-dados.html</loc>
+<lastmod>2014-05-16T01:00:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://pythonclub.com.br/category/deploy-infraestrutura.html</loc>
 <lastmod>2014-05-13T16:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
@@ -153,6 +167,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/category/tutoriais.html</loc>
 <lastmod>2014-05-14T10:30:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/tag/sqlite.html</loc>
+<lastmod>2014-05-16T01:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -228,8 +249,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/nose.html</loc>
-<lastmod>2014-05-06T19:35:00-00:00</lastmod>
+<loc>http://pythonclub.com.br/tag/testes-funcionais.html</loc>
+<lastmod>2014-05-09T12:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -340,8 +361,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/testes-funcionais.html</loc>
-<lastmod>2014-05-09T12:00:00-00:00</lastmod>
+<loc>http://pythonclub.com.br/tag/nose.html</loc>
+<lastmod>2014-05-06T19:35:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -418,7 +439,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/author/regis-da-silva.html</loc>
-<lastmod>2014-05-13T23:00:00-00:00</lastmod>
+<lastmod>2014-05-16T01:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
