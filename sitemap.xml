@@ -5,35 +5,42 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/index.html</loc>
-<lastmod>2014-05-16T00:56:51-00:00</lastmod>
+<lastmod>2014-05-16T01:34:56-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/archives.html</loc>
-<lastmod>2014-05-16T00:56:51-00:00</lastmod>
+<lastmod>2014-05-16T01:34:56-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tags.html</loc>
-<lastmod>2014-05-16T00:56:51-00:00</lastmod>
+<lastmod>2014-05-16T01:34:56-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/categories.html</loc>
-<lastmod>2014-05-16T00:56:51-00:00</lastmod>
+<lastmod>2014-05-16T01:34:56-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/pages/about.html</loc>
-<lastmod>2014-05-16T00:56:51-00:00</lastmod>
+<lastmod>2014-05-16T01:34:56-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/editando-o-admin-do-django.html</loc>
+<lastmod>2014-05-15T18:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -131,7 +138,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/category/django.html</loc>
-<lastmod>2014-05-13T23:00:00-00:00</lastmod>
+<lastmod>2014-05-15T18:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -146,6 +153,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/category/tutoriais.html</loc>
 <lastmod>2014-05-14T10:30:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/tag/six.html</loc>
+<lastmod>2014-05-04T22:21:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -179,8 +193,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/six.html</loc>
-<lastmod>2014-05-04T22:21:00-00:00</lastmod>
+<loc>http://pythonclub.com.br/tag/django-admin.html</loc>
+<lastmod>2014-05-15T18:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -313,7 +327,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/django.html</loc>
-<lastmod>2014-05-14T10:30:00-00:00</lastmod>
+<lastmod>2014-05-15T18:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -391,6 +405,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/author/mario-chaves.html</loc>
 <lastmod>2014-05-09T12:00:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/author/mauricio-camargo-sipmann.html</loc>
+<lastmod>2014-05-15T18:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

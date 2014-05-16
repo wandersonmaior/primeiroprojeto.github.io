@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PythonClub, ">
+
+        <link rel="alternate"  href="http://pythonclub.com.br/feeds/all.atom.xml" type="application/atom+xml" title="PythonClub Full Atom Feed"/>
+    
+    <link rel="shortcut icon" href="http://pythonclub.com.br/theme/images/favicon.ico" >
+
+            <title>Editando o Admin do Django - Maurício Camargo Sipmann // PythonClub // </title>
+
+    <meta property="fb:app_id" content="1487080281503641" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Editando o Admin do Django" />
+    <meta property="og:site_name" content="PythonClub" />
+    <meta property="og:url" content="http://pythonclub.com.br/editando-o-admin-do-django.html" />
+    <meta property="og:description" content="Vamos falar um pouco sobre como customizar o admin do Django. Primeiramente porque? A resposta é bem simples, quero mostrar algo para o usuário sem que ele precise entrar nas apps e fazer alguma consulta para então tomar alguma ação. Alguns exêmplos para isto seriam: Exibir as vendas do mês ..." />
+    <meta property="og:image" content="http://res.cloudinary.com/diu8g9l0s/image/upload/v1400201393/pythonclub/logo_275x130.png" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/pure.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/pygments.css">
+
+    
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="http://pythonclub.com.br/author/mauricio-camargo-sipmann.html" title="See posts by Maurício Camargo Sipmann">
+                        <img class="article-avatar" alt="Maurício Camargo Sipmann" src="http://www.gravatar.com/avatar/7f717d69fb6d3dbc5490d47369aca3e0">
+                </a>
+                <h2 class="article-info">Maurício Camargo Sipmann</h2>
+    			<ul class="author-social">
+                    <li>
+                        <a target="_blank" href="http://www.linkedin.com/in/sipmann">
+                            <i class="fa fa-lg fa-fw fa-linkedin"></i>
+                            <strong>Linkedin</strong>
+                        </a>
+                    </li>
+                </ul>
+                <h5>Publicado em:</h5>
+                <p>Thu 15 May 2014</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Editando o Admin do Django</h1>
+                        <p class="post-meta">
+                            // Tags                                 <a class="post-category" href="http://pythonclub.com.br/tag/django.html">django</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/django-admin.html">django-admin</a>
+                        </p>
+                </header>
+            </section>
+            <p>Vamos falar um pouco sobre como customizar o admin do Django. Primeiramente porque? A resposta é bem simples, quero mostrar algo para o usuário sem que ele precise entrar nas apps e fazer alguma consulta para então tomar alguma ação. Alguns exêmplos para isto seriam:</p>
+<blockquote>
+<ul class="simple">
+<li>Exibir as vendas do mês em forma de gráfico por região do país</li>
+<li>Exibir os últimos comentários adicionados</li>
+<li>Exibir log dos ultimos usuários cadastrados</li>
+</ul>
+</blockquote>
+<p>O que faremos aqui será exibir os últimos comentários ainda não liberados de um sistema de blog. Vale lembrar que aqui não discutiremos sobre os primeiros passos da aplicação. Para seguirmos adiante, vamos assumir que já temos um projeto básico com uma estrutura simples, abaixo a estrutura inicial do nosso projeto.</p>
+<div class="highlight"><pre>../blog/
+├── core
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
+├── blog
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+└── manage.py
+</pre></div>
+<p>Para iniciarmos, precisamos da nossa tabela de comentários, vamos usar a mais simples e básica o possível.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Campo</th>
+<th class="head">Tipo</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>nome</td>
+<td>Varchar(30)</td>
+</tr>
+<tr><td>texto</td>
+<td>Text</td>
+</tr>
+<tr><td>liberado</td>
+<td>Boolean</td>
+</tr>
+<tr><td>data</td>
+<td>Date</td>
+</tr>
+</tbody>
+</table>
+<p>Vamos seguir adiante e alterar a página inicial do admin para listar os últimos comentários de um simples sistema de blog. Para comerçar a editar o admin, precisamos inicialmente copiar o template que desejamos para a pasta uma pasta <cite>admin</cite> dentro ta pasta de templates do nosso projeto. Isto porque o Admin, não passa de uma app como outra qualquer, portanto o sistema de herança vai funcionar aqui, carregamento prioritariamente o seu template. Você pode conseguir o template que desejar (no nosso caso o index.html) dentro do projeto do Django mesmo, no meu caso &quot;C:\Django-1.6.3\django\contrib\admin\templates\admin&quot;.</p>
+<div class="highlight"><pre>../blog/
+├── templates
+│   ├── admin
+│   │   └── index.html
+├── core
+</pre></div>
+<p>Tire um tempo e brinque um pouco com este template e veja o que acontece se você alterar algumas coisa. Para adicionarmos a nossa listagem, vamos adicionar um painel lateral, para tal vamos adicionar o código abaixo antes do fechamento da ultima tag div. Nele podemos ver uma chamada para uma template_tag, portanto precisamos carrega-la no topo do template.</p>
+<div class="highlight"><pre>{% load comentarios_tag %}
+...
+...
+...
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;module&quot;</span> <span class="na">id=</span><span class="s">&quot;ultimos-comentarios&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h2&gt;</span>Ultimos Comentários<span class="nt">&lt;/h2&gt;</span>
+    <span class="nt">&lt;h3&gt;</span>Liberar<span class="nt">&lt;/h3&gt;</span>
+            {% comentarios_n_liberados %}
+<span class="nt">&lt;/div&gt;</span>
+</pre></div>
+<p>Esta template trata-se da responsável por fazer a consulta na base de dados e renderizar a nossa lista, portanto ela é uma 'inclusion tag'. Se você não esta familiarizado com 'template tags', talvez queira dar uma olhada na <a class="reference external" href="https://docs.djangoproject.com/en/dev/howto/custom-template-tags/">documentação do django</a>.</p>
+<p>Vamos então criar nossa template tag 'comentarios_n_liberados'. Primeiro devemos criar uma pasta chamada templatetags, dentro da nossa app core. Dentro ta pasta vamos inicializar um pacote python e criar o arquivo comentarios_tag.py. Nele precisamos declarar nosso metodo que deve se chamar 'comentarios_n_liberados' e nele fazer uma simples consulta ao banco buscando os comentários não liberados e por fim registrar a tag apontando para o template que será renderizado. Abaixo o código mais explicado.</p>
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">template</span>
+<span class="kn">from</span> <span class="nn">core</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="c">#Carrega o registro de template tags</span>
+<span class="n">register</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">Library</span><span class="p">()</span>
+
+<span class="c">#Registra o metodo a seguir como uma inclusion_tag indicando o template a ser renderizad</span>
+<span class="nd">@register.inclusion_tag</span><span class="p">(</span><span class="s">&#39;comentarios_n_liberados.html&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">comentarios_n_liberados</span><span class="p">():</span>
+    <span class="n">comentarios</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">comentario</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">liberado</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s">&#39;data&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">{</span> <span class="s">&#39;comentarios&#39;</span> <span class="p">:</span> <span class="n">comentarios</span> <span class="p">}</span>
+</pre></div>
+<p>Abaixo o html do nosso template a ser renderizado, este deve estar dentro da pasta templates da nossa app core.</p>
+<div class="highlight"><pre>{% if not comentarios %}
+    <span class="nt">&lt;p&gt;</span>Nenhum comentário novo<span class="nt">&lt;/p&gt;</span>
+{% else %}
+    <span class="nt">&lt;ul&gt;</span>
+            {% for c in comentarios %}
+            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">&quot;addlink&quot;</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;{{ c.id }}&quot;</span><span class="nt">&gt;</span>{{ c.texto|truncatechars:30 }}<span class="nt">&lt;/a&gt;</span>
+            <span class="nt">&lt;/li&gt;</span>
+            {% endfor %}
+    <span class="nt">&lt;/ul&gt;</span>
+{% endif %}
+</pre></div>
+<p>Com tudo isto feito, basta subir o seu servidor e ver o resultado final. Lembrando que aqui apenas mostrei como modificar o index do admin, para apenas listar dados do banco, mas você pode ir muito mais além. Abaixo fica a estrutura de diretórios final e um link para download do projeto funcionando.</p>
+<div class="highlight"><pre>../blog/
+├── core
+│   ├── templates
+│   │   └── comentarios_n_liberados.html
+│   ├── templatetag
+│   │   └── comentarios_tag.py
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── models.py
+│   ├── tests.py
+│   └── views.py
+├── blog
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── templates
+│   ├── admin
+│   │   └── index.html
+└── manage.py
+</pre></div>
+<p>Espero que tenham gostado, criticas/sugestões são bem-vindas. <a class="reference external" href="https://github.com/sipmann/editando-django-admin">Fontes do Projeto</a></p>
+
+            <div class="sharing">
+                <!-- Facebook sharing -->
+                <div id="fb-root"></div>
+                <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&appId=1487080281503641&version=v2.0";
+                fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+                <div class="fb-share-button" data-href="http://pythonclub.com.br/editando-o-admin-do-django.html" data-type="button_count"></div>
+
+                <!-- Twitter sharing -->
+                <a href="https://twitter.com/share" class="twitter-share-button" data-lang="pt">Tweetar</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+
+            <div class="hr"></div>
+            <a href="#" class="go-top">Topo</a>
+<div class="comments">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = "pythonclub"; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div><footer class="footer">
+    <p>&copy; PythonClub &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+</div>
+    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+    </script>
+    
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-50935105-1', 'pythonclub.com.br');
+      ga('send', 'pageview');
+
+    </script>
+</body>
+</html>
