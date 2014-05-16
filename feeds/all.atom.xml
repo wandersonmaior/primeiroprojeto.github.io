@@ -116,7 +116,10 @@
 └── manage.py
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Espero que tenham gostado, criticas/sugestões são bem-vindas. &lt;a class="reference external" href="https://github.com/sipmann/editando-django-admin"&gt;Fontes do Projeto&lt;/a&gt;&lt;/p&gt;
-</summary><category term="django"></category><category term="django-admin"></category></entry><entry><title>Instalando e Configurando o Python e Django no Windows</title><link href="http://pythonclub.com.br/instalacao-python-django-windows.html" rel="alternate"></link><updated>2014-05-14T10:30:00-03:00</updated><author><name>Thiago Corôa</name></author><id>tag:pythonclub.com.br,2014-05-14:instalacao-python-django-windows.html</id><summary type="html">&lt;div class="section" id="instalacao-do-python-2-7"&gt;
+</summary><category term="django"></category><category term="django-admin"></category></entry><entry><title>Instalando e Configurando o Python e Django no Windows</title><link href="http://pythonclub.com.br/instalacao-python-django-windows.html" rel="alternate"></link><updated>2014-05-14T10:30:00-03:00</updated><author><name>Thiago Corôa</name></author><id>tag:pythonclub.com.br,2014-05-14:instalacao-python-django-windows.html</id><summary type="html">&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/travis/build/pythonclub/pythonclub.github.io/content/instalando_configurando_python_django_no_windows.rst&lt;/tt&gt;, line 11)&lt;/p&gt;
+Field list ends without a blank line; unexpected unindent.&lt;/div&gt;
+&lt;div class="section" id="instalacao-do-python-2-7"&gt;
 &lt;h2&gt;Instalação do Python 2.7&lt;/h2&gt;
 &lt;p&gt;Para começar a desenvolver algo em Python, devemos baixar o Python(Nossa, que descoberta!),
 sendo a versão mais indicada o 2.7, por ser mais estável, possuir mais bibliotecas disponíveis
@@ -149,8 +152,13 @@ Instalaremos digitando no prompt de comando:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;virtualenv&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Agora o passo mais difícil, instalar o Django depois do Pip instalado, digite o comando:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mf"&gt;1.4&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;==&lt;/span&gt;&lt;span class="mf"&gt;1.6&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="mi"&gt;4&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Pode ser digitado somente o nome do aplicativo. Ex.:
+.. code-block:: python&lt;/p&gt;
+&lt;blockquote&gt;
+pip install django&lt;/blockquote&gt;
+&lt;p&gt;Mas é sempre interessante saber a versão do que estamos trabalhando para solução de eventuais problemas.&lt;/p&gt;
 &lt;p&gt;Muito difícil não?&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
