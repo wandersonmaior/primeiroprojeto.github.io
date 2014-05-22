@@ -1,5 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/all.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-05-16T01:00:00-03:00</updated><entry><title>Guia rápido de comandos SQLite3</title><link href="http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html" rel="alternate"></link><updated>2014-05-16T01:00:00-03:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2014-05-16:guia-rapido-comandos-sqlite3.html</id><summary type="html">&lt;p&gt;É sempre bom ter tudo que você precisa de forma rápida e simples.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/all.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-05-23T14:49:00-03:00</updated><entry><title>Selenium - O que você deveria saber - Parte 2</title><link href="http://pythonclub.com.br/selenium-parte-2.html" rel="alternate"></link><updated>2014-05-23T14:49:00-03:00</updated><author><name>Lucas Magnum</name></author><id>tag:pythonclub.com.br,2014-05-23:selenium-parte-2.html</id><summary type="html">&lt;p&gt;Esse é o segundo post da série sobre Selenium, hoje vamos manipular formulários, frames e múltiplas janelas.
+Vamos também descobrir que é possível esperar para tentar descobrir um elemento na página.&lt;/p&gt;
+&lt;p&gt;Se você não leu a primeira parte, clique &lt;a class="reference external" href="http://pythonclub.com.br/selenium-parte-1.html"&gt;aqui&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="section" id="parte-2"&gt;
+&lt;h2&gt;Parte 2&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#brincando-com-formularios"&gt;Brincando com formulários&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#trabalhando-com-multiplas-janelas"&gt;Trabalhando com múltiplas janelas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#trabalhando-com-frames"&gt;Trabalhando com frames&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#e-se-eu-quiser-esperar"&gt;E se eu quiser esperar?!&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;div class="section" id="brincando-com-formularios"&gt;
+&lt;h3&gt;Brincando com formulários&lt;/h3&gt;
+&lt;p&gt;Quem nunca precisou preencher um formulário na web?&lt;/p&gt;
+&lt;p&gt;Hoje vamos aprender como fazer isso, vamos visualizar o exemplo abaixo que procura por um termo no google.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium.webdriver.common.keys&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Keys&lt;/span&gt;
+
+&lt;span class="n"&gt;firefox&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Firefox&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;http://google.com.br/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c"&gt;# pegar o campo de busca onde podemos digitar algum termo&lt;/span&gt;
+&lt;span class="n"&gt;campo_busca&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_element_by_name&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;q&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c"&gt;# Digitar &amp;quot;Python Club&amp;quot; no campo de busca&lt;/span&gt;
+&lt;span class="n"&gt;campo_busca&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;send_keys&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Python Club&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c"&gt;# Simular que o enter seja precisonado&lt;/span&gt;
+&lt;span class="n"&gt;campo_busca&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;send_keys&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Keys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ENTER&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Foi bem simples, encontramos o &lt;tt class="docutils literal"&gt;campo_busca&lt;/tt&gt; e invocamos o metódo &lt;tt class="docutils literal"&gt;send_keys&lt;/tt&gt; com o texto
+que desejamos digitar e depois simulamos o pressionamento do botão &amp;quot;Enter&amp;quot;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Nota&lt;/strong&gt;: Sempre que houver a necessidade de utilizar uma tecla especial podemos encontrá-la na classe &lt;tt class="docutils literal"&gt;Keys&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;E se for um campo &lt;tt class="docutils literal"&gt;select&lt;/tt&gt;, como eu faço?&lt;/p&gt;
+&lt;p&gt;Digamos que exista o seguinte código:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;select&lt;/span&gt; &lt;span class="na"&gt;name=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;estados&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;option&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;mg&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;MG&lt;span class="nt"&gt;&amp;lt;/option&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;option&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;rj&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;RJ&lt;span class="nt"&gt;&amp;lt;/option&amp;gt;&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;lt;option&lt;/span&gt; &lt;span class="na"&gt;value=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;sp&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;SP&lt;span class="nt"&gt;&amp;lt;/option&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Existe uma classe só para facilitar o trabalho com &lt;tt class="docutils literal"&gt;selects&lt;/tt&gt;, ela possui metódos para selecionar uma opção pelo seu texto ou valor, entre outras.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# Importar a classe Select&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium.webdriver.support.ui&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Select&lt;/span&gt;
+
+&lt;span class="c"&gt;# É preciso passar o elemento para a classe&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;estados&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Select&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_element_by_name&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;estados&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="c"&gt;# Selecionar a opção MG&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;estados&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;select_by_visible_text&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;MG&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c"&gt;# Selecionar a opção SP&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;estados&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;select_by_value&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;sp&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Agora você já sabe o básico para manipular um formulário, você pode digitar nos campos, selecionar valores, clicar em botões.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="trabalhando-com-multiplas-janelas"&gt;
+&lt;h3&gt;Trabalhando com múltiplas janelas&lt;/h3&gt;
+&lt;p&gt;E quando se abre uma nova janela? ou um alerta? O que fazemos?&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;window_handles&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;u&amp;#39;{7fd12d82-4fb3-48a4-a8b9-e1e460c00236}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;A instância &lt;tt class="docutils literal"&gt;firefox&lt;/tt&gt; possui um atributo chamado &lt;tt class="docutils literal"&gt;window_handles&lt;/tt&gt;, que é uma lista
+contendo um ID para cada janela aberta.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Nota&lt;/strong&gt;: O ID é criado para nova janela aberta e não para uma ABA ou um alerta javascript.&lt;/p&gt;
+&lt;p&gt;Quando você abrir uma nova janela, poderá perceber que é criado automaticamente um novo ID.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;window_handles&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;u&amp;#39;{7fd12d82-4fb3-48a4-a8b9-e1e460c00236}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;u&amp;#39;{2ce4de19-0902-48e3-a1cc-50f6378afd79}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para alternar entre janelas, basta chamar o metódo &lt;tt class="docutils literal"&gt;switch_to_window&lt;/tt&gt; passando o ID da janela como parâmetro.&lt;/p&gt;
+&lt;p&gt;Imagine que temos uma janela aberta na página do Google e a outra na página da Python Club.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;window_handles&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;u&amp;#39;{7fd12d82-4fb3-48a4-a8b9-e1e460c00236}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;u&amp;#39;{2ce4de19-0902-48e3-a1cc-50f6378afd79}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="c"&gt;# Título da janela atual&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;
+&lt;span class="s"&gt;u&amp;#39;Google&amp;#39;&lt;/span&gt;
+
+&lt;span class="c"&gt;# Trocar para a última janela da lista&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;switch_to_window_handles&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;window_handles&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;
+&lt;span class="s"&gt;u&amp;#39;PythonClub //&amp;#39;&lt;/span&gt;
+
+&lt;span class="c"&gt;# Fechar a janela atual&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c"&gt;# Voltar para a janela do Google&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;switch_to_window_handles&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;window_handles&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title&lt;/span&gt;
+&lt;span class="s"&gt;u&amp;#39;Google&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;E como saber o ID da janela atual? Simples!&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;current_window_handle&lt;/span&gt;
+&lt;span class="s"&gt;u&amp;#39;{7fd12d82-4fb3-48a4-a8b9-e1e460c00236}&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Fácil não?!&lt;/p&gt;
+&lt;p&gt;E se abrir um alerta &lt;tt class="docutils literal"&gt;javascript&lt;/tt&gt;, como fazemos???&lt;/p&gt;
+&lt;p&gt;Existe uma função para tratar alertas &lt;tt class="docutils literal"&gt;javascript&lt;/tt&gt;, a função &lt;tt class="docutils literal"&gt;switch_to_alert&lt;/tt&gt; irá permitir que manipule eles sem problemas.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;alerta&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;switch_to_alert&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;alerta&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;  &lt;span class="c"&gt;# Tab para autocomplete&lt;/span&gt;
+&lt;span class="n"&gt;alerta&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;accept&lt;/span&gt;     &lt;span class="n"&gt;alerta&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dismiss&lt;/span&gt;    &lt;span class="n"&gt;alerta&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;driver&lt;/span&gt;     &lt;span class="n"&gt;alerta&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;send_keys&lt;/span&gt;  &lt;span class="n"&gt;alerta&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;
+
+&lt;span class="c"&gt;# Se for um `confirm`, você pode aceitar ou cancelar.&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;alerta&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;accept&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;  &lt;span class="c"&gt;# Aceitar, ou clicar em &amp;quot;OK&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;alerta&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dismiss&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="c"&gt;# Cancelar, ou clicar em &amp;quot;Cancel&amp;quot;/&amp;quot;Cancelar&amp;quot;&lt;/span&gt;
+
+&lt;span class="c"&gt;# Se for uma caixa de texto e você quiser digitar algo&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;alerta&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;send_keys&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Digitar esse texto&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c"&gt;# Se você quiser visualizar o texto que está presente no alerta&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;alerta&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;
+&lt;span class="s"&gt;u&amp;#39;Texto do alerta&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="trabalhando-com-frames"&gt;
+&lt;h3&gt;Trabalhando com frames&lt;/h3&gt;
+&lt;p&gt;Não existe muita diferença entre manipulação de frames e janelas, o princípio é o mesmo.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Encontrar o elemento (metódo &lt;tt class="docutils literal"&gt;find_element&lt;/tt&gt;)&lt;/li&gt;
+&lt;li&gt;Mudar para ele (metódo &lt;tt class="docutils literal"&gt;switch_to_frame&lt;/tt&gt;)&lt;/li&gt;
+&lt;li&gt;Realizar as ações&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;div class="section" id="conceitos"&gt;
+&lt;h4&gt;Conceitos&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Por padrão o frame principal ou aquele que está disponível quando você abre uma página é denominado &lt;tt class="docutils literal"&gt;default_content&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Se algum elemento estiver dentro de um frame você não irá localizá-lo sem &amp;quot;entrar&amp;quot; neste frame.&lt;/p&gt;
+&lt;p&gt;Se você estiver dentro de um frame e o elemento estiver no &lt;tt class="docutils literal"&gt;default_content&lt;/tt&gt; você não conseguirá localizá-lo sem voltar para o frame principal.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;Exemplo&lt;/em&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Precisamos clicar em um botão que está dentro de um frame.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Premissas&lt;/strong&gt;: O iframe onde estão os botões que precisamos manipular possui o ID &lt;tt class="docutils literal"&gt;buttons&lt;/tt&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# Vamos tentar localizar o botão que está dentro do frame e será gerado uma Exception&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_element_by_id&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&amp;lt;botao_id&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;NoSuchElementException&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Message&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;u&amp;#39;Unable to locate element: {&amp;quot;method&amp;quot;:&amp;quot;id&amp;quot;,&amp;quot;selector&amp;quot;:&amp;quot;&amp;lt;botao_id&amp;gt;&amp;quot;}&amp;#39;&lt;/span&gt;
+
+&lt;span class="c"&gt;# Precisamos antes encontrar o frame&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;frame&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_element_by_id&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;buttons&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c"&gt;# Vamos alterar para ele&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;switch_to_frame&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;frame&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c"&gt;# Agora podemos encontrar o elemento&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;botao&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_element_by_id&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&amp;lt;botao_id&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c"&gt;# E podemos manipulá-lo :)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;botao&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;click&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="e-se-eu-quiser-esperar"&gt;
+&lt;h3&gt;E se eu quiser esperar?!&lt;/h3&gt;
+&lt;p&gt;Quando você tenta localizar um elemento, o Selenium irá consultar a página e se não encontrar será gerado uma &lt;tt class="docutils literal"&gt;exception&lt;/tt&gt; de imediato.&lt;/p&gt;
+&lt;p&gt;Mas e se o elemento demorar um pouco para aparecer, pode ser que ele faça parte de uma animação, um consulta &lt;tt class="docutils literal"&gt;ajax&lt;/tt&gt; ou qualquer coisa do tipo.&lt;/p&gt;
+&lt;p&gt;Então precisamos dizer ao Selenium para &lt;strong&gt;esperar&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Existe uma classe chamada &lt;tt class="docutils literal"&gt;WebDriverWait&lt;/tt&gt; que pode ser utilizada para para esperar por determinadas ações.&lt;/p&gt;
+&lt;p&gt;Hoje será apresentado o básico sobre ela e voltaremos a falar sobre na Parte 4 deste tutorial.&lt;/p&gt;
+&lt;p&gt;Veja o exemplo abaixo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;elemento&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_element_by_id&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&amp;lt;elemento_id&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Nesse caso se o elemento não existe, será gerado uma &lt;tt class="docutils literal"&gt;exception&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Mas e se soubermos que ele pode demorar um tempo para aparecer?&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# Importar a classe WebDriverWait&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium.webdriver.support.ui&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;WebDriverWait&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;esperar_pelo_elemento&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+  &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_element_by_id&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&amp;lt;elemento_id&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;elemento&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;WebDriverWait&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;until&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;esperar_pelo_elemento&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;O que fizemos? Nós pedimos para o &lt;tt class="docutils literal"&gt;firefox&lt;/tt&gt; esperar por &lt;tt class="docutils literal"&gt;5&lt;/tt&gt; segundos até que o resultado da função &lt;tt class="docutils literal"&gt;esperar_pelo_elemento&lt;/tt&gt; seja &lt;tt class="docutils literal"&gt;True&lt;/tt&gt;. Caso passe esse tempo e ele não encontre o elemento, então será gerada uma &lt;tt class="docutils literal"&gt;exception&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Essa foi nossa introdução ao &lt;tt class="docutils literal"&gt;WebDriverWait&lt;/tt&gt;, basicamente você precisa passar uma função que aceite como parâmetro a instância do navegador e lá executar o código para encontrar o elemento.&lt;/p&gt;
+&lt;p&gt;Por hoje é só!
+Nos vemos na próxima, espero que tenha aprendido algo hoje :)&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="selenium"></category><category term="python"></category><category term="selenium-serie"></category></entry><entry><title>Guia rápido de comandos SQLite3</title><link href="http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html" rel="alternate"></link><updated>2014-05-16T01:00:00-03:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2014-05-16:guia-rapido-comandos-sqlite3.html</id><summary type="html">&lt;p&gt;É sempre bom ter tudo que você precisa de forma rápida e simples.&lt;/p&gt;
 &lt;p&gt;Escrevi este post para um mini tutorial de SQLite3. Através do &lt;strong&gt;terminal&lt;/strong&gt;:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;Criando um banco de dados.&lt;/li&gt;
@@ -1373,7 +1555,7 @@ peso de sua interface gráfica, para isso vamos alterar a primeira linha do mét
 &lt;p&gt;Grande abraço!&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="selenium"></category><category term="python"></category><category term="selenium-serie"></category><category term="testes-funcionais"></category><category term="testes"></category></entry><entry><title>Selenium - O que você deveria saber - Parte 1</title><link href="http://pythonclub.com.br/selenium-parte-1.html" rel="alternate"></link><updated>2014-05-08T12:09:00-03:00</updated><author><name>Lucas Magnum</name></author><id>tag:pythonclub.com.br,2014-05-08:selenium-parte-1.html</id><summary type="html">&lt;p&gt;Esse é o primeiro post da série sobre o Selenium, pretendo cobrir desde o básico até algumas coisas mais legais :)&lt;/p&gt;
+</summary><category term="selenium"></category><category term="python"></category><category term="selenium-serie"></category><category term="testes-funcionais"></category><category term="testes"></category></entry><entry><title>Selenium - O que você deveria saber - Parte 1</title><link href="http://pythonclub.com.br/selenium-parte-1.html" rel="alternate"></link><updated>2014-05-08T12:09:00-03:00</updated><author><name>Lucas Magnum</name></author><id>tag:pythonclub.com.br,2014-05-08:selenium-parte-1.html</id><summary type="html">&lt;p&gt;Esse é o primeiro post da série sobre Selenium, pretendo cobrir desde o básico até algumas coisas mais legais :)&lt;/p&gt;
 &lt;div class="section" id="introducao"&gt;
 &lt;h2&gt;Introdução&lt;/h2&gt;
 &lt;p&gt;&lt;a class="reference external" href="http://docs.seleniumhq.org/"&gt;Selenium&lt;/a&gt; é um ótimo framework para realizar diversos tipos de tarefas com o browser.&lt;/p&gt;
@@ -1393,10 +1575,10 @@ peso de sua interface gráfica, para isso vamos alterar a primeira linha do mét
 &lt;h3&gt;Parte 2&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;Brincando formulários&lt;/li&gt;
-&lt;li&gt;Trabalhando com múltiplas janelas&lt;/li&gt;
-&lt;li&gt;Trabalhando com frames&lt;/li&gt;
-&lt;li&gt;E se eu quiser esperar?!&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://pythonclub.com.br/selenium-parte-2.html#brincando-com-formularios"&gt;Brincando com formulários&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://pythonclub.com.br/selenium-parte-2.html#trabalhando-com-multiplas-janelas"&gt;Trabalhando com múltiplas janelas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://pythonclub.com.br/selenium-parte-2.html#trabalhando-com-frames"&gt;Trabalhando com frames&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://pythonclub.com.br/selenium-parte-2.html#e-se-eu-quiser-esperar"&gt;E se eu quiser esperar?!&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;/div&gt;
@@ -1496,7 +1678,7 @@ para isso você precisa saber como encontrá-lo.&lt;/p&gt;
   &lt;span class="nt"&gt;&amp;lt;section&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;post&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;[...]&lt;span class="nt"&gt;&amp;lt;/section&amp;gt;&lt;/span&gt;
 &lt;span class="nt"&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;E cada &lt;tt class="docutils literal"&gt;post&lt;/tt&gt; está dentro de uma &lt;tt class="docutils literal"&gt;section&lt;/tt&gt; que possue a &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;class=&amp;quot;post&amp;quot;&lt;/span&gt;&lt;/tt&gt; .&lt;/p&gt;
+&lt;p&gt;E cada &lt;tt class="docutils literal"&gt;post&lt;/tt&gt; está dentro de uma &lt;tt class="docutils literal"&gt;section&lt;/tt&gt; que possui a &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;class=&amp;quot;post&amp;quot;&lt;/span&gt;&lt;/tt&gt; .&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;section&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;post&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
   &lt;span class="nt"&gt;&amp;lt;header&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;post-header&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
     [...]
@@ -1533,11 +1715,10 @@ para isso você precisa saber como encontrá-lo.&lt;/p&gt;
     &lt;span class="n"&gt;post_link&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;post_title&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_attribute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;href&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
     &lt;span class="c"&gt;# printar informações&lt;/span&gt;
-    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;u&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
-&lt;span class="s"&gt;        Títutlo: {titulo}, &lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;&lt;/span&gt;
-&lt;span class="s"&gt;        Link: {link} &lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;&lt;/span&gt;
-&lt;span class="s"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;titulo&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;post_title&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;link&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;post_link&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
+    &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;u&amp;quot;Títutlo: {titulo}, &lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;Link: {link}&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;titulo&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;post_title&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="n"&gt;link&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;post_link&lt;/span&gt;
+  &lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="c"&gt;# Fechar navegador&lt;/span&gt;
 &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;quit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
@@ -1552,7 +1733,7 @@ para isso você precisa saber como encontrá-lo.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Desafio 2&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Modificar o exemplo 01 para salvar os dados(titulo, link, autor) em um arquivo &lt;tt class="docutils literal"&gt;json&lt;/tt&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Por hoje é só!&lt;/p&gt;
+&lt;p&gt;Gostou? Leia a &lt;a class="reference external" href="http://pythonclub.com.br/selenium-parte-2.html"&gt;segunda parte&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Qualquer dúvida pode enviar um e-mail &lt;a class="reference external" href="mailto:contato&amp;#64;lucasmagnum.com.br"&gt;contato&amp;#64;lucasmagnum.com.br&lt;/a&gt; ficarei feliz em ajudar =)&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
