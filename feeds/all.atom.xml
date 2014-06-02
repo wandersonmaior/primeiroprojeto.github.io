@@ -1,5 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/all.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-05-31T02:22:00-03:00</updated><entry><title>What the Flask? Pt-1 Introdução ao desenvolvimento web com Python</title><link href="http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html" rel="alternate"></link><updated>2014-05-31T02:22:00-03:00</updated><author><name>Bruno Cezar Rocha</name></author><id>tag:pythonclub.com.br,2014-05-31:what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html</id><summary type="html">&lt;h2&gt;What The Flask - 1/6&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/all.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-06-02T10:49:00-03:00</updated><entry><title>Selenium - O que você deveria saber - Parte 3</title><link href="http://pythonclub.com.br/selenium-parte-3.html" rel="alternate"></link><updated>2014-06-02T10:49:00-03:00</updated><author><name>Lucas Magnum</name></author><id>tag:pythonclub.com.br,2014-06-02:selenium-parte-3.html</id><summary type="html">&lt;p&gt;Esse é o terceiro post da série sobre Selenium, hoje vamos aprender a executar código javascript e usar diferentes navegadores.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Veja a &lt;a class="reference external" href="http://pythonclub.com.br/selenium-parte-1.html"&gt;primeira parte&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Veja a &lt;a class="reference external" href="http://pythonclub.com.br/selenium-parte-2.html"&gt;segunda parte&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;div class="section" id="parte-3"&gt;
+&lt;h2&gt;Parte 3&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#executando-codigo-javascript"&gt;Executando código javascript&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#como-utilizar-diferentes-navegadores"&gt;Como utilizar diferentes navegadores&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;div class="section" id="executando-codigo-javascript"&gt;
+&lt;h3&gt;Executando código javascript&lt;/h3&gt;
+&lt;p&gt;Algumas vezes é necessário executar algum código &lt;tt class="docutils literal"&gt;javascript&lt;/tt&gt;, seja para adiantar a execução de uma função
+ou até mesmo para manipular um elemento.&lt;/p&gt;
+&lt;p&gt;Vamos ao nosso exemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;
+
+&lt;span class="n"&gt;firefox&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Firefox&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;http://google.com.br/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute_script&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;alert(&amp;quot;código javascript sendo executado&amp;quot;)&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute_async_script&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;alert(&amp;quot;código javascript sendo executado&amp;quot;)&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;O Selenium permite que você faça isso através de uma instância do navegador, chamando os metódos &lt;tt class="docutils literal"&gt;execute_script&lt;/tt&gt; e &lt;tt class="docutils literal"&gt;execute_async_script&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;A diferença entre os dois é que o primeiro (&lt;tt class="docutils literal"&gt;execute_script&lt;/tt&gt;) irá esperar até ter a resposta do navegador e o outro não.&lt;/p&gt;
+&lt;p&gt;Você pode executar qualquer código javascript e isso pode ser muito útil!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="como-utilizar-diferentes-navegadores"&gt;
+&lt;h3&gt;Como utilizar diferentes navegadores&lt;/h3&gt;
+&lt;p&gt;Para utilizar navegadores diferentes é bem simples, vamos ver como configurar 2 navegadores diferentes.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="firefox"&gt;
+&lt;h2&gt;Firefox&lt;/h2&gt;
+&lt;p&gt;O &lt;em&gt;Firefox&lt;/em&gt; é o mais simples de ser configurado, você não precisa passar nenhum parâmetro adicional.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;
+
+&lt;span class="n"&gt;firefox&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Firefox&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Se a instalação do firefox tiver sido alterada e feito em alguma pasta diferente da padrão, você pode informar o caminho para o executável.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;
+
+&lt;span class="n"&gt;firefox&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Firefox&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;firefox_binary&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/bin/firefox&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c"&gt;# se estiver usando o windows, basta informar o caminho completo&lt;/span&gt;
+&lt;span class="n"&gt;firefox&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Firefox&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;firefox_binary&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;C:/firefox/firefox.exe&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="chrome"&gt;
+&lt;h2&gt;Chrome&lt;/h2&gt;
+&lt;p&gt;Para utilizar &lt;em&gt;Chrome&lt;/em&gt; você precisa ter instalado o chrome no seu computador, você pode fazer isso pelo terminal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;apt-get install chromium-browser
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Após instalar o navegador você precisa realizar o download do &lt;tt class="docutils literal"&gt;chromedriver&lt;/tt&gt; que é um intermediário entre o Selenium o e Chrome.&lt;/p&gt;
+&lt;p&gt;Por default o Selenium procura pelo &lt;tt class="docutils literal"&gt;chromedriver&lt;/tt&gt; na mesma pasta de onde está sendo executado.&lt;/p&gt;
+&lt;p&gt;Faça o download da ultima versão do &lt;a class="reference external" href="http://chromedriver.storage.googleapis.com/index.html"&gt;chromedriver&lt;/a&gt;, coloque em um local de sua preferência e passe o caminho completo na hora de iniciar o navegador.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;
+
+&lt;span class="n"&gt;chrome&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Chrome&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;executable_path&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&amp;lt;caminho para chromedriver&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c"&gt;# exemplo&lt;/span&gt;
+&lt;span class="n"&gt;chrome&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Chrome&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;executable_path&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/home/lucasmagnum/downloads/chromedriver&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Você pode visualizar todos os navegadores &lt;a class="reference external" href="http://docs.seleniumhq.org/about/platforms.jsp"&gt;suportados&lt;/a&gt; pelo Selenium&lt;/p&gt;
+&lt;p&gt;Por hoje é só!
+Nos vemos na próxima, espero que tenha aprendido algo hoje :)&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="selenium"></category><category term="python"></category><category term="selenium-serie"></category></entry><entry><title>What the Flask? Pt-1 Introdução ao desenvolvimento web com Python</title><link href="http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html" rel="alternate"></link><updated>2014-05-31T02:22:00-03:00</updated><author><name>Bruno Cezar Rocha</name></author><id>tag:pythonclub.com.br,2014-05-31:what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html</id><summary type="html">&lt;h2&gt;What The Flask - 1/6&lt;/h2&gt;
 &lt;h3&gt;6 passos para ser um Flask ninja!&lt;/h3&gt;
 &lt;p&gt;Nesta série de 6 artigos/tutoriais pretendo abordar de maneira bem detalhada
 o desenvolvimento web com o framework Flask.&lt;/p&gt;
@@ -1198,8 +1271,8 @@ pip install ipython
 &lt;p&gt;&lt;strong&gt;PUBLICIDADE 2:&lt;/strong&gt; Também estou escrevendo um livro de receitas &lt;strong&gt;Flask CookBook&lt;/strong&gt; através da plataforma LeanPub, caso tenha interesse por favor preenche o formulário na &lt;a href="https://leanpub.com/pythoneflask"&gt;página do livro&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Muito obrigado e aguardo seu feedback com dúvidas, sugestões, correções ou bitcoins (LOL) na caixa de comentários abaixo.&lt;/p&gt;
-&lt;p&gt;Abraço! "Python é vida!"&lt;/p&gt;</summary><category term="flask"></category><category term="web"></category><category term="tutorial"></category><category term="what-the-flask"></category></entry><entry><title>Selenium - O que você deveria saber - Parte 2</title><link href="http://pythonclub.com.br/selenium-parte-2.html" rel="alternate"></link><updated>2014-05-23T14:49:00-03:00</updated><author><name>Lucas Magnum</name></author><id>tag:pythonclub.com.br,2014-05-23:selenium-parte-2.html</id><summary type="html">&lt;p&gt;Esse é o segundo post da série sobre Selenium, hoje vamos manipular formulários, frames e múltiplas janelas.
-Vamos também descobrir que é possível esperar para tentar descobrir um elemento na página.&lt;/p&gt;
+&lt;p&gt;Abraço! "Python é vida!"&lt;/p&gt;</summary><category term="flask"></category><category term="web"></category><category term="tutorial"></category><category term="what-the-flask"></category></entry><entry><title>Selenium - O que você deveria saber - Parte 2</title><link href="http://pythonclub.com.br/selenium-parte-2.html" rel="alternate"></link><updated>2014-05-23T14:49:00-03:00</updated><author><name>Lucas Magnum</name></author><id>tag:pythonclub.com.br,2014-05-23:selenium-parte-2.html</id><summary type="html">&lt;p&gt;Esse é o segundo post da série sobre Selenium, hoje vamos aprender a manipular formulários, frames e múltiplas janelas.
+Vamos também vai descobrir que é possível esperar para tentar encontrar um elemento na página.&lt;/p&gt;
 &lt;p&gt;Se você não leu a primeira parte, clique &lt;a class="reference external" href="http://pythonclub.com.br/selenium-parte-1.html"&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="section" id="parte-2"&gt;
 &lt;h2&gt;Parte 2&lt;/h2&gt;
@@ -1213,7 +1286,7 @@ Vamos também descobrir que é possível esperar para tentar descobrir um elemen
 &lt;/blockquote&gt;
 &lt;div class="section" id="brincando-com-formularios"&gt;
 &lt;h3&gt;Brincando com formulários&lt;/h3&gt;
-&lt;p&gt;Quem nunca precisou preencher um formulário na web?&lt;/p&gt;
+&lt;p&gt;Quantas vezes você já não preencheu um formulário na web?&lt;/p&gt;
 &lt;p&gt;Hoje vamos aprender como fazer isso, vamos visualizar o exemplo abaixo que procura por um termo no google.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium.webdriver.common.keys&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Keys&lt;/span&gt;
@@ -2785,8 +2858,8 @@ peso de sua interface gráfica, para isso vamos alterar a primeira linha do mét
 &lt;h3&gt;Parte 3&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;Executando código javascript&lt;/li&gt;
-&lt;li&gt;Como utilizar diferentes navegadores&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://pythonclub.com.br/selenium-parte-3.html#executando-codigo-javascript"&gt;Executando código javascript&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://pythonclub.com.br/selenium-parte-3.html#como-utilizar-diferentes-navegadores"&gt;Como utilizar diferentes navegadores&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;/div&gt;
