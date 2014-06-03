@@ -65,6 +65,21 @@
     </div>
 </div>    <div class="pure-u-1">
         <div class="content">
+            <div id="google-search" style='width: 45%;'>
+              <script>
+                (function() {
+                  var cx = '013207087308420121210:ehs0cs4sbxy';
+                  var gcse = document.createElement('script');
+                  gcse.type = 'text/javascript';
+                  gcse.async = true;
+                  gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                      '//www.google.com/cse/cse.js?cx=' + cx;
+                  var s = document.getElementsByTagName('script')[0];
+                  s.parentNode.insertBefore(gcse, s);
+                })();
+              </script>
+              <gcse:searchbox-only resultsUrl="http://pythonclub.com.br/pages/search.html" newWindow="false" enableAutoComplete=true></gcse:searchbox-only>
+            </div>
             <!-- A wrapper for all the blog posts -->
             <div class="posts">
                 <h1 class="content-subhead">
