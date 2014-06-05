@@ -1,5 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/python.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-06-02T10:49:00-03:00</updated><entry><title>Selenium - O que você deveria saber - Parte 3</title><link href="http://pythonclub.com.br/selenium-parte-3.html" rel="alternate"></link><updated>2014-06-02T10:49:00-03:00</updated><author><name>Lucas Magnum</name></author><id>tag:pythonclub.com.br,2014-06-02:selenium-parte-3.html</id><summary type="html">&lt;p&gt;Esse é o terceiro post da série sobre Selenium, hoje vamos aprender a executar código javascript e usar diferentes navegadores.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/python.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-06-04T20:30:00-03:00</updated><entry><title>Aprendendo e Ensinando Python</title><link href="http://pythonclub.com.br/aprendendo-e-ensinando-python.html" rel="alternate"></link><updated>2014-06-04T20:30:00-03:00</updated><author><name>Evaldo Junior Bento</name></author><id>tag:pythonclub.com.br,2014-06-04:aprendendo-e-ensinando-python.html</id><summary type="html">&lt;h2&gt;Aprendendo e Ensinando Python&lt;/h2&gt;
+&lt;h3&gt;Como aprender algo novo?&lt;/h3&gt;
+&lt;p&gt;No final de 2008 eu resolvi que era hora de aprender uma nova linguagem de
+programação e não mais ficar tão preso ao mundo do PHP (minha principal
+linguagem na época, e ainda agora em 2014). Eu tinha algumas opções
+interessantes para escolher, mas Python foi a linguagem que mais chamou minha
+atenção por sua sintaxe simples e poderosa e por saber que a linguagem poderia
+ser usada para desenvolver de tudo, não apenas para a web (coisa que o PHP
+também pode fazer, mas, convenhamos, PHP nasceu para web e seu forte é web).&lt;/p&gt;
+&lt;p&gt;Pois bem, linguagem escolhida, eu precisava agora de motivação para estudar.
+Hoje em dia é mais fácil achar material bom e esses cursos online estilo os do
+&lt;a href="https://www.coursera.org/"&gt;Coursera&lt;/a&gt; e do
+&lt;a href="http://www.codecademy.com/en/tracks/python"&gt;Codecademy&lt;/a&gt;, mas eu não tinha opções
+motivadoras como essas, então resolvi usar meu blog para publicar aulas semanais
+de Python. Nisso acabei me comprometendo a estudar mais e melhor para oferecer
+um conteúdo decente para meus leitores.&lt;/p&gt;
+&lt;p&gt;Hoje a coleção com todas as aulas publicadas pode ser encontrada
+&lt;a href="http://blog.evaldojunior.com.br/aulas-de-python.html"&gt;no meu blog&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;O processo todo foi muito bacana, pois eu procurava materiais e estudava durante
+a semana e aos sábados e domingos eu produzia uma nova aula com novos desafios
+e exercícios para quem estava acompanhando. Algo muito legal (ou nem tanto) que
+eu fiz na época foi pedir para o pessoal me mandar os scripts que faziam, assim
+eu podia corrigir e ajudar ainda mais. Talvez essa ideia não tenha sido tão boa
+pois, não tenho os números agora, mas na época das publicações eu chagava a
+receber mais de 100 e-mails por semana com scripts de pessoas de todas as
+partes do Brasil (Alguns de fora). Imagina o trabalhão que dava para conseguir
+acompanhar a todos!&lt;/p&gt;
+&lt;p&gt;O curso durou 19 aulas e de vez em quando eu tenho ideias para novos conteúdos
+e para a atualização dos conteúdos existentes lá. Eu já cheguei a revisar o
+conteúdo algumas vezes no decorrer dos últimos anos, mas como Python se mantém
+bastante estável, não são necessárias muitas mudanças. Qualquer dia desses ainda
+escrevo a aula 20 introduzindo programação para web, mas isso não é uma promessa
+;)&lt;/p&gt;
+&lt;h3&gt;O que eu ganhei com Python?&lt;/h3&gt;
+&lt;p&gt;Infelizmente Python não se tornou minha linguagem principal devido aos rumos que
+minha carreira tomou, mas a linguagem faz parte da minha caixa de ferramentas
+para diversos momentos. Tenho alguns projetos no GitHub que usam Python e mais
+recentemente tenho preferido Flask para meus projetos web e freelas.&lt;/p&gt;
+&lt;p&gt;Outra coisa legal é que vez ou outra surgem oportunidades para resolver
+problemas específicos usando Python no meu trabalho atual e eu até consegui
+permissão para desacoplar trechos não ligados ao negócio e publicar no
+&lt;a href="https://github.com/dafiti/ImageProcessing"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Uma outra coisa engraçada é que meu
+&lt;a href="http://blog.evaldojunior.com.br/livros/php/mysql/2014/02/13/escrevi-um-livro-php-e-mysql.html"&gt;primeiro livro&lt;/a&gt;
+, publicado pela &lt;a href="http://www.casadocodigo.com.br/"&gt;Casa do Código&lt;/a&gt;, que é de
+PHP e MySQL, surgiu da indicação para escrever um livro de Python.&lt;/p&gt;
+&lt;h3&gt;Outros ganhos sensacionais&lt;/h3&gt;
+&lt;p&gt;Há pouco mais de um ano recebi um e-mail de uma pessoa dizendo que fez o meu
+curso de Python em 2008/2009 e ele abriu as portas da linguagem para ele. Hoje
+ele trabalha com Python e está bem contente com a área e no e-mail ele disse
+que tudo foi possível graças ao ponta pé inicial que o curso deu para ele.
+Agora me diz o preço que isso tem. Não tem, né?&lt;/p&gt;
+&lt;p&gt;Há cerca de 2 anos em um evento de TI alguém também me reconheceu das aulas e
+disse que também estava trabalhando com Python e que as aulas deram início a
+tudo! Lágrimas rolaram.&lt;/p&gt;
+&lt;h3&gt;Agradecimento&lt;/h3&gt;
+&lt;p&gt;Eu gostaria de deixar aqui um agradecimento ao &lt;a href="https://twitter.com/erichideki"&gt;Eric Hideki&lt;/a&gt;
+por ter me convidado para escrever este post aqui no PythonClub. Eu achei o
+projeto sensacional e já gostei ainda mais do conteúdo que o pessoal está
+criando aqui. É isso aí, go go go comunidade Python!&lt;/p&gt;</summary><category term="python"></category><category term="blog"></category><category term="tutorial"></category><category term="aulas"></category></entry><entry><title>Selenium - O que você deveria saber - Parte 3</title><link href="http://pythonclub.com.br/selenium-parte-3.html" rel="alternate"></link><updated>2014-06-02T10:49:00-03:00</updated><author><name>Lucas Magnum</name></author><id>tag:pythonclub.com.br,2014-06-02:selenium-parte-3.html</id><summary type="html">&lt;p&gt;Esse é o terceiro post da série sobre Selenium, hoje vamos aprender a executar código javascript e usar diferentes navegadores.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Veja a &lt;a class="reference external" href="http://pythonclub.com.br/selenium-parte-1.html"&gt;primeira parte&lt;/a&gt;.&lt;/li&gt;
