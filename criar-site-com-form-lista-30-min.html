@@ -108,13 +108,13 @@ Atributos: nome, cpf, idade, email, telefone, criado_em</blockquote>
 <div class="highlight"><pre><span class="nv">$ </span><span class="nb">source </span>bin/activate
 </pre></div>
 <p>Instalando as bibliotecas do Requirements.</p>
-<div class="highlight"><pre><span class="nv">$ </span>wget https://raw.githubusercontent.com/rg3915/wttd/master/requirements.txt
-<span class="nv">$ </span>pip install -r requirements.txt
-</pre></div>
-<p>Se não quiser instalar tudo, <em>instale apenas o</em> <strong>Django</strong> <em>e o</em> <strong>Unipath</strong>:</p>
-<p>O <a class="reference external" href="http://sluggo.scrapping.cc/python/unipath/">Unipath</a> é um pacote que trabalha com caminhos relativos de forma orientada à objetos. Segundo <a class="reference external" href="https://github.com/henriquebastos/slides-django-sem-trabalho/blob/master/settings.rst#n%C3%A3o-use-diret%C3%B3rios-hardcoded">Henrique Bastos</a>, ele evita diretórios <em>hardcoded</em>, ou seja, não usa caminho absoluto, e sim caminhos relativos. Em <em>settings.py</em> veremos o uso deste pacote. Mas como ele mesmo diz, o uso de <em>os.path</em> não é problema, mas o <em>Unipath</em> ajuda bastante.</p>
 <div class="highlight"><pre><span class="nv">$ </span>pip install django
 <span class="nv">$ </span>pip install unipath
+</pre></div>
+<p>O <a class="reference external" href="http://sluggo.scrapping.cc/python/unipath/">Unipath</a> é um pacote que trabalha com caminhos relativos de forma orientada à objetos. Segundo <a class="reference external" href="https://github.com/henriquebastos/slides-django-sem-trabalho/blob/master/settings.rst#n%C3%A3o-use-diret%C3%B3rios-hardcoded">Henrique Bastos</a>, ele evita diretórios <em>hardcoded</em>, ou seja, não usa caminho absoluto, e sim caminhos relativos. Em <em>settings.py</em> veremos o uso deste pacote. Mas como ele mesmo diz, o uso de <em>os.path</em> não é problema, mas o <em>Unipath</em> ajuda bastante.</p>
+<p>Obs: Se quiser você pode instalar uma lista de pacotes de um requirements.</p>
+<div class="highlight"><pre><span class="nv">$ </span>wget https://raw.githubusercontent.com/rg3915/wttd/master/requirements.txt
+<span class="nv">$ </span>pip install -r requirements.txt
 </pre></div>
 <p>Criando o projeto <strong>crm</strong>.</p>
 <div class="highlight"><pre><span class="nv">$ </span>django-admin.py startproject crm
