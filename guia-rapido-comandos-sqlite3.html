@@ -164,6 +164,17 @@
 <span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">UPDATE</span> <span class="n">clientes</span> <span class="k">SET</span> <span class="n">bloqueado</span><span class="o">=</span><span class="mi">1</span> <span class="k">WHERE</span> <span class="n">UF</span><span class="o">=</span><span class="s1">&#39;RJ&#39;</span><span class="p">;</span> <span class="c1">-- Atualiza para Verdadeiro todos os registros com UF=&#39;RJ&#39;.</span>
 </pre></div>
 <p>Faça um SELECT novamente para ver o resultado.</p>
+<ol class="arabic simple" start="14">
+<li>Deletando registros.</li>
+</ol>
+<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">DELETE</span> <span class="k">FROM</span> <span class="n">clientes</span> <span class="k">WHERE</span> <span class="n">id</span><span class="o">=</span><span class="mi">4</span><span class="p">;</span>
+</pre></div>
+<p><strong>Cuidado</strong>: se você não usar o <tt class="docutils literal">WHERE</tt> e escolher um <tt class="docutils literal">id</tt> você pode deletar todos os registros da tabela.</p>
+<ol class="arabic simple" start="15">
+<li>Você pode exibir os dados na forma de coluna.</li>
+</ol>
+<div class="highlight"><pre>sqlite&gt; .mode column
+</pre></div>
 <p>Mais informações em <a class="reference external" href="http://www.sqlite.org/cli.html">SQLite.org</a>.</p>
 <p>Futuramente pretendo postar algo sobre SQLite3 e Python...</p>
 
