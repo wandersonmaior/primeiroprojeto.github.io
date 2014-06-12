@@ -104,10 +104,7 @@
 &lt;ol class="arabic simple" start="16"&gt;
 &lt;li&gt;Backup&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sqlite3 Clientes.db
-sqlite&amp;gt; .output clientes.sql
-sqlite&amp;gt; .dump clientes
-sqlite&amp;gt; .quit
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sqlite3 Clientes.db .dump &amp;gt; clientes.sql
 &lt;span class="nv"&gt;$ &lt;/span&gt;cat clientes.sql
 PRAGMA &lt;span class="nv"&gt;foreign_keys&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;OFF;
 BEGIN TRANSACTION;
@@ -125,6 +122,12 @@ INSERT INTO &lt;span class="s2"&gt;&amp;quot;clientes&amp;quot;&lt;/span&gt; VAL
 INSERT INTO &lt;span class="s2"&gt;&amp;quot;clientes&amp;quot;&lt;/span&gt; VALUES&lt;span class="o"&gt;(&lt;/span&gt;4,&lt;span class="s1"&gt;&amp;#39;Zacarias&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;33333333333&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;zacarias@email.com&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;1199999999&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;RJ&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;;
 COMMIT;
 &lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Pronto, se você corromper seu banco de dados, você pode recuperá-lo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;mv Clientes.db Clientes.db.old
+&lt;span class="nv"&gt;$ &lt;/span&gt;sqlite3 Clientes_recuperado.db &amp;lt; clientes.sql
+&lt;span class="nv"&gt;$ &lt;/span&gt;sqlite3 Clientes_recuperado.db &lt;span class="s1"&gt;&amp;#39;SELECT * FROM clientes;&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Faça um SELECT novamente para ver o resultado do novo banco de dados.&lt;/p&gt;
 &lt;p&gt;Mais informações em &lt;a class="reference external" href="http://www.sqlite.org/cli.html"&gt;SQLite.org&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Futuramente pretendo postar algo sobre SQLite3 e Python...&lt;/p&gt;
 </summary><category term="sqlite"></category></entry></feed>

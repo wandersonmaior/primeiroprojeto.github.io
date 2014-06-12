@@ -178,10 +178,7 @@
 <ol class="arabic simple" start="16">
 <li>Backup</li>
 </ol>
-<div class="highlight"><pre><span class="nv">$ </span>sqlite3 Clientes.db
-sqlite&gt; .output clientes.sql
-sqlite&gt; .dump clientes
-sqlite&gt; .quit
+<div class="highlight"><pre><span class="nv">$ </span>sqlite3 Clientes.db .dump &gt; clientes.sql
 <span class="nv">$ </span>cat clientes.sql
 PRAGMA <span class="nv">foreign_keys</span><span class="o">=</span>OFF;
 BEGIN TRANSACTION;
@@ -199,6 +196,12 @@ INSERT INTO <span class="s2">&quot;clientes&quot;</span> VALUES<span class="o">(
 INSERT INTO <span class="s2">&quot;clientes&quot;</span> VALUES<span class="o">(</span>4,<span class="s1">&#39;Zacarias&#39;</span>,<span class="s1">&#39;33333333333&#39;</span>,<span class="s1">&#39;zacarias@email.com&#39;</span>,<span class="s1">&#39;1199999999&#39;</span>,<span class="s1">&#39;RJ&#39;</span><span class="o">)</span>;
 COMMIT;
 </pre></div>
+<p>Pronto, se você corromper seu banco de dados, você pode recuperá-lo:</p>
+<div class="highlight"><pre><span class="nv">$ </span>mv Clientes.db Clientes.db.old
+<span class="nv">$ </span>sqlite3 Clientes_recuperado.db &lt; clientes.sql
+<span class="nv">$ </span>sqlite3 Clientes_recuperado.db <span class="s1">&#39;SELECT * FROM clientes;&#39;</span>
+</pre></div>
+<p>Faça um SELECT novamente para ver o resultado do novo banco de dados.</p>
 <p>Mais informações em <a class="reference external" href="http://www.sqlite.org/cli.html">SQLite.org</a>.</p>
 <p>Futuramente pretendo postar algo sobre SQLite3 e Python...</p>
 
