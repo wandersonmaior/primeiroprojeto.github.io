@@ -175,6 +175,30 @@
 </ol>
 <div class="highlight"><pre>sqlite&gt; .mode column
 </pre></div>
+<ol class="arabic simple" start="16">
+<li>Backup</li>
+</ol>
+<div class="highlight"><pre><span class="nv">$ </span>sqlite3 Clientes.db
+sqlite&gt; .output clientes.sql
+sqlite&gt; .dump clientes
+sqlite&gt; .quit
+<span class="nv">$ </span>cat clientes.sql
+PRAGMA <span class="nv">foreign_keys</span><span class="o">=</span>OFF;
+BEGIN TRANSACTION;
+CREATE TABLE clientes<span class="o">(</span>
+id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+Nome VARCHAR<span class="o">(</span>100<span class="o">)</span> NOT NULL,
+CPF VARCHAR<span class="o">(</span>11<span class="o">)</span> NOT NULL,
+Email VARCHAR<span class="o">(</span>20<span class="o">)</span> NOT NULL,
+Fone VARCHAR<span class="o">(</span>20<span class="o">)</span>,
+UF VARCHAR<span class="o">(</span>2<span class="o">)</span> NOT NULL
+<span class="o">)</span>;
+INSERT INTO <span class="s2">&quot;clientes&quot;</span> VALUES<span class="o">(</span>1,<span class="s1">&#39;Regis&#39;</span>,<span class="s1">&#39;00000000000&#39;</span>,<span class="s1">&#39;rg@email.com&#39;</span>,<span class="s1">&#39;1100000000&#39;</span>,<span class="s1">&#39;SP&#39;</span><span class="o">)</span>;
+INSERT INTO <span class="s2">&quot;clientes&quot;</span> VALUES<span class="o">(</span>2,<span class="s1">&#39;Abigail&#39;</span>,<span class="s1">&#39;11111111111&#39;</span>,<span class="s1">&#39;abigail@email.com&#39;</span>,<span class="s1">&#39;1112345678&#39;</span>,<span class="s1">&#39;RJ&#39;</span><span class="o">)</span>;
+INSERT INTO <span class="s2">&quot;clientes&quot;</span> VALUES<span class="o">(</span>3,<span class="s1">&#39;Benedito&#39;</span>,<span class="s1">&#39;22222222222&#39;</span>,<span class="s1">&#39;benedito@email.com&#39;</span>,<span class="s1">&#39;1187654321&#39;</span>,<span class="s1">&#39;SP&#39;</span><span class="o">)</span>;
+INSERT INTO <span class="s2">&quot;clientes&quot;</span> VALUES<span class="o">(</span>4,<span class="s1">&#39;Zacarias&#39;</span>,<span class="s1">&#39;33333333333&#39;</span>,<span class="s1">&#39;zacarias@email.com&#39;</span>,<span class="s1">&#39;1199999999&#39;</span>,<span class="s1">&#39;RJ&#39;</span><span class="o">)</span>;
+COMMIT;
+</pre></div>
 <p>Mais informações em <a class="reference external" href="http://www.sqlite.org/cli.html">SQLite.org</a>.</p>
 <p>Futuramente pretendo postar algo sobre SQLite3 e Python...</p>
 

@@ -101,6 +101,30 @@
 &lt;/ol&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;sqlite&amp;gt; .mode column
 &lt;/pre&gt;&lt;/div&gt;
+&lt;ol class="arabic simple" start="16"&gt;
+&lt;li&gt;Backup&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sqlite3 Clientes.db
+sqlite&amp;gt; .output clientes.sql
+sqlite&amp;gt; .dump clientes
+sqlite&amp;gt; .quit
+&lt;span class="nv"&gt;$ &lt;/span&gt;cat clientes.sql
+PRAGMA &lt;span class="nv"&gt;foreign_keys&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;OFF;
+BEGIN TRANSACTION;
+CREATE TABLE clientes&lt;span class="o"&gt;(&lt;/span&gt;
+id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+Nome VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;100&lt;span class="o"&gt;)&lt;/span&gt; NOT NULL,
+CPF VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;11&lt;span class="o"&gt;)&lt;/span&gt; NOT NULL,
+Email VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;20&lt;span class="o"&gt;)&lt;/span&gt; NOT NULL,
+Fone VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;20&lt;span class="o"&gt;)&lt;/span&gt;,
+UF VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;2&lt;span class="o"&gt;)&lt;/span&gt; NOT NULL
+&lt;span class="o"&gt;)&lt;/span&gt;;
+INSERT INTO &lt;span class="s2"&gt;&amp;quot;clientes&amp;quot;&lt;/span&gt; VALUES&lt;span class="o"&gt;(&lt;/span&gt;1,&lt;span class="s1"&gt;&amp;#39;Regis&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;00000000000&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;rg@email.com&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;1100000000&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;;
+INSERT INTO &lt;span class="s2"&gt;&amp;quot;clientes&amp;quot;&lt;/span&gt; VALUES&lt;span class="o"&gt;(&lt;/span&gt;2,&lt;span class="s1"&gt;&amp;#39;Abigail&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;11111111111&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;abigail@email.com&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;1112345678&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;RJ&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;;
+INSERT INTO &lt;span class="s2"&gt;&amp;quot;clientes&amp;quot;&lt;/span&gt; VALUES&lt;span class="o"&gt;(&lt;/span&gt;3,&lt;span class="s1"&gt;&amp;#39;Benedito&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;22222222222&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;benedito@email.com&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;1187654321&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;;
+INSERT INTO &lt;span class="s2"&gt;&amp;quot;clientes&amp;quot;&lt;/span&gt; VALUES&lt;span class="o"&gt;(&lt;/span&gt;4,&lt;span class="s1"&gt;&amp;#39;Zacarias&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;33333333333&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;zacarias@email.com&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;1199999999&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;RJ&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;;
+COMMIT;
+&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Mais informações em &lt;a class="reference external" href="http://www.sqlite.org/cli.html"&gt;SQLite.org&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Futuramente pretendo postar algo sobre SQLite3 e Python...&lt;/p&gt;
 </summary><category term="sqlite"></category></entry></feed>
