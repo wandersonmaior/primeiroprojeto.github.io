@@ -10,9 +10,10 @@ rede precursora (pode-se dizer mãe) da Internet, sendo que ele é anterior ao T
 &lt;p&gt;Posteriormente o protocolo FTP foi modificado para trabalhar sobre o TCP.&lt;/p&gt;
 &lt;p&gt;O protocolo FTP está em constante evolução, sendo que a versão mais recente para IPv4 é o &lt;a class="reference external" href="http://tools.ietf.org/html/rfc0959"&gt;RFC959&lt;/a&gt;, com melhorias
 de segurança adicionada pelo &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2228"&gt;RFC2228&lt;/a&gt; e pela adição na &lt;a class="reference external" href="http://tools.ietf.org/html/rfc2428"&gt;RFC2428&lt;/a&gt; de extensões para suporte a IPv6.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;FTP&lt;/strong&gt; tambem é o nome que comumente referencia software o &amp;quot;servidor ftp&amp;quot; e o software &amp;quot;cliente ftp&amp;quot;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="como-funciona"&gt;
-&lt;h3&gt;Como funciona?&lt;/h3&gt;
+&lt;h3&gt;Como funciona ?&lt;/h3&gt;
 &lt;p&gt;O protocolo FTP possui dois modos de funcionamento. O &lt;strong&gt;modo Ativo&lt;/strong&gt; e o &lt;strong&gt;modo Passivo&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Em ambos os casos, o cliente cria uma &lt;em&gt;conexão de controle&lt;/em&gt; TCP em uma porta não privilegiada aleatória &lt;em&gt;N&lt;/em&gt; para a porta de comando do servidor FTP, ou seja, a porta 21 do servidor FTP. Essa conexão é chamada de &lt;strong&gt;conexão de controle&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;No &lt;strong&gt;modo Ativo&lt;/strong&gt;, o cliente começa a escutar &lt;em&gt;conexões de dados&lt;/em&gt; recebidas na porta &lt;em&gt;N+1&lt;/em&gt; a partir do servidor (o cliente envia o comando &lt;em&gt;FTP PORT N+1&lt;/em&gt; para informar o servidor no qual a porta está ouvindo).&lt;/p&gt;
@@ -20,9 +21,27 @@ de segurança adicionada pelo &lt;a class="reference external" href="http://tool
 &lt;p&gt;Neste modo, o cliente usa a &lt;em&gt;conexão de controle&lt;/em&gt; para enviar o comando &lt;em&gt;PASV&lt;/em&gt;  para o servidor, que em seguida responde ao cliente enviando o endereço IP e número da porta do servidor, o qual o cliente usa para abrir uma &lt;strong&gt;conexão de dados&lt;/strong&gt; de uma porta arbitraria para o ip e porta
 enviado pelo servidor.&lt;/p&gt;
 &lt;/div&gt;
+&lt;div class="section" id="comandos-ftp"&gt;
+&lt;h3&gt;Comandos FTP&lt;/h3&gt;
+&lt;p&gt;O &lt;a class="reference external" href="http://tools.ietf.org/html/rfc0959"&gt;RFC959&lt;/a&gt; bem como as posteriores modificações, adicionam alguns comandos que devem ser implementados pelos servidores e clientes FTP.&lt;/p&gt;
+&lt;p&gt;A lista com alguns desse comandos pode ser vista no link: &lt;a class="reference external" href="http://en.wikipedia.org/wiki/List_of_FTP_commands"&gt;http://en.wikipedia.org/wiki/List_of_FTP_commands&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="servidor-ftp"&gt;
+&lt;h3&gt;Servidor FTP&lt;/h3&gt;
+&lt;p&gt;Existem vários softwares que implementam um servidor FTP.&lt;/p&gt;
+&lt;p&gt;Os mais conhecidos e utilizados são: vsftpd (Very Secure FTP Daemon) e ProFTPd para Linux, e o FileZilla Server para Windows.&lt;/p&gt;
+&lt;p&gt;Uma lista mais completa pode ser encontrada no Wikipedia, neste link: &lt;a class="reference external" href="http://en.wikipedia.org/wiki/List_of_FTP_server_software"&gt;http://en.wikipedia.org/wiki/List_of_FTP_server_software&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="cliente-ftp"&gt;
+&lt;h3&gt;Cliente FTP&lt;/h3&gt;
+&lt;p&gt;Existem varios clientes para o protocolo FTP.&lt;/p&gt;
+&lt;p&gt;O Windows Explorer, gerenciador de arquivos padrão em ambiente Windows, possui suporte complete ao protocolo FTP.&lt;/p&gt;
+&lt;p&gt;O navegador web Mozilla Firefox, bem como os navegadores Google Chrome, Internet Explorer, possem capacidade de acessar servidores ftp, mas somente em modo de leitura.&lt;/p&gt;
+&lt;p&gt;O complemento FireFTP para o navegador web Mozilla Firefox, adiciona ao Firefox suporte completo ao protocolo FTP.&lt;/p&gt;
+&lt;/div&gt;
 &lt;div class="section" id="pyftpdlib-o-que-e"&gt;
 &lt;h3&gt;pyftpdlib - O que é?&lt;/h3&gt;
-&lt;p&gt;&lt;a class="reference external" href="https://github.com/giampaolo/pyftpdlib"&gt;pyftpdlib&lt;/a&gt; é uma biblioteca Python que implementa um servidor FTP, fornecendo uma interface de alto nivel para facilmente escrever servidores FTP muito eficientes, escaláveis e assíncronos.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://github.com/giampaolo/pyftpdlib"&gt;pyftpdlib&lt;/a&gt; é uma biblioteca Python que implementa um Servidor FTP, fornecendo uma interface de alto nivel para facilmente escrever servidores FTP muito eficientes, escaláveis e assíncronos.&lt;/p&gt;
 &lt;p&gt;É a implementação do &lt;a class="reference external" href="http://tools.ietf.org/html/rfc0959"&gt;RFC959&lt;/a&gt; servidor de FTP mais completo disponível para a linguagem de programação Python e é usado em projetos como o Google Chromium e Bazaar e incluída por padrão nos repositórios de pacotes do Debian, Ubuntu, Fedora e FreeBSD.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="recursos"&gt;

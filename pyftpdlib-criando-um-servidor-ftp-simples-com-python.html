@@ -111,9 +111,10 @@ rede precursora (pode-se dizer mãe) da Internet, sendo que ele é anterior ao T
 <p>Posteriormente o protocolo FTP foi modificado para trabalhar sobre o TCP.</p>
 <p>O protocolo FTP está em constante evolução, sendo que a versão mais recente para IPv4 é o <a class="reference external" href="http://tools.ietf.org/html/rfc0959">RFC959</a>, com melhorias
 de segurança adicionada pelo <a class="reference external" href="http://tools.ietf.org/html/rfc2228">RFC2228</a> e pela adição na <a class="reference external" href="http://tools.ietf.org/html/rfc2428">RFC2428</a> de extensões para suporte a IPv6.</p>
+<p><strong>FTP</strong> tambem é o nome que comumente referencia software o &quot;servidor ftp&quot; e o software &quot;cliente ftp&quot;.</p>
 </div>
 <div class="section" id="como-funciona">
-<h3>Como funciona?</h3>
+<h3>Como funciona ?</h3>
 <p>O protocolo FTP possui dois modos de funcionamento. O <strong>modo Ativo</strong> e o <strong>modo Passivo</strong>.</p>
 <p>Em ambos os casos, o cliente cria uma <em>conexão de controle</em> TCP em uma porta não privilegiada aleatória <em>N</em> para a porta de comando do servidor FTP, ou seja, a porta 21 do servidor FTP. Essa conexão é chamada de <strong>conexão de controle</strong>.</p>
 <p>No <strong>modo Ativo</strong>, o cliente começa a escutar <em>conexões de dados</em> recebidas na porta <em>N+1</em> a partir do servidor (o cliente envia o comando <em>FTP PORT N+1</em> para informar o servidor no qual a porta está ouvindo).</p>
@@ -121,9 +122,27 @@ de segurança adicionada pelo <a class="reference external" href="http://tools.i
 <p>Neste modo, o cliente usa a <em>conexão de controle</em> para enviar o comando <em>PASV</em>  para o servidor, que em seguida responde ao cliente enviando o endereço IP e número da porta do servidor, o qual o cliente usa para abrir uma <strong>conexão de dados</strong> de uma porta arbitraria para o ip e porta
 enviado pelo servidor.</p>
 </div>
+<div class="section" id="comandos-ftp">
+<h3>Comandos FTP</h3>
+<p>O <a class="reference external" href="http://tools.ietf.org/html/rfc0959">RFC959</a> bem como as posteriores modificações, adicionam alguns comandos que devem ser implementados pelos servidores e clientes FTP.</p>
+<p>A lista com alguns desse comandos pode ser vista no link: <a class="reference external" href="http://en.wikipedia.org/wiki/List_of_FTP_commands">http://en.wikipedia.org/wiki/List_of_FTP_commands</a></p>
+</div>
+<div class="section" id="servidor-ftp">
+<h3>Servidor FTP</h3>
+<p>Existem vários softwares que implementam um servidor FTP.</p>
+<p>Os mais conhecidos e utilizados são: vsftpd (Very Secure FTP Daemon) e ProFTPd para Linux, e o FileZilla Server para Windows.</p>
+<p>Uma lista mais completa pode ser encontrada no Wikipedia, neste link: <a class="reference external" href="http://en.wikipedia.org/wiki/List_of_FTP_server_software">http://en.wikipedia.org/wiki/List_of_FTP_server_software</a></p>
+</div>
+<div class="section" id="cliente-ftp">
+<h3>Cliente FTP</h3>
+<p>Existem varios clientes para o protocolo FTP.</p>
+<p>O Windows Explorer, gerenciador de arquivos padrão em ambiente Windows, possui suporte complete ao protocolo FTP.</p>
+<p>O navegador web Mozilla Firefox, bem como os navegadores Google Chrome, Internet Explorer, possem capacidade de acessar servidores ftp, mas somente em modo de leitura.</p>
+<p>O complemento FireFTP para o navegador web Mozilla Firefox, adiciona ao Firefox suporte completo ao protocolo FTP.</p>
+</div>
 <div class="section" id="pyftpdlib-o-que-e">
 <h3>pyftpdlib - O que é?</h3>
-<p><a class="reference external" href="https://github.com/giampaolo/pyftpdlib">pyftpdlib</a> é uma biblioteca Python que implementa um servidor FTP, fornecendo uma interface de alto nivel para facilmente escrever servidores FTP muito eficientes, escaláveis e assíncronos.</p>
+<p><a class="reference external" href="https://github.com/giampaolo/pyftpdlib">pyftpdlib</a> é uma biblioteca Python que implementa um Servidor FTP, fornecendo uma interface de alto nivel para facilmente escrever servidores FTP muito eficientes, escaláveis e assíncronos.</p>
 <p>É a implementação do <a class="reference external" href="http://tools.ietf.org/html/rfc0959">RFC959</a> servidor de FTP mais completo disponível para a linguagem de programação Python e é usado em projetos como o Google Chromium e Bazaar e incluída por padrão nos repositórios de pacotes do Debian, Ubuntu, Fedora e FreeBSD.</p>
 </div>
 <div class="section" id="recursos">
