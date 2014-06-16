@@ -76,28 +76,30 @@
                 </header>
             </section>
             <p>Eu não sou a melhor pessoa do mundo para explicar este assunto, mas eu escrevi este post para introduzir um tópico sobre <em>manipulação de banco de dados em SQLite3 com Python</em>, porém mais informações sobre classes e métodos podem ser encontradas nos links abaixo. Veja os exemplos em <a class="reference external" href="https://github.com/rg3915/pythonDesktopApp/tree/master/pythonBasico">https://github.com/rg3915/pythonDesktopApp</a>.</p>
+<p>PS: <em>Considere a sintaxe para Python 3</em>.</p>
 <p>Segundo a documentação do <a class="reference external" href="https://docs.python.org/2/tutorial/classes.html#class-objects">Python</a> e o video <a class="reference external" href="https://www.youtube.com/watch?v=Zr_FiKbgRbU">Python para Zumbis</a>, uma <strong>classe</strong> associa dados (<strong>atributos</strong>) e operações (<strong>métodos</strong>) numa só estrutura. Um <strong>objeto</strong> é uma variável cujo tipo é uma classe, ou seja, um <strong>objeto é uma instância</strong> de uma classe.</p>
 <p>Na sua sintaxe mais elementar definimos uma classe conforme abaixo:</p>
 <div class="highlight"><pre><span class="k">class</span> <span class="nc">NomeDaClasse</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
         <span class="k">pass</span>
 </pre></div>
 <p>E um método (função) como:</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">Metodo</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">metodo</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
         <span class="k">pass</span>
 </pre></div>
 <p>onde <tt class="docutils literal">args</tt> são argumentos opcionais (parâmetros de entrada).
 A função <tt class="docutils literal">Metodo</tt> pode retornar um valor de saída:</p>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">Metodo</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">metodo</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
         <span class="k">return</span> <span class="k">pass</span>
 </pre></div>
 <p>Juntando os dois temos:</p>
 <div class="highlight"><pre><span class="k">class</span> <span class="nc">NomeDaClasse</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
         <span class="n">atributo1</span> <span class="o">=</span> <span class="bp">None</span>
 
-        <span class="k">def</span> <span class="nf">Metodo</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">metodo</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
                 <span class="k">pass</span>
 </pre></div>
 <p><tt class="docutils literal">pass</tt> significa que você pode escrever o seu código no lugar. E <tt class="docutils literal">atributo1</tt> é um atributo com valor inicial <tt class="docutils literal">None</tt> (nada). Poderia ser <tt class="docutils literal">atributo1 = 0</tt>, por exemplo.</p>
+<p>Importante: Note que para nome de <strong>classes</strong> usamos <em>PalavrasComeçandoPorMaiúscula</em> e para nome de <strong>métodos (funções)</strong> usamos <em>minúsculas_separadas_por_underscore</em>. Esta é uma convenção adotada pelos <em>Pythonistas</em> segundo o <a class="reference external" href="http://www.python.org.br/wiki/GuiaDeEstilo">Guia de Estilo</a> <strong>PEP 8</strong> - <a class="reference external" href="http://legacy.python.org/dev/peps/pep-0008/">Style Guide for Python Code</a> escrito por <a class="reference external" href="http://www.python.org.br/wiki/GuidoVanRossum">Guido Van Rossum</a>.</p>
 <div class="section" id="exemplo-1-calculadora-simples">
 <h2>Exemplo 1 - Calculadora simples</h2>
 <p>Existem pelo menos duas formas diferentes de trabalhar com os parâmetros de entrada. Neste exemplo, definiremos o <strong>parâmetro apenas uma vez</strong> com um método especial do Python chamado <tt class="docutils literal">__init__</tt>. Segundo <a class="reference external" href="http://homepages.dcc.ufmg.br/~joaoreis/Site%20de%20tutoriais/aprendendopython/poo.html#init">João Reis</a>, este método é chamado quando um objeto de uma classe é instânciado. Este método é útil para fazer qualquer inicialização que você queira com seu objeto.</p>
@@ -129,20 +131,20 @@ A função <tt class="docutils literal">Metodo</tt> pode retornar um valor de sa
 <p>para não confundir, mas usualmente usamos o mesmo nome tanto no parâmetro quanto no novo campo.</p>
 <p>Como dito antes, definimos os valores iniciais apenas uma vez e depois apenas usamos os métodos para calcular os valores.</p>
 <p>Podemos rodar o Python no modo <a class="reference external" href="https://docs.python.org/2/tutorial/interpreter.html#interactive-mode">modo interativo</a> pelo terminal e importar a classe (veja este <a class="reference external" href="https://www.youtube.com/watch?v=M1BAlDufqao">video</a>).</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">python</span>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">python3</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">calculadora</span> <span class="kn">import</span> <span class="n">Calculadora</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Calculadora</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="s">&#39;Soma:&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">soma</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="s">&#39;Subtração:&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">subtrai</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="s">&#39;Multiplicação:&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">multiplica</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="s">&#39;Divisão:&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">divide</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">&#39;Soma:&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">soma</span><span class="p">())</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">&#39;Subtração:&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">subtrai</span><span class="p">())</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">&#39;Multiplicação:&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">multiplica</span><span class="p">())</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">&#39;Divisão:&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">divide</span><span class="p">())</span>
 </pre></div>
 <p><tt class="docutils literal">c = Calculadora(128,2)</tt> é uma instância da classe com dois valores iniciais.</p>
 <p>O resultado é:</p>
 <div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">Soma</span><span class="p">:</span> <span class="mi">130</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">Subtra</span><span class="err">çã</span><span class="n">o</span><span class="p">:</span> <span class="mi">126</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">Multiplica</span><span class="err">çã</span><span class="n">o</span><span class="p">:</span> <span class="mi">256</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">Divis</span><span class="err">ã</span><span class="n">o</span><span class="p">:</span> <span class="mi">64</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">Divis</span><span class="err">ã</span><span class="n">o</span><span class="p">:</span> <span class="mf">64.0</span>
 </pre></div>
 <p>Podemos redefinir os valores iniciais da seguinte forma:</p>
 <div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="n">c</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="mi">12</span>
@@ -152,6 +154,8 @@ A função <tt class="docutils literal">Metodo</tt> pode retornar um valor de sa
 <p>Resultado:</p>
 <div class="highlight"><pre><span class="o">&gt;&gt;&gt;</span> <span class="mi">54</span>
 </pre></div>
+<p>Importante: apesar de não fazer parte do escopo deste artigo, mas vejam este video <a class="reference external" href="https://www.youtube.com/watch?v=_HZOAWOrXrQ">Operadores aritméticos e divisão no Python 2 e Python 3</a>, explicando sobre a diferença no resultado da divisão nas duas versões do Python.</p>
+<p>Vejam também este artigo sobre ponto flutuante: <a class="reference external" href="https://docs.python.org/3.1/tutorial/floatingpoint.html">Floating Point Arithmetic Issues and Limitations</a>.</p>
 </div>
 <div class="section" id="exemplo-2-calculadora">
 <h2>Exemplo 2 - Calculadora</h2>
@@ -172,13 +176,13 @@ A função <tt class="docutils literal">Metodo</tt> pode retornar um valor de sa
         <span class="k">return</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span>
 </pre></div>
 <p>Usando o <strong>terminal no modo interativo</strong> façamos:</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">python</span>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">python3</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">calculadora2</span> <span class="kn">import</span> <span class="n">Calculadora</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Calculadora</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="s">&#39;Soma:&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">soma</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="s">&#39;Subtração:&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">subtrai</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="s">&#39;Multiplicação:&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">multiplica</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="s">&#39;Divisão:&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">&#39;Soma:&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">soma</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">&#39;Subtração:&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">subtrai</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">&#39;Multiplicação:&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">multiplica</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">&#39;Divisão:&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 </pre></div>
 <p>A vantagem de colocar os parâmetros em cada método, é que podemos calcular qualquer valor sem ter que instanciar uma nova classe para cada valor diferente.</p>
 </div>
@@ -217,16 +221,16 @@ A função <tt class="docutils literal">Metodo</tt> pode retornar um valor de sa
     <span class="n">u1</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
     <span class="n">u2</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="s">&#39;Fabio&#39;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
     <span class="n">u2</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-    <span class="k">print</span> <span class="n">User</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
 </pre></div>
 <p>Você pode suprimir o final do código (a partir do <tt class="docutils literal">if</tt>) e importar a classe no terminal no <a class="reference external" href="https://docs.python.org/2/tutorial/interpreter.html#interactive-mode">modo interativo</a> veja este <a class="reference external" href="https://www.youtube.com/watch?v=M1BAlDufqao">video</a>:</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="n">python</span>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">python3</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">user</span> <span class="kn">import</span> <span class="n">User</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">u1</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="s">&#39;Regis&#39;</span><span class="p">,</span> <span class="mi">35</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">u1</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">u2</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="s">&#39;Fabio&#39;</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">u2</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span> <span class="n">User</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
 </pre></div>
 <p>Agora os comentários:</p>
 <p>Definindo a classe</p>
@@ -273,12 +277,12 @@ A função <tt class="docutils literal">Metodo</tt> pode retornar um valor de sa
 <div class="highlight"><pre><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
         <span class="n">u1</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="s">&#39;Regis&#39;</span><span class="p">,</span> <span class="mi">35</span><span class="p">)</span>
         <span class="n">u2</span> <span class="o">=</span> <span class="n">User</span><span class="p">(</span><span class="s">&#39;Fabio&#39;</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
-        <span class="k">print</span> <span class="n">User</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
 </pre></div>
 <p>Note que nesse <tt class="docutils literal">print</tt> a lista está vazia.</p>
 <div class="highlight"><pre><span class="n">u1</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
 <span class="n">u2</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
-<span class="k">print</span> <span class="n">User</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
 </pre></div>
 <p>Após chamar o <tt class="docutils literal">save</tt> para as duas instâncias elas são guardadas e o método <tt class="docutils literal">User.all()</tt> retorna essa lista.</p>
 <p>Agradeço a colaboração de <a class="reference external" href="https://gist.github.com/fabiocerqueira/1b05352a26892dea6813">Fabio Cerqueira</a>.</p>
@@ -289,6 +293,8 @@ A função <tt class="docutils literal">Metodo</tt> pode retornar um valor de sa
 <p><a class="reference external" href="https://julien.danjou.info/blog/2013/guide-python-static-class-abstract-methods">The definitive guide on how to use static, class or abstract methods in Python</a></p>
 <p><a class="reference external" href="https://www.youtube.com/watch?v=Zr_FiKbgRbU">Python para Zumbis</a></p>
 <p><a class="reference external" href="http://homepages.dcc.ufmg.br/~joaoreis/Site%20de%20tutoriais/aprendendopython/poo.html#init">João Reis</a></p>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=_HZOAWOrXrQ">Operadores aritméticos e divisão no Python 2 e Python 3</a></p>
+<p><a class="reference external" href="https://docs.python.org/3.1/tutorial/floatingpoint.html">Floating Point Arithmetic Issues and Limitations</a></p>
 </div>
 
             <div class="sharing">
