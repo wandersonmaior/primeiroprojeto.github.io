@@ -1,5 +1,536 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/all.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-06-12T23:59:00-03:00</updated><entry><title>Introdução a Classes e Métodos em Python (básico)</title><link href="http://pythonclub.com.br/introducao-classes-metodos-python-basico.html" rel="alternate"></link><updated>2014-06-12T23:59:00-03:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2014-06-12:introducao-classes-metodos-python-basico.html</id><summary type="html">&lt;p&gt;Eu não sou a melhor pessoa do mundo para explicar este assunto, mas eu escrevi este post para introduzir um tópico sobre &lt;em&gt;manipulação de banco de dados em SQLite3 com Python&lt;/em&gt;, porém mais informações sobre classes e métodos podem ser encontradas nos links abaixo. Veja os exemplos em &lt;a class="reference external" href="https://github.com/rg3915/pythonDesktopApp/tree/master/pythonBasico"&gt;https://github.com/rg3915/pythonDesktopApp&lt;/a&gt;.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/all.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-06-16T23:59:00-03:00</updated><entry><title>Gerenciando banco de dados SQLite3 com Python - Parte 1</title><link href="http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html" rel="alternate"></link><updated>2014-06-16T23:59:00-03:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2014-06-16:gerenciando-banco-dados-sqlite3-python-parte1.html</id><summary type="html">&lt;p&gt;Eu separei este post em duas partes: a &lt;strong&gt;Parte 1&lt;/strong&gt; é bem elementar e objetiva, visando apresentar o básico sobre a realização do CRUD num banco de dados SQLite3 em Python usando o terminal.&lt;/p&gt;
+&lt;p&gt;A &lt;strong&gt;Parte 2&lt;/strong&gt;, num nível intermediário, usa classes e métodos mais elaborados para gerenciar o CRUD, e algumas coisinhas a mais.&lt;/p&gt;
+&lt;p&gt;Nota: Para entender o uso de classes e métodos leia o post &lt;a class="reference external" href="http://pythonclub.com.br/introducao-classes-metodos-python-basico.html"&gt;Introdução a Classes e Métodos em Python&lt;/a&gt;. E para entender os comandos SQL e a manipulação de registros no SQLite3 leia &lt;a class="reference external" href="http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html"&gt;Guia rápido de comandos SQLite3&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Para os exemplos considere a tabela &lt;tt class="docutils literal"&gt;clientes&lt;/tt&gt; e seus campos:&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="28%" /&gt;
+&lt;col width="44%" /&gt;
+&lt;col width="28%" /&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;Campo&lt;/th&gt;
+&lt;th class="head"&gt;Tipo&lt;/th&gt;
+&lt;th class="head"&gt;Requerido&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;id&lt;/td&gt;
+&lt;td&gt;inteiro&lt;/td&gt;
+&lt;td&gt;sim&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;nome&lt;/td&gt;
+&lt;td&gt;texto&lt;/td&gt;
+&lt;td&gt;sim&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;idade&lt;/td&gt;
+&lt;td&gt;inteiro&lt;/td&gt;
+&lt;td&gt;não&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;cpf&lt;/td&gt;
+&lt;td&gt;texto (11)&lt;/td&gt;
+&lt;td&gt;sim&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;email&lt;/td&gt;
+&lt;td&gt;texto&lt;/td&gt;
+&lt;td&gt;sim&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;fone&lt;/td&gt;
+&lt;td&gt;texto&lt;/td&gt;
+&lt;td&gt;não&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;cidade&lt;/td&gt;
+&lt;td&gt;texto&lt;/td&gt;
+&lt;td&gt;não&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;uf&lt;/td&gt;
+&lt;td&gt;texto (2)&lt;/td&gt;
+&lt;td&gt;sim&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;criado_em&lt;/td&gt;
+&lt;td&gt;data&lt;/td&gt;
+&lt;td&gt;sim&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;bloqueado&lt;/td&gt;
+&lt;td&gt;boleano&lt;/td&gt;
+&lt;td&gt;não&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Obs: O campo &lt;tt class="docutils literal"&gt;bloqueado&lt;/tt&gt; nós vamos inserir depois com o comando &lt;tt class="docutils literal"&gt;ALTER TABLE&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Veja os exemplos em &lt;a class="reference external" href="https://github.com/rg3915/pythonDesktopApp/tree/master/pythonSQLite"&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Como mencionado antes, esta parte será &lt;strong&gt;básica e objetiva&lt;/strong&gt;. A intenção é realizar o CRUD da forma mais simples e objetiva possível.&lt;/p&gt;
+&lt;blockquote&gt;
+PS: &lt;em&gt;Considere a sintaxe para Python 3&lt;/em&gt;.&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#conectando-e-desconectando-do-banco"&gt;Conectando e desconectando do banco&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#criando-um-banco-de-dados"&gt;Criando um banco de dados&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#criando-uma-tabela"&gt;Criando uma tabela&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#create-inserindo-um-registro-com-comando-sql"&gt;Create - Inserindo um registro com comando SQL&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#inserindo-n-registros-com-uma-tupla-de-dados"&gt;Inserindo n registros com uma tupla de dados&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#inserindo-um-registro-com-parametros-de-entrada-definido-pelo-usuario"&gt;Inserindo um registro com parâmetros de entrada definido pelo usuário&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#read-lendo-os-dados"&gt;Read - Lendo os dados&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#update-alterando-os-dados"&gt;Update - Alterando os dados&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#delete-deletando-os-dados"&gt;Delete - Deletando os dados&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#adicionando-uma-nova-coluna"&gt;Adicionando uma nova coluna&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#lendo-as-informacoes-do-banco-de-dados"&gt;Lendo as informações do banco de dados&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#fazendo-backup-do-banco-de-dados-exportando-dados"&gt;Fazendo backup do banco de dados (exportando dados)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#recuperando-o-banco-de-dados-importando-dados"&gt;Recuperando o banco de dados (importando dados)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#exemplos"&gt;Exemplos&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference internal" href="#referencias"&gt;Referências&lt;/a&gt;&lt;/p&gt;
+&lt;div class="section" id="conectando-e-desconectando-do-banco"&gt;
+&lt;h2&gt;Conectando e desconectando do banco&lt;/h2&gt;
+&lt;p&gt;Podemos criar o banco de dados de duas formas: na &lt;strong&gt;memória RAM&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# conectando...&lt;/span&gt;
+&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;:memory:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;ou persistindo em um &lt;strong&gt;banco de dados&lt;/strong&gt;, vamos usar sempre este caso.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# conectando...&lt;/span&gt;
+&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;clientes.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Uma sintaxe mínima para se conectar a um banco de dados é:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# connect_db.py&lt;/span&gt;
+&lt;span class="c"&gt;# 01_create_db.py&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sqlite3&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;clientes.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;O último método desconecta do banco.&lt;/p&gt;
+&lt;p&gt;Considere um arquivo para cada operação.&lt;/p&gt;
+&lt;p&gt;Nota: Os arquivos estão numerados apenas para sugerir uma sequência.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="criando-um-banco-de-dados"&gt;
+&lt;h2&gt;Criando um banco de dados&lt;/h2&gt;
+&lt;p&gt;O código para criar um banco de dados é o mesmo mencionado anteriormente.&lt;/p&gt;
+&lt;p&gt;Para rodar este programa abra o &lt;strong&gt;terminal&lt;/strong&gt; e digite:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python3 01_create_db.py
+&lt;span class="nv"&gt;$ &lt;/span&gt;ls *.db
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Digitando &lt;tt class="docutils literal"&gt;ls&lt;/tt&gt; você verá que o banco foi criado.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="criando-uma-tabela"&gt;
+&lt;h2&gt;Criando uma tabela&lt;/h2&gt;
+&lt;p&gt;Para criar uma tabela no banco de dados usamos dois métodos fundamentais:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;strong&gt;cursor&lt;/strong&gt;: é um interador que permite navegar e manipular os registros do bd.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;execute&lt;/strong&gt;: lê e executa comandos SQL puro diretamente no bd.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# 02_create_schema.py&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sqlite3&lt;/span&gt;
+
+&lt;span class="c"&gt;# conectando...&lt;/span&gt;
+&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;clientes.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# definindo um cursor&lt;/span&gt;
+&lt;span class="n"&gt;cursor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c"&gt;# criando a tabela (schema)&lt;/span&gt;
+&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="s"&gt;CREATE TABLE clientes (&lt;/span&gt;
+&lt;span class="s"&gt;        id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,&lt;/span&gt;
+&lt;span class="s"&gt;        nome TEXT NOT NULL,&lt;/span&gt;
+&lt;span class="s"&gt;        idade INTEGER,&lt;/span&gt;
+&lt;span class="s"&gt;        cpf     VARCHAR(11) NOT NULL,&lt;/span&gt;
+&lt;span class="s"&gt;        email TEXT NOT NULL,&lt;/span&gt;
+&lt;span class="s"&gt;        fone TEXT,&lt;/span&gt;
+&lt;span class="s"&gt;        cidade TEXT,&lt;/span&gt;
+&lt;span class="s"&gt;        uf VARCHAR(2) NOT NULL,&lt;/span&gt;
+&lt;span class="s"&gt;        criado_em DATE NOT NULL&lt;/span&gt;
+&lt;span class="s"&gt;);&lt;/span&gt;
+&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Tabela criada com sucesso.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# desconectando...&lt;/span&gt;
+&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para executar digite no terminal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python3 02_create_schema.py
+&lt;span class="nv"&gt;$ &lt;/span&gt;sqlite3 clientes.db &lt;span class="s1"&gt;&amp;#39;.tables&amp;#39;&lt;/span&gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;sqlite3 clientes.db &lt;span class="s1"&gt;&amp;#39;PRAGMA table_info(clientes)&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Digitando &lt;tt class="docutils literal"&gt;sqlite3 clientes.db '.tables'&lt;/tt&gt; você verá que a tabela foi criada.&lt;/p&gt;
+&lt;p&gt;E o comando &lt;tt class="docutils literal"&gt;sqlite3 clientes.db 'PRAGMA table_info(clientes)'&lt;/tt&gt; retorna os campos da tabela.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Nota&lt;/strong&gt;: A única diferença, caso você use &lt;em&gt;Python 2&lt;/em&gt; é no print, onde você deve tirar os parênteses. E no início do arquivo é recomendável que se defina a codificação &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;utf-8&lt;/span&gt;&lt;/tt&gt;, que no caso do Python 3 já é padrão.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# 02_create_schema.py&lt;/span&gt;
+&lt;span class="c"&gt;# -*- coding: utf-8 -*-&lt;/span&gt;
+&lt;span class="c"&gt;# usando Python 2&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sqlite3&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Tabela criada com sucesso.&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Agora vamos fazer o CRUD. Começando com a letra&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="create-inserindo-um-registro-com-comando-sql"&gt;
+&lt;h2&gt;Create - Inserindo um registro com comando SQL&lt;/h2&gt;
+&lt;p&gt;A única novidade aqui é o método &lt;strong&gt;commit()&lt;/strong&gt;. É ele que grava de fato as alterações na tabela. &lt;em&gt;Lembrando que uma tabela é alterada com as instruções SQL ``INSERT, UPDATE`` e ``DELETE``.&lt;/em&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# 03_create_data_sql.py&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sqlite3&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;clientes.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;cursor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c"&gt;# inserindo dados na tabela&lt;/span&gt;
+&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="s"&gt;INSERT INTO clientes (nome, idade, cpf, email, fone, cidade, uf, criado_em)&lt;/span&gt;
+&lt;span class="s"&gt;VALUES (&amp;#39;Regis&amp;#39;, 35, &amp;#39;00000000000&amp;#39;, &amp;#39;regis@email.com&amp;#39;, &amp;#39;11-98765-4321&amp;#39;, &amp;#39;Sao Paulo&amp;#39;, &amp;#39;SP&amp;#39;, &amp;#39;2014-06-08&amp;#39;)&lt;/span&gt;
+&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="s"&gt;INSERT INTO clientes (nome, idade, cpf, email, fone, cidade, uf, criado_em)&lt;/span&gt;
+&lt;span class="s"&gt;VALUES (&amp;#39;Aloisio&amp;#39;, 87, &amp;#39;11111111111&amp;#39;, &amp;#39;aloisio@email.com&amp;#39;, &amp;#39;98765-4322&amp;#39;, &amp;#39;Porto Alegre&amp;#39;, &amp;#39;RS&amp;#39;, &amp;#39;2014-06-09&amp;#39;)&lt;/span&gt;
+&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="s"&gt;INSERT INTO clientes (nome, idade, cpf, email, fone, cidade, uf, criado_em)&lt;/span&gt;
+&lt;span class="s"&gt;VALUES (&amp;#39;Bruna&amp;#39;, 21, &amp;#39;22222222222&amp;#39;, &amp;#39;bruna@email.com&amp;#39;, &amp;#39;21-98765-4323&amp;#39;, &amp;#39;Rio de Janeiro&amp;#39;, &amp;#39;RJ&amp;#39;, &amp;#39;2014-06-09&amp;#39;)&lt;/span&gt;
+&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="s"&gt;INSERT INTO clientes (nome, idade, cpf, email, fone, cidade, uf, criado_em)&lt;/span&gt;
+&lt;span class="s"&gt;VALUES (&amp;#39;Matheus&amp;#39;, 19, &amp;#39;33333333333&amp;#39;, &amp;#39;matheus@email.com&amp;#39;, &amp;#39;11-98765-4324&amp;#39;, &amp;#39;Campinas&amp;#39;, &amp;#39;SP&amp;#39;, &amp;#39;2014-06-08&amp;#39;)&lt;/span&gt;
+&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c"&gt;# gravando no bd&lt;/span&gt;
+&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;commit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Dados inseridos com sucesso.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para executar digite no terminal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python3 03_create_data_sql.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="inserindo-n-registros-com-uma-tupla-de-dados"&gt;
+&lt;h2&gt;Inserindo n registros com uma tupla de dados&lt;/h2&gt;
+&lt;p&gt;Usando uma &lt;em&gt;lista&lt;/em&gt; podemos inserir vários registros de uma vez, e o método &lt;tt class="docutils literal"&gt;executemany&lt;/tt&gt; faz essa ação.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# 04_create_data_nrecords.py&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sqlite3&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;clientes.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;cursor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c"&gt;# criando uma lista de dados&lt;/span&gt;
+&lt;span class="n"&gt;lista&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;Fabio&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;23&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;44444444444&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;fabio@email.com&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;1234-5678&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Belo Horizonte&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;MG&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;2014-06-09&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Joao&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;21&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;55555555555&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;joao@email.com&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+     &lt;span class="s"&gt;&amp;#39;11-1234-5600&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Sao Paulo&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;2014-06-09&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Xavier&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;24&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;66666666666&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;xavier@email.com&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;12-1234-5601&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Campinas&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;2014-06-10&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+
+&lt;span class="c"&gt;# inserindo dados na tabela&lt;/span&gt;
+&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;executemany&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="s"&gt;INSERT INTO clientes (nome, idade, cpf, email, fone, cidade, uf, criado_em)&lt;/span&gt;
+&lt;span class="s"&gt;VALUES (?,?,?,?,?,?,?,?)&lt;/span&gt;
+&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;lista&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;commit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Dados inseridos com sucesso.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Observe o uso de &lt;strong&gt;?&lt;/strong&gt; isto significa que no lugar de cada &lt;strong&gt;?&lt;/strong&gt; entrará os valores da lista na sua posição respectiva. É o que nós chamamos de &lt;em&gt;parâmetros de entrada&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Para executar digite no terminal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python3 04_create_data_nrecords.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="inserindo-um-registro-com-parametros-de-entrada-definido-pelo-usuario"&gt;
+&lt;h2&gt;Inserindo um registro com parâmetros de entrada definido pelo usuário&lt;/h2&gt;
+&lt;p&gt;Neste exemplo usaremos parâmetros de entrada, que deverá ser digitado pelo usuário. Esta é a forma mais desejável de entrada de dados porque o usuário pode digitar os dados em tempo de execução.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# 05_create_data_param.py&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sqlite3&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;clientes.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;cursor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c"&gt;# solicitando os dados ao usuário&lt;/span&gt;
+&lt;span class="n"&gt;p_nome&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Nome: &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;p_idade&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Idade: &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;p_cpf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;CPF: &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;p_email&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Email: &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;p_fone&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Fone: &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;p_cidade&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Cidade: &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;p_uf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;UF: &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;p_criado_em&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Criado em (yyyy-mm-dd): &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c"&gt;# inserindo dados na tabela&lt;/span&gt;
+&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="s"&gt;INSERT INTO clientes (nome, idade, cpf, email, fone, cidade, uf, criado_em)&lt;/span&gt;
+&lt;span class="s"&gt;VALUES (?,?,?,?,?,?,?,?)&lt;/span&gt;
+&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p_nome&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;p_idade&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;p_cpf&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;p_email&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;p_fone&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;p_cidade&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;p_uf&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;p_criado_em&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;commit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Dados inseridos com sucesso.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Nota&lt;/strong&gt;: Caso use &lt;em&gt;Python 2&lt;/em&gt; use o método &lt;tt class="docutils literal"&gt;raw_input()&lt;/tt&gt; em&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# python 2&lt;/span&gt;
+&lt;span class="n"&gt;p_nome&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;raw_input&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Nome: &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Dados inseridos com sucesso.&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para executar digite no terminal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python3 05_create_data_param.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Veja a interação do programa:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Nome: Regis
+Idade: 35
+CPF: 30020030011
+Email: regis@email.com
+Fone: 11 9537-0000
+Cidade: Sao Paulo
+UF: SP
+Criado em &lt;span class="o"&gt;(&lt;/span&gt;yyyy-mm-dd&lt;span class="o"&gt;)&lt;/span&gt;: 2014-06-15
+Dados inseridos com sucesso.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="read-lendo-os-dados"&gt;
+&lt;h2&gt;Read - Lendo os dados&lt;/h2&gt;
+&lt;p&gt;Aqui nós usamos o famoso &lt;tt class="docutils literal"&gt;SELECT&lt;/tt&gt;. O método &lt;tt class="docutils literal"&gt;fetchall()&lt;/tt&gt; retorna o resultado do &lt;tt class="docutils literal"&gt;SELECT&lt;/tt&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# 06_read_data.py&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sqlite3&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;clientes.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;cursor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c"&gt;# lendo os dados&lt;/span&gt;
+&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="s"&gt;SELECT * FROM clientes;&lt;/span&gt;
+&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;linha&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fetchall&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;linha&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para executar digite no terminal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python3 06_read_data.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Eis o resultado:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;(&lt;/span&gt;1, &lt;span class="s1"&gt;&amp;#39;Regis&amp;#39;&lt;/span&gt;, 35, &lt;span class="s1"&gt;&amp;#39;00000000000&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;regis@email.com&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;11-98765-4321&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Sao Paulo&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;2014-06-08&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;2, &lt;span class="s1"&gt;&amp;#39;Aloisio&amp;#39;&lt;/span&gt;, 87, &lt;span class="s1"&gt;&amp;#39;11111111111&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;aloisio@email.com&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;98765-4322&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Porto Alegre&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;RS&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;2014-06-09&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;3, &lt;span class="s1"&gt;&amp;#39;Bruna&amp;#39;&lt;/span&gt;, 21, &lt;span class="s1"&gt;&amp;#39;22222222222&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;bruna@email.com&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;21-98765-4323&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Rio de Janeiro&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;RJ&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;2014-06-09&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;4, &lt;span class="s1"&gt;&amp;#39;Matheus&amp;#39;&lt;/span&gt;, 19, &lt;span class="s1"&gt;&amp;#39;33333333333&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;matheus@email.com&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;11-98765-4324&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Campinas&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;2014-06-08&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;5, &lt;span class="s1"&gt;&amp;#39;Fabio&amp;#39;&lt;/span&gt;, 23, &lt;span class="s1"&gt;&amp;#39;44444444444&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;fabio@email.com&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;1234-5678&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Belo Horizonte&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;MG&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;2014-06-09&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;6, &lt;span class="s1"&gt;&amp;#39;Joao&amp;#39;&lt;/span&gt;, 21, &lt;span class="s1"&gt;&amp;#39;55555555555&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;joao@email.com&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;11-1234-5600&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Sao Paulo&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;2014-06-09&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;7, &lt;span class="s1"&gt;&amp;#39;Xavier&amp;#39;&lt;/span&gt;, 24, &lt;span class="s1"&gt;&amp;#39;66666666666&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;xavier@email.com&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;12-1234-5601&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Campinas&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;2014-06-10&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;span class="o"&gt;(&lt;/span&gt;8, &lt;span class="s1"&gt;&amp;#39;Regis&amp;#39;&lt;/span&gt;, 35, &lt;span class="s1"&gt;&amp;#39;30020030011&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;regis@email.com&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;11 9750-0000&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;Sao Paulo&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;2014-06-15&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="update-alterando-os-dados"&gt;
+&lt;h2&gt;Update - Alterando os dados&lt;/h2&gt;
+&lt;p&gt;Observe o uso das variáveis &lt;tt class="docutils literal"&gt;id_cliente&lt;/tt&gt; onde definimos o &lt;tt class="docutils literal"&gt;id&lt;/tt&gt; a ser alterado, &lt;tt class="docutils literal"&gt;novo_fone&lt;/tt&gt; e &lt;tt class="docutils literal"&gt;novo_criado_em&lt;/tt&gt; usados como parâmetro para alterar os dados. Neste caso, salvamos as alterações com o método &lt;tt class="docutils literal"&gt;commit()&lt;/tt&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# 07_update_data.py&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sqlite3&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;clientes.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;cursor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;id_cliente&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="n"&gt;novo_fone&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;11-1000-2014&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;novo_criado_em&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;2014-06-11&amp;#39;&lt;/span&gt;
+
+&lt;span class="c"&gt;# alterando os dados da tabela&lt;/span&gt;
+&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="s"&gt;UPDATE clientes&lt;/span&gt;
+&lt;span class="s"&gt;SET fone = ?, criado_em = ?&lt;/span&gt;
+&lt;span class="s"&gt;WHERE id = ?&lt;/span&gt;
+&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;novo_fone&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;novo_criado_em&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;id_cliente&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;commit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Dados atualizados com sucesso.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para executar digite no terminal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python3 07_update_data.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="delete-deletando-os-dados"&gt;
+&lt;h2&gt;Delete - Deletando os dados&lt;/h2&gt;
+&lt;p&gt;Vamos excluir um registro pelo seu &lt;tt class="docutils literal"&gt;id&lt;/tt&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# 08_delete_data.py&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sqlite3&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;clientes.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;cursor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;id_cliente&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;
+
+&lt;span class="c"&gt;# excluindo um registro da tabela&lt;/span&gt;
+&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="s"&gt;DELETE FROM clientes&lt;/span&gt;
+&lt;span class="s"&gt;WHERE id = ?&lt;/span&gt;
+&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;id_cliente&lt;/span&gt;&lt;span class="p"&gt;,))&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;commit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Registro excluido com sucesso.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para executar digite no terminal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python3 08_delete_data.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="adicionando-uma-nova-coluna"&gt;
+&lt;h2&gt;Adicionando uma nova coluna&lt;/h2&gt;
+&lt;p&gt;Para inserir uma nova coluna na tabela usamos o comando SQL &lt;tt class="docutils literal"&gt;ALTER TABLE&lt;/tt&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# 09_alter_table.py&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sqlite3&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;clientes.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;cursor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c"&gt;# adicionando uma nova coluna na tabela clientes&lt;/span&gt;
+&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="s"&gt;ALTER TABLE clientes&lt;/span&gt;
+&lt;span class="s"&gt;ADD COLUMN bloqueado BOOLEAN;&lt;/span&gt;
+&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;commit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Novo campo adicionado com sucesso.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para executar digite no terminal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python3 09_alter_table.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="lendo-as-informacoes-do-banco-de-dados"&gt;
+&lt;h2&gt;Lendo as informações do banco de dados&lt;/h2&gt;
+&lt;p&gt;Para ler as informações da tabela usamos o comando &lt;tt class="docutils literal"&gt;PRAGMA&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Para listar as tabelas do banco usamos o comando &lt;tt class="docutils literal"&gt;SELECT name FROM sqlite_master ...&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Para ler o schema da tabela usamos o comando &lt;tt class="docutils literal"&gt;SELECT sql FROM sqlite_master ...&lt;/tt&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# 10_view_table_info.py&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sqlite3&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;clientes.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;cursor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;nome_tabela&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;clientes&amp;#39;&lt;/span&gt;
+
+&lt;span class="c"&gt;# obtendo informações da tabela&lt;/span&gt;
+&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PRAGMA table_info({})&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nome_tabela&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="n"&gt;colunas&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tupla&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;tupla&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fetchall&lt;/span&gt;&lt;span class="p"&gt;()]&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Colunas:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;colunas&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# ou&lt;/span&gt;
+&lt;span class="c"&gt;# for coluna in colunas:&lt;/span&gt;
+&lt;span class="c"&gt;#    print(coluna)&lt;/span&gt;
+
+&lt;span class="c"&gt;# listando as tabelas do bd&lt;/span&gt;
+&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="s"&gt;SELECT name FROM sqlite_master WHERE type=&amp;#39;table&amp;#39; ORDER BY name&lt;/span&gt;
+&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Tabelas:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;tabela&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fetchall&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tabela&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="c"&gt;# obtendo o schema da tabela&lt;/span&gt;
+&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;execute&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="s"&gt;SELECT sql FROM sqlite_master WHERE type=&amp;#39;table&amp;#39; AND name=?&lt;/span&gt;
+&lt;span class="s"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;nome_tabela&lt;/span&gt;&lt;span class="p"&gt;,))&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Schema:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;schema&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fetchall&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;schema&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para executar digite no terminal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python3 10_view_table_info.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Eis o resultado:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Colunas: &lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;nome&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;idade&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;cpf&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;email&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;fone&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;cidade&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;uf&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;criado_em&amp;#39;&lt;/span&gt;, &lt;span class="s1"&gt;&amp;#39;bloqueado&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+Tabelas:
+clientes
+sqlite_sequence
+Schema:
+CREATE TABLE clientes &lt;span class="o"&gt;(&lt;/span&gt;
+        id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+        nome TEXT NOT NULL,
+        idade INTEGER,
+        cpf     VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;11&lt;span class="o"&gt;)&lt;/span&gt; NOT NULL,
+        email TEXT NOT NULL,
+        fone TEXT,
+        cidade TEXT,
+        uf VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;2&lt;span class="o"&gt;)&lt;/span&gt; NOT NULL,
+        criado_em DATE NOT NULL
+, bloqueado BOOLEAN&lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="fazendo-backup-do-banco-de-dados-exportando-dados"&gt;
+&lt;h2&gt;Fazendo backup do banco de dados (exportando dados)&lt;/h2&gt;
+&lt;p&gt;Talvez seja este o item mais importante: &lt;strong&gt;backup&lt;/strong&gt;. Observe o uso da biblioteca &lt;strong&gt;io&lt;/strong&gt; que salva os dados num arquivo externo através do método &lt;tt class="docutils literal"&gt;write&lt;/tt&gt;, e o método &lt;tt class="docutils literal"&gt;iterdump()&lt;/tt&gt; que exporta a estrutura e dados da tabela para o arquivo externo.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# 11_backup.py&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sqlite3&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;io&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;clientes.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;clientes_dump.sql&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;w&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;linha&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;iterdump&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+        &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;write&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;linha&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Backup realizado com sucesso.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Salvo como clientes_dump.sql&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para executar digite no terminal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python3 11_backup.py
+&lt;span class="nv"&gt;$ &lt;/span&gt;cat clientes_dump.sql
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Com o comando &lt;tt class="docutils literal"&gt;cat&lt;/tt&gt; você poderá ler a estrutura da tabela salva.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="recuperando-o-banco-de-dados-importando-dados"&gt;
+&lt;h2&gt;Recuperando o banco de dados (importando dados)&lt;/h2&gt;
+&lt;p&gt;Criaremos um novo banco de dados e iremos reconstruir a tabela e os dados com o arquivo &lt;em&gt;clientes_dump.sql&lt;/em&gt;. O método &lt;tt class="docutils literal"&gt;read()&lt;/tt&gt; lê o conteúdo do arquivo &lt;em&gt;clientes_dump.sql&lt;/em&gt; e o método &lt;tt class="docutils literal"&gt;executescript()&lt;/tt&gt; executa as instruções SQL escritas neste arquivo.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# 12_read_sql.py&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sqlite3&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;io&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sqlite3&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;clientes_recuperado.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;cursor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;io&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;clientes_dump.sql&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;r&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;sql&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;cursor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;executescript&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sql&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Banco de dados recuperado com sucesso.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Salvo como clientes_recuperado.db&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para executar digite no terminal:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python3 12_read_sql.py
+Banco de dados recuperado com sucesso.
+Salvo como clientes_recuperado.db
+&lt;span class="nv"&gt;$ &lt;/span&gt;sqlite3 clientes_recuperado.db &lt;span class="s1"&gt;&amp;#39;SELECT * FROM clientes;&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Com o último comando você verá que os dados estão lá. São e salvo!!!&lt;/p&gt;
+&lt;p&gt;Leia a continuação deste artigo em &lt;em&gt;Gerenciando banco de dados SQLite3 com Python - Parte 2&lt;/em&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="exemplos"&gt;
+&lt;h2&gt;Exemplos&lt;/h2&gt;
+&lt;p&gt;Veja os exemplos em &lt;a class="reference external" href="https://github.com/rg3915/pythonDesktopApp/tree/master/pythonSQLite"&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="referencias"&gt;
+&lt;h2&gt;Referências&lt;/h2&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://pymotw.com/2/sqlite3/index.html"&gt;sqlite3 Embedded Relational Database&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://codecr.am/blog/post/3/"&gt;Lets Talk to a SQLite Database with Python&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://www.pythoncentral.io/advanced-sqlite-usage-in-python/"&gt;Advanced SQLite Usage in Python&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="http://www.blog.pythonlibrary.org/2012/07/18/python-a-simple-step-by-step-sqlite-tutorial/"&gt;Python A Simple Step by Step SQLite Tutorial&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://docs.python.org/2/library/sqlite3.html#sqlite3.Connection.iterdump"&gt;Python docs, SQLite, Connection Objects&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="Python"></category><category term="Banco de dados"></category></entry><entry><title>Introdução a Classes e Métodos em Python (básico)</title><link href="http://pythonclub.com.br/introducao-classes-metodos-python-basico.html" rel="alternate"></link><updated>2014-06-12T23:59:00-03:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2014-06-12:introducao-classes-metodos-python-basico.html</id><summary type="html">&lt;p&gt;Eu não sou a melhor pessoa do mundo para explicar este assunto, mas eu escrevi este post para introduzir um tópico sobre &lt;em&gt;manipulação de banco de dados em SQLite3 com Python&lt;/em&gt;, porém mais informações sobre classes e métodos podem ser encontradas nos links abaixo. Veja os exemplos em &lt;a class="reference external" href="https://github.com/rg3915/pythonDesktopApp/tree/master/pythonBasico"&gt;https://github.com/rg3915/pythonDesktopApp&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;PS: &lt;em&gt;Considere a sintaxe para Python 3&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Segundo a documentação do &lt;a class="reference external" href="https://docs.python.org/2/tutorial/classes.html#class-objects"&gt;Python&lt;/a&gt; e o video &lt;a class="reference external" href="https://www.youtube.com/watch?v=Zr_FiKbgRbU"&gt;Python para Zumbis&lt;/a&gt;, uma &lt;strong&gt;classe&lt;/strong&gt; associa dados (&lt;strong&gt;atributos&lt;/strong&gt;) e operações (&lt;strong&gt;métodos&lt;/strong&gt;) numa só estrutura. Um &lt;strong&gt;objeto&lt;/strong&gt; é uma variável cujo tipo é uma classe, ou seja, um &lt;strong&gt;objeto é uma instância&lt;/strong&gt; de uma classe.&lt;/p&gt;
 &lt;p&gt;Na sua sintaxe mais elementar definimos uma classe conforme abaixo:&lt;/p&gt;
