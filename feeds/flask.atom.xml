@@ -1,5 +1,945 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/flask.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-05-31T02:22:00-03:00</updated><entry><title>What the Flask? Pt-1 Introdução ao desenvolvimento web com Python</title><link href="http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html" rel="alternate"></link><updated>2014-05-31T02:22:00-03:00</updated><author><name>Bruno Cezar Rocha</name></author><id>tag:pythonclub.com.br,2014-05-31:what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html</id><summary type="html">&lt;h2&gt;What The Flask - 1/6&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/flask.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-06-19T22:30:00-03:00</updated><entry><title>What the Flask? Pt-2 Flask Patterns - boas práticas na estrutura de aplicações Flask</title><link href="http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html" rel="alternate"></link><updated>2014-06-19T22:30:00-03:00</updated><author><name>Bruno Cezar Rocha</name></author><id>tag:pythonclub.com.br,2014-06-19:what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html</id><summary type="html">&lt;h2&gt;What The Flask - 2/6&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;CONTEXT PLEASE:&lt;/strong&gt; Esta é a segunda parte da série &lt;strong&gt;What The Flask&lt;/strong&gt;, 6 artigos para se tornar um &lt;strong&gt;Flasker&lt;/strong&gt; (não, não é um cowboy que carrega sua garrafinha de whisky para todo lado). A primeira parte está aqui no &lt;a href="/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python"&gt;PythonClub&lt;/a&gt; e o app está no &lt;a href="https://github.com/rochacbruno/wtf/tree/pt-1"&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure style="float:left;margin-right:30px;"&gt;
+&lt;img src="/images/rochacbruno/cowboy_flask.jpg" alt="a flasker" style="width:90%"&gt;
+&lt;figcaption&gt;Professional Flask Developer&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="/what_the_flask_introducao_ao_desenvolvimento_web_com_python.html"&gt;&lt;strong&gt;Hello Flask&lt;/strong&gt;&lt;/a&gt;: Introdução ao desenvolvimento web com Flask&lt;/li&gt;
+&lt;li&gt;&lt;a href="/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask"&gt;&lt;strong&gt;Flask patterns&lt;/strong&gt;&lt;/a&gt;: Estruturando aplicações Flask - &lt;strong&gt;&amp;lt;-- Você está aqui&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Plug &amp;amp; Use&lt;/strong&gt;: extensões essenciais para iniciar seu projeto&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DRY&lt;/strong&gt;: Criando aplicativos reusáveis com Blueprints&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;from flask.ext import magic&lt;/strong&gt;: Criando extensões para o Flask e para o Jinja2&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Run Flask Run&lt;/strong&gt;: "deploiando" seu app nos principais web servers e na nuvem.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Você sabia?&lt;/strong&gt; Flask quer dizer "Frasco/Frasqueira", ou seja, aquela garrafinha ali da foto acima que geralmente os cowboys, os Irlandeses, o John Wayne, os bebados profissionais e os hipsters gostam de utilizar para tomar desde vodka, whisky, vinho e até suco de caju (no caso dos &lt;a href="http://www.cafepress.com/+hipster+flasks"&gt;hipsters&lt;/a&gt;). Bom você pode estar se perguntando: Por que colocar esse nome em um framework? Antes do Flask já existia o Bottle "garrafa" que surgiu com a idéia revolucionária de ser um framework de um &lt;a href="https://github.com/defnull/bottle/blob/master/bottle.py"&gt;arquivo só&lt;/a&gt;. Como o criador do Flask é meio contrário a esta idéia de colocar um monte de código Python em um único arquivo ele decidiu ironizar e fazer uma piada de 1 de abril e então criou um framework chamado &lt;a href="http://denied.immersedcode.org/"&gt;Denied&lt;/a&gt; que era uma piada ironizando o Bottle e outros micro frameworks, mas as pessoas levaram a sério e gostaram do &lt;a href="http://denied.immersedcode.org/screencast.mp4"&gt;estilo do denied!&lt;/a&gt; A partir disso ele decidiu pegar as boas idéias tanto do Bottle como do Denied e criar algo sério e então surgiu o Flask. O nome vem da idéia de que &lt;strong&gt;Bottle&lt;/strong&gt;/Garrafa é para tomar de goladas, mas &lt;strong&gt;Flask&lt;/strong&gt;/Frasco você toma &lt;strong&gt;uma gota por vez&lt;/strong&gt;, desta forma você aprecia melhor a bebida e até hoje o slogan do Flask é " Development one drop at time".&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1&gt;Flask Patterns&lt;/h1&gt;
+&lt;h3&gt;Parte 2 - Boas práticas na estrutura de aplicações Flask&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; As dicas deste artigo são baseadas nesta parte da &lt;a href="http://flask.pocoo.org/docs/patterns/"&gt;documentação oficial do flask&lt;/a&gt; com algumas adaptações levando em consideração a experiência que já tive na organização de apps Flask. Isso não quer dizer que esse é o único jeito de desenvolver em Flask, nem que é o melhor, lembre-se, o Flask é micro e te dá a liberdade para organizar as coisas como você bem entender, mas como eu já quebrei a cabeça resolvendo um monte de pequenos problemas vou compartilhar a receita que tem dado certo para mim.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#one_file_is_bad_if_you_are_big"&gt;One file to rule them all?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#circular_imports"&gt;O problema do Ovo e da Galinha&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#blueprints"&gt;Azul da cor do mar ♫&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#app_factory"&gt;A fantástica fábrica de web apps&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#multiple_apps"&gt;Você pode ter mais de um app&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#config"&gt;Configurações para todo lado&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#flask_app_quase_perfeita"&gt;A app Flask quase perfeita&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; A versão final do app deste artigo esta no &lt;a href="https://github.com/rochacbruno/wtf/tree/almost_perfect"&gt;github&lt;/a&gt;, os apressados podem querer executar o app e explorar o seu código antes de ler o artigo completo.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;&lt;a href="#one_file_is_bad_if_you_are_big" name="one_file_is_bad_if_you_are_big"&gt;One file to rule them all?&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;O exemplo mais básico de um projeto Flask é um one-file application, e normalmente você pode começar dessa maneira mas se eu projeto começar a crescer ele vai se tornar de difícil manutenção, imagine que uma equipe de 10 programadores irá trabalhar no mesmo projeto, é comum que ao usar um sistema de controle de versão como o git você acompanhe o histórico de evolução de cada um dos arquivos e constantemente faça "merges" entre os desenvolvedores, estando tudo em único arquivo este processo pode resultar em um número muito grande de conflitos para resolver. Além disso no &lt;a href="http://legacy.python.org/dev/peps/pep-0020/"&gt;Zen do Python&lt;/a&gt; tem a famosa frase &lt;strong&gt;"Sparse is better than dense."&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Você pode até ter motivos para querer um projeto de um arquivo só, pelo fato de ser &lt;strong&gt;cool&lt;/strong&gt;, pelo fato de se exibir para os amigos dizendo que em Python isso é possível :), ou para economizar em espaço em disco, mas a verdade é que sempre será uma boa idéia separar a estrutura de seu projeto em vários pacotes, módulos e scripts, separados e com responsabilidades bem específicas.&lt;/p&gt;
+&lt;h3&gt;HANDS ON&lt;/h3&gt;
+&lt;p&gt;Vamos começar a explorar o nosso app de exemplo que está no github, O app principal (com excessão do db) está em um único &lt;a href="https://github.com/rochacbruno/wtf/blob/pt-1/news_app.py"&gt;arquivo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Algumas linhas foram suprimidas para melhorar a legibilidade&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# coding: utf-8&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;werkzeug&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;secure_filename&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;send_from_directory&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;noticias&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;wtf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;PROJECT_ROOT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;abspath&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dirname&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__file__&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;MEDIA_ROOT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PROJECT_ROOT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;media_files&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/noticias/cadastro&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;methods&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;GET&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;POST&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;cadastro&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;cadastro.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;u&amp;quot;Inserir nova noticia&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;index.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/noticia/&amp;lt;int:noticia_id&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;noticia&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;noticia_id&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;noticia.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;noticia&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;noticia&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/media/&amp;lt;path:filename&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;media&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;send_from_directory&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;MEDIA_ROOT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;__main__&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;use_reloader&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;O ideal neste caso será separar em alguns arquivos com responsabilidades específicas, &lt;strong&gt;configurações&lt;/strong&gt; vão para um arquivo de settings, a &lt;strong&gt;criação e setup do app&lt;/strong&gt; ficaria em um arquivo e as &lt;strong&gt;views&lt;/strong&gt; ficariam em um outro, no nosso caso o db já está separado. Um outro detalhe é que agora precisaremos de um arquivo &lt;strong&gt;run.py&lt;/strong&gt; que será o responsável por iniciar o servidor do Flask.&lt;/p&gt;
+&lt;h4&gt;a estrutura seria essa:&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;/wtf
+    /news_app.py
+    /views.py
+    /db.py
+    /run.py
+    /settings.py
+    /templates/*
+    /static/*
+    /media_files/*
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Ainda não é o ideal e já discutiremos o motivo, mas já é uma evolução a separação em mais de um arquivo.&lt;/p&gt;
+&lt;h2&gt;&lt;a href="#circular_imports" name="circular_imports"&gt;O problema do Ovo e da Galinha&lt;/a&gt;&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Quem nasceu primeiro a &lt;strong&gt;app&lt;/strong&gt; ou as &lt;strong&gt;views&lt;/strong&gt;?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5&gt;settings.py&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="n"&gt;PROJECT_ROOT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;abspath&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dirname&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__file__&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;MEDIA_ROOT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;PROJECT_ROOT&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;media_files&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h5&gt;news_app.py&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;wtf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_object&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;settings&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;views&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h5&gt;views.py&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# coding: utf-8&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;werkzeug&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;secure_filename&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;send_from_directory&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;noticias&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;news_app&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/noticias/cadastro&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;methods&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;GET&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;POST&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;cadastro&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;cadastro.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;u&amp;quot;Inserir nova noticia&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;index.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/noticia/&amp;lt;int:noticia_id&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;noticia&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;noticia_id&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;noticia.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;noticia&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;noticia&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@app.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/media/&amp;lt;path:filename&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;media&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;send_from_directory&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;MEDIA_ROOT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h5&gt;run.py&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;news_app&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;use_reloader&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;LINDO! agora temos nossa estrutura toda separada, porém acabamos de inserir o &lt;strong&gt;Problema do Ovo e da Galinha&lt;/strong&gt; formalmente conhecido como &lt;strong&gt;circular imports&lt;/strong&gt; ou &lt;strong&gt;cyclic reference&lt;/strong&gt;.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;news_app.py                           views.py
+
++--------------------------+          +--------------------------+
+|                          |          |                          |
+| &lt;span class="nv"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; Flask&lt;span class="o"&gt;(&lt;/span&gt;...&lt;span class="o"&gt;)&lt;/span&gt;         |  &amp;lt;-----+ | from news_app import app |
+|                          |          |                          |
+|                          |          | @app.route&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;          |
+|                          |          | def view&lt;span class="o"&gt;()&lt;/span&gt;:              |
+| import wtf.views         | +-----&amp;gt;  |     ...                  |
+|                          |          |                          |
++--------------------------+          +--------------------------+
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;figure style="float:left;margin-right:10px;"&gt;
+&lt;img src="/images/rochacbruno/ovo-ou-galinha.jpg" alt="ovo-galinha" width="200"&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Como você pode reparar no diagrama acima o &lt;strong&gt;news_app&lt;/strong&gt; importa &lt;strong&gt;views&lt;/strong&gt; e ao mesmo tempo &lt;strong&gt;views&lt;/strong&gt; importa do &lt;strong&gt;news_app&lt;/strong&gt; e este é um problema muito chato de se resolver, neste caso específico não teremos problemas para rodar este projeto pois colocamos o &lt;strong&gt;import wtf.views&lt;/strong&gt; no final do arquivo &lt;strong&gt;news_app.py&lt;/strong&gt; e estamos importanto o módulo completo apenas para que as rotas sejam configuradas. E além disso incluímos o &lt;strong&gt;run.py&lt;/strong&gt; que é o responsável por rodar o servidor Flask evitando que o circular import atrapalhe na execução do projeto, mas se por acaso tentarmos importar ou referenciar alguma função especifica do arquivo de views teremos sérios problemas.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Esta versão está no &lt;a href="https://github.com/rochacbruno/wtf/tree/circular_imports"&gt;github&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;E outro detalhe é que fica meio feio e fora das regras de estilo &lt;a href="http://legacy.python.org/dev/peps/pep-0008/#imports"&gt;Pythonica&lt;/a&gt;, experimente alterar o &lt;strong&gt;news_app.py&lt;/strong&gt; colocando os imports na ordem correta e fazendo import explicito:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;wtf.views&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;cadastro&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;noticia&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;media&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;wtf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_object&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;wtf.settings&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agora ficou mais bonito! porém não funciona. No console você verá um &lt;strong&gt;ImportError&lt;/strong&gt; não muito explicito e nessa hora você provalmente vai pensar:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;PO**A Flask! mas que droga hein? vou usar outro framework mais estável :(&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;CALMA!!!&lt;/strong&gt; tudo foi muito bem pensado, vamos agora ver a melhor forma de resolver este tipo de problema no Flask.&lt;/p&gt;
+&lt;h2&gt;&lt;a href="#blueprints" name="blueprints"&gt;Azul da cor do mar ♫&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;O Flask tem um conceito para criação de módulos que é sensacional, talvez a idéia mais &lt;strong&gt;Pythonica&lt;/strong&gt; já implementada por um framework, quem dera que tudo na vida fosse como os Blueprints!&lt;/p&gt;
+&lt;figure style="float:left;margin-right:10px;"&gt;
+&lt;img src="/images/rochacbruno/blueprint.jpg" alt="blueprint" width="400"&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Blueprints são &lt;strong&gt;projetos&lt;/strong&gt; assim como essas folhas azuis usadas por arquitetos e projetistas e eles servem para criar plantas. Na engenharia o blueprint tem uma caracteristica interessante que é o fato de poder ser utilizado em camadas, imagine um projeto de um prédio onde cada andar é uma folha azul com os detalhes de projeto daquele andar especifico. A vantagem disso é que se o projetista precisar substituir o projeto de um andar ele precisará mexer em apenas uma das folhas, deixando todo o restante do projeto intacto!&lt;/p&gt;
+&lt;p&gt;No Flask os Blueprints fazem exatamente esse mesmo papel, cada pedaço do seu projeto fica em um &lt;strong&gt;blueprint&lt;/strong&gt; separado, ou seja, é como se você tivesse vários projetos em um só. Isto traz grandes beneficios:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Reaproveitamento de código (DRY) pois você pode usar o mesmo blueprint em vários projetos&lt;/li&gt;
+&lt;li&gt;Desacoplamento&lt;/li&gt;
+&lt;li&gt;Dinamização (os blueprints podem ser registrados dinâmicamente)&lt;/li&gt;
+&lt;li&gt;A galinha nasce primeiro! - resolvemos o &lt;strong&gt;circular import&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;O código fica LINDO!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Blueprints&lt;/h3&gt;
+&lt;p&gt;Um blueprint é como um &lt;strong&gt;app&lt;/strong&gt; que criamos com &lt;code&gt;app = Flask()&lt;/code&gt;, so que não é um &lt;strong&gt;app!&lt;/strong&gt;. Bom, não quero confundir sua cabeça com este conceito mas você sabe o que é &lt;strong&gt;duck typing?&lt;/strong&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Duck Typing&lt;/strong&gt;: É um termo cunhado pelo alex Martelli em uma mensagem enviada para a lista comp.lang.python onde em uma tradução bem livre dizia o seguinte: "Se um objeto anda como um pato e faz quack como um pato então ele é um pato".&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Voltando ao blueprint podemos dizer que, "Se o objeto faz roteamento como um app, acessa recursos como um app e se comporta como um app, então ele é um app!". O Blueprint é mais ou menos isso, ele é um &lt;strong&gt;projeto&lt;/strong&gt; de um app que tem praticamente as mesmas caracteristicas de um app, só que ele não pode ser usado diretamente como um &lt;strong&gt;app&lt;/strong&gt;,  para isso ele precisa ser registrado e construído.&lt;/p&gt;
+&lt;p&gt;É como desenhar o projeto de um aplicativo com suas views, rotas, templates etc e ai entregar este projeto para o &lt;strong&gt;Flask&lt;/strong&gt; e dizer, "Vai lá Flask constrói isso aqui para mim, mas constrói só na hora em que eu precisar, ahh e guarda esse projeto com você pois eu posso querer construir mais desses depois."&lt;/p&gt;
+&lt;h3&gt;Bullshit, SHOW ME THE CODE!&lt;/h3&gt;
+&lt;p&gt;Blueprints são ao mesmo tempo simples e poderosos então vamos ver como funciona na prática.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;ZEN DO BLUEPRINT:&lt;/strong&gt; If the Blueprint is hard to explain, it's a bad idea. If the Blueprint is easy to explain, it may be a good idea. Blueprints are one honking great idea -- let's do more of those!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Vamos agora resolver o nosso antigo problema de singular imports utilizando blueprint, termos que alterar um pouco a estrutura de nosso app que agora será.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;/wtf
+    /news_app.py
+    /db.py
+    /run.py
+    /settings.py
+    /blueprints/
+        /__init__.py
+        /noticias.py
+    /templates/*
+    /static/*
+    /media_files/*
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Estamos removendo o arquivo de &lt;strong&gt;views&lt;/strong&gt; e inserindo um novo módulo &lt;strong&gt;blueprints&lt;/strong&gt; que irá conter nossos blueprints cada um em seu módulo separado, por enquanto teremos apenas o &lt;strong&gt;noticias.py&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; No Python 2.x o arquivo é necessário sempre ter o arquivo &lt;code&gt;__init__.py&lt;/code&gt; para indicar que um diretório deve ser tratado como um pacote Python, desta forma é possível importar módulos de dentro deste pacote. No Python 3.x isso não é mais necessário.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;O restante da nossa app continuará praticamente igual, apagaremos apenas o &lt;strong&gt;views.py&lt;/strong&gt; e incluiremos o seguinte arquivo com o nosso blueprint.&lt;/p&gt;
+&lt;h5&gt;/wtf/blueprints/noticias.py&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# coding: utf-8&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;werkzeug&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;secure_filename&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;Blueprint&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;send_from_directory&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;noticias&lt;/span&gt;
+
+&lt;span class="n"&gt;noticias_blueprint&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Blueprint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;noticias&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@noticias_blueprint.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/noticias/cadastro&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;methods&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;GET&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;POST&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;cadastro&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;method&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;POST&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+
+        &lt;span class="n"&gt;dados_do_formulario&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;form&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_dict&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="n"&gt;imagem&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;files&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;imagem&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;imagem&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;filename&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;secure_filename&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;imagem&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;MEDIA_ROOT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;imagem&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;dados_do_formulario&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;imagem&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;filename&lt;/span&gt;
+
+        &lt;span class="n"&gt;id_nova_noticia&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;noticias&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;insert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dados_do_formulario&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;cadastro_sucesso.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                               &lt;span class="n"&gt;id_nova_noticia&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;id_nova_noticia&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;cadastro.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;u&amp;quot;Inserir nova noticia&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@noticias_blueprint.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;todas_as_noticias&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;noticias&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;index.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                           &lt;span class="n"&gt;noticias&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;todas_as_noticias&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                           &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;u&amp;quot;Todas as notícias&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@noticias_blueprint.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/noticia/&amp;lt;int:noticia_id&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;noticia&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;noticia_id&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;noticia&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;noticias&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_one&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;noticia_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;noticia.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;noticia&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;noticia&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@noticias_blueprint.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/media/&amp;lt;path:filename&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;media&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;send_from_directory&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;MEDIA_ROOT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Repare que agora a única diferença é que ao invés de &lt;strong&gt;app.route&lt;/strong&gt; usaremos &lt;strong&gt;nome_do_blueprint.route&lt;/strong&gt; e você pode inclusive se preferir colocar este blueprint em qualquer outro diretório desde que esteja no Python PATH.&lt;/p&gt;
+&lt;p&gt;Como já falei antes o Blueprint acima é apenas um projeto de como esta parte da app deve funcionar, portanto agora precisamos entregar este projeto ao Flask e pedir que ele contrua. Para isso basta alterar o &lt;strong&gt;news_app.py&lt;/strong&gt; removendo o circular import e registrando o blueprint.&lt;/p&gt;
+&lt;h5&gt;news_app.py&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# coding: utf-8&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;blueprints.noticias&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;noticias_blueprint&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;wtf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_object&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;settings&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register_blueprint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;noticias_blueprint&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Caso você crie mais blueprints será necessário apenas registra-los repetindo a linha &lt;code&gt;app.register_blueprint(objeto_do_blueprint)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Como existe a possibilidade de termos vários Blueprints uma coisa que pode acontecer é termos views com o mesmo nome, por exemplo, é bem comum ter uma view chamada &lt;strong&gt;index&lt;/strong&gt; em todos os Blueprints, isso levaria a conflitos na hora de resolver o endpoint da url e para evitar isso o Flask exige que sejamos explicitos na hora de criar as urls com o &lt;strong&gt;url_for&lt;/strong&gt; portanto será necessário alterar todos os templates incluindo o nome do blueprint, exemplo:&lt;/p&gt;
+&lt;h5&gt;templates/index.html&lt;/h5&gt;
+&lt;p&gt;Alterar de:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;...
+&lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{{url_for(&amp;#39;noticia&amp;#39;, noticia_id=noticia.id)}}&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+...
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;para:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;...
+&lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{{url_for(&amp;#39;noticias.noticia&amp;#39;, noticia_id=noticia.id)}}&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
+...
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agora precisamos usar &lt;strong&gt;noticias.noticia&lt;/strong&gt;, onde &lt;strong&gt;noticias&lt;/strong&gt; é o nome do blueprint e &lt;strong&gt;noticia&lt;/strong&gt; o endpoint da view.&lt;/p&gt;
+&lt;p&gt;Blueprints também podem ser &lt;strong&gt;montados&lt;/strong&gt; em uma url base diferente:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register_blueprint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;objeto_do_blueprint&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url_prefix&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/portal&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Dessa forma todas as rotas criadas dentro do Blueprint serão automaticamente mapeadas para a base &lt;strong&gt;/portal&lt;/strong&gt;, ou seja, ao invés de &lt;strong&gt;/noticias/cadastro&lt;/strong&gt; ficaria &lt;strong&gt;/portal/noticias/portal&lt;/strong&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Esta versão com blueprint está disponível no &lt;a href="https://github.com/rochacbruno/wtf/tree/blueprint"&gt;github&lt;/a&gt; e o diff entre as versões está nessa &lt;a href="https://github.com/rochacbruno/wtf/commit/315c7af699bb215b53299c43af017becb7c1a8c2"&gt;url&lt;/a&gt;. &amp;lt;3 Github.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;O ideal mesmo em termos de organização é que o Blueprint tenha sua própria pasta de templates e arquivos estáticos.&lt;/p&gt;
+&lt;p&gt;Também existem abordagens onde os blueprints são registrando dinâmicamente de acordo com módulos de uma pasta especifica ou uma lista no settings.py.&lt;/p&gt;
+&lt;p&gt;Uma outra coisa ideal de se fazer é ao invés de criar o blueprint em um único arquivo separa-lo em módulos para &lt;strong&gt;models&lt;/strong&gt;, &lt;strong&gt;views&lt;/strong&gt; etc.&lt;/p&gt;
+&lt;p&gt;Para que servem mesmo os Blueprints?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Construir grandes projetos baseados em uma coleção de diferentes Blueprints&lt;/li&gt;
+&lt;li&gt;Registrar um blueprint em uma url base diferente ou em um subdominio diferente&lt;/li&gt;
+&lt;li&gt;Registrar um mesmo blueprint multiplas vezes no projeto usando urls e configurações diferentes&lt;/li&gt;
+&lt;li&gt;Prover templates, arquivos estáticos, template filters, macros, template globals e outros recursos (um blueprint não é obrigado a implementar views)&lt;/li&gt;
+&lt;li&gt;Servir de base para a criação de extensões para o Jinja e Flask&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;RELAX:&lt;/strong&gt; Veremos essas abordagens mais avançadas de uso dos blueprints em um próximo capítulo desta série.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;&lt;a href="#app_factory" name="app_factory"&gt;A fantástica fábrica de web apps&lt;/a&gt;&lt;/h2&gt;
+&lt;figure style="float:left;margin-right:10px;"&gt;
+&lt;img src="/images/rochacbruno/fabrica.jpg" alt="fabrica" width="230"&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Arquivos separados cada um com sua responsabilidade, Blueprints para criar módulos reutilizaveis e configurações organizadas. Mas ainda não está perfeito.&lt;/p&gt;
+&lt;p&gt;Nós já vimos como é possível modularizar o projeto com o uso dos Blueprints e eu citei que podemos registrar os Blueprints em urls ou subdominios diferentes.&lt;/p&gt;
+&lt;p&gt;Mas existem dois casos em que Blueprints sozinhos não resolvem todos os problemas. Um deles é nos &lt;strong&gt;testes&lt;/strong&gt;, ao escrever testes unitários precisaremos de um objeto &lt;strong&gt;app&lt;/strong&gt; com configurações especificas para testes, você querer por exemplo que no momento dos testes o app conecte-se em um banco de dados de testes.&lt;/p&gt;
+&lt;p&gt;Além disso em projetos grandes é comum juntar mais de uma app em um único projeto, imagine que na sua empresa tem 2 times, um que trabalha com desenvolvimento de &lt;strong&gt;api&lt;/strong&gt; e outro que trabalha no desenvolvimento do &lt;strong&gt;site&lt;/strong&gt;. E ainda pode ter outro time trabalhando no desenvolvimento de um &lt;strong&gt;blog&lt;/strong&gt;. Mas no final todos esses apps deve ser servidor debaixo de um mesmo webserver e de um mesmo dominio.&lt;/p&gt;
+&lt;p&gt;Outro caso comum é o uso de soluções prontas, uma boa opção é usar o Flask-API para montar a &lt;strong&gt;/api&lt;/strong&gt; de seu projeto ou o QuokkaCMS para o &lt;strong&gt;/blog&lt;/strong&gt; e ai você já teria no mínimo 2 apps diferentes em um mesmo projeto.&lt;/p&gt;
+&lt;h3&gt;Chega de teoria!&lt;/h3&gt;
+&lt;p&gt;No Flask é recomendado o uso de &lt;strong&gt;Application Factories&lt;/strong&gt; que é simplesmente o uso de funções para criar instancia da &lt;strong&gt;app&lt;/strong&gt; Flask ao invés de cria-la diretamente no &lt;strong&gt;top level&lt;/strong&gt; do seu arquivo de app. Com isso é possível reutilizar essa função com diferentes parâmetros. vamos ver um exemplo.&lt;/p&gt;
+&lt;p&gt;No arquivo &lt;code&gt;news_app.py&lt;/code&gt; ao invés disso:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# coding: utf-8&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;blueprints.noticias&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;noticias_blueprint&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;wtf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_object&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;settings&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register_blueprint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;noticias_blueprint&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;teremos isso:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# coding: utf-8&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;blueprints.noticias&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;noticias_blueprint&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config_filename&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;wtf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;config_filename&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_pyfile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config_filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register_blueprint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;noticias_blueprint&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;e no &lt;code&gt;run.py&lt;/code&gt; mudaremos de:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;news_app&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;use_reloader&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;para:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;news_app&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config_filename&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/server/wtf/settings.py&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;use_reloader&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;Para melhorar ainda mais podemos criar uma função manipuladora para registrar os blueprints &lt;code&gt;register_blueprints(app)&lt;/code&gt; que pode carregar os blueprints diretamente de uma pasta ou de uma variavel no settings, mas como eu já disse isso vai ficar para um próximo capitulo.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Ok, ao invés de criarmos o &lt;code&gt;app&lt;/code&gt; direto no top level criamos ele dentro de uma função, veja as vantagens dessa abordagem:&lt;/p&gt;
+&lt;h3&gt;1. Testes&lt;/h3&gt;
+&lt;p&gt;Você poderá criar uma suite de testes facilmente e manipular as configurações desta instancia.&lt;/p&gt;
+&lt;h5&gt;/wtf/tests/test_app.py&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;unittest&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;news_app&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;BasicTestCase&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;unittest&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;TestCase&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;setUp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config_filename&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/path/to/test_settings.py&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;test_request_args&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;with&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;test_request_context&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/?name=BrunoRocha&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+             &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;assertEqual&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;BrunoRocha&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;&lt;a href="#multiple_apps" name="multiple_apps"&gt;2. Instanciar multiplos apps em um mesmo projeto &lt;/a&gt;&lt;/h3&gt;
+&lt;h5&gt;/wtf/multiple_run.py&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;werkzeug.wsgi&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;DispatcherMiddleware&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;news_app&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;create_news_app&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;quokka.core&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;create_quokka_app&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask.ext.api&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;create_api&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;create_news_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config_filename&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/server/wtf/settings.py&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;blog_app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;create_quokka_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;quokka.mysettings&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;api_v1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;create_api&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;serializers&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;xml&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;json&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;api_settings_v1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;wsgi_app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;DispatcherMiddleware&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;wsgi_app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;  &lt;span class="c"&gt;# servido em /&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;/blog&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;blog_app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;/api/v1&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;api_v1&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;use_reloader&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;Esta versão com application factory está no &lt;a href="https://github.com/rochacbruno/wtf/tree/application_factory"&gt;github&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Além desses dois exemplos também existe a possibilidade de utilizar o &lt;strong&gt;shell&lt;/strong&gt; do Flask para criar instancias da &lt;strong&gt;app&lt;/strong&gt; interativamente.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Mostrarei como utilizar o &lt;strong&gt;shell&lt;/strong&gt; e criar comandos de console usando o Click e o Flask-Script em um outro capítulo :)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;&lt;a href="#config" name="config"&gt;Configurações para todo lado&lt;/a&gt;&lt;/h2&gt;
+&lt;h4&gt;Regra N.1: Configurações não pertencem a sua base de código!&lt;/h4&gt;
+&lt;p&gt;Ao desenvolver projetos para web, principalmente grandes projetos é muito comum termos diferentes &lt;strong&gt;ambientes&lt;/strong&gt; e isto nos obriga a ter diferentes conjuntos de configurações, como no exemplo do tópico anterior, podemos ter o ambiente de &lt;strong&gt;desenvolvimento&lt;/strong&gt;, o ambiente de &lt;strong&gt;testes&lt;/strong&gt;, o ambiente de &lt;strong&gt;homologação&lt;/strong&gt; e o ambiente de &lt;strong&gt;produção&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Gerenciar estes múltiplos ambientes requer acima de tudo muita disciplina, a Regra N.1 deverá ser seguida a risca, ou seja, &lt;strong&gt;NUNCA&lt;/strong&gt; faça configurações no modo &lt;strong&gt;HARD CODED&lt;/strong&gt;, sempre utilize variáveis de settings para coisas que se alteram entre diferentes ambientes e sempre tenha um valor &lt;strong&gt;default&lt;/strong&gt; para todos os casos.&lt;/p&gt;
+&lt;p&gt;No Flask isso é fácil pois já existe uma convenção de que configurações ficam em &lt;strong&gt;app.config&lt;/strong&gt; ou &lt;strong&gt;current_app.config&lt;/strong&gt; dependendo do estado da app. A única coisa que precisamos nos preocupar é em escrever corretamente os arquivos de configuração de forma que sejam de fácil manutenção e que sejam carregados de forma dinâmica de acordo com o ambiente em que a app está sendo executada.&lt;/p&gt;
+&lt;p&gt;Por padrão o Flask já oferece todas as ferramentas necessárias para gerenciar questões de configurações, tudo o que &lt;strong&gt;no outro framework&lt;/strong&gt; :) acabamos precisando de módulos de terceiros para fazer as coisas de maneira &lt;strong&gt;decoupled&lt;/strong&gt;, no Flask já esta built-in. Então vamos conhecer as abordagens de configuração.&lt;/p&gt;
+&lt;h4&gt;O objeto "config"&lt;/h4&gt;
+&lt;p&gt;Independente da abordagem de configuração que você escolher, no final as variáveis vão para no mesmo atributo que é o &lt;strong&gt;app.config&lt;/strong&gt;, este atributo é uma subclasse de &lt;strong&gt;dict&lt;/strong&gt; e se comporta exatamente como um dicionário, sendo assim podemos alterar seus valores livremente. (mas lembre-se que isso deve ocorrer quando a app estiver em estado de configuração).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;DEBUG&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;DATABASE&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;mysql://user:password@localhost/database&amp;quot;&lt;/span&gt;
+
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;DEBUG&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;DATABASE&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;mysql://user:password@localhost/database&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Por padrão no momento em que o objeto &lt;strong&gt;app&lt;/strong&gt; for instanciado o Flask já irá colocar uma série de valores default no &lt;strong&gt;app.config&lt;/strong&gt;, este valores podem ser conferidos no seguinte &lt;a href="http://flask.pocoo.org/docs/config/#builtin-configuration-values"&gt;link&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Existem alguns valores de configuração que podem ser setados de diferentes formas, o "DEBUG" é um deles, e pode ser feito de uma dessas 3 formas.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;DEBUG&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Como o objeto &lt;strong&gt;config&lt;/strong&gt; é um dicionário a maneira mais fácil e prática de atualiza-lo é usando o método update presente nos dicionários Python.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;my_app_config&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;DEBUG&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;DATABASE&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;mysql://user:password@localhost/database&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;update&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;my_app_config&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Usar o método &lt;strong&gt;update&lt;/strong&gt; em conjunto com a funcionalidade de descompactação de dicionários &lt;code&gt;**&lt;/code&gt; do Python é a maneira mais fácil de atualizar as configurações e isto pode ser feito de forma condicional tendo o seu dicionário de config em um arquivo separado ou até mesmo em um arquivo JSON de fácil manutenção.&lt;/p&gt;
+&lt;h3&gt;Configurando "like a boss", ou melhor "like a Flasker" :)&lt;/h3&gt;
+&lt;p&gt;Como já falei no ínicio deste tópico, é muito comum você precisar que as configurações variem de acordo com o ambiente ou servidor em que está rodando, para isso o Flask fornece mais 3 abordagems de configurações bastante úteis.&lt;/p&gt;
+&lt;h4&gt;Usando um arquivo de configurações *.cfg&lt;/h4&gt;
+&lt;p&gt;Esta é a maneira mais comum, você coloca suas variáveis em arquivos separados para cada ambiente, por exemplo na raiz de seu projeto você pode ter os seguintes arquivos &lt;strong&gt;development.cfg&lt;/strong&gt;, &lt;strong&gt;test.cfg&lt;/strong&gt; e &lt;strong&gt;production.cfg&lt;/strong&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;O tipo de arquivo &lt;strong&gt;cfg&lt;/strong&gt; é um arquivo Python normal e aceita a sintaxe normal do Python, porém utiliza a extensão &lt;strong&gt;cfg&lt;/strong&gt; para que possa ser diferenciado do restante do seu código e isto é muito útil pois certamente você não vai querer mandar esses arquivos sensiveis para o github por exemplo, basta colocar &lt;code&gt;*.cfg&lt;/code&gt; no .gitignore e esses arquivos ficarão fora do controle de versões.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h6&gt;production.cfg&lt;/h6&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;span class="n"&gt;DATABASE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;mysql://user:password@mysqlserver.company.com/database&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h6&gt;development.cfg&lt;/h6&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="n"&gt;DATABASE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;mysql://user:password@localhost/development_database&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;E agora no app&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_pyfile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;.cfg&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;E então em seu &lt;strong&gt;run.py&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;app&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt;
+&lt;span class="n"&gt;mode&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;development&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;No exemplo acima usamos o &lt;strong&gt;sys.argv&lt;/strong&gt; para capturar os argumentos passados para o &lt;strong&gt;run.py&lt;/strong&gt; mas em outro capítulo veremos como usar o &lt;strong&gt;click&lt;/strong&gt; ou o &lt;strong&gt;Flask-Script&lt;/strong&gt; para fazer isso de maneira mais elegante.&lt;/p&gt;
+&lt;p&gt;Bom, agora para executar o seu app em ambiente de desenvolvimento você usará:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;python run.py development
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;e em produção você irá utilizar&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;python run.py production
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Em produção geralmente não usaremos o &lt;strong&gt;run.py&lt;/strong&gt;, ao invés disso teremos uma arquivo &lt;strong&gt;WSGI&lt;/strong&gt; para ser inicializado com &lt;strong&gt;Gunicorn&lt;/strong&gt; ou &lt;strong&gt;Uwsgi&lt;/strong&gt;, veremos isso na última parte desta série.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4&gt;Usando variável de ambiente (recommended)&lt;/h4&gt;
+&lt;p&gt;Seguinte a idéia do tópico anterior: configurar a partir de um arquivo &lt;strong&gt;cfg&lt;/strong&gt;, vamos agora melhorar essa abordagem fazendo com que o arquivo seja decidido com o uso de uma variável de ambiente. Esta é a maneira mais recomendada para gerir as configurações.&lt;/p&gt;
+&lt;p&gt;Vamos alterar apenas o arquivo &lt;strong&gt;app.py&lt;/strong&gt; e o &lt;strong&gt;run.py&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;app.py&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config_env_var&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;FLASK_CONFIG&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_envvar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config_env_var&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;silent&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;run.py&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;app&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt;
+&lt;span class="n"&gt;config_env_var&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;FLASK_CONFIG&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config_env_var&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Está bem parecido com a versão anterior, porém agora quem decide qual configuração será carregada será uma variável de embiente, usamos o &lt;strong&gt;silent=False&lt;/strong&gt; para que ocorra um erro nos informando caso a variável &lt;strong&gt;FLASK_CONFIG&lt;/strong&gt; não exista no ambiente, por isso no nosso processo de &lt;strong&gt;deploy&lt;/strong&gt; teremos que garantir a existencia dessa variável, assim como teremos que garantir que ela exista em nosso ambiente de desenvolvimento.&lt;/p&gt;
+&lt;p&gt;A vantagem dessa abordagem é que você pode setar esse valor no arquivo "~/.bashrc" tanto na máquina servidor quanto na de desenvolvimento e então não se preocupar mais em ficar mudando o &lt;strong&gt;modo&lt;/strong&gt; de configuração. Além disso lenbre-se que o arquivo pode estar localizado em qualquer diretório.&lt;/p&gt;
+&lt;p&gt;Na máquina de desenvolvimento&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;FLASK_CONFIG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/path/to/development.cfg
+&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;FLASK_CONFIG_TEST&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/path/to/test.cfg
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Na máquina de produção&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;export &lt;/span&gt;&lt;span class="nv"&gt;FLASK_CONFIG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/server/configurations/production.cfg
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agora é só executar o &lt;strong&gt;run.py&lt;/strong&gt; e caso precise alterar, para teste por exemplo use &lt;code&gt;python run.py FLASK_CONFIG_TEST&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Se você é usuário &lt;strike&gt;Windows&lt;/strike&gt; deverá usar &lt;strong&gt;set&lt;/strong&gt; no lugar de &lt;strong&gt;export&lt;/strong&gt;.  Exemplo:   &lt;code&gt;set FLASK_CONFIG=/path/to/development.cfg&lt;/code&gt; ou se preferir acessar este &lt;a href="http://www.ubuntu.com/download/desktop"&gt;link&lt;/a&gt; e resolver este problema de uma maneira mais elegante :)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4&gt;Usando um arquivo de configurações *.json&lt;/h4&gt;
+&lt;p&gt;Da mesma forma como usamos o &lt;strong&gt;cfg&lt;/strong&gt; também é possivel utilizar &lt;strong&gt;json&lt;/strong&gt;, exemplo:&lt;/p&gt;
+&lt;h5&gt;production.json&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;DEBUG&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;true&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;DATABASE&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;mysql://user:password@localhost/database&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="err"&gt;...&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h5&gt;app.py&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_json&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;production.json&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; A sintaxe no JSON é um pouco diferente de um dict Python, use &lt;strong&gt;true&lt;/strong&gt; e &lt;strong&gt;false&lt;/strong&gt; ao invés de &lt;strong&gt;True&lt;/strong&gt; e &lt;strong&gt;False&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4&gt;Usando objetos para configurações default&lt;/h4&gt;
+&lt;p&gt;Como já citado no ínicio deste capítulo, &lt;strong&gt;SEMPRE TENHA VALORES DEFAULT&lt;/strong&gt;, a maneira recomendada para isso é usar objetos, porém  o uso e objetos devem ser apenas para valores DEFAULT. valores que variam de acordo com o ambiente devem usar as outras abordagens &lt;strong&gt;from_pyfile&lt;/strong&gt;, &lt;strong&gt;from_envvar&lt;/strong&gt; ou &lt;strong&gt;from_json&lt;/strong&gt;. Isto por que geramente &lt;strong&gt;objetos&lt;/strong&gt; devem fazer parte de seu codebase e serem distribuidos em sistemas de controle de versão, já os arquivos &lt;strong&gt;json&lt;/strong&gt; ou &lt;strong&gt;cfg&lt;/strong&gt; podem estar no .gitignore.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; usando &lt;strong&gt;from_object&lt;/strong&gt; o Flask itá utilizar apenas as constantes, ou seja, identificadores definidos em maiusculo.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5&gt;usando um arquivo Python&lt;/h5&gt;
+&lt;p&gt;default_settings.py&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;SECRET_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;mskcjdnfksdbflsjhgnaslkgnsfkjg&amp;quot;&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;app.py&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
+
+&lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+&lt;span class="n"&gt;USE_CACHE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config_env_var&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;FLASK_CONFIG&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;extra_config&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_object&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c"&gt;# pega as constantes do próprio arquivo&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_object&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;default_settings&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c"&gt;# pega o módulo, pode usar o caminho completo&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_envvar&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;config_env_var&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;silent&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="c"&gt;# pega o caminho do arquivo de uma env-var&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;extra_config&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;update&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;extra_config&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;   &lt;span class="c"&gt;# usa um dict Python&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Repare que podemos mesclar todas as abordagens de configuração, sendo que de acordo com a ordem que forem carregadas os valores serão sobrescritos.&lt;/p&gt;
+&lt;h5&gt;Agora com um pouco de classe&lt;/h5&gt;
+&lt;p&gt;Uma forma bem interessante de fazer a mesma coisa é utilizar classes Python ao invés de apenas arquivos, pois dessa forma podemos ter herança e polimorfismo. veja este exemplo:&lt;/p&gt;
+&lt;p&gt;default_settings.py&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;BaseConfig&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;ProductionConfig&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BaseConfig&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;SECRET_KEY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;djfnsdjkfnsjdf&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;MEDIA_ROOT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;/path/to/media_files/in/server&amp;quot;&lt;/span&gt;
+
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;DevelopmentConfig&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ProductionConfig&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;MEDIA_ROOT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;/home/me/projects/wtf/media_files&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agora na hora de configurar podemos variar entre Development e Production&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Production&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_object&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;default_settings.&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;Config&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;O método de configuração &lt;strong&gt;from_object&lt;/strong&gt; aceita como parametro um arquivo Python ou diretamente o nome de uma classe ou objeto dentro deste arquivo.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;LEMBRE-SE:&lt;/strong&gt; Você deve usar o &lt;strong&gt;from_object&lt;/strong&gt; apenas para carregar valores default, valores especificos como senhas, strings de conexão etc devem ser colocados em arquivos fora de seu controle de versṍes.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4&gt;Instance folders&lt;/h4&gt;
+&lt;p&gt;Uma outra abordagem interessante é o uso de "diretórios de instancia" é bastante útil para gerenciar não apenas configurações mas também serve para termos outros recursos como arquivos de bancos de dados, arquivos de media/upload, caches etc em pastas separadas de acordo com o ambiente em que a app está sendo executada.&lt;/p&gt;
+&lt;p&gt;Por padrão a pasta de instancia é chamada &lt;strong&gt;instance&lt;/strong&gt; e fica na raiz do projeto, mas você pode alterar este caminho utilizando o parâmetro &lt;strong&gt;intance_path&lt;/strong&gt;. O ideal é que esta pasta fique fora de seu controle de versões, ou que seja gerenciada em um repositório privado separado de seu codebase principal.&lt;/p&gt;
+&lt;p&gt;Imagine a seguinte estrutura&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;/seuprojeto
+    /app.py
+    /run.py
+    /...
+    /production_instance
+        /config.cfg
+        /database.sqlite
+        /nginx.conf
+    /development_instance
+        /config.cfg
+        /database.sqlite
+        /nginx.conf
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agora na hora de criar o app iremos alternar entre essas duas pastas de instancia&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;production&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;instance_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;abspath&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dirname&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__file__&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;_instance&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="n"&gt;instance_path&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;instance_path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="n"&gt;instance_relative_config&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_pyfile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;config.cfg&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Dessa forma o &lt;strong&gt;instance_path&lt;/strong&gt; será alternado de acordo com o &lt;strong&gt;mode&lt;/strong&gt; e o parâmetro &lt;strong&gt;instance_relative_config&lt;/strong&gt; fará com que o &lt;strong&gt;config.cfg&lt;/strong&gt; seja procurado dentro da pasta de instancia que estiver rodando no momento.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; o &lt;strong&gt;instance_path&lt;/strong&gt; pode ser qualquer outro caminho, não precisa estar na raiz do seu projeto você pode usar &lt;strong&gt;/server/configs/qualquer_pasta&lt;/strong&gt;. O instance_path tem que ser um caminho absoluto.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;As pastas de instancia não servem apenas para configuração, mas em outro capítulo veremos como usa-las para arquivos de media e bancos de dados, confgurações de webservers etc.&lt;/p&gt;
+&lt;h4&gt;Config namespaces&lt;/h4&gt;
+&lt;p&gt;Uma outra utilizade que o objeto &lt;strong&gt;config&lt;/strong&gt; possui é o &lt;strong&gt;get_namespace&lt;/strong&gt; e ele serve para agrupar variáveis de configuração que pertencem a um dominio especifico, por exemplo bancos de dados.&lt;/p&gt;
+&lt;p&gt;config.cfg&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;MONGO_HOST&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;MONGO_PORT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;27017&lt;/span&gt;
+&lt;span class="n"&gt;MONGO_DB&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;myapp_db&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;MONGO_PASSWORD&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;schbalums123&amp;quot;&lt;/span&gt;
+
+&lt;span class="n"&gt;REDIS_HOST&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;sdjfksdf.redis.aws.com&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;REDIS_PASSWORD&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;foo_bar_123&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agora imagine que queremos pegar todas as configurações referents ao MONGO e ao REDIS em dicionários separados:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_pyfile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;config.cfg&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_namespace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;MONGO_&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;host&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;port&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;27017&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;db&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;myapp_db&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_namespace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;REDIS_&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;lowercase&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;HOST&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;sdjfksdf.redis.aws.com&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;quot;PASSWORD&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;foo_bar_123&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;O &lt;strong&gt;get_namespace&lt;/strong&gt; irá pegar todas as váriaveis definidas no namespace especificado, por padrão retorna as chaves em minusculo, mas caso queira manter em maiusculo basta usar &lt;strong&gt;lowercase=False&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Esta ferramenta é útil para efetuar conexões a banco de dados, exemplo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pymongo&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;MongoClient&lt;/span&gt;
+
+&lt;span class="n"&gt;db&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MongoClient&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_namespace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;MONGO_&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;foo&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;...&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;ATENÇÃO:&lt;/strong&gt; O método &lt;strong&gt;get_namespace&lt;/strong&gt; está disponível somente a partir da versão 1.0 do Flask, por enquanto você deverá usar o seguinte comando para instalar esta versão:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install https://github.com/mitsuhiko/flask/tarball/master
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Pois a versão que está no PyPI ainda é a 0.10.1&lt;/p&gt;
+&lt;h2&gt;&lt;a href="#flask_app_quase_perfeita" name="flask_app_quase_perfeita"&gt;A app Flask quase perfeita&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Ainda temos muito a discutir aqui na série What The Flask, mas só com o que vimos até aqui já é possível estruturar a app quase perfeita, &lt;strong&gt;quase&lt;/strong&gt;, pois ainda falta falar mais sobre blueprints, instance folders, testing, debugging, extensões, e deploy com fabric, gunicorn e nginx.&lt;/p&gt;
+&lt;p&gt;Vamos juntar tudo o que vimos até agora em nossa app de notícias.&lt;/p&gt;
+&lt;h3&gt;O pacote Python e os imports relativos&lt;/h3&gt;
+&lt;p&gt;Preferencialmente, e para permitir o uso de import relativo é ideal que nossa app esteja contida em um pacote Python, isso significa que todos os nossos arquivos, exceto os arquivos de execução "run.py", os arquivos de deploy "requirements.txt" e "setup.py" e os tests devem ficar contidos em uma pasta que tenha um &lt;code&gt;__init__.py&lt;/code&gt;. No nosso caso para fazer isso é bem simples, basta incluir um nível a mais de diretório, vamos aproveitar e implementar a ideia de &lt;strong&gt;instance folder&lt;/strong&gt; para conter o banco de dados, a paste de uploads e as configurações alterando nossa estrutura atual para:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;wtf/
+├── multiple_run.py
+├── requirements.txt
+├── run.py
+├── tests/
+│   └── test_basic.py
+└── wtf/
+    ├── __init__.py
+    ├── db.py
+    ├── another_app.py
+    ├── news_app.py
+    ├── default_settings.py
+    ├── blueprints/
+    │   ├── __init__.py
+    │   └── noticias.py
+    ├── development_instance/
+    │   ├── config.cfg
+    │   ├── media_files/
+    │   └── noticias.db
+    ├── production_instance/
+    │   ├── media_files/
+    │   └── noticias.db
+    │   └── config.cfg
+    ├── static
+    │   └── generic_logo.gif
+    └── templates
+        ├── base.html
+        ├── cadastro.html
+        ├── cadastro_sucesso.html
+        ├── index.html
+        └── noticia.html
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Algumas mudanças serão necessárias, primeiro teremos que alterar todos os imports para usar relative imports, dessa forma fora do módulo &lt;strong&gt;wtf&lt;/strong&gt; ao invés de &lt;code&gt;from news_app import create_app&lt;/code&gt; usaremos o caminho completo &lt;code&gt;from wtf.news_app import create_app&lt;/code&gt; e dentro do módulo &lt;strong&gt;wtf&lt;/strong&gt; podemos fazer imports relativos, ao invés de &lt;code&gt;from blueprints import noticias&lt;/code&gt; usaremos &lt;code&gt;from .blueprints.noticias import noticias_blueprint&lt;/code&gt;, repare no uso do &lt;strong&gt;.&lt;/strong&gt;, dentro do blueprint ao invés de &lt;code&gt;from db import noticias&lt;/code&gt; usaremos &lt;code&gt;from ..db import noticias&lt;/code&gt; repare que dessa vez usamos &lt;strong&gt;..&lt;/strong&gt;, indicando que o objeto está a dois niveis acima relativo ao módulo atual.&lt;/p&gt;
+&lt;h5&gt;run.py&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sys&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;wtf.news_app&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt;
+&lt;span class="n"&gt;mode&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;sys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;argv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;development&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_namespace&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;RUN_&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h5&gt;wtf/development_instance/config.cfg&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;RUN_DEBUG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="n"&gt;RUN_USE_RELOADER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;
+&lt;span class="n"&gt;RUN_HOST&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;localhost&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;RUN_PORT&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;5000&lt;/span&gt;
+&lt;span class="n"&gt;DATABASE_NAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;noticias.db&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;MEDIA_FOLDER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;media_files&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h5&gt;wtf/news_app.py&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;.blueprints.noticias&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;noticias_blueprint&lt;/span&gt;
+
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;create_app&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mode&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;instance_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;abspath&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dirname&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__file__&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;_instance&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;mode&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Flask&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;wtf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="n"&gt;instance_path&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;instance_path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                &lt;span class="n"&gt;instance_relative_config&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_object&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;wtf.default_settings&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;from_pyfile&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;config.cfg&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;MEDIA_ROOT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PROJECT_ROOT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;instance_path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;MEDIA_FOLDER&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;register_blueprint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;noticias_blueprint&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h5&gt;wtf/db.py&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;current_app&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;dataset&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;get_table&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tablename&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;database_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;DATABASE_NAME&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="n"&gt;database_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;instance_path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;database_name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;db&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;dataset&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;connect&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;sqlite:///{0}&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;format&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;database_path&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;db&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;tablename&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agora nossa versão do &lt;strong&gt;db&lt;/strong&gt; é uma função que retorna a tabela de acordo com o banco especifico dentro da nossa &lt;strong&gt;instance_path&lt;/strong&gt;&lt;/p&gt;
+&lt;h5&gt;wtf/blueprints/noticias.py&lt;/h5&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# coding: utf-8&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;werkzeug&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;secure_filename&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;flask&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;Blueprint&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;send_from_directory&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;..db&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;get_table&lt;/span&gt;
+
+&lt;span class="n"&gt;noticias_blueprint&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Blueprint&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;noticias&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@noticias_blueprint.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/noticias/cadastro&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;methods&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;GET&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;POST&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;cadastro&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;noticias&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;get_table&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;noticias&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;method&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;POST&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+
+        &lt;span class="n"&gt;dados_do_formulario&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;form&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;to_dict&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+        &lt;span class="n"&gt;imagem&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;files&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;imagem&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;imagem&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;filename&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;secure_filename&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;imagem&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;MEDIA_ROOT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;imagem&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;dados_do_formulario&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;imagem&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;filename&lt;/span&gt;
+
+        &lt;span class="n"&gt;id_nova_noticia&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;noticias&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;insert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dados_do_formulario&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;cadastro_sucesso.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                               &lt;span class="n"&gt;id_nova_noticia&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;id_nova_noticia&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;cadastro.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;u&amp;quot;Inserir nova noticia&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@noticias_blueprint.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;noticias&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;get_table&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;noticias&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;todas_as_noticias&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;noticias&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;index.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                           &lt;span class="n"&gt;noticias&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;todas_as_noticias&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                           &lt;span class="n"&gt;title&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;u&amp;quot;Todas as notícias&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@noticias_blueprint.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;/noticia/&amp;lt;int:noticia_id&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;noticia&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;noticia_id&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;noticias&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;get_table&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;noticias&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;noticia&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;noticias&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_one&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;noticia_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;render_template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;noticia.html&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;noticia&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;noticia&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="nd"&gt;@noticias_blueprint.route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/media/&amp;lt;path:filename&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;media&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;send_from_directory&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;current_app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;MEDIA_ROOT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; Não se esqueça de executar &lt;code&gt;pip install -r requirements.txt --upgrade&lt;/code&gt; para atualizar o Flask&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Para melhorar ainda mais esta versão, o caminho do instance_path poderia estar em uma variável de ambiente. Mas do jeito que está está quase perfeito. Agora e possivel executar com &lt;code&gt;python run.py&lt;/code&gt; ou &lt;code&gt;python run.py production&lt;/code&gt; para alternar entre os ambientes. As pastas &lt;code&gt;development_instance&lt;/code&gt; e &lt;code&gt;production_instance&lt;/code&gt; podem ficar de fora do seu controle versão, bastando adiciona-las no .gitignore.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A versão final do app está no &lt;a href="https://github.com/rochacbruno/wtf/tree/almost_perfect"&gt;github&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Nesta versão é possivel executar os tests com &lt;code&gt;nosetests tests/&lt;/code&gt; na raiz do projeto! &lt;strong&gt;escreva mais testes!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Também temos o &lt;strong&gt;multiple_run&lt;/strong&gt; que utiliza o DispatcherMiddleware para juntar dois apps, experimente executar &lt;code&gt;python multiple_run.py&lt;/code&gt; e você verá que o app de noticias será servido no "/" mas se acessar "/another" estará acessando a outra app contida no arquivo "wtf/another_app.py".&lt;/p&gt;
+&lt;p&gt;Nos próximos capítulos iremos evoluir este app para o uso de algumas extensões essenciais, uncluiremos controle de login, cache, interface de administração, suporte a html e markdown nas noticias e outras coisas.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;END:&lt;/strong&gt; Sim chegamos ao fim desta segunda parte da série &lt;strong&gt;W&lt;/strong&gt;hat &lt;strong&gt;T&lt;/strong&gt;he &lt;strong&gt;F&lt;/strong&gt;lask. Eu espero que você tenha aproveitado as dicas aqui mencionadas. Nas próximas 4 partes iremos nos aprofundar no uso e desenvolvimento de extensões e blueprints e também questṍes relacionados a deploy de aplicativos Flask. Acompanhe o PythonClub, o meu &lt;a href="http://brunorocha.org"&gt;site&lt;/a&gt; e meu &lt;a href="http://twitter.com/rochacbruno"&gt;twitter&lt;/a&gt; para ficar sabendo quando a próxima parte for publicada.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr /&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;PUBLICIDADE:&lt;/strong&gt; Estou iniciando um curso online de Python e Flask, para iniciantes abordando com muito mais detalhes e exemplos práticos os temas desta série de artigos e muitas outras coisas envolvendo Python e Flask, o curso será oferecido no CursoDePython.com.br, ainda não tenho detalhes especificos sobre o valor do curso, mas garanto que será um preço justo e acessível. Caso você tenha interesse por favor preencha este &lt;a href="https://docs.google.com/forms/d/1qWx4pzNVSPQmxsLgYBjTve6b_gGKfKLMSkPebvpMJwg/viewform?usp=send_form"&gt;formulário&lt;/a&gt; pois dependendo da quantidade de pessoas interessadas o curso sairá mais rapidamente.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr /&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;PUBLICIDADE 2:&lt;/strong&gt; Também estou escrevendo um livro de receitas &lt;strong&gt;Flask CookBook&lt;/strong&gt; através da plataforma LeanPub, caso tenha interesse por favor preenche o formulário na &lt;a href="https://leanpub.com/pythoneflask"&gt;página do livro&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Muito obrigado e aguardo seu feedback com dúvidas, sugestões, correções etc na caixa de comentários abaixo.&lt;/p&gt;
+&lt;p&gt;Abraço! "Python é vida!"&lt;/p&gt;</summary><category term="flask"></category><category term="web"></category><category term="tutorial"></category><category term="what-the-flask"></category></entry><entry><title>What the Flask? Pt-1 Introdução ao desenvolvimento web com Python</title><link href="http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html" rel="alternate"></link><updated>2014-05-31T02:22:00-03:00</updated><author><name>Bruno Cezar Rocha</name></author><id>tag:pythonclub.com.br,2014-05-31:what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html</id><summary type="html">&lt;h2&gt;What The Flask - 1/6&lt;/h2&gt;
 &lt;h3&gt;6 passos para ser um Flask ninja!&lt;/h3&gt;
 &lt;p&gt;Nesta série de 6 artigos/tutoriais pretendo abordar de maneira bem detalhada
 o desenvolvimento web com o framework Flask.&lt;/p&gt;
