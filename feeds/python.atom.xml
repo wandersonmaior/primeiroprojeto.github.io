@@ -11,7 +11,7 @@
         &lt;span class="k"&gt;pass&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;onde &lt;tt class="docutils literal"&gt;args&lt;/tt&gt; são argumentos opcionais (parâmetros de entrada).
-A função &lt;tt class="docutils literal"&gt;Metodo&lt;/tt&gt; pode retornar um valor de saída:&lt;/p&gt;
+A função &lt;tt class="docutils literal"&gt;metodo&lt;/tt&gt; pode retornar um valor de saída:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;metodo&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
         &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="k"&gt;pass&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -23,10 +23,10 @@ A função &lt;tt class="docutils literal"&gt;Metodo&lt;/tt&gt; pode retornar um
                 &lt;span class="k"&gt;pass&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;tt class="docutils literal"&gt;pass&lt;/tt&gt; significa que você pode escrever o seu código no lugar. E &lt;tt class="docutils literal"&gt;atributo1&lt;/tt&gt; é um atributo com valor inicial &lt;tt class="docutils literal"&gt;None&lt;/tt&gt; (nada). Poderia ser &lt;tt class="docutils literal"&gt;atributo1 = 0&lt;/tt&gt;, por exemplo.&lt;/p&gt;
-&lt;p&gt;Importante: Note que para nome de &lt;strong&gt;classes&lt;/strong&gt; usamos &lt;em&gt;PalavrasComeçandoPorMaiúscula&lt;/em&gt; e para nome de &lt;strong&gt;métodos (funções)&lt;/strong&gt; usamos &lt;em&gt;minúsculas_separadas_por_underscore&lt;/em&gt;. Esta é uma convenção adotada pelos &lt;em&gt;Pythonistas&lt;/em&gt; segundo o &lt;a class="reference external" href="http://www.python.org.br/wiki/GuiaDeEstilo"&gt;Guia de Estilo&lt;/a&gt; &lt;strong&gt;PEP 8&lt;/strong&gt; - &lt;a class="reference external" href="http://legacy.python.org/dev/peps/pep-0008/"&gt;Style Guide for Python Code&lt;/a&gt; escrito por &lt;a class="reference external" href="http://www.python.org.br/wiki/GuidoVanRossum"&gt;Guido Van Rossum&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Importante: Note que para nome de &lt;strong&gt;classes&lt;/strong&gt; usamos &lt;em&gt;PalavrasComeçandoPorMaiúscula&lt;/em&gt; (isso tambem é conhecido como &amp;quot;CamelCase&amp;quot;) e para nome de &lt;strong&gt;métodos (funções)&lt;/strong&gt; usamos &lt;em&gt;minúsculas_separadas_por_underscore&lt;/em&gt;. Esta é uma convenção adotada pelos &lt;em&gt;Pythonistas&lt;/em&gt; segundo o &lt;a class="reference external" href="http://www.python.org.br/wiki/GuiaDeEstilo"&gt;Guia de Estilo&lt;/a&gt; &lt;strong&gt;PEP 8&lt;/strong&gt; - &lt;a class="reference external" href="http://legacy.python.org/dev/peps/pep-0008/"&gt;Style Guide for Python Code&lt;/a&gt; escrito por &lt;a class="reference external" href="http://www.python.org.br/wiki/GuidoVanRossum"&gt;Guido Van Rossum&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="section" id="exemplo-1-calculadora-simples"&gt;
 &lt;h2&gt;Exemplo 1 - Calculadora simples&lt;/h2&gt;
-&lt;p&gt;Existem pelo menos duas formas diferentes de trabalhar com os parâmetros de entrada. Neste exemplo, definiremos o &lt;strong&gt;parâmetro apenas uma vez&lt;/strong&gt; com um método especial do Python chamado &lt;tt class="docutils literal"&gt;__init__&lt;/tt&gt;. Segundo &lt;a class="reference external" href="http://homepages.dcc.ufmg.br/~joaoreis/Site%20de%20tutoriais/aprendendopython/poo.html#init"&gt;João Reis&lt;/a&gt;, este método é chamado quando um objeto de uma classe é instânciado. Este método é útil para fazer qualquer inicialização que você queira com seu objeto.&lt;/p&gt;
+&lt;p&gt;Existem pelo menos duas formas diferentes de trabalhar com os parâmetros de entrada. Neste exemplo, definiremos o &lt;strong&gt;parâmetro apenas uma vez&lt;/strong&gt; com um método especial do Python chamado &lt;tt class="docutils literal"&gt;__init__&lt;/tt&gt;. Segundo &lt;a class="reference external" href="http://homepages.dcc.ufmg.br/~joaoreis/Site%20de%20tutoriais/aprendendopython/poo.html#init"&gt;João Reis&lt;/a&gt;, este método é chamado quando um objeto de uma classe é instânciado. Este método é útil para fazer qualquer inicialização que você queira com seu objeto, ou seja, ele é o método &lt;strong&gt;&amp;quot;Inicializador&amp;quot;&lt;/strong&gt; da instancia.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#calculadora.py&lt;/span&gt;
 &lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Calculadora&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
 
@@ -54,7 +54,7 @@ A função &lt;tt class="docutils literal"&gt;Metodo&lt;/tt&gt; pode retornar um
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;para não confundir, mas usualmente usamos o mesmo nome tanto no parâmetro quanto no novo campo.&lt;/p&gt;
 &lt;p&gt;Como dito antes, definimos os valores iniciais apenas uma vez e depois apenas usamos os métodos para calcular os valores.&lt;/p&gt;
-&lt;p&gt;Podemos rodar o Python no modo &lt;a class="reference external" href="https://docs.python.org/2/tutorial/interpreter.html#interactive-mode"&gt;modo interativo&lt;/a&gt; pelo terminal e importar a classe (veja este &lt;a class="reference external" href="https://www.youtube.com/watch?v=M1BAlDufqao"&gt;video&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Podemos rodar o Python no modo &lt;a class="reference external" href="https://docs.python.org/3/tutorial/interpreter.html#interactive-mode"&gt;modo interativo&lt;/a&gt; pelo terminal e importar a classe (veja este &lt;a class="reference external" href="https://www.youtube.com/watch?v=M1BAlDufqao"&gt;video&lt;/a&gt;).&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;python3&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;calculadora&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Calculadora&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;c&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Calculadora&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;128&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
@@ -147,6 +147,9 @@ A função &lt;tt class="docutils literal"&gt;Metodo&lt;/tt&gt; pode retornar um
     &lt;span class="n"&gt;u2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
     &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/travis/build/pythonclub/pythonclub.github.io/content/introducao-classes-metodos-python-basico.rst&lt;/tt&gt;, line 2); &lt;em&gt;&lt;a href="#id1"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
+Duplicate explicit target name: &amp;quot;modo interativo&amp;quot;.&lt;/div&gt;
 &lt;p&gt;Você pode suprimir o final do código (a partir do &lt;tt class="docutils literal"&gt;if&lt;/tt&gt;) e importar a classe no terminal no &lt;a class="reference external" href="https://docs.python.org/2/tutorial/interpreter.html#interactive-mode"&gt;modo interativo&lt;/a&gt; veja este &lt;a class="reference external" href="https://www.youtube.com/watch?v=M1BAlDufqao"&gt;video&lt;/a&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;python3&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;user&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;

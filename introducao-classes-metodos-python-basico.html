@@ -87,7 +87,7 @@
         <span class="k">pass</span>
 </pre></div>
 <p>onde <tt class="docutils literal">args</tt> são argumentos opcionais (parâmetros de entrada).
-A função <tt class="docutils literal">Metodo</tt> pode retornar um valor de saída:</p>
+A função <tt class="docutils literal">metodo</tt> pode retornar um valor de saída:</p>
 <div class="highlight"><pre><span class="k">def</span> <span class="nf">metodo</span><span class="p">(</span><span class="n">args</span><span class="p">):</span>
         <span class="k">return</span> <span class="k">pass</span>
 </pre></div>
@@ -99,10 +99,10 @@ A função <tt class="docutils literal">Metodo</tt> pode retornar um valor de sa
                 <span class="k">pass</span>
 </pre></div>
 <p><tt class="docutils literal">pass</tt> significa que você pode escrever o seu código no lugar. E <tt class="docutils literal">atributo1</tt> é um atributo com valor inicial <tt class="docutils literal">None</tt> (nada). Poderia ser <tt class="docutils literal">atributo1 = 0</tt>, por exemplo.</p>
-<p>Importante: Note que para nome de <strong>classes</strong> usamos <em>PalavrasComeçandoPorMaiúscula</em> e para nome de <strong>métodos (funções)</strong> usamos <em>minúsculas_separadas_por_underscore</em>. Esta é uma convenção adotada pelos <em>Pythonistas</em> segundo o <a class="reference external" href="http://www.python.org.br/wiki/GuiaDeEstilo">Guia de Estilo</a> <strong>PEP 8</strong> - <a class="reference external" href="http://legacy.python.org/dev/peps/pep-0008/">Style Guide for Python Code</a> escrito por <a class="reference external" href="http://www.python.org.br/wiki/GuidoVanRossum">Guido Van Rossum</a>.</p>
+<p>Importante: Note que para nome de <strong>classes</strong> usamos <em>PalavrasComeçandoPorMaiúscula</em> (isso tambem é conhecido como &quot;CamelCase&quot;) e para nome de <strong>métodos (funções)</strong> usamos <em>minúsculas_separadas_por_underscore</em>. Esta é uma convenção adotada pelos <em>Pythonistas</em> segundo o <a class="reference external" href="http://www.python.org.br/wiki/GuiaDeEstilo">Guia de Estilo</a> <strong>PEP 8</strong> - <a class="reference external" href="http://legacy.python.org/dev/peps/pep-0008/">Style Guide for Python Code</a> escrito por <a class="reference external" href="http://www.python.org.br/wiki/GuidoVanRossum">Guido Van Rossum</a>.</p>
 <div class="section" id="exemplo-1-calculadora-simples">
 <h2>Exemplo 1 - Calculadora simples</h2>
-<p>Existem pelo menos duas formas diferentes de trabalhar com os parâmetros de entrada. Neste exemplo, definiremos o <strong>parâmetro apenas uma vez</strong> com um método especial do Python chamado <tt class="docutils literal">__init__</tt>. Segundo <a class="reference external" href="http://homepages.dcc.ufmg.br/~joaoreis/Site%20de%20tutoriais/aprendendopython/poo.html#init">João Reis</a>, este método é chamado quando um objeto de uma classe é instânciado. Este método é útil para fazer qualquer inicialização que você queira com seu objeto.</p>
+<p>Existem pelo menos duas formas diferentes de trabalhar com os parâmetros de entrada. Neste exemplo, definiremos o <strong>parâmetro apenas uma vez</strong> com um método especial do Python chamado <tt class="docutils literal">__init__</tt>. Segundo <a class="reference external" href="http://homepages.dcc.ufmg.br/~joaoreis/Site%20de%20tutoriais/aprendendopython/poo.html#init">João Reis</a>, este método é chamado quando um objeto de uma classe é instânciado. Este método é útil para fazer qualquer inicialização que você queira com seu objeto, ou seja, ele é o método <strong>&quot;Inicializador&quot;</strong> da instancia.</p>
 <div class="highlight"><pre><span class="c">#calculadora.py</span>
 <span class="k">class</span> <span class="nc">Calculadora</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
@@ -130,7 +130,7 @@ A função <tt class="docutils literal">Metodo</tt> pode retornar um valor de sa
 </pre></div>
 <p>para não confundir, mas usualmente usamos o mesmo nome tanto no parâmetro quanto no novo campo.</p>
 <p>Como dito antes, definimos os valores iniciais apenas uma vez e depois apenas usamos os métodos para calcular os valores.</p>
-<p>Podemos rodar o Python no modo <a class="reference external" href="https://docs.python.org/2/tutorial/interpreter.html#interactive-mode">modo interativo</a> pelo terminal e importar a classe (veja este <a class="reference external" href="https://www.youtube.com/watch?v=M1BAlDufqao">video</a>).</p>
+<p>Podemos rodar o Python no modo <a class="reference external" href="https://docs.python.org/3/tutorial/interpreter.html#interactive-mode">modo interativo</a> pelo terminal e importar a classe (veja este <a class="reference external" href="https://www.youtube.com/watch?v=M1BAlDufqao">video</a>).</p>
 <div class="highlight"><pre><span class="err">$</span> <span class="n">python3</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">calculadora</span> <span class="kn">import</span> <span class="n">Calculadora</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Calculadora</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
@@ -223,6 +223,9 @@ A função <tt class="docutils literal">Metodo</tt> pode retornar um valor de sa
     <span class="n">u2</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
     <span class="k">print</span><span class="p">(</span><span class="n">User</span><span class="o">.</span><span class="n">all</span><span class="p">())</span>
 </pre></div>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">/home/travis/build/pythonclub/pythonclub.github.io/content/introducao-classes-metodos-python-basico.rst</tt>, line 2); <em><a href="#id1">backlink</a></em></p>
+Duplicate explicit target name: &quot;modo interativo&quot;.</div>
 <p>Você pode suprimir o final do código (a partir do <tt class="docutils literal">if</tt>) e importar a classe no terminal no <a class="reference external" href="https://docs.python.org/2/tutorial/interpreter.html#interactive-mode">modo interativo</a> veja este <a class="reference external" href="https://www.youtube.com/watch?v=M1BAlDufqao">video</a>:</p>
 <div class="highlight"><pre><span class="err">$</span> <span class="n">python3</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">user</span> <span class="kn">import</span> <span class="n">User</span>
