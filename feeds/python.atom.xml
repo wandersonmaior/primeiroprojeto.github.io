@@ -147,10 +147,7 @@ A função &lt;tt class="docutils literal"&gt;metodo&lt;/tt&gt; pode retornar um
     &lt;span class="n"&gt;u2&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;save&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
     &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;all&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;div class="system-message"&gt;
-&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;tt class="docutils"&gt;/home/travis/build/pythonclub/pythonclub.github.io/content/introducao-classes-metodos-python-basico.rst&lt;/tt&gt;, line 2); &lt;em&gt;&lt;a href="#id1"&gt;backlink&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
-Duplicate explicit target name: &amp;quot;modo interativo&amp;quot;.&lt;/div&gt;
-&lt;p&gt;Você pode suprimir o final do código (a partir do &lt;tt class="docutils literal"&gt;if&lt;/tt&gt;) e importar a classe no terminal no &lt;a class="reference external" href="https://docs.python.org/2/tutorial/interpreter.html#interactive-mode"&gt;modo interativo&lt;/a&gt; veja este &lt;a class="reference external" href="https://www.youtube.com/watch?v=M1BAlDufqao"&gt;video&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;Podemos rodar o Python no modo &lt;a class="reference external" href="https://docs.python.org/3/tutorial/interpreter.html#interactive-mode"&gt;modo interativo&lt;/a&gt; pelo terminal e importar a classe (veja este &lt;a class="reference external" href="https://www.youtube.com/watch?v=M1BAlDufqao"&gt;video&lt;/a&gt;).&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;python3&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;user&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;u1&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;User&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Regis&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;35&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
