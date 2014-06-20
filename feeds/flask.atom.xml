@@ -953,7 +953,7 @@ para facilitar a vida de quem pretende começar a desenvolver para web com Pytho
 &lt;p&gt;A série &lt;strong&gt;W&lt;/strong&gt;hat &lt;strong&gt;T&lt;/strong&gt;he &lt;strong&gt;F&lt;/strong&gt;lask será dividida nos seguintes capítulos.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a href="/what_the_flask_introducao_ao_desenvolvimento_web_com_python.html"&gt;&lt;strong&gt;Hello Flask&lt;/strong&gt;&lt;/a&gt;: Introdução ao desenvolvimento web com Flask  - &lt;strong&gt;&amp;lt;-- Você está aqui&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Flask patterns&lt;/strong&gt;: boas práticas na estrutura de aplicações Flask&lt;/li&gt;
+&lt;li&gt;&lt;a href="/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask"&gt;&lt;strong&gt;Flask patterns&lt;/strong&gt;&lt;/a&gt;: boas práticas na estrutura de aplicações Flask&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Plug &amp;amp; Use&lt;/strong&gt;: extensões essenciais para iniciar seu projeto&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;DRY&lt;/strong&gt;: Criando aplicativos reusáveis com Blueprints&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;from flask.ext import magic&lt;/strong&gt;: Criando extensões para o Flask e para o Jinja2&lt;/li&gt;
