@@ -9,7 +9,7 @@
 &lt;/figure&gt;
 
 &lt;ol&gt;
-&lt;li&gt;&lt;a href="/what_the_flask_introducao_ao_desenvolvimento_web_com_python.html"&gt;&lt;strong&gt;Hello Flask&lt;/strong&gt;&lt;/a&gt;: Introdução ao desenvolvimento web com Flask&lt;/li&gt;
+&lt;li&gt;&lt;a href="/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python"&gt;&lt;strong&gt;Hello Flask&lt;/strong&gt;&lt;/a&gt;: Introdução ao desenvolvimento web com Flask&lt;/li&gt;
 &lt;li&gt;&lt;a href="/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask"&gt;&lt;strong&gt;Flask patterns&lt;/strong&gt;&lt;/a&gt;: Estruturando aplicações Flask - &lt;strong&gt;&amp;lt;-- Você está aqui&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Plug &amp;amp; Use&lt;/strong&gt;: extensões essenciais para iniciar seu projeto&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;DRY&lt;/strong&gt;: Criando aplicativos reusáveis com Blueprints&lt;/li&gt;
