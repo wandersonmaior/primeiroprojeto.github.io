@@ -74,7 +74,13 @@
                 </header>
             </section>
             <p>É sempre bom ter tudo que você precisa de forma rápida e simples.</p>
+<p><a class="reference internal" href="#criando-uma-tabela">Criando uma tabela</a></p>
+<p><a class="reference internal" href="#crud">CRUD</a></p>
+<p><a class="reference internal" href="#backup">Backup</a></p>
+<p><a class="reference internal" href="#relacionando-tabelas">Relacionando tabelas</a></p>
 <p>Escrevi este post para um mini tutorial de SQLite3. Através do <strong>terminal</strong>:</p>
+<div class="section" id="criando-uma-tabela">
+<h2>Criando uma tabela</h2>
 <ol class="arabic simple">
 <li>Criando um banco de dados.</li>
 </ol>
@@ -97,6 +103,11 @@
    <span class="p">...</span><span class="o">&gt;</span> <span class="n">UF</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span>
    <span class="p">...</span><span class="o">&gt;</span> <span class="p">);</span>
 </pre></div>
+<p><strong>Nota</strong>: Se usamos <tt class="docutils literal">AUTOINCREMENT</tt> não precisamos do <tt class="docutils literal">NOT NULL</tt>.</p>
+<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">clientes</span><span class="p">(</span>
+   <span class="p">...</span><span class="o">&gt;</span> <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTOINCREMENT</span><span class="p">,</span>
+   <span class="p">...</span><span class="o">&gt;</span> <span class="p">...</span>
+</pre></div>
 <ol class="arabic simple" start="4">
 <li>Visualizando o código SQL que criou a tabela.</li>
 </ol>
@@ -112,6 +123,9 @@
 </ol>
 <div class="highlight"><pre>sqlite&gt; .exit
 </pre></div>
+</div>
+<div class="section" id="crud">
+<h2>CRUD</h2>
 <p>Abra um editor de texto e salve um arquivo com o nome <em>inserirdados.sql</em>.</p>
 <div class="highlight"><pre><span class="nv">$ </span>gedit inserirdados.sql
 </pre></div>
@@ -120,6 +134,9 @@
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">clientes</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Abigail&#39;</span><span class="p">,</span> <span class="s1">&#39;11111111111&#39;</span><span class="p">,</span> <span class="s1">&#39;abigail@email.com&#39;</span><span class="p">,</span> <span class="s1">&#39;1112345678&#39;</span><span class="p">,</span> <span class="s1">&#39;RJ&#39;</span><span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">clientes</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Benedito&#39;</span><span class="p">,</span> <span class="s1">&#39;22222222222&#39;</span><span class="p">,</span> <span class="s1">&#39;benedito@email.com&#39;</span><span class="p">,</span> <span class="s1">&#39;1187654321&#39;</span><span class="p">,</span> <span class="s1">&#39;SP&#39;</span><span class="p">);</span>
 <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">clientes</span> <span class="k">VALUES</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;Zacarias&#39;</span><span class="p">,</span> <span class="s1">&#39;33333333333&#39;</span><span class="p">,</span> <span class="s1">&#39;zacarias@email.com&#39;</span><span class="p">,</span> <span class="s1">&#39;1199999999&#39;</span><span class="p">,</span> <span class="s1">&#39;RJ&#39;</span><span class="p">);</span>
+</pre></div>
+<p><strong>Nota</strong>: No caso do <tt class="docutils literal">INSERT INTO</tt> não precisamos numerar, basta trocar o número do <tt class="docutils literal">id</tt> por <tt class="docutils literal">NULL</tt>, exemplo:</p>
+<div class="highlight"><pre><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">clientes</span> <span class="k">VALUES</span><span class="p">(</span><span class="k">NULL</span><span class="p">,</span> <span class="s1">&#39;Carlos&#39;</span><span class="p">,</span> <span class="s1">&#39;99999999999&#39;</span><span class="p">,</span> <span class="s1">&#39;carlos@email.com&#39;</span><span class="p">,</span> <span class="s1">&#39;118888-8888&#39;</span><span class="p">,</span> <span class="s1">&#39;SP&#39;</span><span class="p">);</span>
 </pre></div>
 <ol class="arabic simple" start="7">
 <li>Importe estes comandos no sqlite.</li>
@@ -175,9 +192,9 @@
 </ol>
 <div class="highlight"><pre>sqlite&gt; .mode column
 </pre></div>
-<ol class="arabic simple" start="16">
-<li>Backup</li>
-</ol>
+</div>
+<div class="section" id="backup">
+<h2>Backup</h2>
 <div class="highlight"><pre><span class="nv">$ </span>sqlite3 Clientes.db .dump &gt; clientes.sql
 <span class="nv">$ </span>cat clientes.sql
 PRAGMA <span class="nv">foreign_keys</span><span class="o">=</span>OFF;
@@ -196,14 +213,118 @@ INSERT INTO <span class="s2">&quot;clientes&quot;</span> VALUES<span class="o">(
 INSERT INTO <span class="s2">&quot;clientes&quot;</span> VALUES<span class="o">(</span>4,<span class="s1">&#39;Zacarias&#39;</span>,<span class="s1">&#39;33333333333&#39;</span>,<span class="s1">&#39;zacarias@email.com&#39;</span>,<span class="s1">&#39;1199999999&#39;</span>,<span class="s1">&#39;RJ&#39;</span><span class="o">)</span>;
 COMMIT;
 </pre></div>
-<p>Pronto, se você corromper seu banco de dados, você pode recuperá-lo:</p>
+<p>Pronto, se corromper o seu banco de dados, você pode recuperá-lo:</p>
 <div class="highlight"><pre><span class="nv">$ </span>mv Clientes.db Clientes.db.old
 <span class="nv">$ </span>sqlite3 Clientes_recuperado.db &lt; clientes.sql
 <span class="nv">$ </span>sqlite3 Clientes_recuperado.db <span class="s1">&#39;SELECT * FROM clientes;&#39;</span>
 </pre></div>
 <p>Faça um SELECT novamente para ver o resultado do novo banco de dados.</p>
-<p>Mais informações em <a class="reference external" href="http://www.sqlite.org/cli.html">SQLite.org</a>.</p>
-<p>Futuramente pretendo postar algo sobre SQLite3 e Python...</p>
+</div>
+<div class="section" id="relacionando-tabelas">
+<h2>Relacionando tabelas</h2>
+<p>Todos devem saber que num banco de dados relacional a <strong>chave estrangeira</strong> ou <tt class="docutils literal">FOREIGN KEY</tt> tem um papel importante no relacionamento entre duas tabelas. Veremos aqui como relacionar duas tabelas.</p>
+<p>Primeiros façamos um backup do nosso bd.</p>
+<div class="highlight"><pre><span class="nv">$ </span>sqlite3 Clientes.db .dump &gt; clientes.sql
+</pre></div>
+<p>Apenas para relembrar, vamos ver qual é a nossa tabela...</p>
+<div class="highlight"><pre><span class="nv">$ </span>sqlite3 Clientes.db
+sqlite&gt; .tables
+clientes
+sqlite&gt; .header on
+sqlite&gt; .mode column
+</pre></div>
+<p>E quais são seus registros.</p>
+<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">clientes</span><span class="p">;</span>
+</pre></div>
+<div class="highlight"><pre>id          Nome        CPF          Email         Fone        UF          bloqueado
+----------  ----------  -----------  ------------  ----------  ----------  ----------
+1           Regis       00000000000  rg@email.com  1100000000  SP          1
+2           Abigail     11111111111  abigail@emai  1112345678  RJ          1
+3           Benedito    22222222222  benedito@ema  1187654321  SP          0
+</pre></div>
+<p>Então vamos criar duas novas tabelas: <em>cidades</em> e <em>clientes_novo</em>.</p>
+<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">cidades</span><span class="p">(</span>
+   <span class="p">...</span><span class="o">&gt;</span> <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTOINCREMENT</span><span class="p">,</span>
+   <span class="p">...</span><span class="o">&gt;</span> <span class="n">cidade</span> <span class="nb">TEXT</span><span class="p">,</span>
+   <span class="p">...</span><span class="o">&gt;</span> <span class="n">uf</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+   <span class="p">...</span><span class="o">&gt;</span> <span class="p">);</span>
+   <span class="p">...</span><span class="o">&gt;</span> <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">clientes_novo</span><span class="p">(</span>
+   <span class="p">...</span><span class="o">&gt;</span> <span class="n">id</span> <span class="nb">INTEGER</span> <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="n">AUTOINCREMENT</span><span class="p">,</span>
+   <span class="p">...</span><span class="o">&gt;</span> <span class="n">Nome</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+   <span class="p">...</span><span class="o">&gt;</span> <span class="n">CPF</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+   <span class="p">...</span><span class="o">&gt;</span> <span class="n">Email</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+   <span class="p">...</span><span class="o">&gt;</span> <span class="n">Fone</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
+   <span class="p">...</span><span class="o">&gt;</span> <span class="n">bloqueado</span> <span class="nb">BOOLEAN</span><span class="p">,</span>
+   <span class="p">...</span><span class="o">&gt;</span> <span class="n">cidade_id</span> <span class="nb">INTEGER</span><span class="p">,</span>
+   <span class="p">...</span><span class="o">&gt;</span> <span class="k">FOREIGN</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">cidade_id</span><span class="p">)</span> <span class="k">REFERENCES</span> <span class="n">cidades</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+   <span class="p">...</span><span class="o">&gt;</span> <span class="p">);</span>
+</pre></div>
+<p>Segundo <a class="reference external" href="http://grasswiki.osgeo.org/wiki/Sqlite_Drop_Column">Sqlite Drop Column</a>, não tem como &quot;<em>deletar</em>&quot; uma coluna, então precisamos criar uma nova tabela <em>clientes_novo</em> com os campos que precisamos e copiar os dados da primeira tabela para esta.</p>
+<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">clientes_novo</span> <span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">Nome</span><span class="p">,</span> <span class="n">CPF</span><span class="p">,</span> <span class="n">Email</span><span class="p">,</span> <span class="n">Fone</span><span class="p">,</span> <span class="n">bloqueado</span><span class="p">)</span>
+   <span class="p">...</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="n">id</span><span class="p">,</span> <span class="n">Nome</span><span class="p">,</span> <span class="n">CPF</span><span class="p">,</span> <span class="n">Email</span><span class="p">,</span> <span class="n">Fone</span><span class="p">,</span> <span class="n">bloqueado</span> <span class="k">FROM</span> <span class="n">clientes</span><span class="p">;</span>
+</pre></div>
+<p>Veja que selecionamos os campos da tabela <em>clientes</em> e a inserimos em <em>clientes_novo</em>. Note que não copiamos o campo <em>UF</em> porque agora ele é da tabela <em>cidades</em>.</p>
+<p>Agora podemos <em>deletar</em> a tabela &quot;antiga&quot;.</p>
+<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">clientes</span><span class="p">;</span>
+</pre></div>
+<p>E <strong>renomear</strong> a nova tabela.</p>
+<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">clientes_novo</span> <span class="k">RENAME</span> <span class="k">TO</span> <span class="n">clientes</span><span class="p">;</span>
+</pre></div>
+<p>Veja o resultado da nova tabela.</p>
+<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">clientes</span><span class="p">;</span>
+</pre></div>
+<div class="highlight"><pre>id          Nome        CPF          Email         Fone        bloqueado   cidade_id
+----------  ----------  -----------  ------------  ----------  ----------  ----------
+1           Regis       00000000000  rg@email.com  1100000000  1
+2           Abigail     11111111111  abigail@emai  1112345678  1
+3           Benedito    22222222222  benedito@ema  1187654321  0
+</pre></div>
+<p>Agora você terá que popular as cidades e definir a <tt class="docutils literal">cidade_id</tt> em cada cliente. Lembrando que a chave é <tt class="docutils literal">AUTOINCREMENT</tt>, então use <tt class="docutils literal">NULL</tt>.</p>
+<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">cidades</span> <span class="k">VALUES</span> <span class="p">(</span><span class="k">NULL</span><span class="p">,</span><span class="s1">&#39;Campinas&#39;</span><span class="p">,</span><span class="s1">&#39;SP&#39;</span><span class="p">);</span>
+<span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">cidades</span> <span class="k">VALUES</span> <span class="p">(</span><span class="k">NULL</span><span class="p">,</span><span class="s1">&#39;Sao Paulo&#39;</span><span class="p">,</span><span class="s1">&#39;SP&#39;</span><span class="p">);</span>
+<span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">cidades</span> <span class="k">VALUES</span> <span class="p">(</span><span class="k">NULL</span><span class="p">,</span><span class="s1">&#39;Rio de Janeiro&#39;</span><span class="p">,</span><span class="s1">&#39;RJ&#39;</span><span class="p">);</span>
+</pre></div>
+<p>Veja os registros da tabela <em>cidades</em>.</p>
+<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">cidades</span><span class="p">;</span>
+</pre></div>
+<div class="highlight"><pre>id          cidade      uf
+----------  ----------  ----------
+1           Campinas    SP
+2           Sao Paulo   SP
+3           Rio de Jan  RJ
+</pre></div>
+<p>Agora precisamos atualizar a <tt class="docutils literal">cidade_id</tt> de cada cliente.</p>
+<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">UPDATE</span> <span class="n">clientes</span> <span class="k">SET</span> <span class="n">cidade_id</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">UPDATE</span> <span class="n">clientes</span> <span class="k">SET</span> <span class="n">cidade_id</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">UPDATE</span> <span class="n">clientes</span> <span class="k">SET</span> <span class="n">cidade_id</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</pre></div>
+<p>Resultado.</p>
+<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">clientes</span><span class="p">;</span>
+</pre></div>
+<div class="highlight"><pre>id          Nome        CPF          Email         Fone        bloqueado   cidade_id
+----------  ----------  -----------  ------------  ----------  ----------  ----------
+1           Regis       00000000000  rg@email.com  1100000000  1           3
+2           Abigail     11111111111  abigail@emai  1112345678  1           1
+3           Benedito    22222222222  benedito@ema  1187654321  0           2
+</pre></div>
+<p>Façamos um <tt class="docutils literal">INNER JOIN</tt> para visualizar todos os dados, inclusive a <em>cidade</em> e o <em>uf</em>.</p>
+<div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">clientes</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">cidades</span> <span class="k">ON</span> <span class="n">clientes</span><span class="p">.</span><span class="n">cidade_id</span> <span class="o">=</span> <span class="n">cidades</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+</pre></div>
+<div class="highlight"><pre>id          Nome        CPF          Email         Fone        bloqueado   cidade_id   cidade          uf
+----------  ----------  -----------  ------------  ----------  ----------  ----------  --------------  --
+1           Regis       00000000000  rg@email.com  1100000000  1           3           Rio de Janeiro  RJ
+2           Abigail     11111111111  abigail@emai  1112345678  1           1           Campinas        SP
+3           Benedito    22222222222  benedito@ema  1187654321  0           2           Sao Paulo       SP
+</pre></div>
+</div>
+<div class="section" id="referencias">
+<h2>Referências</h2>
+<p><a class="reference external" href="http://www.sqlite.org/cli.html">SQLite.org</a></p>
+<p><a class="reference external" href="http://www.sqlite.org/foreignkeys.html">Introduction to Foreign Key Constraints</a></p>
+<p><a class="reference external" href="http://www.sqlite.org/lang_altertable.html">Making Other Kinds Of Table Schema Changes</a></p>
+<p><a class="reference external" href="http://grasswiki.osgeo.org/wiki/Sqlite_Drop_Column">Sqlite Drop Column</a></p>
+<p>Leia também sobre <a class="reference external" href="http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html">SQLite3 e Python</a>.</p>
+</div>
 
 
             <div class="licence">

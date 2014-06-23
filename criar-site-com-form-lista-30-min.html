@@ -16,7 +16,7 @@
     <meta property="og:title" content="Como criar um site com formulário e lista em 30 minutos?" />
     <meta property="og:site_name" content="PythonClub" />
     <meta property="og:url" content="http://pythonclub.com.br/criar-site-com-form-lista-30-min.html" />
-    <meta property="og:description" content="Como criar um site com formulário e lista em 30 minutos?" />
+    <meta property="og:description" content="Como criar um site com formulário e lista em 30 minutos? Ou menos..." />
     <meta property="og:image" content="http://res.cloudinary.com/diu8g9l0s/image/upload/v1400201393/pythonclub/logo_275x130.png" />
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
@@ -111,6 +111,10 @@ Atributos: nome, cpf, idade, email, telefone, criado_em</blockquote>
 <div class="highlight"><pre><span class="nv">$ </span>pip install django
 <span class="nv">$ </span>pip install unipath
 </pre></div>
+<p>Na verdade o prompt do terminal vai ficar assim:</p>
+<div class="highlight"><pre><span class="o">(</span>env_crm<span class="o">)</span>usuario@maq:~/env_crm<span class="err">$</span>
+</pre></div>
+<p>Mas vou suprimir tudo isso, mas pelo mesmo você sabe que o virtualenv está ativado.</p>
 <p>O <a class="reference external" href="http://sluggo.scrapping.cc/python/unipath/">Unipath</a> é um pacote que trabalha com caminhos relativos de forma orientada à objetos. Segundo <a class="reference external" href="https://github.com/henriquebastos/slides-django-sem-trabalho/blob/master/settings.rst#n%C3%A3o-use-diret%C3%B3rios-hardcoded">Henrique Bastos</a>, ele evita diretórios <em>hardcoded</em>, ou seja, não usa caminho absoluto, e sim caminhos relativos. Em <em>settings.py</em> veremos o uso deste pacote. Mas como ele mesmo diz, o uso de <em>os.path</em> não é problema, mas o <em>Unipath</em> ajuda bastante.</p>
 <p>Obs: Se quiser você pode instalar uma lista de pacotes de um requirements.</p>
 <div class="highlight"><pre><span class="nv">$ </span>wget https://raw.githubusercontent.com/rg3915/wttd/master/requirements.txt
