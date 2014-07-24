@@ -27,8 +27,8 @@ sudo apt-get install python-pip nginx supervisor&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Organizando meu ambiente com &lt;strong&gt;&lt;em&gt;Virtualenvwrapper&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Instalando o &lt;strong&gt;&lt;em&gt;Virtualenvwrapper&lt;/em&gt;&lt;/strong&gt; para ter ambientes isolados, prossibilitando diferentes projetos &lt;strong&gt;&lt;em&gt;Python&lt;/em&gt;&lt;/strong&gt;, no mesmo servidor.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;bash
-pip install virtualenvwrapper&lt;/code&gt;
-Nosso filesystem será organizado da seguinte forma:&lt;/p&gt;
+pip install virtualenvwrapper&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Nosso filesystem será organizado da seguinte forma:&lt;/p&gt;
 &lt;p&gt;```bash&lt;/p&gt;
 &lt;h1&gt;-- /home/myusr&lt;/h1&gt;
 &lt;h1&gt;-- /www             [Projetos]&lt;/h1&gt;
