@@ -99,21 +99,21 @@
                         </p>
                 </header>
             </section>
-            <h3>Entendendo do que se trata</h3>
+            <h2>Entendendo do que se trata</h2>
 <p>Sempre tive muita dificuldade de configurar um servidor para rodar meus projetos <strong><em>Python</em></strong> e <strong><em>Django</em></strong>, nunca me dei bem com o <strong><em>Apache</em></strong>. Foi buscando outras maneiras de servir minhas aplicações <strong><em>Python Web</em></strong> que encontrei o <strong><em>Nginx</em></strong> e o <strong><em>Gunicorn</em></strong>, então resolvi compartilhar minha experiência com essas ferramentas, e como organizo um ambiente com vários projetos <strong><em>Python WSGI</em></strong>.</p>
-<h3>Preparando nosso ambiente</h3>
+<h2>Preparando nosso ambiente</h2>
 <p>Abaixo algumas das ferramentas que serão utilizadas para preparar o nosso ambiente de <strong><em>Produção</em></strong>.</p>
 <ul>
 <li>Servidor Python WSGI (<a href="http://docs.gunicorn.org/en/19.0/">Gunicorn</a>)</li>
 <li>Proxy (<a href="http://nginx.org/en/docs/">Nginx</a>)</li>
 <li>Controlador/Monitor de processos (<a href="http://supervisord.org/">Supervisor</a>)</li>
-<li>
-<p>Ambientes Python isolados (<a href="http://virtualenvwrapper.readthedocs.org/en/latest/">Virtualenwrapper</a>)</p>
-</li>
-<li>
-<p>Instalando o gerenciador de pacotes, o proxy e o controlador de processos.</p>
-<p><code>bash
-sudo apt-get install python-pip nginx supervisor</code></p>
+<li>Ambientes Python isolados (<a href="http://virtualenvwrapper.readthedocs.org/en/latest/">Virtualenwrapper</a>)</li>
+</ul>
+<h3>Instalando o gerenciador de pacotes, o proxy e o controlador de processos.</h3>
+<div class="highlight"><pre>sudo apt-get install python-pip nginx supervisor
+</pre></div>
+
+
 <p><strong>Utilidades</strong></p>
 <blockquote>
 <ul>
@@ -122,159 +122,171 @@ sudo apt-get install python-pip nginx supervisor</code></p>
 <li><strong>Supervisor</strong>: Gerenciar o processo de start/stop da nossa aplicação.</li>
 </ul>
 </blockquote>
-</li>
-<li>
-<p>Organizando meu ambiente com <strong><em>Virtualenvwrapper</em></strong>.</p>
+<h3>Organizando meu ambiente com <strong><em>Virtualenvwrapper</em></strong>.</h3>
 <p>Instalando o <strong><em>Virtualenvwrapper</em></strong> para ter ambientes isolados, prossibilitando diferentes projetos <strong><em>Python</em></strong>, no mesmo servidor.</p>
-<p><code>bash
-pip install virtualenvwrapper</code></p>
+<div class="highlight"><pre>pip install virtualenvwrapper
+</pre></div>
+
+
 <p>Nosso filesystem será organizado da seguinte forma:</p>
-<p>```bash</p>
-<h1>-- /home/myusr</h1>
-<h1>-- /www             [Projetos]</h1>
-<h1>-- /env             [Ambientes]</h1>
-<p>mkdir ~/www ~/env
-```</p>
+<div class="highlight"><pre><span class="c"># -- /home/myusr</span>
+<span class="c">#    -- /www             [Projetos]</span>
+<span class="c">#    -- /env             [Ambientes]</span>
+mkdir ~/www ~/env
+</pre></div>
+
+
 <p><strong>Como funciona?</strong></p>
 <p>O <strong><em>Virtualenvwrapper</em></strong> irá criar os projetos dentro do <code>~/www</code> e os ambientes dentro do <code>~/env</code>, basta configurar algumas variáveis no seu <code>~/.bashrc</code>.</p>
-<p>```bash</p>
-<h1>~/.bashrc</h1>
-<p>...
-export PROJECT_HOME=~/www
-export WORKON_HOME=~/env
-source /usr/local/bin/virtualenvwrapper.sh</p>
-<p>```</p>
+<div class="highlight"><pre><span class="c"># ~/.bashrc</span>
+...
+<span class="nb">export </span><span class="nv">PROJECT_HOME</span><span class="o">=</span>~/www
+<span class="nb">export </span><span class="nv">WORKON_HOME</span><span class="o">=</span>~/env
+<span class="nb">source</span> /usr/local/bin/virtualenvwrapper.sh
+</pre></div>
+
+
 <p>Atualize o seu <code>~/.bashrc</code> e crie um projeto.</p>
-<p><code>bash
-mkproject myproject</code></p>
-</li>
-<li>
-<p>Configurando <strong><em>Nginx</em></strong> e <strong><em>Supervisor</em></strong> da maneira simples.</p>
+<div class="highlight"><pre>mkproject myproject
+</pre></div>
+
+
+<h3>Configurando <strong><em>Nginx</em></strong> e <strong><em>Supervisor</em></strong> da maneira simples.</h3>
 <p><strong>O que fazer agora?</strong></p>
 <p>Vamos configurar o Nginx e o Supervisor para ele trabalhar na nossa estrutura de arquivos.</p>
 <p>Edite o arquivo <code>/etc/nginx/nginx.conf</code>,</p>
-<p>```</p>
-<h2></h2>
-<h1>Virtual Host Configs</h1>
-<h2></h2>
-<p>include /etc/nginx/conf.d/<em>.conf;
-include /etc/nginx/sites-enabled/</em>;</p>
-<h1>encontra a configuracao dos seus projetos</h1>
-<p>include /home/myusr/www/*/nginx.conf;
-```</p>
+<div class="highlight"><pre><span class="cp">##</span>
+<span class="cp"># Virtual Host Configs</span>
+<span class="cp">##</span>
+<span class="n">include</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="cm">/*.conf;</span>
+<span class="cm">include /etc/nginx/sites-enabled/*;</span>
+
+<span class="cm"># encontra a configuracao dos seus projetos</span>
+<span class="cm">include /home/myusr/www/*/</span><span class="n">nginx</span><span class="p">.</span><span class="n">conf</span><span class="p">;</span>
+</pre></div>
+
+
 <p>e edite o <code>/etc/supervisor/supervisord.conf</code>,</p>
-<p>```
-[include]
-;files = /etc/supervisor/conf.d/*.conf</p>
-<h1>encontra a configuracao dos seus projetos</h1>
-<p>files = /home/myusr/www/*/supervisor.conf
-```</p>
+<div class="highlight"><pre><span class="k">[include]</span>
+<span class="c1">;files = /etc/supervisor/conf.d/*.conf</span>
+
+<span class="c1"># encontra a configuracao dos seus projetos</span>
+<span class="na">files</span> <span class="o">=</span> <span class="s">/home/myusr/www/*/supervisor.conf</span>
+</pre></div>
+
+
 <p>Agora eles estão prontos para buscar as configurações dentro da nossa pasta de projetos, cada projeto vai ter uma configuração unica, e quando quiser removê-lo vai fazer isso de forma simples, excluindo a pasta do projeto.</p>
-</li>
-</ul>
-<h3>Fazendo as coisas funcionarem</h3>
+<h2>Fazendo as coisas funcionarem</h2>
 <p>Agora que temos todos as ferramentas necessárias instaladas e nosso ambiente configurado e bem organizado, vamos colocar para funcionar o nosso projeto.</p>
-<ol>
-<li>
-<p>Configurando meu ambiente <strong><em>WSGI</em></strong> com <strong><em>Gunicorn</em></strong>.</p>
+<h3>Configurando meu ambiente <strong><em>WSGI</em></strong> com <strong><em>Gunicorn</em></strong>.</h3>
 <p>Vamos ativar nosso ambiente virtual e instalar o <strong><em>Gunicorn</em></strong></p>
-<p><code>bash
-workon myproject
-pip install gunicorn</code></p>
+<div class="highlight"><pre>workon myproject
+pip install gunicorn
+</pre></div>
+
+
 <p><strong>Qual próximo passo então?</strong></p>
 <p>Vamos criar nossos arquivos de configuração, e logs do nosso projeto.</p>
-<p><code>bash
-cd ~/www/myproject
+<div class="highlight"><pre><span class="nb">cd</span> ~/www/myproject
 mkdir static media logs project
 touch nginx.conf supervisor.conf start.sh
-touch logs/access.log logs/error.log logs/gunicorn.log logs/suprevisor.log</code></p>
+touch logs/access.log logs/error.log logs/gunicorn.log logs/suprevisor.log
+</pre></div>
+
+
 <p>No momento nosso filesystem se parece com esse:</p>
-<p><code>bash
--- home/myusr/
-  -- www/                   [Projetos]
+<div class="highlight"><pre>-- home/myusr/
+  -- www/                   <span class="o">[</span>Projetos<span class="o">]</span>
     -- myproject/
-      -- nginx.conf         [Config do Nginx]
-      -- supervisor.conf    [Config do Supervisor]
-      -- start.sh           [Script Gunicorn]
-      -- project/           [Fonte do nosso projeto]
-      -- logs/              [Logs]
-        -- access.log       [Log de acesso Nginx]
-        -- error.log        [Log de erro Nginx]
+      -- nginx.conf         <span class="o">[</span>Config <span class="k">do </span>Nginx<span class="o">]</span>
+      -- supervisor.conf    <span class="o">[</span>Config <span class="k">do </span>Supervisor<span class="o">]</span>
+      -- start.sh           <span class="o">[</span>Script Gunicorn<span class="o">]</span>
+      -- project/           <span class="o">[</span>Fonte <span class="k">do </span>nosso projeto<span class="o">]</span>
+      -- logs/              <span class="o">[</span>Logs<span class="o">]</span>
+        -- access.log       <span class="o">[</span>Log de acesso Nginx<span class="o">]</span>
+        -- error.log        <span class="o">[</span>Log de erro Nginx<span class="o">]</span>
         -- gunicorn.log
         -- supervisor.log
-  -- env/                   [Ambientes]</code></p>
+  -- env/                   <span class="o">[</span>Ambientes<span class="o">]</span>
+</pre></div>
+
+
 <p><strong>Como configurar meu projeto?</strong></p>
 <p>Vamos começar pelo <code>start.sh</code>, ele vai ser responsável por iniciar a sua aplicação <strong><em>WSGI</em></strong> usando o servidor <strong><em>Gunicorn</em></strong>.</p>
-<p>```bash</p>
-<h1>!/bin/bash</h1>
-<h1>Diretorio e arquivo de log</h1>
-<p>set -e
-LOGFILE=/home/myusr/www/myproject/logs/gunicorn.log
-LOGDIR=$(dirname $LOGFILE)</p>
-<h1>Numero de processo simultaneo, modifique de acordo com seu processador</h1>
-<p>NUM_WORKERS=3</p>
-<h1>Usuario/Grupo que vai rodar o gunicorn</h1>
-<p>USER=myusr</p>
-<h1>GROUP=root</h1>
-<h1>Endereço local que o gunicorn irá rodar</h1>
-<p>ADDRESS=127.0.0.1:8000</p>
-<h1>Ativando ambiente virtual e executando o gunicorn para este projeto</h1>
-<p>source /home/myusr/envs/myproject/bin/activate
-cd /home/myusr/www/myproject/project/
-test -d $LOGDIR || mkdir -p $LOGDIR
-exec gunicorn -w $NUM_WORKERS --bind=$ADDRESS --user=$USER --log-level=debug --log-file=$LOGFILE 2&gt;&gt;$LOGFILE myproject.wsgi:application
-```</p>
+<div class="highlight"><pre><span class="c">#!/bin/bash</span>
+<span class="c"># Diretorio e arquivo de log</span>
+<span class="nb">set</span> -e
+<span class="nv">LOGFILE</span><span class="o">=</span>/home/myusr/www/myproject/logs/gunicorn.log
+<span class="nv">LOGDIR</span><span class="o">=</span><span class="k">$(</span>dirname <span class="nv">$LOGFILE</span><span class="k">)</span>
+<span class="c"># Numero de processo simultaneo, modifique de acordo com seu processador</span>
+<span class="nv">NUM_WORKERS</span><span class="o">=</span>3
+<span class="c"># Usuario/Grupo que vai rodar o gunicorn</span>
+<span class="nv">USER</span><span class="o">=</span>myusr
+<span class="c">#GROUP=root</span>
+<span class="c"># Endereço local que o gunicorn irá rodar</span>
+<span class="nv">ADDRESS</span><span class="o">=</span>127.0.0.1:8000
+<span class="c"># Ativando ambiente virtual e executando o gunicorn para este projeto</span>
+<span class="nb">source</span> /home/myusr/envs/myproject/bin/activate
+<span class="nb">cd</span> /home/myusr/www/myproject/project/
+<span class="nb">test</span> -d <span class="nv">$LOGDIR</span> <span class="o">||</span> mkdir -p <span class="nv">$LOGDIR</span>
+<span class="nb">exec </span>gunicorn -w <span class="nv">$NUM_WORKERS</span> --bind<span class="o">=</span><span class="nv">$ADDRESS</span> --user<span class="o">=</span><span class="nv">$USER</span> --log-level<span class="o">=</span>debug --log-file<span class="o">=</span><span class="nv">$LOGFILE</span> 2&gt;&gt;<span class="nv">$LOGFILE</span> myproject.wsgi:application
+</pre></div>
+
+
 <p>Na linha 6, <em>ADDRESS</em>, diz que o nosso projeto vai rodar localhost com a porta 8000, esse mesmo ip:porta será usado na configuração do <code>nginx.conf</code>, as linhas abaixo fazem o processo de ativar o ambiente virtual e navegar para pasta do fonte do projeto, para que o <strong><em>Gunicorn</em></strong> possa encontrar o arquivo <code>wsgi.py</code>, esse é o arquivo que configura o ambiente de produção no <strong><em>Django</em></strong>.</p>
 <p>Agora vamos configurar o <code>nginx.conf</code>, para que ele possa escutar o nosso dominio na porta 80 e redirecionar a requisição para a nossa aplicação no <em>127.0.0.1:8000</em>.</p>
-<p>```
-upstream myproject.com.br {
-    server 127.0.0.1:8000;
-}</p>
-<p>server {
-    listen 80;
-    server_name myproject.com.br;
-    client_max_body_size 50M;</p>
-<div class="highlight"><pre><span class="n">access_log</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">myusr</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">myproject</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">access</span><span class="p">.</span><span class="n">log</span><span class="p">;</span>
-<span class="n">error_log</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">myusr</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">myproject</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">error</span><span class="p">.</span><span class="n">log</span><span class="p">;</span>
-
-<span class="n">location</span> <span class="o">/</span><span class="k">static</span><span class="o">/</span> <span class="p">{</span>
-    <span class="n">alias</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">myusr</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">myproject</span><span class="o">/</span><span class="k">static</span><span class="o">/</span><span class="p">;</span>
+<div class="highlight"><pre><span class="n">upstream</span> <span class="n">myproject</span><span class="p">.</span><span class="n">com</span><span class="p">.</span><span class="n">br</span> <span class="p">{</span>
+    <span class="n">server</span> <span class="mf">127.0.0.1</span><span class="o">:</span><span class="mi">8000</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="n">location</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span> <span class="p">{</span>
-    <span class="n">alias</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">myusr</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">myproject</span><span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="n">location</span> <span class="o">/</span> <span class="p">{</span>
-    <span class="n">proxy_set_header</span> <span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">For</span> <span class="err">$</span><span class="n">proxy_add_x_forwarded_for</span><span class="p">;</span>
-    <span class="n">proxy_set_header</span> <span class="n">Host</span> <span class="err">$</span><span class="n">http_host</span><span class="p">;</span>
-    <span class="n">proxy_redirect</span> <span class="n">off</span><span class="p">;</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="o">!-</span><span class="n">f</span> <span class="err">$</span><span class="n">request_filename</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">proxy_pass</span> <span class="n">http</span><span class="o">:</span><span class="c1">//myproject.com.br;</span>
-        <span class="k">break</span><span class="p">;</span>
+<span class="n">server</span> <span class="p">{</span>
+    <span class="n">listen</span> <span class="mi">80</span><span class="p">;</span>
+    <span class="n">server_name</span> <span class="n">myproject</span><span class="p">.</span><span class="n">com</span><span class="p">.</span><span class="n">br</span><span class="p">;</span>
+    <span class="n">client_max_body_size</span> <span class="mi">50</span><span class="n">M</span><span class="p">;</span>
+
+    <span class="n">access_log</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">myusr</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">myproject</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">access</span><span class="p">.</span><span class="n">log</span><span class="p">;</span>
+    <span class="n">error_log</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">myusr</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">myproject</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">error</span><span class="p">.</span><span class="n">log</span><span class="p">;</span>
+
+    <span class="n">location</span> <span class="o">/</span><span class="k">static</span><span class="o">/</span> <span class="p">{</span>
+        <span class="n">alias</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">myusr</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">myproject</span><span class="o">/</span><span class="k">static</span><span class="o">/</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">location</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span> <span class="p">{</span>
+        <span class="n">alias</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">myusr</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">myproject</span><span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">location</span> <span class="o">/</span> <span class="p">{</span>
+        <span class="n">proxy_set_header</span> <span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">For</span> <span class="err">$</span><span class="n">proxy_add_x_forwarded_for</span><span class="p">;</span>
+        <span class="n">proxy_set_header</span> <span class="n">Host</span> <span class="err">$</span><span class="n">http_host</span><span class="p">;</span>
+        <span class="n">proxy_redirect</span> <span class="n">off</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!-</span><span class="n">f</span> <span class="err">$</span><span class="n">request_filename</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">proxy_pass</span> <span class="n">http</span><span class="o">:</span><span class="c1">//myproject.com.br;</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 
 
-<p>}
-```</p>
 <p>Criamos um <em>upstream</em> que representa a nossa aplicação, e configuramos o <em>server</em> para escutar nosso dominio na porta 80 e redirecionar tudo com <em>location /</em> para nosso <em>upstream</em>, no <em>location /static/</em> e <em>localtion /media/</em> criamos um alias para nossa pasta de arquivos, assim o <strong><em>Nginx</em></strong> passa a servir os arquivos estáticos e de midia.</p>
 <p><strong>Falta pouco!</strong></p>
 <p>Precisamos só de configurar o <strong><em>Supervisor</em></strong> para iniciar nosso projeto automaticamente, veja o <code>supervisor.conf</code> de exemplo.</p>
-<p><code>[program:myproject]
-command=/home/myusr/www/myproject/start.sh
-user=myusr
-stdout_logfile=/home/myusr/www/myproject/logs/supervisor.log
-redirect_stderr=true
-autostart=true
-autorestart=true</code></p>
+<div class="highlight"><pre><span class="k">[program:myproject]</span>
+<span class="na">command</span><span class="o">=</span><span class="s">/home/myusr/www/myproject/start.sh</span>
+<span class="na">user</span><span class="o">=</span><span class="s">myusr</span>
+<span class="na">stdout_logfile</span><span class="o">=</span><span class="s">/home/myusr/www/myproject/logs/supervisor.log</span>
+<span class="na">redirect_stderr</span><span class="o">=</span><span class="s">true</span>
+<span class="na">autostart</span><span class="o">=</span><span class="s">true</span>
+<span class="na">autorestart</span><span class="o">=</span><span class="s">true</span>
+</pre></div>
+
+
 <p>Ufa!, é um arquivo bem simples só precisamos informar o que queremos executar e com qual usuário ele fará isso, agora vamos iniciar nosso projeto.</p>
-<p><code>bash
-sudo service nginx restart
-sudo /etc/init.d/supervisor start myproject</code></p>
-</li>
-</ol>
-<h3>Pronto!</h3>
+<div class="highlight"><pre>sudo service nginx restart
+sudo /etc/init.d/supervisor start myproject
+</pre></div>
+
+
+<h4>Pronto!</h4>
 <p>Pronto agora você tem um ambiente bem estruturado rodando sua aplicação, um detalhe é que eu me limitei a instalar o <strong><em>Gunicorn</em></strong> dentro do ambiente virtual, caso um dia queira um outro <strong>web server</strong> que não seja o <strong><em>WSGI</em></strong> com outros projetos, é só instalar outro <strong>server</strong> no ambiente virtual do projeto, criar um <strong>script</strong> para iniciar o projeto, e voilá!</p>
 
             <div class="licence">
