@@ -5,35 +5,42 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/index.html</loc>
-<lastmod>2014-07-01T04:24:05-00:00</lastmod>
+<lastmod>2014-07-24T17:54:58-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/archives.html</loc>
-<lastmod>2014-07-01T04:24:05-00:00</lastmod>
+<lastmod>2014-07-24T17:54:58-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tags.html</loc>
-<lastmod>2014-07-01T04:24:05-00:00</lastmod>
+<lastmod>2014-07-24T17:54:58-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/categories.html</loc>
-<lastmod>2014-07-01T04:24:05-00:00</lastmod>
+<lastmod>2014-07-24T17:54:58-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/pages/about.html</loc>
-<lastmod>2014-07-01T04:24:05-00:00</lastmod>
+<lastmod>2014-07-24T17:54:58-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html</loc>
+<lastmod>2014-07-24T14:42:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -249,6 +256,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://pythonclub.com.br/category/servidor-web.html</loc>
+<lastmod>2014-07-24T14:42:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://pythonclub.com.br/category/tutoriais.html</loc>
 <lastmod>2014-06-11T18:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
@@ -256,8 +270,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/sqlite.html</loc>
-<lastmod>2014-05-16T01:00:00-00:00</lastmod>
+<loc>http://pythonclub.com.br/tag/wsgi.html</loc>
+<lastmod>2014-07-24T14:42:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -271,7 +285,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/supervisor.html</loc>
-<lastmod>2014-05-13T16:00:00-00:00</lastmod>
+<lastmod>2014-07-24T14:42:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -284,15 +298,29 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/tutorial.html</loc>
-<lastmod>2014-06-19T22:30:00-00:00</lastmod>
+<loc>http://pythonclub.com.br/tag/sqlite.html</loc>
+<lastmod>2014-05-16T01:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/ftp.html</loc>
-<lastmod>2014-06-11T18:00:00-00:00</lastmod>
+<loc>http://pythonclub.com.br/tag/producao.html</loc>
+<lastmod>2014-07-24T14:42:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/tag/tutorial.html</loc>
+<lastmod>2014-07-24T14:42:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/tag/web.html</loc>
+<lastmod>2014-07-24T14:42:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -307,6 +335,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/tag/fabric.html</loc>
 <lastmod>2014-05-13T16:00:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/tag/testes-funcionais.html</loc>
+<lastmod>2014-05-09T12:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -340,8 +375,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/blog.html</loc>
-<lastmod>2014-06-04T20:30:00-00:00</lastmod>
+<loc>http://pythonclub.com.br/tag/servidor.html</loc>
+<lastmod>2014-07-24T14:42:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -361,15 +396,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/testes-funcionais.html</loc>
-<lastmod>2014-05-09T12:00:00-00:00</lastmod>
+<loc>http://pythonclub.com.br/tag/blog.html</loc>
+<lastmod>2014-06-04T20:30:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/gunicorn.html</loc>
-<lastmod>2014-05-13T16:00:00-00:00</lastmod>
+<lastmod>2014-07-24T14:42:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -404,7 +439,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/nginx.html</loc>
-<lastmod>2014-05-13T16:00:00-00:00</lastmod>
+<lastmod>2014-07-24T14:42:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -417,15 +452,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/github.html</loc>
-<lastmod>2014-05-13T01:40:00-00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://pythonclub.com.br/tag/web.html</loc>
-<lastmod>2014-06-19T22:30:00-00:00</lastmod>
+<loc>http://pythonclub.com.br/tag/django-fagungis.html</loc>
+<lastmod>2014-05-13T16:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -466,8 +494,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/django-fagungis.html</loc>
-<lastmod>2014-05-13T16:00:00-00:00</lastmod>
+<loc>http://pythonclub.com.br/tag/github.html</loc>
+<lastmod>2014-05-13T01:40:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -488,7 +516,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/django.html</loc>
-<lastmod>2014-06-06T15:50:00-00:00</lastmod>
+<lastmod>2014-07-24T14:42:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -517,6 +545,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/tag/aulas.html</loc>
 <lastmod>2014-06-04T20:30:00-00:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/tag/ftp.html</loc>
+<lastmod>2014-06-11T18:00:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -586,7 +621,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/author/igor-santos.html</loc>
-<lastmod>2014-05-06T19:35:00-00:00</lastmod>
+<lastmod>2014-07-24T14:42:00-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
