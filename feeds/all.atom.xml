@@ -1,5 +1,327 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/all.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-07-24T14:42:00-03:00</updated><entry><title>Configurando um servidor de produção para aplicações Python</title><link href="http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html" rel="alternate"></link><updated>2014-07-24T14:42:00-03:00</updated><author><name>Igor Santos</name></author><id>tag:pythonclub.com.br,2014-07-24:configurando-um-servidor-de-producao-para-aplicacoes-python.html</id><summary type="html">&lt;h2&gt;Entendendo do que se trata&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/all.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-07-28T11:55:00-03:00</updated><entry><title>Selenium - O que você deveria saber - Parte 4</title><link href="http://pythonclub.com.br/selenium-parte-4.html" rel="alternate"></link><updated>2014-07-28T11:55:00-03:00</updated><author><name>Lucas Magnum</name></author><id>tag:pythonclub.com.br,2014-07-28:selenium-parte-4.html</id><summary type="html">&lt;p&gt;Esse é o quarto post da série sobre Selenium, hoje você irá aprender a fazer algumas coisas mais interessantes!&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Veja a &lt;a class="reference external" href="http://pythonclub.com.br/selenium-parte-1.html"&gt;primeira parte&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Veja a &lt;a class="reference external" href="http://pythonclub.com.br/selenium-parte-2.html"&gt;segunda parte&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Veja a &lt;a class="reference external" href="http://pythonclub.com.br/selenium-parte-3.html"&gt;terceira parte&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Esse post será o mais longo, então prepare-se!&lt;/p&gt;
+&lt;div class="section" id="parte-4"&gt;
+&lt;h2&gt;Parte 4&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#expected-conditions"&gt;Expected conditions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#actionschains-operacoes-avancadas"&gt;ActionsChains - Operações avançadas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#eventlistener-ouvindo-seu-codigo"&gt;EventListener - Ouvindo seu código&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;div class="section" id="expected-conditions"&gt;
+&lt;h3&gt;Expected conditions&lt;/h3&gt;
+&lt;p&gt;Em alguns casos você precisa esperar para manipular o elemento até que uma condição se satisfaça, para isso o Selenium possui um conjunto de &lt;strong&gt;funções&lt;/strong&gt; para facilitar na maioria das situações.&lt;/p&gt;
+&lt;p&gt;Essas condições são chamadas &lt;tt class="docutils literal"&gt;expected conditions&lt;/tt&gt;, abaixo a lista das principais condições:&lt;/p&gt;
+&lt;dl class="docutils"&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;title_is&lt;/tt&gt;&lt;/dt&gt;
+&lt;dd&gt;Checa se o título (title) da página corresponde ao informado (comparação exata).
+Retorna True ou False.&lt;/dd&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;title_contains&lt;/tt&gt;&lt;/dt&gt;
+&lt;dd&gt;Checa se o título contém a string informada (case-sensitive).
+Retorna True ou False.&lt;/dd&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;presence_of_element_located&lt;/tt&gt;&lt;/dt&gt;
+&lt;dd&gt;Checa se o elemento está presente no DOM (ele não precisa estar visível).
+Retorna o elemento se ele estiver presente ou False.&lt;/dd&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;visibility_of_element_located&lt;/tt&gt;&lt;/dt&gt;
+&lt;dd&gt;Checa se o elemento está presente no DOM e visível (ele precisa ter width e height maior que 0).
+Retorna o elemento se ele estiver visível ou False.&lt;/dd&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;text_to_be_present_in_element&lt;/tt&gt;&lt;/dt&gt;
+&lt;dd&gt;Checa se o texto está presente no elemento.
+Retorna True ou False.&lt;/dd&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;text_to_be_present_in_element_value&lt;/tt&gt;&lt;/dt&gt;
+&lt;dd&gt;Checa se o texto está presente no atributo &amp;quot;value&amp;quot; do elemento.
+Retorna True ou False.&lt;/dd&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;element_to_be_clickable&lt;/tt&gt;&lt;/dt&gt;
+&lt;dd&gt;Checa se o elemento está visível e disponível para ser clicado.
+Retorna o elemento ou False.&lt;/dd&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;alert_is_present&lt;/tt&gt;&lt;/dt&gt;
+&lt;dd&gt;Checa se existe algum alerta na página.
+Retorna o alerta ou False.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;&lt;em&gt;Todas as funções estão no arquivo: selenium/webdriver/support/expected_conditions.py&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Você pode utilizar essas funções em conjunto com o que foi aprendido na &lt;a class="reference external" href="http://pythonclub.com.br/selenium-parte-2.html#e-se-eu-quiser-esperar"&gt;Parte 2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Exemplos de uso:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# Importar classe para inicializar o browser&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;
+&lt;span class="c"&gt;# Importar a classe WebDriverWait&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium.webdriver.support.ui&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;WebDriverWait&lt;/span&gt;
+&lt;span class="c"&gt;# Importar a classe que contém as funções e aplicar um alias&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium.webdriver.support&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;expected_conditions&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;EC&lt;/span&gt;
+&lt;span class="c"&gt;# Importar classe para ajudar a localizar os elementos&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium.webdriver.common.by&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;By&lt;/span&gt;
+
+&lt;span class="n"&gt;firefox&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Firefox&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="c"&gt;# Instanciar a classe que irá esperar até 5 segundos&lt;/span&gt;
+&lt;span class="n"&gt;wait&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;WebDriverWait&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c"&gt;# Aguardar até que a página tenha o título &amp;quot;PythonClub&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;wait&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;until&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;EC&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title_is&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;PythonClub&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="c"&gt;# Aguardar página contenha o título &amp;quot;PythonClub&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;wait&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;until&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;EC&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;title_contains&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;PythonClub&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="c"&gt;# Aguardar até que o elemento &amp;quot;id_elemento&amp;quot; esteja presente no DOM&lt;/span&gt;
+&lt;span class="n"&gt;elemento&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;wait&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;until&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;EC&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;presence_of_element_located&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;By&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ID&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;id_elemento&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+
+&lt;span class="c"&gt;# Aguardar até que o elemento &amp;quot;id_elemento&amp;quot; esteja visível&lt;/span&gt;
+&lt;span class="n"&gt;elemento&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;wait&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;until&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;EC&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;visibility_of_element_located&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;By&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ID&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;id_elemento&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
+
+&lt;span class="c"&gt;# Aguardar até que o elemento &amp;quot;id_elemento&amp;quot; contenha o texto &amp;quot;Python&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;wait&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;until&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;EC&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text_to_be_present_in_element&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;By&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ID&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;id_elemento&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Python&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="c"&gt;# Aguardar até que o elemento &amp;quot;id_elemento&amp;quot; contenha o valor &amp;quot;Python&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;wait&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;until&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;EC&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text_to_be_present_in_element_value&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;By&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ID&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;id_elemento&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;Python&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+
+&lt;span class="c"&gt;# Aguardar até que o elemento &amp;quot;id_elemento&amp;quot; possa ser clicado&lt;/span&gt;
+&lt;span class="n"&gt;elemento&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;wait&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;until&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;EC&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;element_to_be_clickable&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;By&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ID&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;id_elemento&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+
+&lt;span class="c"&gt;# Aguardar até que um alerta esteja presente na página&lt;/span&gt;
+&lt;span class="n"&gt;wait&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;until&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;EC&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;alert_is_present&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Após os 5 segundos, se a condição retornar &lt;tt class="docutils literal"&gt;False&lt;/tt&gt; será gerado uma exception &lt;tt class="docutils literal"&gt;TimeoutException&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;Use a abuse das &lt;tt class="docutils literal"&gt;conditions&lt;/tt&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="actionschains-operacoes-avancadas"&gt;
+&lt;h3&gt;ActionsChains - Operações avançadas&lt;/h3&gt;
+&lt;dl class="docutils"&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;click_and_hold(on_element=None)&lt;/tt&gt;&lt;/dt&gt;
+&lt;dd&gt;Clica no elemento e mantém o botão esquerdo do mouse pressionado. Se o parâmetro &lt;tt class="docutils literal"&gt;on_element&lt;/tt&gt; não for informado, será realizado na posição atual do mouse.&lt;/dd&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;release(on_element=None)&lt;/tt&gt;&lt;/dt&gt;
+&lt;dd&gt;Despressiona o botão do mouse. Se o parâmetro &lt;tt class="docutils literal"&gt;on_element&lt;/tt&gt; for informado, será realizado no elemento.&lt;/dd&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;context_click(on_element=None)&lt;/tt&gt;&lt;/dt&gt;
+&lt;dd&gt;Clica no elemento com o botão direito do mouse. Se o parâmetro &lt;tt class="docutils literal"&gt;on_element&lt;/tt&gt; não for informado, será realizado na posição atual do mouse.&lt;/dd&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;double_click(on_element=None)&lt;/tt&gt;&lt;/dt&gt;
+&lt;dd&gt;Realiza o clique duplo. Se o parâmetro &lt;tt class="docutils literal"&gt;on_element&lt;/tt&gt; não for informado, será realizado na posição atual do mouse.&lt;/dd&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;key_down(value, element=None)&lt;/tt&gt;&lt;/dt&gt;
+&lt;dd&gt;Simula uma tecla sendo pressionada e mantida assim. (Deve ser utilizada somente com as teclas de modificação &lt;strong&gt;Control&lt;/strong&gt;, &lt;strong&gt;Alt&lt;/strong&gt; e &lt;strong&gt;Shift&lt;/strong&gt;). Se o parâmetro &lt;tt class="docutils literal"&gt;element&lt;/tt&gt; não for informado, será realizado no elemento atual.&lt;/dd&gt;
+&lt;dt&gt;&lt;tt class="docutils literal"&gt;key_up(value, element=None)&lt;/tt&gt;&lt;/dt&gt;
+&lt;dd&gt;Simula uma tecla sendo despressionada. (Deve ser utilizada somente com as teclas de modificação &lt;strong&gt;Control&lt;/strong&gt;, &lt;strong&gt;Alt&lt;/strong&gt; e &lt;strong&gt;Shift&lt;/strong&gt;). Se o parâmetro &lt;tt class="docutils literal"&gt;element&lt;/tt&gt; não for informado, será realizado no elemento atual.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;As ações são armazenadas na ordem em que foram invocadas e para que sejam realizadas é preciso chamar o metódo &lt;tt class="docutils literal"&gt;perform&lt;/tt&gt; da instância.&lt;/p&gt;
+&lt;p&gt;Exemplos de uso:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# Importar classe para inicializar o browser&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;
+&lt;span class="c"&gt;# Importar a classe ActionChains responsável pelas manipulações&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium.webdriver.common.action_chains&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ActionChains&lt;/span&gt;
+&lt;span class="c"&gt;# Importar a classe Keys que podem ser utilizadas no key_up e key_down&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium.webdriver.common.keys&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Keys&lt;/span&gt;
+
+&lt;span class="n"&gt;firefox&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Firefox&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;actions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ActionChains&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+
+&lt;span class="c"&gt;# Clicar e manter na posição atual do mouse&lt;/span&gt;
+&lt;span class="n"&gt;actions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;click_and_hold&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="c"&gt;# Voltar o mouse para o estado inicial&lt;/span&gt;
+&lt;span class="n"&gt;actions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;release&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="c"&gt;# Disparar metódo para que as ações sejam executadas&lt;/span&gt;
+&lt;span class="n"&gt;actions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;perform&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+
+&lt;span class="n"&gt;botao&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_element_by_id&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;#botaoqualquer&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c"&gt;# Clicar e manter em um botão&lt;/span&gt;
+&lt;span class="n"&gt;actions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;click_and_hold&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;on_element&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;botao&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;actions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;perform&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+
+&lt;span class="c"&gt;# Clicar com o botão direito na posição atual do mouse&lt;/span&gt;
+&lt;span class="n"&gt;actions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;context_click&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;actions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;perform&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c"&gt;# Clique duplo&lt;/span&gt;
+&lt;span class="n"&gt;actions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;double_click&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;on_element&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;botao&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;actions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;perform&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c"&gt;# Exemplo com key_down e key_up. Simular um CTRL + C&lt;/span&gt;
+&lt;span class="n"&gt;actions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;key_down&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Keys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CONTROL&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;# Pressionar o CTRL&lt;/span&gt;
+&lt;span class="n"&gt;actions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;send_keys&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;c&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;# Pressionar o C&lt;/span&gt;
+&lt;span class="n"&gt;actions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;key_up&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Keys&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;CONTROL&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c"&gt;# Liberar o CTRL&lt;/span&gt;
+&lt;span class="n"&gt;actions&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;perform&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Tem algumas outras ações bem interessantes, vale dar uma olhada no arquivo.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Você pode visualizar as outras funções em: selenium/webdriver/common/action_chains.py&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="eventlistener-ouvindo-seu-codigo"&gt;
+&lt;h3&gt;EventListener - Ouvindo seu código&lt;/h3&gt;
+&lt;div class="section" id="introducao"&gt;
+&lt;h4&gt;Introdução&lt;/h4&gt;
+&lt;p&gt;O Selenium provê uma forma bem simples para que possa monitorar tudo que está sendo feito pelo navegador.
+Para cada ação pode ser disparado um evento e esse evento pode ser &amp;quot;ouvido&amp;quot; por seu &lt;tt class="docutils literal"&gt;EventListener&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;É necessário que a instância do navegador seja passada para uma &lt;tt class="docutils literal"&gt;classe&lt;/tt&gt; que irá disparar todos os eventos e então construir seu &lt;tt class="docutils literal"&gt;EventListener&lt;/tt&gt; para ouvi-lá.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="listener"&gt;
+&lt;h4&gt;Listener&lt;/h4&gt;
+&lt;p&gt;A classe &lt;tt class="docutils literal"&gt;AbstractEventListener&lt;/tt&gt; foi construída para ser herdada e alterada.
+Cada metódo da classe será executado quando determinado evento for disparado.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;AbstractEventListener&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;object&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+
+  &lt;span class="c"&gt;# Será invocado antes de uma url ser acessada pelo metódo &amp;quot;get&amp;quot; do webdriver&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;before_navigate_to&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;  &lt;span class="k"&gt;pass&lt;/span&gt;
+
+  &lt;span class="c"&gt;# Será invocado após uma url ser acessada pelo metódo &amp;quot;get&amp;quot; do webdriver&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;after_navigate_to&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;   &lt;span class="k"&gt;pass&lt;/span&gt;
+
+  &lt;span class="c"&gt;# Será invocado antes que o metódo &amp;quot;back&amp;quot; do webdriver seja executado&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;before_navigate_back&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="k"&gt;pass&lt;/span&gt;
+
+  &lt;span class="c"&gt;# Será invocado depois que o metódo &amp;quot;back&amp;quot; do webdriver seja executado&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;after_navigate_back&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;  &lt;span class="k"&gt;pass&lt;/span&gt;
+
+  &lt;span class="c"&gt;# Será invocado antes que o metódo &amp;quot;forward&amp;quot; do webdriver seja executado&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;before_navigate_forward&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;  &lt;span class="k"&gt;pass&lt;/span&gt;
+
+  &lt;span class="c"&gt;# Será invocado depois que o metódo &amp;quot;forward&amp;quot; do webdriver seja executado&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;after_navigate_forward&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;   &lt;span class="k"&gt;pass&lt;/span&gt;
+
+  &lt;span class="c"&gt;# Será invocado antes que o metódo &amp;quot;find(s)_element(s)_by_*&amp;quot; seja executado&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;before_find&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;   &lt;span class="k"&gt;pass&lt;/span&gt;
+
+  &lt;span class="c"&gt;# Será invocado após que o metódo &amp;quot;find(s)_element(s)_by_*&amp;quot; seja executado&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;after_find&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;by&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;value&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;    &lt;span class="k"&gt;pass&lt;/span&gt;
+
+  &lt;span class="c"&gt;# Será invocado antes que o metódo &amp;quot;click&amp;quot; seja executado&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;before_click&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;element&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;    &lt;span class="k"&gt;pass&lt;/span&gt;
+
+  &lt;span class="c"&gt;# Será invocado após que o metódo &amp;quot;click&amp;quot; seja executado&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;after_click&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;element&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="k"&gt;pass&lt;/span&gt;
+
+  &lt;span class="c"&gt;# Será invocado antes que o metódo &amp;quot;clear&amp;quot; ou &amp;quot;send_keys&amp;quot; seja executado&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;before_change_value_of&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;element&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;  &lt;span class="k"&gt;pass&lt;/span&gt;
+
+  &lt;span class="c"&gt;# Será invocado após que o metódo &amp;quot;clear&amp;quot; ou &amp;quot;send_keys&amp;quot; seja executado&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;after_change_value_of&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;element&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;   &lt;span class="k"&gt;pass&lt;/span&gt;
+
+  &lt;span class="c"&gt;# Será invocado antes que o metódo &amp;quot;execute_script&amp;quot; ou &amp;quot;execute_async_script&amp;quot; seja executado&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;before_execute_script&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;script&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;    &lt;span class="k"&gt;pass&lt;/span&gt;
+
+  &lt;span class="c"&gt;# Será invocado após que o metódo &amp;quot;execute_script&amp;quot; ou &amp;quot;execute_async_script&amp;quot; seja executado&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;after_execute_script&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;script&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="k"&gt;pass&lt;/span&gt;
+
+  &lt;span class="c"&gt;# Será invocado antes que uma página seja fechada com o metódo &amp;quot;close&amp;quot;&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;before_close&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt; &lt;span class="k"&gt;pass&lt;/span&gt;
+
+  &lt;span class="c"&gt;# Será invocado após que uma página seja fechada com o metódo &amp;quot;close&amp;quot;&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;after_close&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;  &lt;span class="k"&gt;pass&lt;/span&gt;
+
+  &lt;span class="c"&gt;# Será invocado antes que o metódo &amp;quot;quit&amp;quot; seja executado&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;before_quit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;  &lt;span class="k"&gt;pass&lt;/span&gt;
+
+  &lt;span class="c"&gt;# Será invocado depois que o metódo &amp;quot;quit&amp;quot; seja executado&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;after_quit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;   &lt;span class="k"&gt;pass&lt;/span&gt;
+
+  &lt;span class="c"&gt;# Será executado sempre que houver uma exeception&lt;/span&gt;
+  &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;on_exception&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;exception&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;  &lt;span class="k"&gt;pass&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;Arquivo: selenium/webdriver/support/abstract_event_listener.py&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="dispatch"&gt;
+&lt;h4&gt;Dispatch&lt;/h4&gt;
+&lt;p&gt;A classe &lt;tt class="docutils literal"&gt;EventFiringWebDriver&lt;/tt&gt; é responsável por disparar os eventos do navegador.
+Para que ela funcione é necessário passar uma instância do navegador e um &lt;tt class="docutils literal"&gt;EventListener&lt;/tt&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Arquivo: selenium/webdriver/support/event_firing_webdriver.py&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="seu-proprio-listener"&gt;
+&lt;h4&gt;Seu próprio Listener&lt;/h4&gt;
+&lt;p&gt;Vamos criar um &lt;tt class="docutils literal"&gt;EventListener&lt;/tt&gt; simples para utilizarmos no nosso exemplo.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium.webdriver.support.events&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;AbstractEventListener&lt;/span&gt;
+
+&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;MyListener&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;AbstractEventListener&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;before_navigate_to&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Antes de abrir a url &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;after_navigate_to&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Depois de abrir a url &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;url&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;before_click&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;element&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Antes de clicar no elemento&amp;quot;&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;after_click&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;element&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Depois de clicar no elemento&amp;quot;&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;before_close&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Antes de fechar a pagina&amp;quot;&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;after_close&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Depois de fechar a pagina&amp;quot;&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;on_exception&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;exeception&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;driver&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Ocorreu um erro&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para criar um &lt;tt class="docutils literal"&gt;EventListener&lt;/tt&gt; é preciso criar uma classe que herde da &lt;tt class="docutils literal"&gt;AbstractEventListener&lt;/tt&gt; e
+implementar os metódos que serão invocados a cada evento ou criar uma classe com os mesmos metódos.&lt;/p&gt;
+&lt;p&gt;Salve o código em um arquivo chamado &amp;quot;mylistener.py&amp;quot; para testes.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="juntando-tudo"&gt;
+&lt;h4&gt;Juntando tudo&lt;/h4&gt;
+&lt;p&gt;Para que tudo funcione corretamente, você precisa primeiro importar as bibliotecas necessárias.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# para instanciar o navegador&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;
+
+&lt;span class="c"&gt;# EventFiringWebdriver para disparar os eventos&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;selenium.webdriver.support.events&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;EventFiringWebDriver&lt;/span&gt;
+
+&lt;span class="c"&gt;# Importe o seu Listener&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;mylistener&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;MyListener&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Depois criar as instâncias:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;firefox&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;webdriver&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Firefox&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;listener&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;MyListener&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c"&gt;# Firefox com os eventos sendo disparados&lt;/span&gt;
+&lt;span class="n"&gt;ef_firefox&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;EventFiringWebDriver&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;firefox&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;listener&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Agora é só executar algumas ações e você verá as informações sendo &amp;quot;printadas&amp;quot; na tela.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# abrir página da python club&lt;/span&gt;
+&lt;span class="n"&gt;ef_firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;http://pythonclub.com.br/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;        Propositalmente irá gerar uma exception pois a classe não existe.&lt;/span&gt;
+&lt;span class="sd"&gt;        O evento &amp;quot;on_exception&amp;quot; deve ser chamado&lt;/span&gt;
+&lt;span class="sd"&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class="n"&gt;post&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ef_firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_element_by_class_name&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;post-tile&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;except&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="k"&gt;pass&lt;/span&gt;
+
+&lt;span class="c"&gt;# localizamos o primeiro post&lt;/span&gt;
+&lt;span class="n"&gt;post&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ef_firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;find_element_by_class_name&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;post-title&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c"&gt;# clicar no elemento&lt;/span&gt;
+&lt;span class="n"&gt;post&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;click&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="c"&gt;# fechar a página&lt;/span&gt;
+&lt;span class="n"&gt;ef_firefox&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;close&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Resultado:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&amp;gt;&amp;gt; python mylistener.py
+
+Antes de abrir a url http://pythonclub.com.br/
+Depois de abrir a url http://pythonclub.com.br/
+Ocorreu um erro
+Antes de clicar no elemento
+Depois de clicar no elemento
+Antes de fechar a pagina
+Depois de fechar a pagina
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Código completo: &lt;a class="reference external" href="https://github.com/LucasMagnum/selenium-serie/blob/master/mylistener.py"&gt;mylistener.py&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Agora você pode explorar o &lt;tt class="docutils literal"&gt;AbstractEventListener&lt;/tt&gt; e o &lt;tt class="docutils literal"&gt;EventFiringWebdriver&lt;/tt&gt; e construir seu próprio &lt;tt class="docutils literal"&gt;EventListener&lt;/tt&gt; de acordo com suas necessidades.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="the-end"&gt;
+&lt;h3&gt;The End&lt;/h3&gt;
+&lt;p&gt;Acredito que esse seja o último post sobre Selenium, espero que tenham gostado!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="selenium"></category><category term="python"></category><category term="selenium-serie"></category></entry><entry><title>Configurando um servidor de produção para aplicações Python</title><link href="http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html" rel="alternate"></link><updated>2014-07-24T14:42:00-03:00</updated><author><name>Igor Santos</name></author><id>tag:pythonclub.com.br,2014-07-24:configurando-um-servidor-de-producao-para-aplicacoes-python.html</id><summary type="html">&lt;h2&gt;Entendendo do que se trata&lt;/h2&gt;
 &lt;p&gt;Sempre tive muita dificuldade de configurar um servidor para rodar meus projetos &lt;strong&gt;&lt;em&gt;Python&lt;/em&gt;&lt;/strong&gt; e &lt;strong&gt;&lt;em&gt;Django&lt;/em&gt;&lt;/strong&gt;, nunca me dei bem com o &lt;strong&gt;&lt;em&gt;Apache&lt;/em&gt;&lt;/strong&gt;. Foi buscando outras maneiras de servir minhas aplicações &lt;strong&gt;&lt;em&gt;Python Web&lt;/em&gt;&lt;/strong&gt; que encontrei o &lt;strong&gt;&lt;em&gt;Nginx&lt;/em&gt;&lt;/strong&gt; e o &lt;strong&gt;&lt;em&gt;Gunicorn&lt;/em&gt;&lt;/strong&gt;, então resolvi compartilhar minha experiência com essas ferramentas, e como organizo um ambiente com vários projetos &lt;strong&gt;&lt;em&gt;Python WSGI&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
 &lt;h2&gt;Preparando nosso ambiente&lt;/h2&gt;
 &lt;p&gt;Abaixo algumas das ferramentas que serão utilizadas para preparar o nosso ambiente de &lt;strong&gt;&lt;em&gt;Produção&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
@@ -5307,9 +5629,9 @@ peso de sua interface gráfica, para isso vamos alterar a primeira linha do mét
 &lt;h3&gt;Parte 4&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;ul class="simple"&gt;
-&lt;li&gt;Expected conditions&lt;/li&gt;
-&lt;li&gt;ActionsChains - Operações avançadas com o mouse&lt;/li&gt;
-&lt;li&gt;EventListener - Ouvindo seu código&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://pythonclub.com.br/selenium-parte-4.html#expected-conditions"&gt;Expected conditions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://pythonclub.com.br/selenium-parte-4.html#actionschains-operacoes-avancadas"&gt;ActionsChains - Operações avançadas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://pythonclub.com.br/selenium-parte-4.html#eventlistener-ouvindo-seu-codigo"&gt;EventListener - Ouvindo seu código&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;/div&gt;
