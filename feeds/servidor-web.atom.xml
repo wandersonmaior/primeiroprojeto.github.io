@@ -90,7 +90,7 @@ pip install gunicorn
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; ~/www/myproject
 mkdir static media logs project
 touch nginx.conf supervisor.conf start.sh
-touch logs/access.log logs/error.log logs/gunicorn.log logs/suprevisor.log
+touch logs/access.log logs/error.log logs/gunicorn.log logs/supervisor.log
 &lt;/pre&gt;&lt;/div&gt;
 
 
