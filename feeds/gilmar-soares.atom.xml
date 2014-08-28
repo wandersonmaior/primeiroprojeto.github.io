@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/gilmar-soares.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-05-13T22:00:00-03:00</updated><entry><title>Exemplo de como "Parsear" Sites com BeautifulSoup</title><link href="http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html" rel="alternate"></link><updated>2014-05-13T22:00:00-03:00</updated><author><name>Gilmar Soares</name></author><id>tag:pythonclub.com.br,2014-05-13:parseando-sites-com-beautifulsoup.html</id><summary type="html">&lt;div class="section" id="parseando-sites-com-beautifulsoup"&gt;
+&lt;h2&gt;Parseando Sites com BeautifulSoup&lt;/h2&gt;
+&lt;div class="section" id="como-pegar-informacoes-de-sites-com-beautifulsoup"&gt;
+&lt;h3&gt;Como &amp;quot;pegar&amp;quot; informações de Sites com BeautifulSoup?&lt;/h3&gt;
+&lt;p&gt;Vamos falar nesse artigo do Beautifulsoup, biblioteca Python necessária para fazer “parse” de sites.&lt;/p&gt;
+&lt;p&gt;Para iniciarmos o exemplo será necessário instalar a biblioteca Python Beautifulsoup no seu ambiente, e assumo que o leitor tenha PIP instalado, então segue comando para instalação:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;pip install beautifulsoup4
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;A partir desse momento vamos começar a trabalhar com o Beautifulsoup.&lt;/p&gt;
+&lt;p&gt;Imaginamos que você tenha que fazer parse de um simples site, e que este tenha apenas esse arquivo html:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;      &lt;span class="nv"&gt;arquivo_html&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; ”””&amp;lt;html&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;        &amp;lt;head&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;         &amp;lt;title&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;              Exemplo de Beautifulsoup
+&lt;span class="nv"&gt;$ &lt;/span&gt;         &amp;lt;/title&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;        &amp;lt;/head&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;        &amp;lt;body&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;         &amp;lt;p &lt;span class="nv"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;title&amp;quot;&lt;/span&gt;&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;              &amp;lt;b&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;              Exemplo de Beautifulsoup
+&lt;span class="nv"&gt;$ &lt;/span&gt;              &amp;lt;/b&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;         &amp;lt;/p&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;         &amp;lt;p &lt;span class="nv"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;story&amp;quot;&lt;/span&gt;&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;              Vamos fazer &lt;span class="s2"&gt;&amp;quot;parses&amp;quot;&lt;/span&gt; desse simples exemplo de html com Beautifulsoup.
+&lt;span class="nv"&gt;$ &lt;/span&gt;              &amp;lt;a &lt;span class="nv"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;sister&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;http://examplo.com/link1&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;link1&amp;quot;&lt;/span&gt;&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;              Link1
+&lt;span class="nv"&gt;$ &lt;/span&gt;              &amp;lt;/a&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;              ,
+&lt;span class="nv"&gt;$ &lt;/span&gt;              &amp;lt;a &lt;span class="nv"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;sister&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;http://examplo.com/link2&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;link2&amp;quot;&lt;/span&gt;&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;              Link2
+&lt;span class="nv"&gt;$ &lt;/span&gt;              &amp;lt;/a&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;              and
+&lt;span class="nv"&gt;$ &lt;/span&gt;              &amp;lt;a &lt;span class="nv"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;sister&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;http://examplo.com/link2_teste&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;link2&amp;quot;&lt;/span&gt;&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;              Link3 Test
+&lt;span class="nv"&gt;$ &lt;/span&gt;              &amp;lt;/a&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;              ; Vamos lá!!!!!!!!!!!!!!!!!!!!!
+&lt;span class="nv"&gt;$ &lt;/span&gt;         &amp;lt;/p&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;         &amp;lt;p &lt;span class="nv"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;story&amp;quot;&lt;/span&gt;&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;              ...
+&lt;span class="nv"&gt;$ &lt;/span&gt;         &amp;lt;/p&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;        &amp;lt;/body&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;       &amp;lt;/html&amp;gt;”””
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Vamos fazer nossa biblioteca ler nossa variavel html, dessa forma:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ soup&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; BeautifulSoup&lt;span class="o"&gt;(&lt;/span&gt;arquivo_html &lt;span class="o"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Pronto! Assim como tudo em Python… é simples :)&lt;/p&gt;
+&lt;p&gt;Agora podemos trabalhar com todo o conteúdo HTML a partir dos métodos da biblioteca.&lt;/p&gt;
+&lt;p&gt;Para o título:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;soup.title: este comando irá trazer o seguinte: &lt;span class="o"&gt;=&lt;/span&gt;&amp;gt; &amp;lt;title&amp;gt;Exemplo de Beautifulsoup&amp;lt;/title&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para as informações desse título:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;soup.title.string: este comando irá trazer o &lt;span class="nv"&gt;seguinte&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&amp;gt; Exemplo de Beautifulsoup
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para os “P” de HTML:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;soup.p: este comando irá trazer o &lt;span class="nv"&gt;seguinte&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&amp;gt; &amp;lt;p &lt;span class="nv"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;title&amp;quot;&lt;/span&gt;&amp;gt;&amp;lt;b&amp;gt;Exemplo de Beautifulsoup&amp;lt;/b&amp;gt;&amp;lt;/p&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Para pegar o nome da classe usada no “P”:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;soup.p&lt;span class="o"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;class&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;: este comando irá trazer o &lt;span class="nv"&gt;seguinte&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&amp;gt; u&lt;span class="s1"&gt;&amp;#39;title&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Vamos agora demonstrar como fazer uma busca no documento HTML, digamos que tenhamos a necessidade de pegar todos os &amp;lt;a&amp;gt;&amp;lt;/a&amp;gt; do nosso arquivo HTML, então usaremos o Beautifulsoup da seguinte maneira:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;soup.find_all&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;a&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;: este comando irá trazer o &lt;span class="nv"&gt;seguinte&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;&amp;lt;a &lt;span class="nv"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;sister&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;http://examplo.com/link1&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;link1&amp;quot;&lt;/span&gt;&amp;gt;Link1&amp;lt;/a&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;&amp;lt;a &lt;span class="nv"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;sister&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;http://examplo.com/link2&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;link2&amp;quot;&lt;/span&gt;&amp;gt;Link2&amp;lt;/a&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;&amp;lt;a &lt;span class="nv"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;sister&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;http://examplo.com/link2_teste&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;link2&amp;quot;&lt;/span&gt;&amp;gt;Link3 Test&amp;lt;/a&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Vamos deixar essa busca mais elaborada, vamos buscar um ID especifico do nosso arquivo HTML dessa forma:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;soup.find&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nv"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;link1&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;: este comando irá trazer o &lt;span class="nv"&gt;seguinte&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt;&amp;gt;
+&lt;span class="nv"&gt;$ &lt;/span&gt;&amp;lt;a &lt;span class="nv"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;sister&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;http://examplo.com/link1&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;link1&amp;quot;&lt;/span&gt;&amp;gt;Link1&amp;lt;/a&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Bom, esta é uma pequena explicação de como funciona o Beautifulsoup. Caso tenham interesse em algo mais especifico, eu utilizei em produção para fazer captura de uns dados, o Script esta no GITHUB no seguinte endereço:
+&lt;a class="reference external" href="https://github.com/linuxsoares/scripts/blob/master/getVerbos.py"&gt;https://github.com/linuxsoares/scripts/blob/master/getVerbos.py&lt;/a&gt;
+nesse Script implementei bastante coisa do Beautifulsoup e algumas outras coisas também.&lt;/p&gt;
+&lt;dl class="docutils"&gt;
+&lt;dt&gt;Qualquer dúvida pode entrar em contato:&lt;/dt&gt;
+&lt;dd&gt;&lt;ul class="first last simple"&gt;
+&lt;li&gt;Email: &lt;a class="reference external" href="mailto:linux.soares&amp;#64;gmail.com"&gt;linux.soares&amp;#64;gmail.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="beautifulsoup"></category></entry></feed>

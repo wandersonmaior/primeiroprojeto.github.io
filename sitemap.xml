@@ -5,672 +5,672 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/index.html</loc>
-<lastmod>2014-08-12T20:54:13-00:00</lastmod>
+<lastmod>2014-08-28T03:08:29-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/archives.html</loc>
-<lastmod>2014-08-12T20:54:13-00:00</lastmod>
+<lastmod>2014-08-28T03:08:29-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tags.html</loc>
-<lastmod>2014-08-12T20:54:13-00:00</lastmod>
+<lastmod>2014-08-28T03:08:29-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/categories.html</loc>
-<lastmod>2014-08-12T20:54:13-00:00</lastmod>
+<lastmod>2014-08-28T03:08:29-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/pages/about.html</loc>
-<lastmod>2014-08-12T20:54:13-00:00</lastmod>
+<lastmod>2014-08-28T03:08:29-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/selenium-parte-4.html</loc>
-<lastmod>2014-07-28T11:55:00-00:00</lastmod>
+<lastmod>2014-07-28T11:55:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/configurando-um-servidor-de-producao-para-aplicacoes-python.html</loc>
-<lastmod>2014-07-24T14:42:00-00:00</lastmod>
+<lastmod>2014-07-24T14:42:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html</loc>
-<lastmod>2014-06-19T22:30:00-00:00</lastmod>
+<lastmod>2014-06-19T22:30:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html</loc>
-<lastmod>2014-06-16T23:59:00-00:00</lastmod>
+<lastmod>2014-06-16T23:59:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/introducao-classes-metodos-python-basico.html</loc>
-<lastmod>2014-06-12T23:59:00-00:00</lastmod>
+<lastmod>2014-06-12T23:59:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html</loc>
-<lastmod>2014-06-11T18:00:00-00:00</lastmod>
+<lastmod>2014-06-11T18:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/usando-redis-cache-django.html</loc>
-<lastmod>2014-06-06T15:50:00-00:00</lastmod>
+<lastmod>2014-06-06T15:50:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/aprendendo-e-ensinando-python.html</loc>
-<lastmod>2014-06-04T20:30:00-00:00</lastmod>
+<lastmod>2014-06-04T20:30:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/selenium-parte-3.html</loc>
-<lastmod>2014-06-02T10:49:00-00:00</lastmod>
+<lastmod>2014-06-02T10:49:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/what-the-flask-pt-1-introducao-ao-desenvolvimento-web-com-python.html</loc>
-<lastmod>2014-05-31T02:22:00-00:00</lastmod>
+<lastmod>2014-05-31T02:22:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/selenium-parte-2.html</loc>
-<lastmod>2014-05-23T14:49:00-00:00</lastmod>
+<lastmod>2014-05-23T14:49:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html</loc>
-<lastmod>2014-05-16T01:00:00-00:00</lastmod>
+<lastmod>2014-05-16T01:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/editando-o-admin-do-django.html</loc>
-<lastmod>2014-05-15T18:00:00-00:00</lastmod>
+<lastmod>2014-05-15T18:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/instalacao-python-django-windows.html</loc>
-<lastmod>2014-05-14T10:30:00-00:00</lastmod>
+<lastmod>2014-05-14T10:30:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/criar-site-com-form-lista-30-min.html</loc>
-<lastmod>2014-05-13T23:00:00-00:00</lastmod>
+<lastmod>2014-05-13T23:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/principais-duvidas-de-quem-quer-aprender-django.html</loc>
-<lastmod>2014-05-13T23:00:00-00:00</lastmod>
+<lastmod>2014-05-13T23:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/parseando-sites-com-beautifulsoup.html</loc>
-<lastmod>2014-05-13T22:00:00-00:00</lastmod>
+<lastmod>2014-05-13T22:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/deploy-com-django-fagungis.html</loc>
-<lastmod>2014-05-13T16:00:00-00:00</lastmod>
+<lastmod>2014-05-13T16:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html</loc>
-<lastmod>2014-05-13T01:40:00-00:00</lastmod>
+<lastmod>2014-05-13T01:40:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/primeiro-projeto-django-no-linux-com-sublime.html</loc>
-<lastmod>2014-05-11T02:00:00-00:00</lastmod>
+<lastmod>2014-05-11T02:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/introducao-a-testes-funcionais-com-selenium-e-python.html</loc>
-<lastmod>2014-05-09T12:00:00-00:00</lastmod>
+<lastmod>2014-05-09T12:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/selenium-parte-1.html</loc>
-<lastmod>2014-05-08T12:09:00-00:00</lastmod>
+<lastmod>2014-05-08T12:09:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/5-django-apps-que-nao-vivo-se.html</loc>
-<lastmod>2014-05-06T19:35:00-00:00</lastmod>
+<lastmod>2014-05-06T19:35:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/sobre-o-six-e-como-ele-ajuda-a-escrever-codigo-compativel-com-python-2-e-3.html</loc>
-<lastmod>2014-05-04T22:21:00-00:00</lastmod>
+<lastmod>2014-05-04T22:21:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/como_colaborar_com_projetos_open_source.html</loc>
-<lastmod>2014-05-01T13:16:00-00:00</lastmod>
+<lastmod>2014-05-01T13:16:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/category/banco-de-dados.html</loc>
-<lastmod>2014-05-16T01:00:00-00:00</lastmod>
+<lastmod>2014-05-16T01:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/category/deploy-infraestrutura.html</loc>
-<lastmod>2014-05-13T16:00:00-00:00</lastmod>
+<lastmod>2014-05-13T16:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/category/django.html</loc>
-<lastmod>2014-05-15T18:00:00-00:00</lastmod>
+<lastmod>2014-05-15T18:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/category/flask.html</loc>
-<lastmod>2014-06-19T22:30:00-00:00</lastmod>
+<lastmod>2014-06-19T22:30:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/category/python.html</loc>
-<lastmod>2014-07-28T11:55:00-00:00</lastmod>
+<lastmod>2014-07-28T11:55:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/category/python-banco-de-dados.html</loc>
-<lastmod>2014-06-16T23:59:00-00:00</lastmod>
+<lastmod>2014-06-16T23:59:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/category/python-django.html</loc>
-<lastmod>2014-06-06T15:50:00-00:00</lastmod>
+<lastmod>2014-06-06T15:50:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/category/servidor-web.html</loc>
-<lastmod>2014-07-24T14:42:00-00:00</lastmod>
+<lastmod>2014-07-24T14:42:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/category/tutoriais.html</loc>
-<lastmod>2014-06-11T18:00:00-00:00</lastmod>
+<lastmod>2014-06-11T18:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/wsgi.html</loc>
-<lastmod>2014-07-24T14:42:00-00:00</lastmod>
+<lastmod>2014-07-24T14:42:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/six.html</loc>
-<lastmod>2014-05-04T22:21:00-00:00</lastmod>
+<lastmod>2014-05-04T22:21:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/supervisor.html</loc>
-<lastmod>2014-07-24T14:42:00-00:00</lastmod>
+<lastmod>2014-07-24T14:42:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/redis.html</loc>
-<lastmod>2014-06-06T15:50:00-00:00</lastmod>
+<lastmod>2014-06-06T15:50:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/sqlite.html</loc>
-<lastmod>2014-05-16T01:00:00-00:00</lastmod>
+<lastmod>2014-05-16T01:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/producao.html</loc>
-<lastmod>2014-07-24T14:42:00-00:00</lastmod>
+<lastmod>2014-07-24T14:42:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/tutorial.html</loc>
-<lastmod>2014-07-24T14:42:00-00:00</lastmod>
+<lastmod>2014-07-24T14:42:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/web.html</loc>
-<lastmod>2014-07-24T14:42:00-00:00</lastmod>
+<lastmod>2014-07-24T14:42:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/git.html</loc>
-<lastmod>2014-05-13T01:40:00-00:00</lastmod>
+<lastmod>2014-05-13T01:40:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/fabric.html</loc>
-<lastmod>2014-05-13T16:00:00-00:00</lastmod>
+<lastmod>2014-05-13T16:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/testes-funcionais.html</loc>
-<lastmod>2014-05-09T12:00:00-00:00</lastmod>
+<lastmod>2014-05-09T12:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/flask.html</loc>
-<lastmod>2014-06-19T22:30:00-00:00</lastmod>
+<lastmod>2014-06-19T22:30:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/django-admin.html</loc>
-<lastmod>2014-05-15T18:00:00-00:00</lastmod>
+<lastmod>2014-05-15T18:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/selenium.html</loc>
-<lastmod>2014-07-28T11:55:00-00:00</lastmod>
+<lastmod>2014-07-28T11:55:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/beautifulsoup.html</loc>
-<lastmod>2014-05-13T22:00:00-00:00</lastmod>
+<lastmod>2014-05-13T22:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/servidor.html</loc>
-<lastmod>2014-07-24T14:42:00-00:00</lastmod>
+<lastmod>2014-07-24T14:42:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/test.html</loc>
-<lastmod>2014-05-06T19:35:00-00:00</lastmod>
+<lastmod>2014-05-06T19:35:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/vitualenv.html</loc>
-<lastmod>2014-05-11T02:00:00-00:00</lastmod>
+<lastmod>2014-05-11T02:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/blog.html</loc>
-<lastmod>2014-06-04T20:30:00-00:00</lastmod>
+<lastmod>2014-06-04T20:30:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/gunicorn.html</loc>
-<lastmod>2014-07-24T14:42:00-00:00</lastmod>
+<lastmod>2014-07-24T14:42:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/testes.html</loc>
-<lastmod>2014-05-09T12:00:00-00:00</lastmod>
+<lastmod>2014-05-09T12:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/deploy.html</loc>
-<lastmod>2014-05-13T16:00:00-00:00</lastmod>
+<lastmod>2014-05-13T16:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/python.html</loc>
-<lastmod>2014-07-28T11:55:00-00:00</lastmod>
+<lastmod>2014-07-28T11:55:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/django-apps.html</loc>
-<lastmod>2014-05-06T19:35:00-00:00</lastmod>
+<lastmod>2014-05-06T19:35:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/nginx.html</loc>
-<lastmod>2014-07-24T14:42:00-00:00</lastmod>
+<lastmod>2014-07-24T14:42:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/metodos.html</loc>
-<lastmod>2014-06-12T23:59:00-00:00</lastmod>
+<lastmod>2014-06-12T23:59:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/django-fagungis.html</loc>
-<lastmod>2014-05-13T16:00:00-00:00</lastmod>
+<lastmod>2014-05-13T16:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/coverage.html</loc>
-<lastmod>2014-05-06T19:35:00-00:00</lastmod>
+<lastmod>2014-05-06T19:35:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/banco-de-dados.html</loc>
-<lastmod>2014-06-16T23:59:00-00:00</lastmod>
+<lastmod>2014-06-16T23:59:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/compatibility.html</loc>
-<lastmod>2014-05-04T22:21:00-00:00</lastmod>
+<lastmod>2014-05-04T22:21:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/python3.html</loc>
-<lastmod>2014-05-04T22:21:00-00:00</lastmod>
+<lastmod>2014-05-04T22:21:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/selenium-serie.html</loc>
-<lastmod>2014-07-28T11:55:00-00:00</lastmod>
+<lastmod>2014-07-28T11:55:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/github.html</loc>
-<lastmod>2014-05-13T01:40:00-00:00</lastmod>
+<lastmod>2014-05-13T01:40:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/servidor-ftp.html</loc>
-<lastmod>2014-06-11T18:00:00-00:00</lastmod>
+<lastmod>2014-06-11T18:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/djangobook.html</loc>
-<lastmod>2014-05-01T13:16:00-00:00</lastmod>
+<lastmod>2014-05-01T13:16:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/django.html</loc>
-<lastmod>2014-07-24T14:42:00-00:00</lastmod>
+<lastmod>2014-07-24T14:42:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/windows.html</loc>
-<lastmod>2014-05-14T10:30:00-00:00</lastmod>
+<lastmod>2014-05-14T10:30:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/classes.html</loc>
-<lastmod>2014-06-12T23:59:00-00:00</lastmod>
+<lastmod>2014-06-12T23:59:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/nose.html</loc>
-<lastmod>2014-05-06T19:35:00-00:00</lastmod>
+<lastmod>2014-05-06T19:35:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/aulas.html</loc>
-<lastmod>2014-06-04T20:30:00-00:00</lastmod>
+<lastmod>2014-06-04T20:30:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/ftp.html</loc>
-<lastmod>2014-06-11T18:00:00-00:00</lastmod>
+<lastmod>2014-06-11T18:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/what-the-flask.html</loc>
-<lastmod>2014-06-19T22:30:00-00:00</lastmod>
+<lastmod>2014-06-19T22:30:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tag/south.html</loc>
-<lastmod>2014-05-06T19:35:00-00:00</lastmod>
+<lastmod>2014-05-06T19:35:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/author/artur-felipe-de-sousa.html</loc>
-<lastmod>2014-05-04T22:21:00-00:00</lastmod>
+<lastmod>2014-05-04T22:21:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/author/bruno-cezar-rocha.html</loc>
-<lastmod>2014-06-19T22:30:00-00:00</lastmod>
+<lastmod>2014-06-19T22:30:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/author/eric-hideki.html</loc>
-<lastmod>2014-05-01T13:16:00-00:00</lastmod>
+<lastmod>2014-05-01T13:16:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/author/evaldo-junior-bento.html</loc>
-<lastmod>2014-06-04T20:30:00-00:00</lastmod>
+<lastmod>2014-06-04T20:30:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/author/fabiano-goes.html</loc>
-<lastmod>2014-05-11T02:00:00-00:00</lastmod>
+<lastmod>2014-05-11T02:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/author/fabio-c-barrionuevo-da-luz.html</loc>
-<lastmod>2014-06-11T18:00:00-00:00</lastmod>
+<lastmod>2014-06-11T18:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/author/gilmar-soares.html</loc>
-<lastmod>2014-05-13T22:00:00-00:00</lastmod>
+<lastmod>2014-05-13T22:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/author/igor-santos.html</loc>
-<lastmod>2014-07-24T14:42:00-00:00</lastmod>
+<lastmod>2014-07-24T14:42:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/author/lucas-magnum.html</loc>
-<lastmod>2014-07-28T11:55:00-00:00</lastmod>
+<lastmod>2014-07-28T11:55:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/author/mario-chaves.html</loc>
-<lastmod>2014-05-09T12:00:00-00:00</lastmod>
+<lastmod>2014-05-09T12:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/author/mauricio-camargo-sipmann.html</loc>
-<lastmod>2014-05-15T18:00:00-00:00</lastmod>
+<lastmod>2014-05-15T18:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/author/regis-da-silva.html</loc>
-<lastmod>2014-06-16T23:59:00-00:00</lastmod>
+<lastmod>2014-06-16T23:59:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/author/romulo-collopy.html</loc>
-<lastmod>2014-05-13T16:00:00-00:00</lastmod>
+<lastmod>2014-05-13T16:00:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/author/thiago-coroa.html</loc>
-<lastmod>2014-05-14T10:30:00-00:00</lastmod>
+<lastmod>2014-05-14T10:30:00:%s</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
