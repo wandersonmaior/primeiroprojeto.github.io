@@ -2831,8 +2831,8 @@ enviado pelo servidor.&lt;/p&gt;
 &lt;div class="section" id="cliente-ftp"&gt;
 &lt;h3&gt;Cliente FTP&lt;/h3&gt;
 &lt;p&gt;Existem varios clientes para o protocolo FTP.&lt;/p&gt;
-&lt;p&gt;O Windows Explorer, gerenciador de arquivos padrão em ambiente Windows, possui suporte complete ao protocolo FTP.&lt;/p&gt;
-&lt;p&gt;O navegador web Mozilla Firefox, bem como os navegadores Google Chrome, Internet Explorer, possem capacidade de acessar servidores ftp, mas somente em modo de leitura.&lt;/p&gt;
+&lt;p&gt;O Windows Explorer, gerenciador de arquivos padrão em ambiente Windows, possui suporte completo ao protocolo FTP.&lt;/p&gt;
+&lt;p&gt;O navegador web Mozilla Firefox, bem como os navegadores Google Chrome, Internet Explorer, possuem capacidade de acessar servidores ftp, mas somente em modo de leitura.&lt;/p&gt;
 &lt;p&gt;O complemento FireFTP para o navegador web Mozilla Firefox, adiciona ao Firefox suporte completo ao protocolo FTP.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="pyftpdlib-o-que-e"&gt;
@@ -2858,11 +2858,11 @@ de multiplas threads/processos.&lt;/li&gt;
 &lt;h3&gt;Instalando no Ubuntu 14.04 64bits&lt;/h3&gt;
 &lt;p&gt;Para instalar é relativamente simples.
 Você possui duas opções de como instalar.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Opção 1&lt;/strong&gt; - Instalar diretametente à partir do repositorio do Ubuntu. :&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Opção 1&lt;/strong&gt; - Instalar diretametente à partir do repositório do Ubuntu. :&lt;/p&gt;
 &lt;p&gt;Abra um terminal e execute:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get install python-pyftpdlib
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Obs: O repositorio do ubuntu possui uma versão muito desatualizada (1.2) do pyftpdlib, que atualmente está na versão 1.4.
+&lt;p&gt;Obs: O repositório do ubuntu possui uma versão muito desatualizada (1.2) do pyftpdlib, que atualmente está na versão 1.4.
 Recomendo usar a opção 2.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Opção 2&lt;/strong&gt; - Instalar utilizando o &lt;em&gt;pip&lt;/em&gt;:&lt;/p&gt;
 &lt;p&gt;Supondo que você já possua o &lt;em&gt;pip&lt;/em&gt; instalado.&lt;/p&gt;
@@ -2942,7 +2942,7 @@ Options:
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Se você quiser iniciar o servidor FTP de modo que quem for acessar não necessite informar a porta, ou seja
 ele poderá acessar o servidor em um endereço similar a &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;ftp://127.0.0.1&lt;/span&gt;&lt;/tt&gt; ou &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;ftp://endereço_ip_ou_hostname_atual_do_seu_servidor&lt;/span&gt;&lt;/tt&gt;,
-é necessario executa-lo como super-usuário, informando a porta 21, que é a padrão do protocolo, conforme exemplificado abaixo.&lt;/p&gt;
+é necessario executá-lo como super-usuário, informando a porta 21, que é a padrão do protocolo, conforme exemplificado abaixo.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;sudo python -m pyftpdlib -p 21
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
