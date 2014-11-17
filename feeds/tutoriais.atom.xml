@@ -86,7 +86,7 @@ sudo pip install pyftpdlib
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Após executar o comando acima, você obterá uma saida similar a esta:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;fabio@luzfcb:~&lt;span class="nv"&gt;$ &lt;/span&gt;python -m pyftpdlib
-&lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt;&amp;gt;&amp;gt; starting FTP server on 0.0.0.0:2121, &lt;span class="nv"&gt;pid&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;21884 &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt;&amp;gt;&amp;gt; starting FTP server on 0.0.0.0:2121, &lt;span class="nv"&gt;pid&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;21884&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; poller: &amp;lt;class &lt;span class="s1"&gt;&amp;#39;pyftpdlib.ioloop.Epoll&amp;#39;&lt;/span&gt;&amp;gt;
 &lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; masquerade &lt;span class="o"&gt;(&lt;/span&gt;NAT&lt;span class="o"&gt;)&lt;/span&gt; address: None
 &lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; passive ports: None
@@ -97,7 +97,7 @@ sudo pip install pyftpdlib
 &lt;img alt="acessando o servidor FTP localmente pelo navegador" src="images/luzfcb/ftp_001.png" /&gt;
 &lt;p&gt;No terminal, você poderá visualizar o log:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;fabio@luzfcb:~&lt;span class="nv"&gt;$ &lt;/span&gt;python -m pyftpdlib
-&lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt;&amp;gt;&amp;gt; starting FTP server on 0.0.0.0:2121, &lt;span class="nv"&gt;pid&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;21884 &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt;&amp;gt;&amp;gt; starting FTP server on 0.0.0.0:2121, &lt;span class="nv"&gt;pid&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;21884&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; poller: &amp;lt;class &lt;span class="s1"&gt;&amp;#39;pyftpdlib.ioloop.Epoll&amp;#39;&lt;/span&gt;&amp;gt;
 &lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; masquerade &lt;span class="o"&gt;(&lt;/span&gt;NAT&lt;span class="o"&gt;)&lt;/span&gt; address: None
 &lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; passive ports: None

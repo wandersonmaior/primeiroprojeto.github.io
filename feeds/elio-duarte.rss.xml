@@ -47,7 +47,7 @@ Scaling:    no
 
 Creating application &lt;span class="s1"&gt;&amp;#39;django&amp;#39;&lt;/span&gt; ... &lt;span class="k"&gt;done&lt;/span&gt;
 
-Waiting &lt;span class="k"&gt;for &lt;/span&gt;your DNS name to be available ... &lt;span class="k"&gt;done&lt;/span&gt;
+Waiting &lt;span class="k"&gt;for&lt;/span&gt; your DNS name to be available ... &lt;span class="k"&gt;done&lt;/span&gt;
 
 Cloning into &lt;span class="s1"&gt;&amp;#39;django&amp;#39;&lt;/span&gt;...
 
@@ -271,7 +271,7 @@ Para listar quais são as ações disponíveis execute o comando &lt;code&gt;rhc
 Usage: rhc app &amp;lt;action&amp;gt;
 
 Creates and controls an OpenShift application.  To see the list of all applications use the rhc domain show command.  Note that delete is not reversible
-and will stop your application and &lt;span class="k"&gt;then &lt;/span&gt;remove the application and repo from the remote server. No &lt;span class="nb"&gt;local &lt;/span&gt;changes are made.
+and will stop your application and &lt;span class="k"&gt;then&lt;/span&gt; remove the application and repo from the remote server. No &lt;span class="nb"&gt;local &lt;/span&gt;changes are made.
 
 List of Actions
 configure     Configure several properties that apply to an application

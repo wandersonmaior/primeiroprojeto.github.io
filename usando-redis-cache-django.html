@@ -112,7 +112,7 @@ Os dados são armazenados por padrão são em memória, porém você pode config
 </pre></div>
 <p>Com o cliente aberto podemos escolher qual <tt class="docutils literal">database</tt> queremos trabalhar, utilizando o comando <tt class="docutils literal">select</tt>.
 Basta informar qual o índice da base que queremos utilizar.</p>
-<div class="highlight"><pre>127.0.0.1:6379 &gt; <span class="k">select </span>1
+<div class="highlight"><pre>127.0.0.1:6379 &gt; <span class="k">select</span> 1
 </pre></div>
 <p>Nesse caso selecionamos a base de índice 1 para realizar as consultas.</p>
 <p>Se quisermos consultar todas as <tt class="docutils literal">keys</tt> que estão armazenadas, basta utilizarmos o comando <tt class="docutils literal">keys</tt> com um parâmetro &quot;*&quot;.</p>
@@ -228,7 +228,7 @@ Basta adicionar <tt class="docutils literal">django.contrib.sessions.middleware.
 <p>Para visualizar se o registro foi gravado com sucesso, execute os seguintes comandos:</p>
 <div class="highlight"><pre>&gt;&gt; redis-cli
 
-127.0.0.1:6379&gt; <span class="k">select </span>1
+127.0.0.1:6379&gt; <span class="k">select</span> 1
 127.0.0.1:6379<span class="o">[</span>1<span class="o">]</span>&gt; keys *
 
 1<span class="o">)</span> <span class="s2">&quot;:1:django.contrib.sessions.cachemnpnqzfl03iwugb99q9ls4w0k2r74gs2&quot;</span>

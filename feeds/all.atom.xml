@@ -8,9 +8,9 @@
 
 
 &lt;p&gt;Depois vamos alterar o nosso arquivo settings.py e adicionar o pipeline ao INSTALLED_APPS&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;pipeline&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;INSTALLED_APPS = (
+    &amp;#39;pipeline&amp;#39;,
+)
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -107,7 +107,7 @@ Scaling:    no
 
 Creating application &lt;span class="s1"&gt;&amp;#39;django&amp;#39;&lt;/span&gt; ... &lt;span class="k"&gt;done&lt;/span&gt;
 
-Waiting &lt;span class="k"&gt;for &lt;/span&gt;your DNS name to be available ... &lt;span class="k"&gt;done&lt;/span&gt;
+Waiting &lt;span class="k"&gt;for&lt;/span&gt; your DNS name to be available ... &lt;span class="k"&gt;done&lt;/span&gt;
 
 Cloning into &lt;span class="s1"&gt;&amp;#39;django&amp;#39;&lt;/span&gt;...
 
@@ -331,7 +331,7 @@ Para listar quais são as ações disponíveis execute o comando &lt;code&gt;rhc
 Usage: rhc app &amp;lt;action&amp;gt;
 
 Creates and controls an OpenShift application.  To see the list of all applications use the rhc domain show command.  Note that delete is not reversible
-and will stop your application and &lt;span class="k"&gt;then &lt;/span&gt;remove the application and repo from the remote server. No &lt;span class="nb"&gt;local &lt;/span&gt;changes are made.
+and will stop your application and &lt;span class="k"&gt;then&lt;/span&gt; remove the application and repo from the remote server. No &lt;span class="nb"&gt;local &lt;/span&gt;changes are made.
 
 List of Actions
 configure     Configure several properties that apply to an application
@@ -413,67 +413,67 @@ Pronto seu projeto Django está rodando no Openshift!&lt;/p&gt;
 &lt;p&gt;&lt;small&gt;&lt;strong&gt;Obs&lt;/strong&gt;: &lt;em&gt;Se já tiver um virtualenv instalado pule esta parte&lt;/em&gt;&lt;/small&gt;&lt;br /&gt;
 &lt;/br&gt;
 Instale no seu ambiente o Python Package Index, ou famoso &lt;strong&gt;pip&lt;/strong&gt;:  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;python&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;pip&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;sudo apt-get install python-pip
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Recomendo fortemente o uso do &lt;strong&gt;virtualenv&lt;/strong&gt;, é muito simples de instalar. &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;virtualenv&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install virtualenv
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;E logo vamos instalar o assistente dele, o &lt;strong&gt;Virtualenvwrapper&lt;/strong&gt; (Opcional):  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;virtualenvwrapper&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install virtualenvwrapper
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Crie uma pasta na sua &lt;strong&gt;home&lt;/strong&gt;, como por exemplo, "mkdir .venvs", e configure também seu ~/.bashrc com as seguintes linhas:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;WORKON_HOME&lt;/span&gt;&lt;span class="o"&gt;=~/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;venvs&lt;/span&gt;  
-&lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;local&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;virtualenvwrapper&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;export WORKON_HOME=~/.venvs  
+source /usr/local/bin/virtualenvwrapper.sh
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Depois valide:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;.&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bashrc&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;. ~/.bashrc
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Agora crie seu virtualenv com o seguinte comando:  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;mkvirtualenv&lt;/span&gt; &lt;span class="n"&gt;pelican&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;mkvirtualenv pelican
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;/br&gt;&lt;/p&gt;
 &lt;h3&gt;Instalando o Pelican&lt;/h3&gt;
 &lt;p&gt;Agora que o ambiente está pronto, vamos instalar o Pelican. Basta fazer o seguinte:  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;pelican&lt;/span&gt; &lt;span class="n"&gt;markdown&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install pelican markdown
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;small&gt;&lt;strong&gt;Obs&lt;/strong&gt;: &lt;em&gt;Por padrão o Pelican utiliza o rst, mas vou utilizar o markdown. Se não quiser, remova o markdown da instalação.&lt;/em&gt;&lt;/small&gt;  &lt;/p&gt;
 &lt;p&gt;Crie uma pasta separada para trabalhar com o Pelican e iniciarmos nossas tarefas.
 Feito isso, vamos iniciar com o comando abaixo:  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;quickstart&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pelican-quickstart
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Este comando lhe fará uma série de perguntas sobre seu site, basta responder de acordo com suas necessidades. As opções em maísculas são as default, veja abaixo:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Where&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;want&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;create&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;new&lt;/span&gt; &lt;span class="n"&gt;web&lt;/span&gt; &lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="p"&gt;[.]&lt;/span&gt;  &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;pasta&lt;/span&gt; &lt;span class="n"&gt;onde&lt;/span&gt; &lt;span class="n"&gt;voc&lt;/span&gt;&lt;span class="err"&gt;ê&lt;/span&gt; &lt;span class="n"&gt;quer&lt;/span&gt; &lt;span class="n"&gt;salvar&lt;/span&gt; &lt;span class="n"&gt;seu&lt;/span&gt; &lt;span class="n"&gt;projeto&lt;/span&gt;
-&lt;span class="n"&gt;What&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;title&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt; &lt;span class="n"&gt;web&lt;/span&gt; &lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;Titulo&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="n"&gt;site&lt;/span&gt;  
-&lt;span class="n"&gt;Who&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;author&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt; &lt;span class="n"&gt;web&lt;/span&gt; &lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;Seu&lt;/span&gt; &lt;span class="n"&gt;nome&lt;/span&gt; &lt;span class="n"&gt;aqui&lt;/span&gt;  
-&lt;span class="n"&gt;What&lt;/span&gt; &lt;span class="n"&gt;will&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="k"&gt;default&lt;/span&gt; &lt;span class="n"&gt;language&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt; &lt;span class="n"&gt;this&lt;/span&gt; &lt;span class="n"&gt;web&lt;/span&gt; &lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;en&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;pt&lt;/span&gt; &lt;span class="n"&gt;para&lt;/span&gt; &lt;span class="n"&gt;portugues&lt;/span&gt;  
-&lt;span class="n"&gt;Do&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;want&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;specify&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;URL&lt;/span&gt; &lt;span class="n"&gt;prefix&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="n"&gt;e&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;g&lt;/span&gt;&lt;span class="p"&gt;.,&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//example.com   (Y/n) - #Url do seu blog  &lt;/span&gt;
-&lt;span class="n"&gt;What&lt;/span&gt; &lt;span class="n"&gt;is&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;URL&lt;/span&gt; &lt;span class="n"&gt;prefix&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;seublog&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;  
-&lt;span class="n"&gt;Do&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;want&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;enable&lt;/span&gt; &lt;span class="n"&gt;article&lt;/span&gt; &lt;span class="n"&gt;pagination&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;Pagina&lt;/span&gt;&lt;span class="err"&gt;çã&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;  
-&lt;span class="n"&gt;How&lt;/span&gt; &lt;span class="n"&gt;many&lt;/span&gt; &lt;span class="n"&gt;articles&lt;/span&gt; &lt;span class="n"&gt;per&lt;/span&gt; &lt;span class="n"&gt;page&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;want&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;Itens&lt;/span&gt; &lt;span class="n"&gt;por&lt;/span&gt; &lt;span class="n"&gt;pagina&lt;/span&gt;&lt;span class="err"&gt;çã&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;  
-&lt;span class="n"&gt;Do&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;want&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;generate&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt; &lt;span class="n"&gt;Fabfile&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Makefile&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;automate&lt;/span&gt; &lt;span class="n"&gt;generation&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;publishing&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;Sim&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;Facilita&lt;/span&gt; &lt;span class="n"&gt;muito&lt;/span&gt;  
-&lt;span class="n"&gt;Do&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;want&lt;/span&gt; &lt;span class="n"&gt;an&lt;/span&gt; &lt;span class="k"&gt;auto&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;reload&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;simpleHTTP&lt;/span&gt; &lt;span class="n"&gt;script&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;assist&lt;/span&gt; &lt;span class="n"&gt;with&lt;/span&gt; &lt;span class="n"&gt;theme&lt;/span&gt; &lt;span class="n"&gt;and&lt;/span&gt; &lt;span class="n"&gt;site&lt;/span&gt; &lt;span class="n"&gt;development&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Y&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;Um&lt;/span&gt; &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="n"&gt;para&lt;/span&gt; &lt;span class="n"&gt;testes&lt;/span&gt;  
-&lt;span class="n"&gt;Do&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;want&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;upload&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;website&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;FTP&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;  &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;Opcional&lt;/span&gt;  
-&lt;span class="n"&gt;Do&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;want&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;upload&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;website&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;SSH&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;Opcional&lt;/span&gt;  
-&lt;span class="n"&gt;Do&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;want&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;upload&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;website&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;Dropbox&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;Opcional&lt;/span&gt;  
-&lt;span class="n"&gt;Do&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;want&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;upload&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;website&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;S3&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;Opcional&lt;/span&gt;  
-&lt;span class="n"&gt;Do&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;want&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;upload&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;website&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;Rackspace&lt;/span&gt; &lt;span class="n"&gt;Cloud&lt;/span&gt; &lt;span class="n"&gt;Files&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;Opcional&lt;/span&gt;  
-&lt;span class="n"&gt;Do&lt;/span&gt; &lt;span class="n"&gt;you&lt;/span&gt; &lt;span class="n"&gt;want&lt;/span&gt; &lt;span class="n"&gt;to&lt;/span&gt; &lt;span class="n"&gt;upload&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n"&gt;website&lt;/span&gt; &lt;span class="n"&gt;using&lt;/span&gt; &lt;span class="n"&gt;GitHub&lt;/span&gt; &lt;span class="n"&gt;Pages&lt;/span&gt;&lt;span class="o"&gt;?&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;N&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="err"&gt;#&lt;/span&gt;&lt;span class="n"&gt;Opcional&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;Where do you want to create your new web site? [.]  #pasta onde você quer salvar seu projeto
+What will be the title of this web site? #Titulo do site  
+Who will be the author of this web site? #Seu nome aqui  
+What will be the default language of this web site? [en] - #pt para portugues  
+Do you want to specify a URL prefix? e.g., http://example.com   (Y/n) - #Url do seu blog  
+What is your URL prefix? #www.seublog.dev  
+Do you want to enable article pagination? (Y/n) - #Paginação  
+How many articles per page do you want? [10] - #Itens por paginação  
+Do you want to generate a Fabfile/Makefile to automate generation and publishing? (Y/n) - Sim - #Facilita muito  
+Do you want an auto-reload &amp;amp; simpleHTTP script to assist with theme and site development? (Y/n) - #Um server para testes  
+Do you want to upload your website using FTP? (y/N)  - #Opcional  
+Do you want to upload your website using SSH? (y/N) - #Opcional  
+Do you want to upload your website using Dropbox? (y/N) - #Opcional  
+Do you want to upload your website using S3? (y/N) - #Opcional  
+Do you want to upload your website using Rackspace Cloud Files? (y/N) - #Opcional  
+Do you want to upload your website using GitHub Pages? (y/N) - #Opcional
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -509,12 +509,12 @@ nosso primeiro post.  &lt;/p&gt;
 
 &lt;p&gt;&lt;/br&gt;
 Salve o nosso arquivo, volte para a pasta raiz do projeto e vamos ver o nosso resultado com o seguinte comando:  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;html&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class="n"&gt;make&lt;/span&gt; &lt;span class="n"&gt;serve&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;make html &amp;amp;&amp;amp; make serve
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;ou  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;develop_server&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt; &lt;span class="n"&gt;start&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;./develop_server.sh start
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -522,7 +522,7 @@ Salve o nosso arquivo, volte para a pasta raiz do projeto e vamos ver o nosso re
 &lt;p&gt;Se você respondeu "Y", no pelican-quickstart para gerar seu &lt;strong&gt;make file&lt;/strong&gt;, estes comandos irão funcionar. 
 E você pode ver seu resultado em &lt;a href="http://127.0.0.1:8000/"&gt;http://127.0.0.1:8000/&lt;/a&gt;  &lt;/p&gt;
 &lt;p&gt;Mas se não gerou, não tem problema, você pode fazer da seguinte forma: na pasta raiz do projeto digite:  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pelican&lt;/span&gt; &lt;span class="n"&gt;content&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="n"&gt;pelicanconf&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;  &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="n"&gt;output&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pelican content -s pelicanconf.py  -o output
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -555,18 +555,18 @@ Feito isso ele vai gerar os "htmls" na pasta output do projeto. E você pode ver
 &lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 
 &lt;p&gt;Altere conforme a sua necessidade. Em &lt;strong&gt;TIMEZONE&lt;/strong&gt;, caso o seu seja diferente, você pode alterar conforme esta página no &lt;a href="http://en.wikipedia.org/wiki/List_of_tz_database_time_zones"&gt;Wikipedia&lt;/a&gt;. Vamos agora instalar um tema, utilizando o comando facilitador &lt;strong&gt;pelican-themes&lt;/strong&gt;, digite no seu terminal:  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;themes&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pelican-themes -l
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Repare que ele te apresenta todos os temas que você possui. E se quiser instalar outro tema, recomendo que procure no site &lt;a href="https://github.com/getpelican/pelican-themes"&gt;pelican-themes do github&lt;/a&gt;, veja pelas screenshots qual te agrada mais. Se quiser baixar todos clone o diretório, ou clique em download Zip ou clicando &lt;a href="https://github.com/getpelican/pelican-themes/archive/master.zip"&gt;aqui&lt;/a&gt;.  &lt;/p&gt;
 &lt;p&gt;Depois de escolhido seu tema, vamos usar o seguinte comando na pasta raiz do seu projeto para instalá-los:  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pelican&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;themes&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;caminho&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;onde&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;baixou&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;seu&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tema&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;favorito&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pelican-themes --install caminho/onde/baixou/seu-tema/favorito
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Esse comando é muito simples, ele só cria uma pasta com o nome de &lt;strong&gt;themes&lt;/strong&gt;, dentro da raiz do projeto e coloca o tema lá, você pode fazer isso manualmente claro. No seu arquivo &lt;strong&gt;pelicanconf.py&lt;/strong&gt;, crie uma variável como esta abaixo com o caminho:  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;THEME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;u&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;themes&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;tema&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;que&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;escolheu&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;THEME = u&amp;#39;themes/o-tema-que-escolheu&amp;#39;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -578,17 +578,17 @@ Feito isso ele vai gerar os "htmls" na pasta output do projeto. E você pode ver
 &lt;p&gt;O nome &lt;strong&gt;Pelican&lt;/strong&gt; é um anagrama de &lt;strong&gt;calepin&lt;/strong&gt;, que significa bloco de notas em francês.  &lt;/p&gt;
 &lt;p&gt;O site do Python Club é feito com o framework Pelican. &lt;/p&gt;
 &lt;p&gt;Se você teve algum erro de encode ou coisa do tipo:  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nl"&gt;UnicodeEncodeError:&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;ascii&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt; &lt;span class="n"&gt;codec&lt;/span&gt; &lt;span class="n"&gt;can&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt; &lt;span class="n"&gt;encode&lt;/span&gt; &lt;span class="n"&gt;character&lt;/span&gt; &lt;span class="n"&gt;u&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;\xc9&amp;#39;&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;position&lt;/span&gt; &lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ordinal&lt;/span&gt; &lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="n"&gt;in&lt;/span&gt; &lt;span class="n"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;128&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;UnicodeEncodeError: &amp;#39;ascii&amp;#39; codec can&amp;#39;t encode character u&amp;#39;\xc9&amp;#39; in position 13: ordinal not in range(128)
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Isso significa que sua versão do Pelican é mais antiga, pois isso já foi corrigido e você pode instalar direto do repositório.:  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;e&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;git+https://github.com/getpelican/pelican.git#egg=pelican&amp;quot;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install -e &amp;quot;git+https://github.com/getpelican/pelican.git#egg=pelican&amp;quot;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Ou então trocar a variável $LANG, que deu certo com algumas pessoas no &lt;a href="https://github.com/getpelican/pelican"&gt;github&lt;/a&gt;, digite no terminal o seguinte:  &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;export&lt;/span&gt; &lt;span class="n"&gt;LANG&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;en&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;UTF&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;export LANG=en.UTF-8
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -971,14 +971,14 @@ mkdir ~/www ~/env
 &lt;p&gt;&lt;strong&gt;O que fazer agora?&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Vamos configurar o Nginx e o Supervisor para ele trabalhar na nossa estrutura de arquivos.&lt;/p&gt;
 &lt;p&gt;Edite o arquivo &lt;code&gt;/etc/nginx/nginx.conf&lt;/code&gt;,&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;##&lt;/span&gt;
-&lt;span class="cp"&gt;# Virtual Host Configs&lt;/span&gt;
-&lt;span class="cp"&gt;##&lt;/span&gt;
-&lt;span class="n"&gt;include&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;etc&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;nginx&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;conf&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="cm"&gt;/*.conf;&lt;/span&gt;
-&lt;span class="cm"&gt;include /etc/nginx/sites-enabled/*;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;##
+# Virtual Host Configs
+##
+include /etc/nginx/conf.d/*.conf;
+include /etc/nginx/sites-enabled/*;
 
-&lt;span class="cm"&gt;# encontra a configuracao dos seus projetos&lt;/span&gt;
-&lt;span class="cm"&gt;include /home/myusr/www/*/&lt;/span&gt;&lt;span class="n"&gt;nginx&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;conf&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+# encontra a configuracao dos seus projetos
+include /home/myusr/www/*/nginx.conf;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1014,10 +1014,10 @@ touch logs/access.log logs/error.log logs/gunicorn.log logs/supervisor.log
 &lt;div class="highlight"&gt;&lt;pre&gt;-- home/myusr/
   -- www/                   &lt;span class="o"&gt;[&lt;/span&gt;Projetos&lt;span class="o"&gt;]&lt;/span&gt;
     -- myproject/
-      -- nginx.conf         &lt;span class="o"&gt;[&lt;/span&gt;Config &lt;span class="k"&gt;do &lt;/span&gt;Nginx&lt;span class="o"&gt;]&lt;/span&gt;
-      -- supervisor.conf    &lt;span class="o"&gt;[&lt;/span&gt;Config &lt;span class="k"&gt;do &lt;/span&gt;Supervisor&lt;span class="o"&gt;]&lt;/span&gt;
+      -- nginx.conf         &lt;span class="o"&gt;[&lt;/span&gt;Config &lt;span class="k"&gt;do&lt;/span&gt; Nginx&lt;span class="o"&gt;]&lt;/span&gt;
+      -- supervisor.conf    &lt;span class="o"&gt;[&lt;/span&gt;Config &lt;span class="k"&gt;do&lt;/span&gt; Supervisor&lt;span class="o"&gt;]&lt;/span&gt;
       -- start.sh           &lt;span class="o"&gt;[&lt;/span&gt;Script Gunicorn&lt;span class="o"&gt;]&lt;/span&gt;
-      -- project/           &lt;span class="o"&gt;[&lt;/span&gt;Fonte &lt;span class="k"&gt;do &lt;/span&gt;nosso projeto&lt;span class="o"&gt;]&lt;/span&gt;
+      -- project/           &lt;span class="o"&gt;[&lt;/span&gt;Fonte &lt;span class="k"&gt;do&lt;/span&gt; nosso projeto&lt;span class="o"&gt;]&lt;/span&gt;
       -- logs/              &lt;span class="o"&gt;[&lt;/span&gt;Logs&lt;span class="o"&gt;]&lt;/span&gt;
         -- access.log       &lt;span class="o"&gt;[&lt;/span&gt;Log de acesso Nginx&lt;span class="o"&gt;]&lt;/span&gt;
         -- error.log        &lt;span class="o"&gt;[&lt;/span&gt;Log de erro Nginx&lt;span class="o"&gt;]&lt;/span&gt;
@@ -1051,35 +1051,35 @@ touch logs/access.log logs/error.log logs/gunicorn.log logs/supervisor.log
 
 &lt;p&gt;Na linha 6, &lt;em&gt;ADDRESS&lt;/em&gt;, diz que o nosso projeto vai rodar localhost com a porta 8000, esse mesmo ip:porta será usado na configuração do &lt;code&gt;nginx.conf&lt;/code&gt;, as linhas abaixo fazem o processo de ativar o ambiente virtual e navegar para pasta do fonte do projeto, para que o &lt;strong&gt;&lt;em&gt;Gunicorn&lt;/em&gt;&lt;/strong&gt; possa encontrar o arquivo &lt;code&gt;wsgi.py&lt;/code&gt;, esse é o arquivo que configura o ambiente de produção no &lt;strong&gt;&lt;em&gt;Django&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Agora vamos configurar o &lt;code&gt;nginx.conf&lt;/code&gt;, para que ele possa escutar o nosso dominio na porta 80 e redirecionar a requisição para a nossa aplicação no &lt;em&gt;127.0.0.1:8000&lt;/em&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;upstream&lt;/span&gt; &lt;span class="n"&gt;myproject&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;br&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="mf"&gt;127.0.0.1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;8000&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;upstream&lt;/span&gt; &lt;span class="nt"&gt;myproject&lt;/span&gt;&lt;span class="nc"&gt;.com.br&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="m"&gt;127&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="m"&gt;0&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="m"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="m"&gt;8000&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;span class="p"&gt;}&lt;/span&gt;
 
-&lt;span class="n"&gt;server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-    &lt;span class="n"&gt;listen&lt;/span&gt; &lt;span class="mi"&gt;80&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="n"&gt;server_name&lt;/span&gt; &lt;span class="n"&gt;myproject&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;br&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="n"&gt;client_max_body_size&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="n"&gt;M&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="nt"&gt;server&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;listen&lt;/span&gt; &lt;span class="m"&gt;80&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;server_name&lt;/span&gt; &lt;span class="n"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;br&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;client_max_body_size&lt;/span&gt; &lt;span class="m"&gt;50&lt;/span&gt;&lt;span class="n"&gt;M&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-    &lt;span class="n"&gt;access_log&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;myusr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;logs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;access&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-    &lt;span class="n"&gt;error_log&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;myusr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;logs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;access_log&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;myusr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;logs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;access&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;error_log&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;myusr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;logs&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;error&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-    &lt;span class="n"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;static&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;static&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
         &lt;span class="n"&gt;alias&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;myusr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="k"&gt;static&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
-    &lt;span class="n"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;media&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nt"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nt"&gt;media&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="n"&gt;alias&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;myusr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;media&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
     &lt;span class="p"&gt;}&lt;/span&gt;
-    &lt;span class="n"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="nt"&gt;location&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
         &lt;span class="n"&gt;proxy_set_header&lt;/span&gt; &lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Forwarded&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;For&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;proxy_add_x_forwarded_for&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
         &lt;span class="n"&gt;proxy_set_header&lt;/span&gt; &lt;span class="n"&gt;Host&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;http_host&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
         &lt;span class="n"&gt;proxy_redirect&lt;/span&gt; &lt;span class="n"&gt;off&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-        &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;request_filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-            &lt;span class="n"&gt;proxy_pass&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//myproject.com.br;&lt;/span&gt;
-            &lt;span class="k"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+        &lt;span class="n"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;!-&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="n"&gt;request_filename&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="err"&gt;{&lt;/span&gt;
+            &lt;span class="n"&gt;proxy_pass&lt;/span&gt; &lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;://&lt;/span&gt;&lt;span class="n"&gt;myproject&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;br&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+            &lt;span class="n"&gt;break&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
         &lt;span class="p"&gt;}&lt;/span&gt;
-    &lt;span class="p"&gt;}&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="err"&gt;}&lt;/span&gt;
+&lt;span class="err"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -1270,13 +1270,13 @@ sudo /etc/init.d/supervisor start myproject
 &lt;div class="highlight"&gt;&lt;pre&gt;news_app.py                           views.py
 
 +--------------------------+          +--------------------------+
-|                          |          |                          |
-| &lt;span class="nv"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; Flask&lt;span class="o"&gt;(&lt;/span&gt;...&lt;span class="o"&gt;)&lt;/span&gt;         |  &amp;lt;-----+ | from news_app import app |
-|                          |          |                          |
-|                          |          | @app.route&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;          |
-|                          |          | def view&lt;span class="o"&gt;()&lt;/span&gt;:              |
-| import wtf.views         | +-----&amp;gt;  |     ...                  |
-|                          |          |                          |
+&lt;span class="p"&gt;|&lt;/span&gt;                          &lt;span class="p"&gt;|&lt;/span&gt;          &lt;span class="p"&gt;|&lt;/span&gt;                          &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; Flask&lt;span class="o"&gt;(&lt;/span&gt;...&lt;span class="o"&gt;)&lt;/span&gt;         &lt;span class="p"&gt;|&lt;/span&gt;  &amp;lt;-----+ &lt;span class="p"&gt;|&lt;/span&gt; from news_app import app &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;                          &lt;span class="p"&gt;|&lt;/span&gt;          &lt;span class="p"&gt;|&lt;/span&gt;                          &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;                          &lt;span class="p"&gt;|&lt;/span&gt;          &lt;span class="p"&gt;|&lt;/span&gt; @app.route&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;          &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;                          &lt;span class="p"&gt;|&lt;/span&gt;          &lt;span class="p"&gt;|&lt;/span&gt; def view&lt;span class="o"&gt;()&lt;/span&gt;:              &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; import wtf.views         &lt;span class="p"&gt;|&lt;/span&gt; +-----&amp;gt;  &lt;span class="p"&gt;|&lt;/span&gt;     ...                  &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;                          &lt;span class="p"&gt;|&lt;/span&gt;          &lt;span class="p"&gt;|&lt;/span&gt;                          &lt;span class="p"&gt;|&lt;/span&gt;
 +--------------------------+          +--------------------------+
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -2325,7 +2325,7 @@ PS: &lt;em&gt;Considere a sintaxe para Python 3&lt;/em&gt;.&lt;/blockquote&gt;
 Idade: 35
 CPF: 30020030011
 Email: regis@email.com
-Fone: 11 9537-0000
+Fone: &lt;span class="m"&gt;11&lt;/span&gt; 9537-0000
 Cidade: Sao Paulo
 UF: SP
 Criado em &lt;span class="o"&gt;(&lt;/span&gt;yyyy-mm-dd&lt;span class="o"&gt;)&lt;/span&gt;: 2014-06-15
@@ -2882,7 +2882,7 @@ sudo pip install pyftpdlib
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Após executar o comando acima, você obterá uma saida similar a esta:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;fabio@luzfcb:~&lt;span class="nv"&gt;$ &lt;/span&gt;python -m pyftpdlib
-&lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt;&amp;gt;&amp;gt; starting FTP server on 0.0.0.0:2121, &lt;span class="nv"&gt;pid&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;21884 &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt;&amp;gt;&amp;gt; starting FTP server on 0.0.0.0:2121, &lt;span class="nv"&gt;pid&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;21884&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; poller: &amp;lt;class &lt;span class="s1"&gt;&amp;#39;pyftpdlib.ioloop.Epoll&amp;#39;&lt;/span&gt;&amp;gt;
 &lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; masquerade &lt;span class="o"&gt;(&lt;/span&gt;NAT&lt;span class="o"&gt;)&lt;/span&gt; address: None
 &lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; passive ports: None
@@ -2893,7 +2893,7 @@ sudo pip install pyftpdlib
 &lt;img alt="acessando o servidor FTP localmente pelo navegador" src="images/luzfcb/ftp_001.png" /&gt;
 &lt;p&gt;No terminal, você poderá visualizar o log:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;fabio@luzfcb:~&lt;span class="nv"&gt;$ &lt;/span&gt;python -m pyftpdlib
-&lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt;&amp;gt;&amp;gt; starting FTP server on 0.0.0.0:2121, &lt;span class="nv"&gt;pid&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;21884 &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;
+&lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; &amp;gt;&amp;gt;&amp;gt; starting FTP server on 0.0.0.0:2121, &lt;span class="nv"&gt;pid&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;21884&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&amp;lt;&lt;/span&gt;
 &lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; poller: &amp;lt;class &lt;span class="s1"&gt;&amp;#39;pyftpdlib.ioloop.Epoll&amp;#39;&lt;/span&gt;&amp;gt;
 &lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; masquerade &lt;span class="o"&gt;(&lt;/span&gt;NAT&lt;span class="o"&gt;)&lt;/span&gt; address: None
 &lt;span class="o"&gt;[&lt;/span&gt;I 14-06-11 13:17:38&lt;span class="o"&gt;]&lt;/span&gt; passive ports: None
@@ -3009,7 +3009,7 @@ Os dados são armazenados por padrão são em memória, porém você pode config
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Com o cliente aberto podemos escolher qual &lt;tt class="docutils literal"&gt;database&lt;/tt&gt; queremos trabalhar, utilizando o comando &lt;tt class="docutils literal"&gt;select&lt;/tt&gt;.
 Basta informar qual o índice da base que queremos utilizar.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;127.0.0.1:6379 &amp;gt; &lt;span class="k"&gt;select &lt;/span&gt;1
+&lt;div class="highlight"&gt;&lt;pre&gt;127.0.0.1:6379 &amp;gt; &lt;span class="k"&gt;select&lt;/span&gt; 1
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Nesse caso selecionamos a base de índice 1 para realizar as consultas.&lt;/p&gt;
 &lt;p&gt;Se quisermos consultar todas as &lt;tt class="docutils literal"&gt;keys&lt;/tt&gt; que estão armazenadas, basta utilizarmos o comando &lt;tt class="docutils literal"&gt;keys&lt;/tt&gt; com um parâmetro &amp;quot;*&amp;quot;.&lt;/p&gt;
@@ -3125,7 +3125,7 @@ Basta adicionar &lt;tt class="docutils literal"&gt;django.contrib.sessions.middl
 &lt;p&gt;Para visualizar se o registro foi gravado com sucesso, execute os seguintes comandos:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&amp;gt;&amp;gt; redis-cli
 
-127.0.0.1:6379&amp;gt; &lt;span class="k"&gt;select &lt;/span&gt;1
+127.0.0.1:6379&amp;gt; &lt;span class="k"&gt;select&lt;/span&gt; 1
 127.0.0.1:6379&lt;span class="o"&gt;[&lt;/span&gt;1&lt;span class="o"&gt;]&lt;/span&gt;&amp;gt; keys *
 
 1&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;:1:django.contrib.sessions.cachemnpnqzfl03iwugb99q9ls4w0k2r74gs2&amp;quot;&lt;/span&gt;
@@ -4744,7 +4744,7 @@ Nos vemos na próxima, espero que tenha aprendido algo hoje :)&lt;/p&gt;
 &lt;ol class="arabic simple" start="12"&gt;
 &lt;li&gt;Visualizando as colunas da tabela clientes.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;sqlite&amp;gt; PRAGMA table_info&lt;span class="o"&gt;(&lt;/span&gt;clientes&lt;span class="o"&gt;)&lt;/span&gt;;
+&lt;div class="highlight"&gt;&lt;pre&gt;sqlite&amp;gt; PRAGMA table_info&lt;span class="o"&gt;(&lt;/span&gt;clientes&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;ol class="arabic simple" start="13"&gt;
 &lt;li&gt;Alterando os valores do campo bloqueado.&lt;/li&gt;
@@ -4770,8 +4770,8 @@ Nos vemos na próxima, espero que tenha aprendido algo hoje :)&lt;/p&gt;
 &lt;h2&gt;Backup&lt;/h2&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;sqlite3 Clientes.db .dump &amp;gt; clientes.sql
 &lt;span class="nv"&gt;$ &lt;/span&gt;cat clientes.sql
-PRAGMA &lt;span class="nv"&gt;foreign_keys&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;OFF;
-BEGIN TRANSACTION;
+PRAGMA &lt;span class="nv"&gt;foreign_keys&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;OFF&lt;span class="p"&gt;;&lt;/span&gt;
+BEGIN TRANSACTION&lt;span class="p"&gt;;&lt;/span&gt;
 CREATE TABLE clientes&lt;span class="o"&gt;(&lt;/span&gt;
 id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 Nome VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;100&lt;span class="o"&gt;)&lt;/span&gt; NOT NULL,
@@ -4779,12 +4779,12 @@ CPF VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;11&lt;span class="o"&gt;)&lt;/spa
 Email VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;20&lt;span class="o"&gt;)&lt;/span&gt; NOT NULL,
 Fone VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;20&lt;span class="o"&gt;)&lt;/span&gt;,
 UF VARCHAR&lt;span class="o"&gt;(&lt;/span&gt;2&lt;span class="o"&gt;)&lt;/span&gt; NOT NULL
-&lt;span class="o"&gt;)&lt;/span&gt;;
-INSERT INTO &lt;span class="s2"&gt;&amp;quot;clientes&amp;quot;&lt;/span&gt; VALUES&lt;span class="o"&gt;(&lt;/span&gt;1,&lt;span class="s1"&gt;&amp;#39;Regis&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;00000000000&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;rg@email.com&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;1100000000&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;;
-INSERT INTO &lt;span class="s2"&gt;&amp;quot;clientes&amp;quot;&lt;/span&gt; VALUES&lt;span class="o"&gt;(&lt;/span&gt;2,&lt;span class="s1"&gt;&amp;#39;Abigail&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;11111111111&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;abigail@email.com&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;1112345678&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;RJ&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;;
-INSERT INTO &lt;span class="s2"&gt;&amp;quot;clientes&amp;quot;&lt;/span&gt; VALUES&lt;span class="o"&gt;(&lt;/span&gt;3,&lt;span class="s1"&gt;&amp;#39;Benedito&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;22222222222&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;benedito@email.com&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;1187654321&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;;
-INSERT INTO &lt;span class="s2"&gt;&amp;quot;clientes&amp;quot;&lt;/span&gt; VALUES&lt;span class="o"&gt;(&lt;/span&gt;4,&lt;span class="s1"&gt;&amp;#39;Zacarias&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;33333333333&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;zacarias@email.com&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;1199999999&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;RJ&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;;
-COMMIT;
+&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+INSERT INTO &lt;span class="s2"&gt;&amp;quot;clientes&amp;quot;&lt;/span&gt; VALUES&lt;span class="o"&gt;(&lt;/span&gt;1,&lt;span class="s1"&gt;&amp;#39;Regis&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;00000000000&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;rg@email.com&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;1100000000&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+INSERT INTO &lt;span class="s2"&gt;&amp;quot;clientes&amp;quot;&lt;/span&gt; VALUES&lt;span class="o"&gt;(&lt;/span&gt;2,&lt;span class="s1"&gt;&amp;#39;Abigail&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;11111111111&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;abigail@email.com&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;1112345678&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;RJ&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+INSERT INTO &lt;span class="s2"&gt;&amp;quot;clientes&amp;quot;&lt;/span&gt; VALUES&lt;span class="o"&gt;(&lt;/span&gt;3,&lt;span class="s1"&gt;&amp;#39;Benedito&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;22222222222&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;benedito@email.com&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;1187654321&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+INSERT INTO &lt;span class="s2"&gt;&amp;quot;clientes&amp;quot;&lt;/span&gt; VALUES&lt;span class="o"&gt;(&lt;/span&gt;4,&lt;span class="s1"&gt;&amp;#39;Zacarias&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;33333333333&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;zacarias@email.com&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;1199999999&amp;#39;&lt;/span&gt;,&lt;span class="s1"&gt;&amp;#39;RJ&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+COMMIT&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Pronto, se corromper o seu banco de dados, você pode recuperá-lo:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;mv Clientes.db Clientes.db.old
@@ -4811,9 +4811,9 @@ sqlite&amp;gt; .mode column
 &lt;/pre&gt;&lt;/div&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;id          Nome        CPF          Email         Fone        UF          bloqueado
 ----------  ----------  -----------  ------------  ----------  ----------  ----------
-1           Regis       00000000000  rg@email.com  1100000000  SP          1
-2           Abigail     11111111111  abigail@emai  1112345678  RJ          1
-3           Benedito    22222222222  benedito@ema  1187654321  SP          0
+&lt;span class="m"&gt;1&lt;/span&gt;           Regis       &lt;span class="m"&gt;00000000000&lt;/span&gt;  rg@email.com  &lt;span class="m"&gt;1100000000&lt;/span&gt;  SP          1
+&lt;span class="m"&gt;2&lt;/span&gt;           Abigail     &lt;span class="m"&gt;11111111111&lt;/span&gt;  abigail@emai  &lt;span class="m"&gt;1112345678&lt;/span&gt;  RJ          1
+&lt;span class="m"&gt;3&lt;/span&gt;           Benedito    &lt;span class="m"&gt;22222222222&lt;/span&gt;  benedito@ema  &lt;span class="m"&gt;1187654321&lt;/span&gt;  SP          0
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Então vamos criar duas novas tabelas: &lt;em&gt;cidades&lt;/em&gt; e &lt;em&gt;clientes_novo&lt;/em&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;sqlite&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;TABLE&lt;/span&gt; &lt;span class="n"&gt;cidades&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
@@ -4848,9 +4848,9 @@ sqlite&amp;gt; .mode column
 &lt;/pre&gt;&lt;/div&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;id          Nome        CPF          Email         Fone        bloqueado   cidade_id
 ----------  ----------  -----------  ------------  ----------  ----------  ----------
-1           Regis       00000000000  rg@email.com  1100000000  1
-2           Abigail     11111111111  abigail@emai  1112345678  1
-3           Benedito    22222222222  benedito@ema  1187654321  0
+&lt;span class="m"&gt;1&lt;/span&gt;           Regis       &lt;span class="m"&gt;00000000000&lt;/span&gt;  rg@email.com  &lt;span class="m"&gt;1100000000&lt;/span&gt;  1
+&lt;span class="m"&gt;2&lt;/span&gt;           Abigail     &lt;span class="m"&gt;11111111111&lt;/span&gt;  abigail@emai  &lt;span class="m"&gt;1112345678&lt;/span&gt;  1
+&lt;span class="m"&gt;3&lt;/span&gt;           Benedito    &lt;span class="m"&gt;22222222222&lt;/span&gt;  benedito@ema  &lt;span class="m"&gt;1187654321&lt;/span&gt;  0
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Agora você terá que popular as cidades e definir a &lt;tt class="docutils literal"&gt;cidade_id&lt;/tt&gt; em cada cliente. Lembrando que a chave é &lt;tt class="docutils literal"&gt;AUTOINCREMENT&lt;/tt&gt;, então use &lt;tt class="docutils literal"&gt;NULL&lt;/tt&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;sqlite&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;INSERT&lt;/span&gt; &lt;span class="k"&gt;INTO&lt;/span&gt; &lt;span class="n"&gt;cidades&lt;/span&gt; &lt;span class="k"&gt;VALUES&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Campinas&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;SP&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
@@ -4862,9 +4862,9 @@ sqlite&amp;gt; .mode column
 &lt;/pre&gt;&lt;/div&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;id          cidade      uf
 ----------  ----------  ----------
-1           Campinas    SP
-2           Sao Paulo   SP
-3           Rio de Jan  RJ
+&lt;span class="m"&gt;1&lt;/span&gt;           Campinas    SP
+&lt;span class="m"&gt;2&lt;/span&gt;           Sao Paulo   SP
+&lt;span class="m"&gt;3&lt;/span&gt;           Rio de Jan  RJ
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Agora precisamos atualizar a &lt;tt class="docutils literal"&gt;cidade_id&lt;/tt&gt; de cada cliente.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;sqlite&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;UPDATE&lt;/span&gt; &lt;span class="n"&gt;clientes&lt;/span&gt; &lt;span class="k"&gt;SET&lt;/span&gt; &lt;span class="n"&gt;cidade_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
@@ -4876,18 +4876,18 @@ sqlite&amp;gt; .mode column
 &lt;/pre&gt;&lt;/div&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;id          Nome        CPF          Email         Fone        bloqueado   cidade_id
 ----------  ----------  -----------  ------------  ----------  ----------  ----------
-1           Regis       00000000000  rg@email.com  1100000000  1           3
-2           Abigail     11111111111  abigail@emai  1112345678  1           1
-3           Benedito    22222222222  benedito@ema  1187654321  0           2
+&lt;span class="m"&gt;1&lt;/span&gt;           Regis       &lt;span class="m"&gt;00000000000&lt;/span&gt;  rg@email.com  &lt;span class="m"&gt;1100000000&lt;/span&gt;  &lt;span class="m"&gt;1&lt;/span&gt;           3
+&lt;span class="m"&gt;2&lt;/span&gt;           Abigail     &lt;span class="m"&gt;11111111111&lt;/span&gt;  abigail@emai  &lt;span class="m"&gt;1112345678&lt;/span&gt;  &lt;span class="m"&gt;1&lt;/span&gt;           1
+&lt;span class="m"&gt;3&lt;/span&gt;           Benedito    &lt;span class="m"&gt;22222222222&lt;/span&gt;  benedito@ema  &lt;span class="m"&gt;1187654321&lt;/span&gt;  &lt;span class="m"&gt;0&lt;/span&gt;           2
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Façamos um &lt;tt class="docutils literal"&gt;INNER JOIN&lt;/tt&gt; para visualizar todos os dados, inclusive a &lt;em&gt;cidade&lt;/em&gt; e o &lt;em&gt;uf&lt;/em&gt;.&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;sqlite&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;clientes&lt;/span&gt; &lt;span class="k"&gt;INNER&lt;/span&gt; &lt;span class="k"&gt;JOIN&lt;/span&gt; &lt;span class="n"&gt;cidades&lt;/span&gt; &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;clientes&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;cidade_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cidades&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;id          Nome        CPF          Email         Fone        bloqueado   cidade_id   cidade          uf
 ----------  ----------  -----------  ------------  ----------  ----------  ----------  --------------  --
-1           Regis       00000000000  rg@email.com  1100000000  1           3           Rio de Janeiro  RJ
-2           Abigail     11111111111  abigail@emai  1112345678  1           1           Campinas        SP
-3           Benedito    22222222222  benedito@ema  1187654321  0           2           Sao Paulo       SP
+&lt;span class="m"&gt;1&lt;/span&gt;           Regis       &lt;span class="m"&gt;00000000000&lt;/span&gt;  rg@email.com  &lt;span class="m"&gt;1100000000&lt;/span&gt;  &lt;span class="m"&gt;1&lt;/span&gt;           &lt;span class="m"&gt;3&lt;/span&gt;           Rio de Janeiro  RJ
+&lt;span class="m"&gt;2&lt;/span&gt;           Abigail     &lt;span class="m"&gt;11111111111&lt;/span&gt;  abigail@emai  &lt;span class="m"&gt;1112345678&lt;/span&gt;  &lt;span class="m"&gt;1&lt;/span&gt;           &lt;span class="m"&gt;1&lt;/span&gt;           Campinas        SP
+&lt;span class="m"&gt;3&lt;/span&gt;           Benedito    &lt;span class="m"&gt;22222222222&lt;/span&gt;  benedito@ema  &lt;span class="m"&gt;1187654321&lt;/span&gt;  &lt;span class="m"&gt;0&lt;/span&gt;           &lt;span class="m"&gt;2&lt;/span&gt;           Sao Paulo       SP
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="referencias"&gt;
@@ -5451,7 +5451,7 @@ Então o que é &lt;em&gt;requirements&lt;/em&gt;?
 &lt;span class="nv"&gt;$ &lt;/span&gt;              &amp;lt;a &lt;span class="nv"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;sister&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;http://examplo.com/link2_teste&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;link2&amp;quot;&lt;/span&gt;&amp;gt;
 &lt;span class="nv"&gt;$ &lt;/span&gt;              Link3 Test
 &lt;span class="nv"&gt;$ &lt;/span&gt;              &amp;lt;/a&amp;gt;
-&lt;span class="nv"&gt;$ &lt;/span&gt;              ; Vamos lá!!!!!!!!!!!!!!!!!!!!!
+&lt;span class="nv"&gt;$ &lt;/span&gt;              &lt;span class="p"&gt;;&lt;/span&gt; Vamos lá!!!!!!!!!!!!!!!!!!!!!
 &lt;span class="nv"&gt;$ &lt;/span&gt;         &amp;lt;/p&amp;gt;
 &lt;span class="nv"&gt;$ &lt;/span&gt;         &amp;lt;p &lt;span class="nv"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;story&amp;quot;&lt;/span&gt;&amp;gt;
 &lt;span class="nv"&gt;$ &lt;/span&gt;              ...
@@ -5511,13 +5511,13 @@ nesse Script implementei bastante coisa do Beautifulsoup e algumas outras coisas
 &lt;p&gt;No caso do Django-Fagungis creio que você tem um argumento a mais para usar um virtualenv: existem forks mais atuais que o projeto disponóvel no pip e possivelmente você vai querer testar diferentes versões.&lt;/p&gt;
 &lt;h3&gt;Então, vamos ao passo a passo.&lt;/h3&gt;
 &lt;p&gt;Digamos que você queira criar um projeto chamado simpleproject, em Python3, em um virtualenv. (Eu vou usar ~/dev/simpleproject).&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;simpleproject&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;com&lt;/span&gt;
-&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;simpleproject&lt;/span&gt;
-&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;upgrade&lt;/span&gt; &lt;span class="n"&gt;virtualenv&lt;/span&gt;
-&lt;span class="n"&gt;virtualenv&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;unzip&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;setuptools&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;python3&lt;/span&gt;&lt;span class="mf"&gt;.4&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;activate&lt;/span&gt;
-&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;django&lt;/span&gt;
-&lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="n"&gt;startproject&lt;/span&gt; &lt;span class="n"&gt;simpleproject&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;mkdir -p ~/dev/simpleproject.com
+cd ~/dev/simpleproject
+pip install --upgrade virtualenv
+virtualenv --unzip-setuptools --python=/usr/bin/python3.4 .
+source bin\activate
+pip install django
+django-admin.py startproject simpleproject .
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -5525,22 +5525,22 @@ nesse Script implementei bastante coisa do Beautifulsoup e algumas outras coisas
 &lt;p&gt;&lt;code&gt;~/dev/tools/django-fagungis-damianmoore&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Notem que deixei o nome do usuário github na pasta para lembrar que estou usando um fork.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Agora vou até a pasta e crio o virtualenv com Python2&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;deactivate&lt;/span&gt;
-&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tools&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fagungis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;damianmoore&lt;/span&gt;
-&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tools&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fagungis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;damianmoore&lt;/span&gt;
-&lt;span class="n"&gt;virtualenv&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;unzip&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;setuptools&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;python2&lt;/span&gt;&lt;span class="mf"&gt;.7&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;
-&lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="err"&gt;\&lt;/span&gt;&lt;span class="n"&gt;activate&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;deactivate
+mkdir -p ~/dev/tools/django-fagungis-damianmoore
+cd ~/dev/tools/django-fagungis-damianmoore
+virtualenv --unzip-setuptools --python=/usr/bin/python2.7 .
+source bin\activate
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;em&gt;Pode ser que você não precise dizer o caminho do executável do python para a versão 2.7&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;E instalo o django-fagungis::&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//github.com/damianmoore/django-fagungis.git&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install git+https://github.com/damianmoore/django-fagungis.git
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;E copio o fabfile.py de exemplo para meu projeto:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;cp&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tools&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fagungis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;damianmoore&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;lib&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;python2&lt;/span&gt;&lt;span class="mf"&gt;.7&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;packages&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;fagungis&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;example_fabfile&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;simpleproject&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;fabfile&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;cp ~/dev/tools/django-fagungis-damianmoore/lib/python2.7/site-packages/fagungis/example_fabfile.py ~/dev/simpleproject/fabfile.py
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -5549,39 +5549,39 @@ nesse Script implementei bastante coisa do Beautifulsoup e algumas outras coisas
 &lt;p&gt;Mude
 &lt;code&gt;def example():&lt;/code&gt; para &lt;code&gt;def simpleproject():&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;E as variáveis env.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;project&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;simpleproject_production&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
-&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;repository&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;https&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="c1"&gt;//github.com/seu-username/simpleproject.git&amp;#39;&lt;/span&gt;
-&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;repository_type&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
-&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;hosts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;root&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="n"&gt;simpleproject&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;additional_packages&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;git&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;core&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;env.project = &amp;#39;simpleproject_production&amp;#39;
+env.repository = &amp;#39;https://github.com/seu-username/simpleproject.git&amp;#39;
+env.repository_type = &amp;#39;git&amp;#39;
+env.hosts = [&amp;#39;root@simpleproject.org&amp;#39;, ]
+env.additional_packages = [&amp;#39;git-core&amp;#39;,]
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Agora, algumas configurações mais sensíveis:&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;O Django e o Nginx têm um tratamento particular para a url static, por isso a automatixação fica mais fácil se você não usar essa url no seu projeto.&lt;/p&gt;
 &lt;p&gt;Dê preferência para usar configurações como a seguir:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;#  django media url and root dir&lt;/span&gt;
-&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;django_media_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;media&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
-&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;django_media_root&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;code_root&lt;/span&gt;
-&lt;span class="cp"&gt;#  django static url and root dir&lt;/span&gt;
-&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;django_static_url&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;assets&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
-&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;django_static_root&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;code_root&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;#  django media url and root dir
+env.django_media_url = &amp;#39;/media/&amp;#39;
+env.django_media_root = env.code_root
+#  django static url and root dir
+env.django_static_url = &amp;#39;/assets/&amp;#39;
+env.django_static_root = env.code_root
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;E, em seu settings.py &lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;from&lt;/span&gt; &lt;span class="n"&gt;unipath&lt;/span&gt; &lt;span class="n"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Path&lt;/span&gt;
-&lt;span class="n"&gt;PROJECT_ROOT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Path&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__file__&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="n"&gt;parent&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;unipath&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Path&lt;/span&gt;
+&lt;span class="n"&gt;PROJECT_ROOT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Path&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;__file__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parent&lt;/span&gt;
 
-&lt;span class="cp"&gt;#...&lt;/span&gt;
+&lt;span class="c"&gt;#...&lt;/span&gt;
 
-&lt;span class="n"&gt;STATIC_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;assets&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
-&lt;span class="n"&gt;STATIC_ROOT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;PROJECT_ROOT&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parent&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;child&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;assets&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;STATIC_URL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;/assets/&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;STATIC_ROOT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;PROJECT_ROOT&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;parent&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;child&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;assets&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;Se você escolheu usar Python3&lt;/strong&gt; no seu projeto, adicione o path para o python3 no virtenv_options&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;env&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;virtenv_options&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;distribute&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;no&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;packages&lt;/span&gt;&lt;span class="sc"&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;python&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;python3&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;env.virtenv_options = [&amp;#39;distribute&amp;#39;, &amp;#39;no-site-packages&amp;#39;,&amp;#39;python=/usr/bin/python3&amp;#39;, ]
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -5599,31 +5599,31 @@ source &lt;span class="nv"&gt;$PROJECT&lt;/span&gt;/bin/activate
 
 
 &lt;p&gt;E em seu .bashrc, adicione um alias para ele:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt; &lt;span class="n"&gt;alias&lt;/span&gt; &lt;span class="n"&gt;fagungis&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;tools&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;django&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fagungis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;damianmoore&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;fagungis&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sh&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt; alias fagungis=&amp;#39;~/dev/tools/django-fagungis-damianmoore/fagungis.sh&amp;#39;
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Agora é só ir até a raiz do seu projeto, onde está salvo o fabfile.py e digitar:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;fagungis&lt;/span&gt; &lt;span class="n"&gt;simpleproject&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;
-&lt;span class="n"&gt;fagungis&lt;/span&gt; &lt;span class="n"&gt;simpleproject&lt;/span&gt; &lt;span class="n"&gt;deploy&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;fagungis simpleproject setup
+fagungis simpleproject deploy
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;&lt;strong&gt;lembre-se que para as mudanças no .bashrc terem efeito, você deverá recarregá-lo com&lt;/strong&gt; &lt;code&gt;source ~/.bashrc&lt;/code&gt; &lt;strong&gt;ou reabrir a janela do terminal&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Se tudo correu certo, seu projeto já está rodando no servidor. Mas em alguns casos o &lt;a href="http://docs.gunicorn.org/en/latest/run.html"&gt;Gunicorn&lt;/a&gt; tem um problema com a sintaxe antiga e você precisa ir no pacote do fagungis e mudar o último exec do script: &lt;code&gt;~/dev/tools/django-fagungis-damianmoore/lib/python2.7/site-packages/fagungis/scripts/rungunicorn.sh&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;A chamada do gunicorn deve ficar assim:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;exec&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;virtenv&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;gunicorn&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;w&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gunicorn_workers&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; \
-    &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;user&lt;/span&gt;&lt;span class="o"&gt;=%&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;django_user&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;group&lt;/span&gt;&lt;span class="o"&gt;=%&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;django_user_group&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; \
-    &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;settings&lt;/span&gt;&lt;span class="o"&gt;=%&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;django_project_settings&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; \
-    &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;bind&lt;/span&gt;&lt;span class="o"&gt;=%&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gunicorn_bind&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;level&lt;/span&gt;&lt;span class="o"&gt;=%&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gunicorn_loglevel&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; \
-    &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;log&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;file&lt;/span&gt;&lt;span class="o"&gt;=%&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gunicorn_logfile&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;%&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;gunicorn_logfile&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt; \
-    &lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;project&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="n"&gt;s&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;wsgi&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="n"&gt;application&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;exec %(virtenv)s/bin/gunicorn -w %(gunicorn_workers)s \
+    --user=%(django_user)s --group=%(django_user_group)s \
+    --settings=%(django_project_settings)s \
+    --bind=%(gunicorn_bind)s --log-level=%(gunicorn_loglevel)s \
+    --log-file=%(gunicorn_logfile)s 2&amp;gt;&amp;gt;%(gunicorn_logfile)s \
+    %(project)s.wsgi:application
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Salve o arquivo e tente de novo.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;fagungis&lt;/span&gt; &lt;span class="n"&gt;simpleproject&lt;/span&gt; &lt;span class="n"&gt;setup&lt;/span&gt;
-&lt;span class="n"&gt;fagungis&lt;/span&gt; &lt;span class="n"&gt;simpleproject&lt;/span&gt; &lt;span class="n"&gt;deploy&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;fagungis simpleproject setup
+fagungis simpleproject deploy
 &lt;/pre&gt;&lt;/div&gt;
 
 
@@ -5754,12 +5754,12 @@ o pip instala a ultima versão disponivel. Se quizermos instalar uma versão esp
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python manage.py runserver
 Validating models...
 
-0 errors found
-May 11, 2014 - 03:30:48
+&lt;span class="m"&gt;0&lt;/span&gt; errors found
+May 11, &lt;span class="m"&gt;2014&lt;/span&gt; - 03:30:48
 Django version 1.6.4, using settings &lt;span class="s1"&gt;&amp;#39;first_django_project.settings&amp;#39;&lt;/span&gt;
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
-&lt;span class="o"&gt;[&lt;/span&gt;11/May/2014 03:30:59&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;GET / HTTP/1.1&amp;quot;&lt;/span&gt; 200 1757
+&lt;span class="o"&gt;[&lt;/span&gt;11/May/2014 03:30:59&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;GET / HTTP/1.1&amp;quot;&lt;/span&gt; &lt;span class="m"&gt;200&lt;/span&gt; 1757
 &lt;/pre&gt;&lt;/div&gt;
 &lt;img alt="comando runserver do django-admin.py" src="images/fabianogoes/django-runserver.png" /&gt;
 &lt;p&gt;Chegou o momento de instalarmos o editor. No caso deste tutorial usaremos o &lt;strong&gt;Sublime Text 3&lt;/strong&gt;&lt;/p&gt;
@@ -5815,12 +5815,12 @@ estou exibindo esta variável usando: &lt;strong&gt;{{ texto }}&lt;/strong&gt;&l
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python manage.py runserver
 Validating models...
 
-0 errors found
-May 11, 2014 - 03:30:48
+&lt;span class="m"&gt;0&lt;/span&gt; errors found
+May 11, &lt;span class="m"&gt;2014&lt;/span&gt; - 03:30:48
 Django version 1.6.4, using settings &lt;span class="s1"&gt;&amp;#39;first_django_project.settings&amp;#39;&lt;/span&gt;
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
-&lt;span class="o"&gt;[&lt;/span&gt;11/May/2014 03:30:59&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;GET / HTTP/1.1&amp;quot;&lt;/span&gt; 200 1757
+&lt;span class="o"&gt;[&lt;/span&gt;11/May/2014 03:30:59&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;GET / HTTP/1.1&amp;quot;&lt;/span&gt; &lt;span class="m"&gt;200&lt;/span&gt; 1757
 &lt;/pre&gt;&lt;/div&gt;
 &lt;img alt="comando runserver do django-admin.py" src="images/fabianogoes/runserv-index.png" /&gt;
 &lt;p&gt;Para finalizarmos vamos criar uma classe model simples, apenas para ilustrar o uso do &lt;strong&gt;Admin&lt;/strong&gt;&lt;/p&gt;
@@ -6070,7 +6070,7 @@ Clique nesse item e salve na pasta que desejar com um nome sucinto e seguido da 
     &lt;span class="n"&gt;unittest&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Veja o mesmo código gerado pela exportação do teste para Java (73 linhas):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;package&lt;/span&gt; &lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;example&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;tests&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;package&lt;/span&gt; &lt;span class="nn"&gt;com.example.tests&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
 
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;java.util.regex.Pattern&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;java.util.concurrent.TimeUnit&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
@@ -6311,7 +6311,7 @@ para isso você precisa saber como encontrá-lo.&lt;/p&gt;
   &lt;span class="nt"&gt;&amp;lt;header&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;post-header&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
     [...]
     &lt;span class="nt"&gt;&amp;lt;h3&amp;gt;&lt;/span&gt;
-      &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;post-title&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;lt;post_url&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;post&lt;/span&gt;&lt;span class="na"&gt;_title&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+      &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;post-title&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;lt;post_url&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;post_title&amp;gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
     &lt;span class="nt"&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
     [...]
   &lt;span class="nt"&gt;&amp;lt;/header&amp;gt;&lt;/span&gt;
@@ -6408,10 +6408,10 @@ pip install coverage
 &lt;p&gt;O coverage mostra a seguinte tabela:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;Name               Stmts   Miss  Cover   Missing
 ------------------------------------------------
-foo.models            30      5    85%   10-12, 16, 19
-bar.models            10      1    90%   4
+foo.models            &lt;span class="m"&gt;30&lt;/span&gt;      &lt;span class="m"&gt;5&lt;/span&gt;    85%   10-12, 16, 19
+bar.models            &lt;span class="m"&gt;10&lt;/span&gt;      &lt;span class="m"&gt;1&lt;/span&gt;    90%   4
 ------------------------------------------------
-TOTAL                 40      6    87%
+TOTAL                 &lt;span class="m"&gt;40&lt;/span&gt;      &lt;span class="m"&gt;6&lt;/span&gt;    87%
 &lt;/pre&gt;&lt;/div&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Stmts: Linhas que precisam ser testadas.&lt;/li&gt;

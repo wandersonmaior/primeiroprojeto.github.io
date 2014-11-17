@@ -891,7 +891,7 @@ Nos vemos na próxima, espero que tenha aprendido algo hoje :)&lt;/p&gt;
 &lt;span class="nv"&gt;$ &lt;/span&gt;              &amp;lt;a &lt;span class="nv"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;sister&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;http://examplo.com/link2_teste&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;link2&amp;quot;&lt;/span&gt;&amp;gt;
 &lt;span class="nv"&gt;$ &lt;/span&gt;              Link3 Test
 &lt;span class="nv"&gt;$ &lt;/span&gt;              &amp;lt;/a&amp;gt;
-&lt;span class="nv"&gt;$ &lt;/span&gt;              ; Vamos lá!!!!!!!!!!!!!!!!!!!!!
+&lt;span class="nv"&gt;$ &lt;/span&gt;              &lt;span class="p"&gt;;&lt;/span&gt; Vamos lá!!!!!!!!!!!!!!!!!!!!!
 &lt;span class="nv"&gt;$ &lt;/span&gt;         &amp;lt;/p&amp;gt;
 &lt;span class="nv"&gt;$ &lt;/span&gt;         &amp;lt;p &lt;span class="nv"&gt;class&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;story&amp;quot;&lt;/span&gt;&amp;gt;
 &lt;span class="nv"&gt;$ &lt;/span&gt;              ...
@@ -1158,7 +1158,7 @@ Clique nesse item e salve na pasta que desejar com um nome sucinto e seguido da 
     &lt;span class="n"&gt;unittest&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Veja o mesmo código gerado pela exportação do teste para Java (73 linhas):&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;package&lt;/span&gt; &lt;span class="n"&gt;com&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;example&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="na"&gt;tests&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;package&lt;/span&gt; &lt;span class="nn"&gt;com.example.tests&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
 
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;java.util.regex.Pattern&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;java.util.concurrent.TimeUnit&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
@@ -1399,7 +1399,7 @@ para isso você precisa saber como encontrá-lo.&lt;/p&gt;
   &lt;span class="nt"&gt;&amp;lt;header&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;post-header&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;
     [...]
     &lt;span class="nt"&gt;&amp;lt;h3&amp;gt;&lt;/span&gt;
-      &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;post-title&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;lt;post_url&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;post&lt;/span&gt;&lt;span class="na"&gt;_title&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+      &lt;span class="nt"&gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;class=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;post-title&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&amp;lt;post_url&amp;gt;&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;post_title&amp;gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
     &lt;span class="nt"&gt;&amp;lt;/h3&amp;gt;&lt;/span&gt;
     [...]
   &lt;span class="nt"&gt;&amp;lt;/header&amp;gt;&lt;/span&gt;

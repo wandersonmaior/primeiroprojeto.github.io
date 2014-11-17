@@ -8,9 +8,9 @@
 
 
 &lt;p&gt;Depois vamos alterar o nosso arquivo settings.py e adicionar o pipeline ao INSTALLED_APPS&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;INSTALLED_APPS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;pipeline&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;INSTALLED_APPS = (
+    &amp;#39;pipeline&amp;#39;,
+)
 &lt;/pre&gt;&lt;/div&gt;
 
 

@@ -101,12 +101,12 @@ o pip instala a ultima versão disponivel. Se quizermos instalar uma versão esp
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python manage.py runserver
 Validating models...
 
-0 errors found
-May 11, 2014 - 03:30:48
+&lt;span class="m"&gt;0&lt;/span&gt; errors found
+May 11, &lt;span class="m"&gt;2014&lt;/span&gt; - 03:30:48
 Django version 1.6.4, using settings &lt;span class="s1"&gt;&amp;#39;first_django_project.settings&amp;#39;&lt;/span&gt;
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
-&lt;span class="o"&gt;[&lt;/span&gt;11/May/2014 03:30:59&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;GET / HTTP/1.1&amp;quot;&lt;/span&gt; 200 1757
+&lt;span class="o"&gt;[&lt;/span&gt;11/May/2014 03:30:59&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;GET / HTTP/1.1&amp;quot;&lt;/span&gt; &lt;span class="m"&gt;200&lt;/span&gt; 1757
 &lt;/pre&gt;&lt;/div&gt;
 &lt;img alt="comando runserver do django-admin.py" src="images/fabianogoes/django-runserver.png" /&gt;
 &lt;p&gt;Chegou o momento de instalarmos o editor. No caso deste tutorial usaremos o &lt;strong&gt;Sublime Text 3&lt;/strong&gt;&lt;/p&gt;
@@ -162,12 +162,12 @@ estou exibindo esta variável usando: &lt;strong&gt;{{ texto }}&lt;/strong&gt;&l
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python manage.py runserver
 Validating models...
 
-0 errors found
-May 11, 2014 - 03:30:48
+&lt;span class="m"&gt;0&lt;/span&gt; errors found
+May 11, &lt;span class="m"&gt;2014&lt;/span&gt; - 03:30:48
 Django version 1.6.4, using settings &lt;span class="s1"&gt;&amp;#39;first_django_project.settings&amp;#39;&lt;/span&gt;
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
-&lt;span class="o"&gt;[&lt;/span&gt;11/May/2014 03:30:59&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;GET / HTTP/1.1&amp;quot;&lt;/span&gt; 200 1757
+&lt;span class="o"&gt;[&lt;/span&gt;11/May/2014 03:30:59&lt;span class="o"&gt;]&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;GET / HTTP/1.1&amp;quot;&lt;/span&gt; &lt;span class="m"&gt;200&lt;/span&gt; 1757
 &lt;/pre&gt;&lt;/div&gt;
 &lt;img alt="comando runserver do django-admin.py" src="images/fabianogoes/runserv-index.png" /&gt;
 &lt;p&gt;Para finalizarmos vamos criar uma classe model simples, apenas para ilustrar o uso do &lt;strong&gt;Admin&lt;/strong&gt;&lt;/p&gt;

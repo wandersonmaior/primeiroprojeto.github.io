@@ -284,13 +284,13 @@
 <div class="highlight"><pre>news_app.py                           views.py
 
 +--------------------------+          +--------------------------+
-|                          |          |                          |
-| <span class="nv">app</span> <span class="o">=</span> Flask<span class="o">(</span>...<span class="o">)</span>         |  &lt;-----+ | from news_app import app |
-|                          |          |                          |
-|                          |          | @app.route<span class="o">(</span><span class="s2">&quot;/&quot;</span><span class="o">)</span>          |
-|                          |          | def view<span class="o">()</span>:              |
-| import wtf.views         | +-----&gt;  |     ...                  |
-|                          |          |                          |
+<span class="p">|</span>                          <span class="p">|</span>          <span class="p">|</span>                          <span class="p">|</span>
+<span class="p">|</span> <span class="nv">app</span> <span class="o">=</span> Flask<span class="o">(</span>...<span class="o">)</span>         <span class="p">|</span>  &lt;-----+ <span class="p">|</span> from news_app import app <span class="p">|</span>
+<span class="p">|</span>                          <span class="p">|</span>          <span class="p">|</span>                          <span class="p">|</span>
+<span class="p">|</span>                          <span class="p">|</span>          <span class="p">|</span> @app.route<span class="o">(</span><span class="s2">&quot;/&quot;</span><span class="o">)</span>          <span class="p">|</span>
+<span class="p">|</span>                          <span class="p">|</span>          <span class="p">|</span> def view<span class="o">()</span>:              <span class="p">|</span>
+<span class="p">|</span> import wtf.views         <span class="p">|</span> +-----&gt;  <span class="p">|</span>     ...                  <span class="p">|</span>
+<span class="p">|</span>                          <span class="p">|</span>          <span class="p">|</span>                          <span class="p">|</span>
 +--------------------------+          +--------------------------+
 </pre></div>
 

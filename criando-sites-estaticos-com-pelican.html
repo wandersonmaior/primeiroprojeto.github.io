@@ -111,67 +111,67 @@
 <p><small><strong>Obs</strong>: <em>Se já tiver um virtualenv instalado pule esta parte</em></small><br />
 </br>
 Instale no seu ambiente o Python Package Index, ou famoso <strong>pip</strong>:  </p>
-<div class="highlight"><pre><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span>
+<div class="highlight"><pre>sudo apt-get install python-pip
 </pre></div>
 
 
 <p>Recomendo fortemente o uso do <strong>virtualenv</strong>, é muito simples de instalar. </p>
-<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">virtualenv</span>
+<div class="highlight"><pre>pip install virtualenv
 </pre></div>
 
 
 <p>E logo vamos instalar o assistente dele, o <strong>Virtualenvwrapper</strong> (Opcional):  </p>
-<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">virtualenvwrapper</span>
+<div class="highlight"><pre>pip install virtualenvwrapper
 </pre></div>
 
 
 <p>Crie uma pasta na sua <strong>home</strong>, como por exemplo, "mkdir .venvs", e configure também seu ~/.bashrc com as seguintes linhas:</p>
-<div class="highlight"><pre><span class="n">export</span> <span class="n">WORKON_HOME</span><span class="o">=~/</span><span class="p">.</span><span class="n">venvs</span>  
-<span class="n">source</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">virtualenvwrapper</span><span class="p">.</span><span class="n">sh</span>
+<div class="highlight"><pre>export WORKON_HOME=~/.venvs  
+source /usr/local/bin/virtualenvwrapper.sh
 </pre></div>
 
 
 <p>Depois valide:</p>
-<div class="highlight"><pre><span class="p">.</span> <span class="o">~/</span><span class="p">.</span><span class="n">bashrc</span>
+<div class="highlight"><pre>. ~/.bashrc
 </pre></div>
 
 
 <p>Agora crie seu virtualenv com o seguinte comando:  </p>
-<div class="highlight"><pre><span class="n">mkvirtualenv</span> <span class="n">pelican</span>
+<div class="highlight"><pre>mkvirtualenv pelican
 </pre></div>
 
 
 <p></br></p>
 <h3>Instalando o Pelican</h3>
 <p>Agora que o ambiente está pronto, vamos instalar o Pelican. Basta fazer o seguinte:  </p>
-<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="n">pelican</span> <span class="n">markdown</span>
+<div class="highlight"><pre>pip install pelican markdown
 </pre></div>
 
 
 <p><small><strong>Obs</strong>: <em>Por padrão o Pelican utiliza o rst, mas vou utilizar o markdown. Se não quiser, remova o markdown da instalação.</em></small>  </p>
 <p>Crie uma pasta separada para trabalhar com o Pelican e iniciarmos nossas tarefas.
 Feito isso, vamos iniciar com o comando abaixo:  </p>
-<div class="highlight"><pre><span class="n">pelican</span><span class="o">-</span><span class="n">quickstart</span>
+<div class="highlight"><pre>pelican-quickstart
 </pre></div>
 
 
 <p>Este comando lhe fará uma série de perguntas sobre seu site, basta responder de acordo com suas necessidades. As opções em maísculas são as default, veja abaixo:</p>
-<div class="highlight"><pre><span class="n">Where</span> <span class="k">do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">create</span> <span class="n">your</span> <span class="n">new</span> <span class="n">web</span> <span class="n">site</span><span class="o">?</span> <span class="p">[.]</span>  <span class="err">#</span><span class="n">pasta</span> <span class="n">onde</span> <span class="n">voc</span><span class="err">ê</span> <span class="n">quer</span> <span class="n">salvar</span> <span class="n">seu</span> <span class="n">projeto</span>
-<span class="n">What</span> <span class="n">will</span> <span class="n">be</span> <span class="n">the</span> <span class="n">title</span> <span class="n">of</span> <span class="n">this</span> <span class="n">web</span> <span class="n">site</span><span class="o">?</span> <span class="err">#</span><span class="n">Titulo</span> <span class="k">do</span> <span class="n">site</span>  
-<span class="n">Who</span> <span class="n">will</span> <span class="n">be</span> <span class="n">the</span> <span class="n">author</span> <span class="n">of</span> <span class="n">this</span> <span class="n">web</span> <span class="n">site</span><span class="o">?</span> <span class="err">#</span><span class="n">Seu</span> <span class="n">nome</span> <span class="n">aqui</span>  
-<span class="n">What</span> <span class="n">will</span> <span class="n">be</span> <span class="n">the</span> <span class="k">default</span> <span class="n">language</span> <span class="n">of</span> <span class="n">this</span> <span class="n">web</span> <span class="n">site</span><span class="o">?</span> <span class="p">[</span><span class="n">en</span><span class="p">]</span> <span class="o">-</span> <span class="err">#</span><span class="n">pt</span> <span class="n">para</span> <span class="n">portugues</span>  
-<span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">specify</span> <span class="n">a</span> <span class="n">URL</span> <span class="n">prefix</span><span class="o">?</span> <span class="n">e</span><span class="p">.</span><span class="n">g</span><span class="p">.,</span> <span class="n">http</span><span class="o">:</span><span class="c1">//example.com   (Y/n) - #Url do seu blog  </span>
-<span class="n">What</span> <span class="n">is</span> <span class="n">your</span> <span class="n">URL</span> <span class="n">prefix</span><span class="o">?</span> <span class="err">#</span><span class="n">www</span><span class="p">.</span><span class="n">seublog</span><span class="p">.</span><span class="n">dev</span>  
-<span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">enable</span> <span class="n">article</span> <span class="n">pagination</span><span class="o">?</span> <span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span> <span class="o">-</span> <span class="err">#</span><span class="n">Pagina</span><span class="err">çã</span><span class="n">o</span>  
-<span class="n">How</span> <span class="n">many</span> <span class="n">articles</span> <span class="n">per</span> <span class="n">page</span> <span class="k">do</span> <span class="n">you</span> <span class="n">want</span><span class="o">?</span> <span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">-</span> <span class="err">#</span><span class="n">Itens</span> <span class="n">por</span> <span class="n">pagina</span><span class="err">çã</span><span class="n">o</span>  
-<span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">generate</span> <span class="n">a</span> <span class="n">Fabfile</span><span class="o">/</span><span class="n">Makefile</span> <span class="n">to</span> <span class="n">automate</span> <span class="n">generation</span> <span class="n">and</span> <span class="n">publishing</span><span class="o">?</span> <span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span> <span class="o">-</span> <span class="n">Sim</span> <span class="o">-</span> <span class="err">#</span><span class="n">Facilita</span> <span class="n">muito</span>  
-<span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">an</span> <span class="k">auto</span><span class="o">-</span><span class="n">reload</span> <span class="o">&amp;</span> <span class="n">simpleHTTP</span> <span class="n">script</span> <span class="n">to</span> <span class="n">assist</span> <span class="n">with</span> <span class="n">theme</span> <span class="n">and</span> <span class="n">site</span> <span class="n">development</span><span class="o">?</span> <span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="n">n</span><span class="p">)</span> <span class="o">-</span> <span class="err">#</span><span class="n">Um</span> <span class="n">server</span> <span class="n">para</span> <span class="n">testes</span>  
-<span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">upload</span> <span class="n">your</span> <span class="n">website</span> <span class="n">using</span> <span class="n">FTP</span><span class="o">?</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span>  <span class="o">-</span> <span class="err">#</span><span class="n">Opcional</span>  
-<span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">upload</span> <span class="n">your</span> <span class="n">website</span> <span class="n">using</span> <span class="n">SSH</span><span class="o">?</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span> <span class="o">-</span> <span class="err">#</span><span class="n">Opcional</span>  
-<span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">upload</span> <span class="n">your</span> <span class="n">website</span> <span class="n">using</span> <span class="n">Dropbox</span><span class="o">?</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span> <span class="o">-</span> <span class="err">#</span><span class="n">Opcional</span>  
-<span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">upload</span> <span class="n">your</span> <span class="n">website</span> <span class="n">using</span> <span class="n">S3</span><span class="o">?</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span> <span class="o">-</span> <span class="err">#</span><span class="n">Opcional</span>  
-<span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">upload</span> <span class="n">your</span> <span class="n">website</span> <span class="n">using</span> <span class="n">Rackspace</span> <span class="n">Cloud</span> <span class="n">Files</span><span class="o">?</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span> <span class="o">-</span> <span class="err">#</span><span class="n">Opcional</span>  
-<span class="n">Do</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">upload</span> <span class="n">your</span> <span class="n">website</span> <span class="n">using</span> <span class="n">GitHub</span> <span class="n">Pages</span><span class="o">?</span> <span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="n">N</span><span class="p">)</span> <span class="o">-</span> <span class="err">#</span><span class="n">Opcional</span>
+<div class="highlight"><pre>Where do you want to create your new web site? [.]  #pasta onde você quer salvar seu projeto
+What will be the title of this web site? #Titulo do site  
+Who will be the author of this web site? #Seu nome aqui  
+What will be the default language of this web site? [en] - #pt para portugues  
+Do you want to specify a URL prefix? e.g., http://example.com   (Y/n) - #Url do seu blog  
+What is your URL prefix? #www.seublog.dev  
+Do you want to enable article pagination? (Y/n) - #Paginação  
+How many articles per page do you want? [10] - #Itens por paginação  
+Do you want to generate a Fabfile/Makefile to automate generation and publishing? (Y/n) - Sim - #Facilita muito  
+Do you want an auto-reload &amp; simpleHTTP script to assist with theme and site development? (Y/n) - #Um server para testes  
+Do you want to upload your website using FTP? (y/N)  - #Opcional  
+Do you want to upload your website using SSH? (y/N) - #Opcional  
+Do you want to upload your website using Dropbox? (y/N) - #Opcional  
+Do you want to upload your website using S3? (y/N) - #Opcional  
+Do you want to upload your website using Rackspace Cloud Files? (y/N) - #Opcional  
+Do you want to upload your website using GitHub Pages? (y/N) - #Opcional
 </pre></div>
 
 
@@ -207,12 +207,12 @@ nosso primeiro post.  </p>
 
 <p></br>
 Salve o nosso arquivo, volte para a pasta raiz do projeto e vamos ver o nosso resultado com o seguinte comando:  </p>
-<div class="highlight"><pre><span class="n">make</span> <span class="n">html</span> <span class="o">&amp;&amp;</span> <span class="n">make</span> <span class="n">serve</span>
+<div class="highlight"><pre>make html &amp;&amp; make serve
 </pre></div>
 
 
 <p>ou  </p>
-<div class="highlight"><pre><span class="p">.</span><span class="o">/</span><span class="n">develop_server</span><span class="p">.</span><span class="n">sh</span> <span class="n">start</span>
+<div class="highlight"><pre>./develop_server.sh start
 </pre></div>
 
 
@@ -220,7 +220,7 @@ Salve o nosso arquivo, volte para a pasta raiz do projeto e vamos ver o nosso re
 <p>Se você respondeu "Y", no pelican-quickstart para gerar seu <strong>make file</strong>, estes comandos irão funcionar. 
 E você pode ver seu resultado em <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a>  </p>
 <p>Mas se não gerou, não tem problema, você pode fazer da seguinte forma: na pasta raiz do projeto digite:  </p>
-<div class="highlight"><pre><span class="n">pelican</span> <span class="n">content</span> <span class="o">-</span><span class="n">s</span> <span class="n">pelicanconf</span><span class="p">.</span><span class="n">py</span>  <span class="o">-</span><span class="n">o</span> <span class="n">output</span>
+<div class="highlight"><pre>pelican content -s pelicanconf.py  -o output
 </pre></div>
 
 
@@ -253,18 +253,18 @@ Feito isso ele vai gerar os "htmls" na pasta output do projeto. E você pode ver
 </td></tr></table>
 
 <p>Altere conforme a sua necessidade. Em <strong>TIMEZONE</strong>, caso o seu seja diferente, você pode alterar conforme esta página no <a href="http://en.wikipedia.org/wiki/List_of_tz_database_time_zones">Wikipedia</a>. Vamos agora instalar um tema, utilizando o comando facilitador <strong>pelican-themes</strong>, digite no seu terminal:  </p>
-<div class="highlight"><pre><span class="n">pelican</span><span class="o">-</span><span class="n">themes</span> <span class="o">-</span><span class="n">l</span>
+<div class="highlight"><pre>pelican-themes -l
 </pre></div>
 
 
 <p>Repare que ele te apresenta todos os temas que você possui. E se quiser instalar outro tema, recomendo que procure no site <a href="https://github.com/getpelican/pelican-themes">pelican-themes do github</a>, veja pelas screenshots qual te agrada mais. Se quiser baixar todos clone o diretório, ou clique em download Zip ou clicando <a href="https://github.com/getpelican/pelican-themes/archive/master.zip">aqui</a>.  </p>
 <p>Depois de escolhido seu tema, vamos usar o seguinte comando na pasta raiz do seu projeto para instalá-los:  </p>
-<div class="highlight"><pre><span class="n">pelican</span><span class="o">-</span><span class="n">themes</span> <span class="o">--</span><span class="n">install</span> <span class="n">caminho</span><span class="o">/</span><span class="n">onde</span><span class="o">/</span><span class="n">baixou</span><span class="o">/</span><span class="n">seu</span><span class="o">-</span><span class="n">tema</span><span class="o">/</span><span class="n">favorito</span>
+<div class="highlight"><pre>pelican-themes --install caminho/onde/baixou/seu-tema/favorito
 </pre></div>
 
 
 <p>Esse comando é muito simples, ele só cria uma pasta com o nome de <strong>themes</strong>, dentro da raiz do projeto e coloca o tema lá, você pode fazer isso manualmente claro. No seu arquivo <strong>pelicanconf.py</strong>, crie uma variável como esta abaixo com o caminho:  </p>
-<div class="highlight"><pre><span class="n">THEME</span> <span class="o">=</span> <span class="n">u</span><span class="err">&#39;</span><span class="n">themes</span><span class="o">/</span><span class="n">o</span><span class="o">-</span><span class="n">tema</span><span class="o">-</span><span class="n">que</span><span class="o">-</span><span class="n">escolheu</span><span class="err">&#39;</span>
+<div class="highlight"><pre>THEME = u&#39;themes/o-tema-que-escolheu&#39;
 </pre></div>
 
 
@@ -276,17 +276,17 @@ Feito isso ele vai gerar os "htmls" na pasta output do projeto. E você pode ver
 <p>O nome <strong>Pelican</strong> é um anagrama de <strong>calepin</strong>, que significa bloco de notas em francês.  </p>
 <p>O site do Python Club é feito com o framework Pelican. </p>
 <p>Se você teve algum erro de encode ou coisa do tipo:  </p>
-<div class="highlight"><pre><span class="nl">UnicodeEncodeError:</span> <span class="err">&#39;</span><span class="n">ascii</span><span class="err">&#39;</span> <span class="n">codec</span> <span class="n">can</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">encode</span> <span class="n">character</span> <span class="n">u</span><span class="sc">&#39;\xc9&#39;</span> <span class="n">in</span> <span class="n">position</span> <span class="mi">13</span><span class="o">:</span> <span class="n">ordinal</span> <span class="n">not</span> <span class="n">in</span> <span class="n">range</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
+<div class="highlight"><pre>UnicodeEncodeError: &#39;ascii&#39; codec can&#39;t encode character u&#39;\xc9&#39; in position 13: ordinal not in range(128)
 </pre></div>
 
 
 <p>Isso significa que sua versão do Pelican é mais antiga, pois isso já foi corrigido e você pode instalar direto do repositório.:  </p>
-<div class="highlight"><pre><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="s">&quot;git+https://github.com/getpelican/pelican.git#egg=pelican&quot;</span>
+<div class="highlight"><pre>pip install -e &quot;git+https://github.com/getpelican/pelican.git#egg=pelican&quot;
 </pre></div>
 
 
 <p>Ou então trocar a variável $LANG, que deu certo com algumas pessoas no <a href="https://github.com/getpelican/pelican">github</a>, digite no terminal o seguinte:  </p>
-<div class="highlight"><pre><span class="n">export</span> <span class="n">LANG</span><span class="o">=</span><span class="n">en</span><span class="p">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
+<div class="highlight"><pre>export LANG=en.UTF-8
 </pre></div>
 
 

@@ -166,13 +166,13 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;news_app.py                           views.py
 
 +--------------------------+          +--------------------------+
-|                          |          |                          |
-| &lt;span class="nv"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; Flask&lt;span class="o"&gt;(&lt;/span&gt;...&lt;span class="o"&gt;)&lt;/span&gt;         |  &amp;lt;-----+ | from news_app import app |
-|                          |          |                          |
-|                          |          | @app.route&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;          |
-|                          |          | def view&lt;span class="o"&gt;()&lt;/span&gt;:              |
-| import wtf.views         | +-----&amp;gt;  |     ...                  |
-|                          |          |                          |
+&lt;span class="p"&gt;|&lt;/span&gt;                          &lt;span class="p"&gt;|&lt;/span&gt;          &lt;span class="p"&gt;|&lt;/span&gt;                          &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="nv"&gt;app&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; Flask&lt;span class="o"&gt;(&lt;/span&gt;...&lt;span class="o"&gt;)&lt;/span&gt;         &lt;span class="p"&gt;|&lt;/span&gt;  &amp;lt;-----+ &lt;span class="p"&gt;|&lt;/span&gt; from news_app import app &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;                          &lt;span class="p"&gt;|&lt;/span&gt;          &lt;span class="p"&gt;|&lt;/span&gt;                          &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;                          &lt;span class="p"&gt;|&lt;/span&gt;          &lt;span class="p"&gt;|&lt;/span&gt; @app.route&lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;/&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;          &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;                          &lt;span class="p"&gt;|&lt;/span&gt;          &lt;span class="p"&gt;|&lt;/span&gt; def view&lt;span class="o"&gt;()&lt;/span&gt;:              &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt; import wtf.views         &lt;span class="p"&gt;|&lt;/span&gt; +-----&amp;gt;  &lt;span class="p"&gt;|&lt;/span&gt;     ...                  &lt;span class="p"&gt;|&lt;/span&gt;
+&lt;span class="p"&gt;|&lt;/span&gt;                          &lt;span class="p"&gt;|&lt;/span&gt;          &lt;span class="p"&gt;|&lt;/span&gt;                          &lt;span class="p"&gt;|&lt;/span&gt;
 +--------------------------+          +--------------------------+
 &lt;/pre&gt;&lt;/div&gt;
 

@@ -182,7 +182,7 @@
 <ol class="arabic simple" start="12">
 <li>Visualizando as colunas da tabela clientes.</li>
 </ol>
-<div class="highlight"><pre>sqlite&gt; PRAGMA table_info<span class="o">(</span>clientes<span class="o">)</span>;
+<div class="highlight"><pre>sqlite&gt; PRAGMA table_info<span class="o">(</span>clientes<span class="o">)</span><span class="p">;</span>
 </pre></div>
 <ol class="arabic simple" start="13">
 <li>Alterando os valores do campo bloqueado.</li>
@@ -208,8 +208,8 @@
 <h2>Backup</h2>
 <div class="highlight"><pre><span class="nv">$ </span>sqlite3 Clientes.db .dump &gt; clientes.sql
 <span class="nv">$ </span>cat clientes.sql
-PRAGMA <span class="nv">foreign_keys</span><span class="o">=</span>OFF;
-BEGIN TRANSACTION;
+PRAGMA <span class="nv">foreign_keys</span><span class="o">=</span>OFF<span class="p">;</span>
+BEGIN TRANSACTION<span class="p">;</span>
 CREATE TABLE clientes<span class="o">(</span>
 id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 Nome VARCHAR<span class="o">(</span>100<span class="o">)</span> NOT NULL,
@@ -217,12 +217,12 @@ CPF VARCHAR<span class="o">(</span>11<span class="o">)</span> NOT NULL,
 Email VARCHAR<span class="o">(</span>20<span class="o">)</span> NOT NULL,
 Fone VARCHAR<span class="o">(</span>20<span class="o">)</span>,
 UF VARCHAR<span class="o">(</span>2<span class="o">)</span> NOT NULL
-<span class="o">)</span>;
-INSERT INTO <span class="s2">&quot;clientes&quot;</span> VALUES<span class="o">(</span>1,<span class="s1">&#39;Regis&#39;</span>,<span class="s1">&#39;00000000000&#39;</span>,<span class="s1">&#39;rg@email.com&#39;</span>,<span class="s1">&#39;1100000000&#39;</span>,<span class="s1">&#39;SP&#39;</span><span class="o">)</span>;
-INSERT INTO <span class="s2">&quot;clientes&quot;</span> VALUES<span class="o">(</span>2,<span class="s1">&#39;Abigail&#39;</span>,<span class="s1">&#39;11111111111&#39;</span>,<span class="s1">&#39;abigail@email.com&#39;</span>,<span class="s1">&#39;1112345678&#39;</span>,<span class="s1">&#39;RJ&#39;</span><span class="o">)</span>;
-INSERT INTO <span class="s2">&quot;clientes&quot;</span> VALUES<span class="o">(</span>3,<span class="s1">&#39;Benedito&#39;</span>,<span class="s1">&#39;22222222222&#39;</span>,<span class="s1">&#39;benedito@email.com&#39;</span>,<span class="s1">&#39;1187654321&#39;</span>,<span class="s1">&#39;SP&#39;</span><span class="o">)</span>;
-INSERT INTO <span class="s2">&quot;clientes&quot;</span> VALUES<span class="o">(</span>4,<span class="s1">&#39;Zacarias&#39;</span>,<span class="s1">&#39;33333333333&#39;</span>,<span class="s1">&#39;zacarias@email.com&#39;</span>,<span class="s1">&#39;1199999999&#39;</span>,<span class="s1">&#39;RJ&#39;</span><span class="o">)</span>;
-COMMIT;
+<span class="o">)</span><span class="p">;</span>
+INSERT INTO <span class="s2">&quot;clientes&quot;</span> VALUES<span class="o">(</span>1,<span class="s1">&#39;Regis&#39;</span>,<span class="s1">&#39;00000000000&#39;</span>,<span class="s1">&#39;rg@email.com&#39;</span>,<span class="s1">&#39;1100000000&#39;</span>,<span class="s1">&#39;SP&#39;</span><span class="o">)</span><span class="p">;</span>
+INSERT INTO <span class="s2">&quot;clientes&quot;</span> VALUES<span class="o">(</span>2,<span class="s1">&#39;Abigail&#39;</span>,<span class="s1">&#39;11111111111&#39;</span>,<span class="s1">&#39;abigail@email.com&#39;</span>,<span class="s1">&#39;1112345678&#39;</span>,<span class="s1">&#39;RJ&#39;</span><span class="o">)</span><span class="p">;</span>
+INSERT INTO <span class="s2">&quot;clientes&quot;</span> VALUES<span class="o">(</span>3,<span class="s1">&#39;Benedito&#39;</span>,<span class="s1">&#39;22222222222&#39;</span>,<span class="s1">&#39;benedito@email.com&#39;</span>,<span class="s1">&#39;1187654321&#39;</span>,<span class="s1">&#39;SP&#39;</span><span class="o">)</span><span class="p">;</span>
+INSERT INTO <span class="s2">&quot;clientes&quot;</span> VALUES<span class="o">(</span>4,<span class="s1">&#39;Zacarias&#39;</span>,<span class="s1">&#39;33333333333&#39;</span>,<span class="s1">&#39;zacarias@email.com&#39;</span>,<span class="s1">&#39;1199999999&#39;</span>,<span class="s1">&#39;RJ&#39;</span><span class="o">)</span><span class="p">;</span>
+COMMIT<span class="p">;</span>
 </pre></div>
 <p>Pronto, se corromper o seu banco de dados, você pode recuperá-lo:</p>
 <div class="highlight"><pre><span class="nv">$ </span>mv Clientes.db Clientes.db.old
@@ -249,9 +249,9 @@ sqlite&gt; .mode column
 </pre></div>
 <div class="highlight"><pre>id          Nome        CPF          Email         Fone        UF          bloqueado
 ----------  ----------  -----------  ------------  ----------  ----------  ----------
-1           Regis       00000000000  rg@email.com  1100000000  SP          1
-2           Abigail     11111111111  abigail@emai  1112345678  RJ          1
-3           Benedito    22222222222  benedito@ema  1187654321  SP          0
+<span class="m">1</span>           Regis       <span class="m">00000000000</span>  rg@email.com  <span class="m">1100000000</span>  SP          1
+<span class="m">2</span>           Abigail     <span class="m">11111111111</span>  abigail@emai  <span class="m">1112345678</span>  RJ          1
+<span class="m">3</span>           Benedito    <span class="m">22222222222</span>  benedito@ema  <span class="m">1187654321</span>  SP          0
 </pre></div>
 <p>Então vamos criar duas novas tabelas: <em>cidades</em> e <em>clientes_novo</em>.</p>
 <div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">cidades</span><span class="p">(</span>
@@ -286,9 +286,9 @@ sqlite&gt; .mode column
 </pre></div>
 <div class="highlight"><pre>id          Nome        CPF          Email         Fone        bloqueado   cidade_id
 ----------  ----------  -----------  ------------  ----------  ----------  ----------
-1           Regis       00000000000  rg@email.com  1100000000  1
-2           Abigail     11111111111  abigail@emai  1112345678  1
-3           Benedito    22222222222  benedito@ema  1187654321  0
+<span class="m">1</span>           Regis       <span class="m">00000000000</span>  rg@email.com  <span class="m">1100000000</span>  1
+<span class="m">2</span>           Abigail     <span class="m">11111111111</span>  abigail@emai  <span class="m">1112345678</span>  1
+<span class="m">3</span>           Benedito    <span class="m">22222222222</span>  benedito@ema  <span class="m">1187654321</span>  0
 </pre></div>
 <p>Agora você terá que popular as cidades e definir a <tt class="docutils literal">cidade_id</tt> em cada cliente. Lembrando que a chave é <tt class="docutils literal">AUTOINCREMENT</tt>, então use <tt class="docutils literal">NULL</tt>.</p>
 <div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">cidades</span> <span class="k">VALUES</span> <span class="p">(</span><span class="k">NULL</span><span class="p">,</span><span class="s1">&#39;Campinas&#39;</span><span class="p">,</span><span class="s1">&#39;SP&#39;</span><span class="p">);</span>
@@ -300,9 +300,9 @@ sqlite&gt; .mode column
 </pre></div>
 <div class="highlight"><pre>id          cidade      uf
 ----------  ----------  ----------
-1           Campinas    SP
-2           Sao Paulo   SP
-3           Rio de Jan  RJ
+<span class="m">1</span>           Campinas    SP
+<span class="m">2</span>           Sao Paulo   SP
+<span class="m">3</span>           Rio de Jan  RJ
 </pre></div>
 <p>Agora precisamos atualizar a <tt class="docutils literal">cidade_id</tt> de cada cliente.</p>
 <div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">UPDATE</span> <span class="n">clientes</span> <span class="k">SET</span> <span class="n">cidade_id</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">WHERE</span> <span class="n">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -314,18 +314,18 @@ sqlite&gt; .mode column
 </pre></div>
 <div class="highlight"><pre>id          Nome        CPF          Email         Fone        bloqueado   cidade_id
 ----------  ----------  -----------  ------------  ----------  ----------  ----------
-1           Regis       00000000000  rg@email.com  1100000000  1           3
-2           Abigail     11111111111  abigail@emai  1112345678  1           1
-3           Benedito    22222222222  benedito@ema  1187654321  0           2
+<span class="m">1</span>           Regis       <span class="m">00000000000</span>  rg@email.com  <span class="m">1100000000</span>  <span class="m">1</span>           3
+<span class="m">2</span>           Abigail     <span class="m">11111111111</span>  abigail@emai  <span class="m">1112345678</span>  <span class="m">1</span>           1
+<span class="m">3</span>           Benedito    <span class="m">22222222222</span>  benedito@ema  <span class="m">1187654321</span>  <span class="m">0</span>           2
 </pre></div>
 <p>Façamos um <tt class="docutils literal">INNER JOIN</tt> para visualizar todos os dados, inclusive a <em>cidade</em> e o <em>uf</em>.</p>
 <div class="highlight"><pre><span class="n">sqlite</span><span class="o">&gt;</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">clientes</span> <span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">cidades</span> <span class="k">ON</span> <span class="n">clientes</span><span class="p">.</span><span class="n">cidade_id</span> <span class="o">=</span> <span class="n">cidades</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
 </pre></div>
 <div class="highlight"><pre>id          Nome        CPF          Email         Fone        bloqueado   cidade_id   cidade          uf
 ----------  ----------  -----------  ------------  ----------  ----------  ----------  --------------  --
-1           Regis       00000000000  rg@email.com  1100000000  1           3           Rio de Janeiro  RJ
-2           Abigail     11111111111  abigail@emai  1112345678  1           1           Campinas        SP
-3           Benedito    22222222222  benedito@ema  1187654321  0           2           Sao Paulo       SP
+<span class="m">1</span>           Regis       <span class="m">00000000000</span>  rg@email.com  <span class="m">1100000000</span>  <span class="m">1</span>           <span class="m">3</span>           Rio de Janeiro  RJ
+<span class="m">2</span>           Abigail     <span class="m">11111111111</span>  abigail@emai  <span class="m">1112345678</span>  <span class="m">1</span>           <span class="m">1</span>           Campinas        SP
+<span class="m">3</span>           Benedito    <span class="m">22222222222</span>  benedito@ema  <span class="m">1187654321</span>  <span class="m">0</span>           <span class="m">2</span>           Sao Paulo       SP
 </pre></div>
 </div>
 <div class="section" id="referencias">

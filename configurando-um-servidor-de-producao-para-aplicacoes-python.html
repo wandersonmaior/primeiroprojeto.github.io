@@ -166,14 +166,14 @@ mkdir ~/www ~/env
 <p><strong>O que fazer agora?</strong></p>
 <p>Vamos configurar o Nginx e o Supervisor para ele trabalhar na nossa estrutura de arquivos.</p>
 <p>Edite o arquivo <code>/etc/nginx/nginx.conf</code>,</p>
-<div class="highlight"><pre><span class="cp">##</span>
-<span class="cp"># Virtual Host Configs</span>
-<span class="cp">##</span>
-<span class="n">include</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nginx</span><span class="o">/</span><span class="n">conf</span><span class="p">.</span><span class="n">d</span><span class="cm">/*.conf;</span>
-<span class="cm">include /etc/nginx/sites-enabled/*;</span>
+<div class="highlight"><pre>##
+# Virtual Host Configs
+##
+include /etc/nginx/conf.d/*.conf;
+include /etc/nginx/sites-enabled/*;
 
-<span class="cm"># encontra a configuracao dos seus projetos</span>
-<span class="cm">include /home/myusr/www/*/</span><span class="n">nginx</span><span class="p">.</span><span class="n">conf</span><span class="p">;</span>
+# encontra a configuracao dos seus projetos
+include /home/myusr/www/*/nginx.conf;
 </pre></div>
 
 
@@ -209,10 +209,10 @@ touch logs/access.log logs/error.log logs/gunicorn.log logs/supervisor.log
 <div class="highlight"><pre>-- home/myusr/
   -- www/                   <span class="o">[</span>Projetos<span class="o">]</span>
     -- myproject/
-      -- nginx.conf         <span class="o">[</span>Config <span class="k">do </span>Nginx<span class="o">]</span>
-      -- supervisor.conf    <span class="o">[</span>Config <span class="k">do </span>Supervisor<span class="o">]</span>
+      -- nginx.conf         <span class="o">[</span>Config <span class="k">do</span> Nginx<span class="o">]</span>
+      -- supervisor.conf    <span class="o">[</span>Config <span class="k">do</span> Supervisor<span class="o">]</span>
       -- start.sh           <span class="o">[</span>Script Gunicorn<span class="o">]</span>
-      -- project/           <span class="o">[</span>Fonte <span class="k">do </span>nosso projeto<span class="o">]</span>
+      -- project/           <span class="o">[</span>Fonte <span class="k">do</span> nosso projeto<span class="o">]</span>
       -- logs/              <span class="o">[</span>Logs<span class="o">]</span>
         -- access.log       <span class="o">[</span>Log de acesso Nginx<span class="o">]</span>
         -- error.log        <span class="o">[</span>Log de erro Nginx<span class="o">]</span>
@@ -246,35 +246,35 @@ touch logs/access.log logs/error.log logs/gunicorn.log logs/supervisor.log
 
 <p>Na linha 6, <em>ADDRESS</em>, diz que o nosso projeto vai rodar localhost com a porta 8000, esse mesmo ip:porta será usado na configuração do <code>nginx.conf</code>, as linhas abaixo fazem o processo de ativar o ambiente virtual e navegar para pasta do fonte do projeto, para que o <strong><em>Gunicorn</em></strong> possa encontrar o arquivo <code>wsgi.py</code>, esse é o arquivo que configura o ambiente de produção no <strong><em>Django</em></strong>.</p>
 <p>Agora vamos configurar o <code>nginx.conf</code>, para que ele possa escutar o nosso dominio na porta 80 e redirecionar a requisição para a nossa aplicação no <em>127.0.0.1:8000</em>.</p>
-<div class="highlight"><pre><span class="n">upstream</span> <span class="n">myproject</span><span class="p">.</span><span class="n">com</span><span class="p">.</span><span class="n">br</span> <span class="p">{</span>
-    <span class="n">server</span> <span class="mf">127.0.0.1</span><span class="o">:</span><span class="mi">8000</span><span class="p">;</span>
+<div class="highlight"><pre><span class="nt">upstream</span> <span class="nt">myproject</span><span class="nc">.com.br</span> <span class="p">{</span>
+    <span class="n">server</span> <span class="m">127</span><span class="o">.</span><span class="m">0</span><span class="o">.</span><span class="m">0</span><span class="o">.</span><span class="m">1</span><span class="o">:</span><span class="m">8000</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="n">server</span> <span class="p">{</span>
-    <span class="n">listen</span> <span class="mi">80</span><span class="p">;</span>
-    <span class="n">server_name</span> <span class="n">myproject</span><span class="p">.</span><span class="n">com</span><span class="p">.</span><span class="n">br</span><span class="p">;</span>
-    <span class="n">client_max_body_size</span> <span class="mi">50</span><span class="n">M</span><span class="p">;</span>
+<span class="nt">server</span> <span class="p">{</span>
+    <span class="n">listen</span> <span class="m">80</span><span class="p">;</span>
+    <span class="n">server_name</span> <span class="n">myproject</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">br</span><span class="p">;</span>
+    <span class="n">client_max_body_size</span> <span class="m">50</span><span class="n">M</span><span class="p">;</span>
 
-    <span class="n">access_log</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">myusr</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">myproject</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">access</span><span class="p">.</span><span class="n">log</span><span class="p">;</span>
-    <span class="n">error_log</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">myusr</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">myproject</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">error</span><span class="p">.</span><span class="n">log</span><span class="p">;</span>
+    <span class="n">access_log</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">myusr</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">myproject</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">access</span><span class="o">.</span><span class="n">log</span><span class="p">;</span>
+    <span class="n">error_log</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">myusr</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">myproject</span><span class="o">/</span><span class="n">logs</span><span class="o">/</span><span class="n">error</span><span class="o">.</span><span class="n">log</span><span class="p">;</span>
 
-    <span class="n">location</span> <span class="o">/</span><span class="k">static</span><span class="o">/</span> <span class="p">{</span>
+    <span class="n">location</span> <span class="o">/</span><span class="k">static</span><span class="o">/</span> <span class="err">{</span>
         <span class="n">alias</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">myusr</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">myproject</span><span class="o">/</span><span class="k">static</span><span class="o">/</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="n">location</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span> <span class="p">{</span>
+    <span class="nt">location</span> <span class="o">/</span><span class="nt">media</span><span class="o">/</span> <span class="p">{</span>
         <span class="n">alias</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">myusr</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">myproject</span><span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="n">location</span> <span class="o">/</span> <span class="p">{</span>
+    <span class="nt">location</span> <span class="o">/</span> <span class="p">{</span>
         <span class="n">proxy_set_header</span> <span class="n">X</span><span class="o">-</span><span class="n">Forwarded</span><span class="o">-</span><span class="n">For</span> <span class="err">$</span><span class="n">proxy_add_x_forwarded_for</span><span class="p">;</span>
         <span class="n">proxy_set_header</span> <span class="n">Host</span> <span class="err">$</span><span class="n">http_host</span><span class="p">;</span>
         <span class="n">proxy_redirect</span> <span class="n">off</span><span class="p">;</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="o">!-</span><span class="n">f</span> <span class="err">$</span><span class="n">request_filename</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">proxy_pass</span> <span class="n">http</span><span class="o">:</span><span class="c1">//myproject.com.br;</span>
-            <span class="k">break</span><span class="p">;</span>
+        <span class="n">if</span> <span class="p">(</span><span class="o">!-</span><span class="n">f</span> <span class="err">$</span><span class="n">request_filename</span><span class="p">)</span> <span class="err">{</span>
+            <span class="n">proxy_pass</span> <span class="n">http</span><span class="o">://</span><span class="n">myproject</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">br</span><span class="p">;</span>
+            <span class="n">break</span><span class="p">;</span>
         <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+    <span class="err">}</span>
+<span class="err">}</span>
 </pre></div>
 
 

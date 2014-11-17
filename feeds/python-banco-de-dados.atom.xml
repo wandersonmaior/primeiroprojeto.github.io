@@ -281,7 +281,7 @@ PS: &lt;em&gt;Considere a sintaxe para Python 3&lt;/em&gt;.&lt;/blockquote&gt;
 Idade: 35
 CPF: 30020030011
 Email: regis@email.com
-Fone: 11 9537-0000
+Fone: &lt;span class="m"&gt;11&lt;/span&gt; 9537-0000
 Cidade: Sao Paulo
 UF: SP
 Criado em &lt;span class="o"&gt;(&lt;/span&gt;yyyy-mm-dd&lt;span class="o"&gt;)&lt;/span&gt;: 2014-06-15

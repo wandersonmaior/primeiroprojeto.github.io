@@ -19,7 +19,7 @@ Os dados são armazenados por padrão são em memória, porém você pode config
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Com o cliente aberto podemos escolher qual &lt;tt class="docutils literal"&gt;database&lt;/tt&gt; queremos trabalhar, utilizando o comando &lt;tt class="docutils literal"&gt;select&lt;/tt&gt;.
 Basta informar qual o índice da base que queremos utilizar.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;127.0.0.1:6379 &amp;gt; &lt;span class="k"&gt;select &lt;/span&gt;1
+&lt;div class="highlight"&gt;&lt;pre&gt;127.0.0.1:6379 &amp;gt; &lt;span class="k"&gt;select&lt;/span&gt; 1
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Nesse caso selecionamos a base de índice 1 para realizar as consultas.&lt;/p&gt;
 &lt;p&gt;Se quisermos consultar todas as &lt;tt class="docutils literal"&gt;keys&lt;/tt&gt; que estão armazenadas, basta utilizarmos o comando &lt;tt class="docutils literal"&gt;keys&lt;/tt&gt; com um parâmetro &amp;quot;*&amp;quot;.&lt;/p&gt;
@@ -135,7 +135,7 @@ Basta adicionar &lt;tt class="docutils literal"&gt;django.contrib.sessions.middl
 &lt;p&gt;Para visualizar se o registro foi gravado com sucesso, execute os seguintes comandos:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&amp;gt;&amp;gt; redis-cli
 
-127.0.0.1:6379&amp;gt; &lt;span class="k"&gt;select &lt;/span&gt;1
+127.0.0.1:6379&amp;gt; &lt;span class="k"&gt;select&lt;/span&gt; 1
 127.0.0.1:6379&lt;span class="o"&gt;[&lt;/span&gt;1&lt;span class="o"&gt;]&lt;/span&gt;&amp;gt; keys *
 
 1&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;:1:django.contrib.sessions.cachemnpnqzfl03iwugb99q9ls4w0k2r74gs2&amp;quot;&lt;/span&gt;
