@@ -2103,7 +2103,7 @@ sudo /etc/init.d/supervisor start myproject
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Obs: O campo &lt;tt class="docutils literal"&gt;bloqueado&lt;/tt&gt; nós vamos inserir depois com o comando &lt;tt class="docutils literal"&gt;ALTER TABLE&lt;/tt&gt;.&lt;/p&gt;
-&lt;p&gt;Veja os exemplos em &lt;a class="reference external" href="https://github.com/rg3915/pythonDesktopApp/tree/master/pythonSQLite"&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Veja os exemplos em &lt;a class="reference external" href="https://github.com/rg3915/python-sqlite"&gt;github&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Como mencionado antes, esta parte será &lt;strong&gt;básica e objetiva&lt;/strong&gt;. A intenção é realizar o CRUD da forma mais simples e objetiva possível.&lt;/p&gt;
 &lt;blockquote&gt;
 PS: &lt;em&gt;Considere a sintaxe para Python 3&lt;/em&gt;.&lt;/blockquote&gt;
@@ -2564,7 +2564,7 @@ Salvo como clientes_recuperado.db
 &lt;/div&gt;
 &lt;div class="section" id="exemplos"&gt;
 &lt;h2&gt;Exemplos&lt;/h2&gt;
-&lt;p&gt;Veja os exemplos em &lt;a class="reference external" href="https://github.com/rg3915/pythonDesktopApp/tree/master/pythonSQLite"&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Veja os exemplos em &lt;a class="reference external" href="https://github.com/rg3915/python-sqlite"&gt;github&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="referencias"&gt;
 &lt;h2&gt;Referências&lt;/h2&gt;
