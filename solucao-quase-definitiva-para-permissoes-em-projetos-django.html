@@ -87,7 +87,7 @@
             </section>
             <p>De todas as tarefas que o Django se propõe a resolver, é possível que o módulo de permissões seja o mais gera dúvidas. Seu funcionamento é bastante simples, mas existe uma peça faltando no quebra-cabeça que o torna confuso para marinheiros de primeira viagem.</p>
 <h2>O que está faltando?</h2>
-<p>Atualmente o Django suporta, de forma nativa, somente permissões baseadas em modelos. Então é possível atribuir ou remover a permissão criar/alterar/deletar um dado modelo. Essas permissões são criadas criadas automaticamente através da inspeção dos modelos usados na aplicação, bastando estar persente na tupla <code>INSTALLED_APPS</code>.</p>
+<p>Atualmente o Django suporta, de forma nativa, somente permissões baseadas em modelos. Então é possível atribuir ou remover a permissão criar/alterar/deletar um dado modelo. Essas permissões são criadas criadas automaticamente através da inspeção dos modelos usados na aplicação, bastando estar presente na tupla <code>INSTALLED_APPS</code>.</p>
 <p>O problema reside no fato de que, em geral, não nos interessa atribuir permissões a modelos, e sim criar permissões genéricas, como poder acessar uma página ou poder visualizar um item no menu por exemplo. Como este tipo de permissão não está atrelada a um modelo, em tese não é possível utilizá-la.</p>
 <h2>Qual a solução?</h2>
 <p>Devido a ser um problema recorrente, publiquei um pacote no PyPI chamado <a href="https://pypi.python.org/pypi/django-global-permissions/0.1.0">Django Global Permissions</a>, que possibilita a criação de permissões genéricas, resolvendo o empecilho que mencionei anteriormente.</p>
