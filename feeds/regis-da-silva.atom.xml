@@ -936,7 +936,7 @@ sqlite_sequence
 &lt;a class="reference external" href="http://www.blog.pythonlibrary.org/2012/07/18/python-a-simple-step-by-step-sqlite-tutorial/"&gt;Python A Simple Step by Step SQLite Tutorial&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 </summary><category term="Python"></category><category term="Banco de dados"></category></entry><entry><title>Gerenciando banco de dados SQLite3 com Python - Parte 1</title><link href="http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html" rel="alternate"></link><updated>2014-06-16T23:59:00-03:00</updated><author><name>Regis da Silva</name></author><id>tag:pythonclub.com.br,2014-06-16:gerenciando-banco-dados-sqlite3-python-parte1.html</id><summary type="html">&lt;p&gt;Eu separei este post em duas partes: a &lt;strong&gt;Parte 1&lt;/strong&gt; é bem elementar e objetiva, visando apresentar o básico sobre a realização do CRUD num banco de dados SQLite3 em Python usando o terminal.&lt;/p&gt;
-&lt;p&gt;A &lt;strong&gt;Parte 2&lt;/strong&gt;, num nível intermediário, usa classes e métodos mais elaborados para gerenciar o CRUD, e algumas coisinhas a mais.&lt;/p&gt;
+&lt;p&gt;A &lt;a class="reference external" href="http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html"&gt;parte 2&lt;/a&gt; , num nível intermediário, usa classes e métodos mais elaborados para gerenciar o CRUD, e algumas coisinhas a mais.&lt;/p&gt;
 &lt;p&gt;Nota: Para entender o uso de classes e métodos leia o post &lt;a class="reference external" href="http://pythonclub.com.br/introducao-classes-metodos-python-basico.html"&gt;Introdução a Classes e Métodos em Python&lt;/a&gt;. E para entender os comandos SQL e a manipulação de registros no SQLite3 leia &lt;a class="reference external" href="http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html"&gt;Guia rápido de comandos SQLite3&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Para os exemplos considere a tabela &lt;tt class="docutils literal"&gt;clientes&lt;/tt&gt; e seus campos:&lt;/p&gt;
 &lt;table border="1" class="docutils"&gt;
@@ -1452,7 +1452,7 @@ Salvo como clientes_recuperado.db
 &lt;span class="nv"&gt;$ &lt;/span&gt;sqlite3 clientes_recuperado.db &lt;span class="s1"&gt;&amp;#39;SELECT * FROM clientes;&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Com o último comando você verá que os dados estão lá. São e salvo!!!&lt;/p&gt;
-&lt;p&gt;Leia a continuação deste artigo em &lt;em&gt;Gerenciando banco de dados SQLite3 com Python - Parte 2&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Leia a continuação deste artigo em &lt;a class="reference external" href="http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html"&gt;Gerenciando banco de dados SQLite3 com Python - Parte 2&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="exemplos"&gt;
 &lt;h2&gt;Exemplos&lt;/h2&gt;

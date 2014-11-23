@@ -3052,7 +3052,7 @@ sudo /etc/init.d/supervisor start myproject
 &lt;/blockquote&gt;
 &lt;p&gt;Muito obrigado e aguardo seu feedback com dúvidas, sugestões, correções etc na caixa de comentários abaixo.&lt;/p&gt;
 &lt;p&gt;Abraço! "Python é vida!"&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Bruno Cezar Rocha</dc:creator><pubDate>Thu, 19 Jun 2014 22:30:00 -0300</pubDate><guid>tag:pythonclub.com.br,2014-06-19:what-the-flask-pt-2-flask-patterns-boas-praticas-na-estrutura-de-aplicacoes-flask.html</guid><category>flask</category><category>web</category><category>tutorial</category><category>what-the-flask</category></item><item><title>Gerenciando banco de dados SQLite3 com Python - Parte 1</title><link>http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html</link><description>&lt;p&gt;Eu separei este post em duas partes: a &lt;strong&gt;Parte 1&lt;/strong&gt; é bem elementar e objetiva, visando apresentar o básico sobre a realização do CRUD num banco de dados SQLite3 em Python usando o terminal.&lt;/p&gt;
-&lt;p&gt;A &lt;strong&gt;Parte 2&lt;/strong&gt;, num nível intermediário, usa classes e métodos mais elaborados para gerenciar o CRUD, e algumas coisinhas a mais.&lt;/p&gt;
+&lt;p&gt;A &lt;a class="reference external" href="http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html"&gt;parte 2&lt;/a&gt; , num nível intermediário, usa classes e métodos mais elaborados para gerenciar o CRUD, e algumas coisinhas a mais.&lt;/p&gt;
 &lt;p&gt;Nota: Para entender o uso de classes e métodos leia o post &lt;a class="reference external" href="http://pythonclub.com.br/introducao-classes-metodos-python-basico.html"&gt;Introdução a Classes e Métodos em Python&lt;/a&gt;. E para entender os comandos SQL e a manipulação de registros no SQLite3 leia &lt;a class="reference external" href="http://pythonclub.com.br/guia-rapido-comandos-sqlite3.html"&gt;Guia rápido de comandos SQLite3&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Para os exemplos considere a tabela &lt;tt class="docutils literal"&gt;clientes&lt;/tt&gt; e seus campos:&lt;/p&gt;
 &lt;table border="1" class="docutils"&gt;
@@ -3568,7 +3568,7 @@ Salvo como clientes_recuperado.db
 &lt;span class="nv"&gt;$ &lt;/span&gt;sqlite3 clientes_recuperado.db &lt;span class="s1"&gt;&amp;#39;SELECT * FROM clientes;&amp;#39;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Com o último comando você verá que os dados estão lá. São e salvo!!!&lt;/p&gt;
-&lt;p&gt;Leia a continuação deste artigo em &lt;em&gt;Gerenciando banco de dados SQLite3 com Python - Parte 2&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Leia a continuação deste artigo em &lt;a class="reference external" href="http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html"&gt;Gerenciando banco de dados SQLite3 com Python - Parte 2&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="exemplos"&gt;
 &lt;h2&gt;Exemplos&lt;/h2&gt;
