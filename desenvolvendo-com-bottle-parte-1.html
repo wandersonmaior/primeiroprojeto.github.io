@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PythonClub, ">
+
+        <link rel="alternate"  href="http://pythonclub.com.br/feeds/all.atom.xml" type="application/atom+xml" title="PythonClub Full Atom Feed"/>
+        <link rel="alternate" href="http://pythonclub.com.br/feeds/all.rss.xml" type="application/rss+xml" title="PythonClub Full RSS Feed"/>
+
+    <link rel="shortcut icon" href="http://pythonclub.com.br/theme/images/favicon.ico" >
+
+            <title>Desenvolvendo com Bottle - Parte 1 por Eric Hideki // #PythonClub // </title>
+
+    <meta property="fb:app_id" content="1487080281503641" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Desenvolvendo com Bottle - Parte 1" />
+    <meta property="og:site_name" content="PythonClub" />
+    <meta property="og:url" content="http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html" />
+    <meta property="og:description" content="Desenvolvendo com Bottle - Parte 1 Texto originalmente escrito em: https://realpython.com/blog/python/developing-with-bottle-part-1/ Eu amo bottle. Ele é simples, rápido e poderoso micro-framework Python, perfeito para pequenas aplicações web e rápida prototipação. É também perfeita ferramenta de ensino para aqueles que estão começando agora com desenvolvimento web. Vamos ..." />
+    <meta property="og:image" content="http://res.cloudinary.com/diu8g9l0s/image/upload/v1400201393/pythonclub/logo_275x130.png" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.3.0/pure-min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/pure.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/custom.css">
+    <link rel="stylesheet" href="http://pythonclub.com.br/theme/css/pygments.css">
+
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-50935105-1', 'pythonclub.com.br');
+      ga('require', 'linkid', 'linkid.js');
+      ga('send', 'pageview');
+
+    </script>
+    <script type="text/javascript">
+      window.liveSettings = {
+        api_key: "f8fd260a9bdc4e9195c80e31416bb254",
+        picker: "bottom-right",
+        detectlang: true,
+        autocollect: true
+      };
+    </script>
+    <script type="text/javascript" src="//cdn.transifex.com/live.js"></script>
+    <meta name="google-site-verification" content="XQc_QtnTecI9nxAfplXGtECCpZQDwbDRcn7pyDVa1LE" />
+</head>
+
+<body>
+<div class="pure-g-r" id="layout">
+    <div class="sidebar sidebar-article pure-u">
+        <header class="header-article">
+            <hgroup>
+                <a href="http://pythonclub.com.br/author/eric-hideki.html" title="See posts by Eric Hideki">
+                        <img class="article-avatar" alt="Eric Hideki" src="http://www.gravatar.com/avatar/516f49a3d5a51ace5b39bd0c276f277a">
+                </a>
+                <h2 class="article-info">Eric Hideki</h2>
+    			<ul class="author-social">
+                    <li>
+                        <a target="_blank" href="https://github.com/erichideki">
+                            <i class="fa fa-lg fa-fw fa-github"></i>
+                            <strong>Github</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://twitter.com/erichideki">
+                            <i class="fa fa-lg fa-fw fa-twitter"></i>
+                            <strong>Twitter</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://www.linkedin.com/in/erichideki">
+                            <i class="fa fa-lg fa-fw fa-linkedin"></i>
+                            <strong>Linkedin</strong>
+                        </a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://ericstk.wordpress.com">
+                            <i class="fa fa-lg fa-fw fa-globe"></i>
+                            <strong>Site</strong>
+                        </a>
+                    </li>
+                </ul>
+                <h5>Publicado em:</h5>
+                <p>Wed 03 December 2014</p>
+                <a href="/">&larr;Home</a>
+            </hgroup>
+        </header>
+    </div>
+    <div class="pure-u">
+        <div class="content">
+            <section class="post">
+                <header class="post-header">
+                    <h1>Desenvolvendo com Bottle - Parte 1</h1>
+                        <p class="post-meta">
+                            // Tags                                 <a class="post-category" href="http://pythonclub.com.br/tag/bottle.html">bottle</a>
+                                <a class="post-category" href="http://pythonclub.com.br/tag/python.html">python</a>
+                        </p>
+                </header>
+            </section>
+            <h2>Desenvolvendo com Bottle - Parte 1</h2>
+<h3>Texto originalmente escrito em:</h3>
+<p><a href="https://realpython.com/blog/python/developing-with-bottle-part-1/">https://realpython.com/blog/python/developing-with-bottle-part-1/</a></p>
+<p>Eu amo <a href="http://bottlepy.org/docs/stable/">bottle</a>. Ele é simples, rápido e poderoso micro-framework Python, perfeito para pequenas aplicações web e rápida prototipação. É também perfeita ferramenta de ensino para aqueles que estão começando agora com desenvolvimento web.</p>
+<p>Vamos dar um rápido exemplo.</p>
+<blockquote>
+<p>Este tutorial espera que você esteja em um ambiente baseado em Unix - e.g, Mac OSX, sistemas Linux, ou no Linux rodando uma Virtual Machine no Windows. Eu irei estar usando Sublime Text 2 como meu editor de texto.</p>
+</blockquote>
+<h1>Começando</h1>
+<p>Primeiramente, vamos criar um diretório para trabalhar:</p>
+<div class="highlight"><pre><span class="nv">$ </span>mkdir bottle
+<span class="nv">$ </span><span class="nb">cd </span>bottle
+</pre></div>
+
+
+<p>Depois, você precisa ter pip, virtualenv, e git instalados.</p>
+<p><a href="https://pypi.python.org/pypi/virtualenv">virtualenv</a> é uma ferramenta Python que torna fácil gerenciar módulos Python necessários para um particular projeto. Ele também mantém os módulos isolados para que não entre em conflito com outros projetos.<a href="https://pypi.python.org/pypi/pip">pip</a>, entretanto, é um gerenciador de pacotes usado para gerenciar a instalaçao de bibliotecas e módulos.</p>
+<p>Para ajudar com a instalação do pip(e todas as dependências) em um ambiente Unix, siga as instruções nesse <a href="https://gist.github.com/mjhea0/5692708">Gist</a>. Se você está no Windows, por favor veja esse <a href="https://www.youtube.com/watch?v=MIHYflJwyLk">vídeo</a> para sua ajuda.</p>
+<p>Uma vez com o pip instalado, execute os seguintes comandos para instalar o virtualenv:</p>
+<div class="highlight"><pre><span class="nv">$ </span>pip install virtualenv
+</pre></div>
+
+
+<p>Agora nós podemos facilmente configurar nosso ambiente local executando:</p>
+<div class="highlight"><pre><span class="nv">$ </span>virtualenv --no-site-packages testenv
+<span class="nv">$ </span><span class="nb">source </span>testenv/bin/activate
+</pre></div>
+
+
+<p>Instalar o Bottle:</p>
+<div class="highlight"><pre><span class="nv">$ </span>pip install bottle
+</pre></div>
+
+
+<p>Agora criamos o arquivo <em>requirements.txt</em>, que permitirá você instalar os exatos módulos e dependências iguais no caso de você querer usar esse aplicativo em qualquer outro local. Clique <a href="https://pip.pypa.io/en/latest/user_guide.html#requirements-files">aqui</a> para aprender mais.</p>
+<div class="highlight"><pre>pip freeze &gt; requirements.txt
+</pre></div>
+
+
+<p>Finalmente, vamos colocar nossa aplicação em um controle de versão usando Git. Para mais informações sobre o Git, por favor veja esse <a href="http://git-scm.com/book/pt-br/v1/Primeiros-passos-No%C3%A7%C3%B5es-B%C3%A1sicas-de-Git">site</a>, que inclui instruções de instalação.</p>
+<div class="highlight"><pre><span class="nv">$ </span>git init
+<span class="nv">$ </span>git add .
+<span class="nv">$ </span>git commit -m <span class="s2">&quot;initial commit&quot;</span>
+</pre></div>
+
+
+<h2>Escrevendo sua aplicação</h2>
+<p>Agora estamos preparados para escrever nossa aplicação com Bottle. Crie seu arquivo de aplicação, <em>app.py</em>, que irá carregar todo o nosso primeiro aplicativo:</p>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">bottle</span> <span class="kn">import</span> <span class="n">route</span><span class="p">,</span> <span class="n">run</span><span class="p">,</span> <span class="n">template</span>
+
+<span class="n">index_html</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;My first web app! By {{ author }}&#39;&#39;&#39;</span>
+
+<span class="nd">@route</span><span class="p">(</span><span class="s">&#39;/:anything&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">something</span><span class="p">(</span><span class="n">anything</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">template</span><span class="p">(</span><span class="n">index_html</span><span class="p">,</span> <span class="n">author</span><span class="o">=</span><span class="n">anything</span><span class="p">)</span>
+
+<span class="nd">@route</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">template</span><span class="p">(</span><span class="n">index_html</span><span class="p">,</span> <span class="n">author</span><span class="o">=</span><span class="s">&#39;your name here&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;PORT&#39;</span><span class="p">,</span> <span class="mi">8080</span><span class="p">))</span>
+    <span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Salve o arquivo.</p>
+<p>Agora você pode executar sua aplicação localmente:</p>
+<div class="highlight"><pre><span class="nv">$ </span>python app.py
+</pre></div>
+
+
+<p>Você poderá ser capaz de conectar a <a href="http://localhost:8080/abc">http://localhost:8080/abc</a> e ver sua aplicação rodando!
+Mude <code>abc</code> para seu nome. Dê refresh no navegador.</p>
+<h1>O que tá acontecendo?</h1>
+<ol>
+<li>O decorator <code>@route</code> diz que a aplicação deve interpretar o caminho depois do <code>/</code> como variável <code>qualquer</code>.</li>
+<li>Isto é passado para a função sendo como um argumento<code>(def alguma_coisa(qualquer='')</code>.</li>
+<li>Nós então passamos isto para a função do template sendo um argumento(<code>author=qualquer</code>)</li>
+<li>O template então renderiza a variável author com <code>{{ author }}</code></li>
+</ol>
+<h1>Shell script</h1>
+<p>Quer começar de forma rápida? Crie um inicializador de aplicação em poucos segundos usando o Shell script.</p>
+<div class="highlight"><pre><span class="n">mkdir</span> <span class="n">bottle</span>
+<span class="n">cd</span> <span class="n">bottle</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">virtualenv</span>
+<span class="n">virtualenv</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span> <span class="n">testenv</span>
+<span class="n">source</span> <span class="n">testenv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">bottle</span>
+<span class="n">pip</span> <span class="n">freeze</span> <span class="o">&gt;</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">git</span> <span class="n">init</span>
+<span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">&quot;initial commit&quot;</span>
+
+<span class="n">cat</span> <span class="o">&gt;</span><span class="n">app</span><span class="o">.</span><span class="n">py</span> <span class="o">&lt;&lt;</span><span class="n">EOF</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">bottle</span> <span class="kn">import</span> <span class="n">route</span><span class="p">,</span> <span class="n">run</span><span class="p">,</span> <span class="n">template</span>
+
+<span class="n">index_html</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;My first web app! By {{=&lt;</span><span class="si">% %</span><span class="s">&gt;=}}{{ author }}&lt;%={{ }}=%&gt;&#39;&#39;&#39;</span>
+
+<span class="nd">@route</span><span class="p">(</span><span class="s">&#39;/:anything&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">something</span><span class="p">(</span><span class="n">anything</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">):</span>
+   <span class="k">return</span> <span class="n">template</span><span class="p">(</span><span class="n">index_html</span><span class="p">,</span> <span class="n">author</span><span class="o">=</span><span class="n">anything</span><span class="p">)</span>
+
+<span class="nd">@route</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+   <span class="k">return</span> <span class="n">template</span><span class="p">(</span><span class="n">index_html</span><span class="p">,</span> <span class="n">author</span><span class="o">=</span><span class="s">&#39;your name here&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;PORT&#39;</span><span class="p">,</span> <span class="mi">8080</span><span class="p">))</span>
+    <span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">port</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">EOF</span>
+
+<span class="n">chmod</span> <span class="n">a</span><span class="o">+</span><span class="n">x</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span>
+
+<span class="n">git</span> <span class="n">init</span>
+<span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">&quot;Updated&quot;</span>
+</pre></div>
+
+
+<p>Baixe esse script através dessa <a href="https://gist.github.com/mjhea0/5784132">Gist-list</a>, e então execute o seguinte comando:</p>
+<div class="highlight"><pre><span class="nv">$ </span>bash bottle.sh
+</pre></div>
+
+
+<h1>Próximos passos</h1>
+<p>A partir desse ponto, é tão fácil adicionando uma nova <code>@route</code>-decorated functions() para criar novas páginas, assim como fizemos com essas duas páginas.</p>
+<p>Criar o HTML é simples: Nessa aplicação, nós apenas adicionamos HTML na mesma linha e arquivo.Isto é fácil de modificar(usando, por exemplo, <code>open('index.html').read())</code> para ler o template de um arquivo.</p>
+<p>Referências para a <a href="http://bottlepy.org/docs/dev/">documentação</a> do Bottle para mais informações</p>
+
+            <div class="licence">
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Licença Creative Commons"
+                                                                                               style="border-width:0"
+                                                                                               src="http://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"/></a><br/><a
+                    xmlns:dct="http://purl.org/dc/terms/" property="dct:title"
+                    href="http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html">"Desenvolvendo com Bottle - Parte 1"</a> de <a
+                    xmlns:cc="http://creativecommons.org/ns#" href="http://pythonclub.com.br/author/eric-hideki.html"
+                    property="cc:attributionName" rel="cc:attributionURL">"Eric Hideki"</a> está licenciado com uma Licença
+                <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons -
+                    Atribuição-NãoComercial-SemDerivações 4.0 Internacional</a>.
+            </div>
+
+            <div class="sharing">
+                <!-- Facebook sharing -->
+                <div id="fb-root"></div>
+                <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&appId=1487080281503641&version=v2.0";
+                fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+                <div class="fb-share-button" data-href="http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html" data-type="button_count"></div>
+
+                <!-- Google+ sharing -->
+                <div class="g-plus alinhar" data-action="share" data-annotation="bubble" data-href="http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html"></div>
+
+                <!-- Twitter sharing -->
+                <a href="https://twitter.com/share" class="twitter-share-button" data-lang="pt" style="margin-bottom: -4px !important;">Tweetar</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
+
+            <div class="hr"></div>
+            <a href="#" class="go-top">Topo</a>
+                <div class="comments">
+                    <div id="disqus_thread"></div>
+                    <script type="text/javascript">
+                        /* * * CONFIGURATION VARIABLES: THIS CODE IS ONLY AN EXAMPLE * * */
+                        var disqus_shortname = 'pythonclub'; // Required - Replace example with your forum shortname
+                        var disqus_identifier = 'desenvolvendo-com-bottle-parte-1.html';
+                        var disqus_title = 'Desenvolvendo com Bottle - Parte 1';
+                        var disqus_url = 'http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html';
+                    
+                        /* * * DON'T EDIT BELOW THIS LINE * * */
+                        (function() {
+                            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                        })();
+                    </script>
+                    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+                </div>
+<footer class="footer">
+    <p>&copy; PythonClub &ndash;
+        Built with <a href="https://github.com/PurePelicanTheme/pure">Pure Theme</a>
+        for <a href="http://blog.getpelican.com/">Pelican</a>
+    </p>
+</footer>        </div>
+    </div>
+</div>
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fitvids/1.0.1/jquery.fitvids.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".content").fitVids();
+        });
+        $(window).load(function(){
+          $("iframe").css("margin-bottom", "-6px")
+          $("#twitter-widget-0").css("margin-bottom", "-5px");
+          $("#twitter-widget-0").css("margin-left", "-1px");
+        });
+    </script>
+    <script type="text/javascript" src="https://apis.google.com/js/platform.js">
+      {lang: 'pt-BR'}
+    </script>
+
+    <script>
+        var $top = $('.go-top');
+
+        // Show or hide the sticky footer button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 200) {
+                $top.fadeIn(200);
+            } else {
+                $top.fadeOut(200);
+            }
+        });
+
+        // Animate the scroll to top
+        $top.click(function(event) {
+            event.preventDefault();
+            $('html, body').animate({scrollTop: 0}, 300);
+        })
+
+        // Makes sure that the href="#" attached to the <a> elements
+        // don't scroll you back up the page.
+        $('body').on('click', 'a[href="#"]', function(event) {
+            event.preventDefault();
+        });
+    </script>
+</body>
+</html>

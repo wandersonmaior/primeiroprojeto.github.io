@@ -1,5 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 23 Nov 2014 23:59:00 -0200</lastBuildDate><item><title>Gerenciando banco de dados SQLite3 com Python - Parte 2</title><link>http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html</link><description>&lt;p&gt;Esta é a continuação do artigo &lt;a class="reference external" href="http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html"&gt;Gerenciando banco de dados SQLite3 com Python - Parte 1&lt;/a&gt;. Na 1ª parte nós vimos como realizar o CRUD num banco de dados SQLite3 usando o Python, mas cada tarefa foi feita num arquivo &lt;tt class="docutils literal"&gt;.py&lt;/tt&gt; separado. A intenção agora é utilizar um &lt;strong&gt;único arquivo&lt;/strong&gt; e, usando classes e métodos realizar as mesmas tarefas, só que de uma forma mais sofisticada.&lt;/p&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 03 Dec 2014 15:05:00 -0200</lastBuildDate><item><title>Desenvolvendo com Bottle - Parte 1</title><link>http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html</link><description>&lt;h2&gt;Desenvolvendo com Bottle - Parte 1&lt;/h2&gt;
+&lt;h3&gt;Texto originalmente escrito em:&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://realpython.com/blog/python/developing-with-bottle-part-1/"&gt;https://realpython.com/blog/python/developing-with-bottle-part-1/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Eu amo &lt;a href="http://bottlepy.org/docs/stable/"&gt;bottle&lt;/a&gt;. Ele é simples, rápido e poderoso micro-framework Python, perfeito para pequenas aplicações web e rápida prototipação. É também perfeita ferramenta de ensino para aqueles que estão começando agora com desenvolvimento web.&lt;/p&gt;
+&lt;p&gt;Vamos dar um rápido exemplo.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Este tutorial espera que você esteja em um ambiente baseado em Unix - e.g, Mac OSX, sistemas Linux, ou no Linux rodando uma Virtual Machine no Windows. Eu irei estar usando Sublime Text 2 como meu editor de texto.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1&gt;Começando&lt;/h1&gt;
+&lt;p&gt;Primeiramente, vamos criar um diretório para trabalhar:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;mkdir bottle
+&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;cd &lt;/span&gt;bottle
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Depois, você precisa ter pip, virtualenv, e git instalados.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://pypi.python.org/pypi/virtualenv"&gt;virtualenv&lt;/a&gt; é uma ferramenta Python que torna fácil gerenciar módulos Python necessários para um particular projeto. Ele também mantém os módulos isolados para que não entre em conflito com outros projetos.&lt;a href="https://pypi.python.org/pypi/pip"&gt;pip&lt;/a&gt;, entretanto, é um gerenciador de pacotes usado para gerenciar a instalaçao de bibliotecas e módulos.&lt;/p&gt;
+&lt;p&gt;Para ajudar com a instalação do pip(e todas as dependências) em um ambiente Unix, siga as instruções nesse &lt;a href="https://gist.github.com/mjhea0/5692708"&gt;Gist&lt;/a&gt;. Se você está no Windows, por favor veja esse &lt;a href="https://www.youtube.com/watch?v=MIHYflJwyLk"&gt;vídeo&lt;/a&gt; para sua ajuda.&lt;/p&gt;
+&lt;p&gt;Uma vez com o pip instalado, execute os seguintes comandos para instalar o virtualenv:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;pip install virtualenv
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agora nós podemos facilmente configurar nosso ambiente local executando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;virtualenv --no-site-packages testenv
+&lt;span class="nv"&gt;$ &lt;/span&gt;&lt;span class="nb"&gt;source &lt;/span&gt;testenv/bin/activate
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Instalar o Bottle:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;pip install bottle
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Agora criamos o arquivo &lt;em&gt;requirements.txt&lt;/em&gt;, que permitirá você instalar os exatos módulos e dependências iguais no caso de você querer usar esse aplicativo em qualquer outro local. Clique &lt;a href="https://pip.pypa.io/en/latest/user_guide.html#requirements-files"&gt;aqui&lt;/a&gt; para aprender mais.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pip freeze &amp;gt; requirements.txt
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Finalmente, vamos colocar nossa aplicação em um controle de versão usando Git. Para mais informações sobre o Git, por favor veja esse &lt;a href="http://git-scm.com/book/pt-br/v1/Primeiros-passos-No%C3%A7%C3%B5es-B%C3%A1sicas-de-Git"&gt;site&lt;/a&gt;, que inclui instruções de instalação.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;git init
+&lt;span class="nv"&gt;$ &lt;/span&gt;git add .
+&lt;span class="nv"&gt;$ &lt;/span&gt;git commit -m &lt;span class="s2"&gt;&amp;quot;initial commit&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Escrevendo sua aplicação&lt;/h2&gt;
+&lt;p&gt;Agora estamos preparados para escrever nossa aplicação com Bottle. Crie seu arquivo de aplicação, &lt;em&gt;app.py&lt;/em&gt;, que irá carregar todo o nosso primeiro aplicativo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bottle&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;route&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;
+
+&lt;span class="n"&gt;index_html&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;#39;&amp;#39;My first web app! By {{ author }}&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+
+&lt;span class="nd"&gt;@route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/:anything&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;something&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;anything&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;index_html&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;author&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;anything&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nd"&gt;@route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;index_html&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;author&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;your name here&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;port&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PORT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8080&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;0.0.0.0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Salve o arquivo.&lt;/p&gt;
+&lt;p&gt;Agora você pode executar sua aplicação localmente:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;python app.py
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Você poderá ser capaz de conectar a &lt;a href="http://localhost:8080/abc"&gt;http://localhost:8080/abc&lt;/a&gt; e ver sua aplicação rodando!
+Mude &lt;code&gt;abc&lt;/code&gt; para seu nome. Dê refresh no navegador.&lt;/p&gt;
+&lt;h1&gt;O que tá acontecendo?&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;O decorator &lt;code&gt;@route&lt;/code&gt; diz que a aplicação deve interpretar o caminho depois do &lt;code&gt;/&lt;/code&gt; como variável &lt;code&gt;qualquer&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Isto é passado para a função sendo como um argumento&lt;code&gt;(def alguma_coisa(qualquer='')&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Nós então passamos isto para a função do template sendo um argumento(&lt;code&gt;author=qualquer&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;O template então renderiza a variável author com &lt;code&gt;{{ author }}&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1&gt;Shell script&lt;/h1&gt;
+&lt;p&gt;Quer começar de forma rápida? Crie um inicializador de aplicação em poucos segundos usando o Shell script.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;mkdir&lt;/span&gt; &lt;span class="n"&gt;bottle&lt;/span&gt;
+&lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="n"&gt;bottle&lt;/span&gt;
+&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;virtualenv&lt;/span&gt;
+&lt;span class="n"&gt;virtualenv&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;no&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;packages&lt;/span&gt; &lt;span class="n"&gt;testenv&lt;/span&gt;
+&lt;span class="n"&gt;source&lt;/span&gt; &lt;span class="n"&gt;testenv&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nb"&gt;bin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;activate&lt;/span&gt;
+&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;bottle&lt;/span&gt;
+&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;freeze&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;requirements&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;txt&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;init&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;commit&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;initial commit&amp;quot;&lt;/span&gt;
+
+&lt;span class="n"&gt;cat&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;EOF&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bottle&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;route&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;
+
+&lt;span class="n"&gt;index_html&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;#39;&amp;#39;My first web app! By {{=&amp;lt;&lt;/span&gt;&lt;span class="si"&gt;% %&lt;/span&gt;&lt;span class="s"&gt;&amp;gt;=}}{{ author }}&amp;lt;%={{ }}=%&amp;gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+
+&lt;span class="nd"&gt;@route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/:anything&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;something&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;anything&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+   &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;index_html&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;author&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;anything&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="nd"&gt;@route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+   &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;index_html&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;author&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;your name here&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;port&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PORT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8080&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;host&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;0.0.0.0&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;port&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;debug&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;EOF&lt;/span&gt;
+
+&lt;span class="n"&gt;chmod&lt;/span&gt; &lt;span class="n"&gt;a&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;py&lt;/span&gt;
+
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;init&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;add&lt;/span&gt; &lt;span class="o"&gt;.&lt;/span&gt;
+&lt;span class="n"&gt;git&lt;/span&gt; &lt;span class="n"&gt;commit&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Updated&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Baixe esse script através dessa &lt;a href="https://gist.github.com/mjhea0/5784132"&gt;Gist-list&lt;/a&gt;, e então execute o seguinte comando:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;bash bottle.sh
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Próximos passos&lt;/h1&gt;
+&lt;p&gt;A partir desse ponto, é tão fácil adicionando uma nova &lt;code&gt;@route&lt;/code&gt;-decorated functions() para criar novas páginas, assim como fizemos com essas duas páginas.&lt;/p&gt;
+&lt;p&gt;Criar o HTML é simples: Nessa aplicação, nós apenas adicionamos HTML na mesma linha e arquivo.Isto é fácil de modificar(usando, por exemplo, &lt;code&gt;open('index.html').read())&lt;/code&gt; para ler o template de um arquivo.&lt;/p&gt;
+&lt;p&gt;Referências para a &lt;a href="http://bottlepy.org/docs/dev/"&gt;documentação&lt;/a&gt; do Bottle para mais informações&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Eric Hideki</dc:creator><pubDate>Wed, 03 Dec 2014 15:05:00 -0200</pubDate><guid>tag:pythonclub.com.br,2014-12-03:desenvolvendo-com-bottle-parte-1.html</guid><category>bottle</category><category>python</category></item><item><title>Gerenciando banco de dados SQLite3 com Python - Parte 2</title><link>http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html</link><description>&lt;p&gt;Esta é a continuação do artigo &lt;a class="reference external" href="http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html"&gt;Gerenciando banco de dados SQLite3 com Python - Parte 1&lt;/a&gt;. Na 1ª parte nós vimos como realizar o CRUD num banco de dados SQLite3 usando o Python, mas cada tarefa foi feita num arquivo &lt;tt class="docutils literal"&gt;.py&lt;/tt&gt; separado. A intenção agora é utilizar um &lt;strong&gt;único arquivo&lt;/strong&gt; e, usando classes e métodos realizar as mesmas tarefas, só que de uma forma mais sofisticada.&lt;/p&gt;
 &lt;blockquote&gt;
 PS: &lt;em&gt;Considere a sintaxe para Python 3&lt;/em&gt;. Mas o programa roda em python2 também.&lt;/blockquote&gt;
 &lt;p&gt;Vou repetir a tabela &lt;tt class="docutils literal"&gt;clientes&lt;/tt&gt; apenas por comodidade:&lt;/p&gt;
