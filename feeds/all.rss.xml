@@ -1,6 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 03 Dec 2014 15:05:00 -0200</lastBuildDate><item><title>Desenvolvendo com Bottle - Parte 1</title><link>http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html</link><description>&lt;h2&gt;Desenvolvendo com Bottle - Parte 1&lt;/h2&gt;
-&lt;h3&gt;Texto originalmente escrito em:&lt;/h3&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 03 Dec 2014 19:40:00 -0200</lastBuildDate><item><title>Bottle Framework full stack sem Django</title><link>http://pythonclub.com.br/bottle-framework-full-stack-sem-django.html</link><description>&lt;h1&gt;Bottle, framework full-stack sem Django&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;h1&gt;Esse artigo foi originalmente traduzido de:&lt;/h1&gt;
+&lt;p&gt;&lt;a href="http://www.avelino.xxx/2014/12/bottle-full-stack-without-django"&gt;http://www.avelino.xxx/2014/12/bottle-full-stack-without-django&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Este artigo é baseado em uma palestra que apresentei aqui no Brasil, seguem os &lt;a href="https://speakerdeck.com/avelino/bottle-o-full-stack-sem-django"&gt;slides&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Bottle micro framework web" src="/images/bottle.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Bottle é um micro framework web compatível com WSGI, depende apenas da biblioteca padrão do Python, sendo compatível com Python 2.6, 2.7, 3.2, 3.3 e 3.4, &lt;a href="https://github.com/defnull/bottle/blob/master/bottle.py"&gt;sendo um arquivo único&lt;/a&gt;. Ele foi criado pelo Marcel Hellkamp (&lt;a href="https://github.com/defnull"&gt;@defnull&lt;/a&gt;) e mantido pela &lt;a href="https://github.com/orgs/bottlepy/people"&gt;comunidade&lt;/a&gt; que mantém esse framework.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt; é um framework para rápido desenvolvimento na web, escrito em Python, no qual usa o padrão MTV(model-template-view), sendo pragmático. Foi originalmente criado como um sistema de gerenciamento de um site jornalístico na cidade de Lawrence, Kansas. Se tornou um projeto open-source e foi publicado sobre a licença BSD em 2005. O nome Django foi inspirado pelo músido de jazz Django Reinhardt. Django se tornou muito conhecido pelas suas baterias inclusas, i.e diversas bibliotecas distribuídas que se juntaram ao centro do framework para simplificar o trabalho (chamado "Full stack").&lt;/p&gt;
+&lt;p&gt;Pragmatismo é o que contém a prática, considerações realistas, com objetivos bem definidos. Ser pragmático é ser prático tendo objetivos definidos. Em outras palavras, o time que desenvolve o Django toma algumas modelagens de arquitetura e quem usa Django segue essa arquitetura sem ser capaz de mudá-la facilmente.&lt;/p&gt;
+&lt;p&gt;Isto é bom para um framework web que tem baterias inclusas? Depente, se você usa tudo o que o framework oferece, sim, mas nem todos os designs de aplicações são iguais.&lt;/p&gt;
+&lt;p&gt;Muitos projetos não usam 80% do que Django oferece, nesses casos em que não usam mais que 50%, o custo que pagamos ao oferecer o Django a alguém é alto, já que temos definido a arquitetura, ou seja, perde-se a performance porque o Django tem diversos módulos que não serão usados e obrigatoriamente subirá alguns módulos que não iremos usar. Quando nós usamos um micro framework, fazemos toda a arquitetura da aplicação, então não temos previamente preparado a arquitetura para desenvolver o necessário, dedicando o tempo do time para definir a arquitetura da aplicação.&lt;/p&gt;
+&lt;p&gt;Todos os pacotes que nós temos na biblioteca padrão do Python/Django podem ser substituídas usando um micro framework!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ORM - &lt;a href="http://www.sqlalchemy.org/"&gt;SQLAlchemy&lt;/a&gt; to &lt;a href="https://github.com/iurisilvio/bottle-sqlalchemy"&gt;bottle-sqlalchemy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Forms - &lt;a href="https://wtforms.readthedocs.org/en/latest/"&gt;WTForms&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Template Engine - &lt;a href="http://jinja.pocoo.org/docs/dev/"&gt;Jinja2&lt;/a&gt;, &lt;a href="http://www.makotemplates.org/"&gt;mako&lt;/a&gt;, etc&lt;/li&gt;
+&lt;li&gt;Migration - &lt;a href="http://alembic.readthedocs.org/en/latest/"&gt;Alembic&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;SQLAlchemy&lt;/h2&gt;
+&lt;p&gt;O SQLAlchemy existe antes do Django, &lt;a href="https://github.com/zzzeek/sqlalchemy/commit/ec052c6a1f1fb0236bd367c510d82f076cb67bc9"&gt;sim, antes do Django&lt;/a&gt; e desde 2005 temos um time focado no desenvolvimento da ORM, ao contrário do Django que dispṍe tempo cuidando do framework web + ORM (Eu acredito que eu não preciso falar com um desenvolvedor focado render mais do que um desenvolvedor não focado).&lt;/p&gt;
+&lt;p&gt;Estrutura de um modelo:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;Entity&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Base&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;__tablename__&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;entity&amp;#39;&lt;/span&gt;
+    &lt;span class="nb"&gt;id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Integer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Sequence&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;id_seq&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;primary_key&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__repr__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;&amp;lt;Entity(&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;%d&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;, &amp;#39;&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;)&amp;gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;WTForms&lt;/h2&gt;
+&lt;p&gt;A solução alternativa para aqueles que não usam Django e precisam trabalhar com formulários, nós temos o WTForms, que foi criado em &lt;a href="https://github.com/wtforms/wtforms/commit/c0998bac1a4d5cd5fdf43a825529a64e24dea9a5"&gt;2008&lt;/a&gt; e atualizado ainda hoje!&lt;/p&gt;
+&lt;p&gt;Estrutura de um formulário:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;UserForm&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;Form&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TextField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;validators&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;DataRequired&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;Length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;)])&lt;/span&gt;
+    &lt;span class="n"&gt;email&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TextField&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;validators&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;DataRequired&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;Length&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;)])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Mecanismo de template&lt;/h2&gt;
+&lt;p&gt;Jinja2 é um moderno e contém um design de template amigável para Python, modelado após os templates do Django. É rápido, amplamente usado e seguro com a opcional área restrita de template no ambiente de desenvolvimento.&lt;/p&gt;
+&lt;p&gt;Estrutura de um template:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;title&amp;gt;&lt;/span&gt;{% block title %}{% endblock %}&lt;span class="nt"&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+{% for user in users %}
+  &lt;span class="nt"&gt;&amp;lt;li&amp;gt;&amp;lt;a&lt;/span&gt; &lt;span class="na"&gt;href=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{{ user.url }}&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&lt;/span&gt;{{ user.username }}&lt;span class="nt"&gt;&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+{% endfor %}
+&lt;span class="nt"&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Migrações&lt;/h2&gt;
+&lt;p&gt;A utilização do Alembic começa com a criação do ambiente de migração. Este é o diretório de arquivos que especificam para uma particular aplicação. O ambiente de migração é criado apenas uma vez, e é mantido ao longo do desenvolvimento do código da aplicação.&lt;/p&gt;
+&lt;p&gt;Estrutura de uma migração:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;revision&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;1975ea83b712&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;down_revision&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;alembic&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;op&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sqlalchemy&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;sa&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;upgrade&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;pass&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;downgrade&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="k"&gt;pass&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Como criar a evolução e o rebaixamento:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;upgrade&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;op&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create_table&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;account&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="n"&gt;sa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;id&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Integer&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;primary_key&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="n"&gt;sa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;name&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;nullable&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+        &lt;span class="n"&gt;sa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;description&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Unicode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;
+    &lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;downgrade&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;op&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;drop_table&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;account&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Estrutura de alteração de tabela:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;$ alembic revision -m &amp;quot;Add a column&amp;quot;&lt;/span&gt;
+&lt;span class="sd"&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+
+&lt;span class="n"&gt;revision&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;ae1027a6acf&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;down_revision&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;1975ea83b712&amp;#39;&lt;/span&gt;
+
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;alembic&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;op&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;sqlalchemy&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;sa&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;upgrade&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;op&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;account&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;last_transaction_date&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sa&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DateTime&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;downgrade&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="n"&gt;op&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;drop_column&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;account&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;last_transaction_date&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Conclusão&lt;/h2&gt;
+&lt;p&gt;Exatamente o que você vê, tudo o que o Django contém temos fora do conjunto do Django. Eu não escreveria esse artigo para falar mal do Django, e sim mostrar que existem outras soluções para desenvolvimento full stack. Muitas pessoas usam o Django mas não entendem o ambiente Python, hoje o Django traz muitas coisas preparadas que fazem alguns desenvolvedores serem preguiçosos e não adquirir experiência em arquitetura de software.&lt;/p&gt;
+&lt;p&gt;Venha ajudar o Bottle, somos uma comunidade em crescimento, para contribuir com o código do Bottle, olhe essa issue que nós abrimos. Em caso de dúvidas, nós temos uma lista de e-mail e um canal IRC.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://bottlepy.org/docs/dev/development.html#get-involved"&gt;Se envolva!&lt;/a&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Eric Hideki</dc:creator><pubDate>Wed, 03 Dec 2014 19:40:00 -0200</pubDate><guid>tag:pythonclub.com.br,2014-12-03:bottle-framework-full-stack-sem-django.html</guid><category>bottle</category><category>python</category></item><item><title>Desenvolvendo com Bottle - Parte 1</title><link>http://pythonclub.com.br/desenvolvendo-com-bottle-parte-1.html</link><description>&lt;h2&gt;Desenvolvendo com Bottle - Parte 1&lt;/h2&gt;
+&lt;h1&gt;Texto originalmente escrito em:&lt;/h1&gt;
 &lt;p&gt;&lt;a href="https://realpython.com/blog/python/developing-with-bottle-part-1/"&gt;https://realpython.com/blog/python/developing-with-bottle-part-1/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Eu amo &lt;a href="http://bottlepy.org/docs/stable/"&gt;bottle&lt;/a&gt;. Ele é simples, rápido e poderoso micro-framework Python, perfeito para pequenas aplicações web e rápida prototipação. É também perfeita ferramenta de ensino para aqueles que estão começando agora com desenvolvimento web.&lt;/p&gt;
 &lt;p&gt;Vamos dar um rápido exemplo.&lt;/p&gt;
@@ -50,15 +158,15 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bottle&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;route&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;
 
-&lt;span class="n"&gt;index_html&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;#39;&amp;#39;My first web app! By {{ author }}&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;index_html&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;#39;&amp;#39;Minha primeira aplicação! Por {{ autor }}&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
 
-&lt;span class="nd"&gt;@route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/:anything&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;something&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;anything&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;index_html&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;author&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;anything&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nd"&gt;@route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/:qualquer&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;alguma_coisa&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;qualquer&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;index_html&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;autor&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;qualquer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="nd"&gt;@route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;index_html&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;author&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;your name here&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;index_html&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;autor&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Seu nome aqui:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;port&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PORT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8080&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
@@ -98,15 +206,15 @@ Mude &lt;code&gt;abc&lt;/code&gt; para seu nome. Dê refresh no navegador.&lt;/p
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;bottle&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;route&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;run&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;
 
-&lt;span class="n"&gt;index_html&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;#39;&amp;#39;My first web app! By {{=&amp;lt;&lt;/span&gt;&lt;span class="si"&gt;% %&lt;/span&gt;&lt;span class="s"&gt;&amp;gt;=}}{{ author }}&amp;lt;%={{ }}=%&amp;gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;index_html&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&amp;#39;&amp;#39;Minha primeira aplicação wweb! Por {{=&amp;lt;&lt;/span&gt;&lt;span class="si"&gt;% %&lt;/span&gt;&lt;span class="s"&gt;&amp;gt;=}}{{ autor }}&amp;lt;%={{ }}=%&amp;gt;&amp;#39;&amp;#39;&amp;#39;&lt;/span&gt;
 
-&lt;span class="nd"&gt;@route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/:anything&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;something&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;anything&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-   &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;index_html&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;author&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;anything&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="nd"&gt;@route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/:qualquer&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;alguma_coisa&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;qualquer&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+   &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;index_html&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;autor&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;qualquer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="nd"&gt;@route&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;index&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
-   &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;index_html&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;author&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;your name here&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;template&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;index_html&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;autor&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Seu nome aqui:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;__name__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="n"&gt;port&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;environ&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;PORT&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8080&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
@@ -129,7 +237,7 @@ Mude &lt;code&gt;abc&lt;/code&gt; para seu nome. Dê refresh no navegador.&lt;/p
 &lt;h1&gt;Próximos passos&lt;/h1&gt;
 &lt;p&gt;A partir desse ponto, é tão fácil adicionando uma nova &lt;code&gt;@route&lt;/code&gt;-decorated functions() para criar novas páginas, assim como fizemos com essas duas páginas.&lt;/p&gt;
 &lt;p&gt;Criar o HTML é simples: Nessa aplicação, nós apenas adicionamos HTML na mesma linha e arquivo.Isto é fácil de modificar(usando, por exemplo, &lt;code&gt;open('index.html').read())&lt;/code&gt; para ler o template de um arquivo.&lt;/p&gt;
-&lt;p&gt;Referências para a &lt;a href="http://bottlepy.org/docs/dev/"&gt;documentação&lt;/a&gt; do Bottle para mais informações&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Eric Hideki</dc:creator><pubDate>Wed, 03 Dec 2014 15:05:00 -0200</pubDate><guid>tag:pythonclub.com.br,2014-12-03:desenvolvendo-com-bottle-parte-1.html</guid><category>bottle</category><category>python</category></item><item><title>Gerenciando banco de dados SQLite3 com Python - Parte 2</title><link>http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html</link><description>&lt;p&gt;Esta é a continuação do artigo &lt;a class="reference external" href="http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html"&gt;Gerenciando banco de dados SQLite3 com Python - Parte 1&lt;/a&gt;. Na 1ª parte nós vimos como realizar o CRUD num banco de dados SQLite3 usando o Python, mas cada tarefa foi feita num arquivo &lt;tt class="docutils literal"&gt;.py&lt;/tt&gt; separado. A intenção agora é utilizar um &lt;strong&gt;único arquivo&lt;/strong&gt; e, usando classes e métodos realizar as mesmas tarefas, só que de uma forma mais sofisticada.&lt;/p&gt;
+&lt;p&gt;Referências para a &lt;a href="http://bottlepy.org/docs/dev/"&gt;documentação&lt;/a&gt; do Bottle para mais informações.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Eric Hideki</dc:creator><pubDate>Wed, 03 Dec 2014 15:05:00 -0200</pubDate><guid>tag:pythonclub.com.br,2014-12-03:desenvolvendo-com-bottle-parte-1.html</guid><category>bottle</category><category>python</category></item><item><title>Gerenciando banco de dados SQLite3 com Python - Parte 2</title><link>http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte2.html</link><description>&lt;p&gt;Esta é a continuação do artigo &lt;a class="reference external" href="http://pythonclub.com.br/gerenciando-banco-dados-sqlite3-python-parte1.html"&gt;Gerenciando banco de dados SQLite3 com Python - Parte 1&lt;/a&gt;. Na 1ª parte nós vimos como realizar o CRUD num banco de dados SQLite3 usando o Python, mas cada tarefa foi feita num arquivo &lt;tt class="docutils literal"&gt;.py&lt;/tt&gt; separado. A intenção agora é utilizar um &lt;strong&gt;único arquivo&lt;/strong&gt; e, usando classes e métodos realizar as mesmas tarefas, só que de uma forma mais sofisticada.&lt;/p&gt;
 &lt;blockquote&gt;
 PS: &lt;em&gt;Considere a sintaxe para Python 3&lt;/em&gt;. Mas o programa roda em python2 também.&lt;/blockquote&gt;
 &lt;p&gt;Vou repetir a tabela &lt;tt class="docutils literal"&gt;clientes&lt;/tt&gt; apenas por comodidade:&lt;/p&gt;

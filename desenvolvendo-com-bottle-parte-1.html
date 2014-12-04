@@ -74,12 +74,6 @@
                         </a>
                     </li>
                     <li>
-                        <a target="_blank" href="http://www.linkedin.com/in/erichideki">
-                            <i class="fa fa-lg fa-fw fa-linkedin"></i>
-                            <strong>Linkedin</strong>
-                        </a>
-                    </li>
-                    <li>
                         <a target="_blank" href="http://ericstk.wordpress.com">
                             <i class="fa fa-lg fa-fw fa-globe"></i>
                             <strong>Site</strong>
@@ -104,7 +98,7 @@
                 </header>
             </section>
             <h2>Desenvolvendo com Bottle - Parte 1</h2>
-<h3>Texto originalmente escrito em:</h3>
+<h1>Texto originalmente escrito em:</h1>
 <p><a href="https://realpython.com/blog/python/developing-with-bottle-part-1/">https://realpython.com/blog/python/developing-with-bottle-part-1/</a></p>
 <p>Eu amo <a href="http://bottlepy.org/docs/stable/">bottle</a>. Ele é simples, rápido e poderoso micro-framework Python, perfeito para pequenas aplicações web e rápida prototipação. É também perfeita ferramenta de ensino para aqueles que estão começando agora com desenvolvimento web.</p>
 <p>Vamos dar um rápido exemplo.</p>
@@ -154,15 +148,15 @@
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">bottle</span> <span class="kn">import</span> <span class="n">route</span><span class="p">,</span> <span class="n">run</span><span class="p">,</span> <span class="n">template</span>
 
-<span class="n">index_html</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;My first web app! By {{ author }}&#39;&#39;&#39;</span>
+<span class="n">index_html</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;Minha primeira aplicação! Por {{ autor }}&#39;&#39;&#39;</span>
 
-<span class="nd">@route</span><span class="p">(</span><span class="s">&#39;/:anything&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">something</span><span class="p">(</span><span class="n">anything</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">template</span><span class="p">(</span><span class="n">index_html</span><span class="p">,</span> <span class="n">author</span><span class="o">=</span><span class="n">anything</span><span class="p">)</span>
+<span class="nd">@route</span><span class="p">(</span><span class="s">&#39;/:qualquer&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">alguma_coisa</span><span class="p">(</span><span class="n">qualquer</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">template</span><span class="p">(</span><span class="n">index_html</span><span class="p">,</span> <span class="n">autor</span><span class="o">=</span><span class="n">qualquer</span><span class="p">)</span>
 
 <span class="nd">@route</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
-    <span class="k">return</span> <span class="n">template</span><span class="p">(</span><span class="n">index_html</span><span class="p">,</span> <span class="n">author</span><span class="o">=</span><span class="s">&#39;your name here&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">template</span><span class="p">(</span><span class="n">index_html</span><span class="p">,</span> <span class="n">autor</span><span class="o">=</span><span class="s">&#39;Seu nome aqui:&#39;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;PORT&#39;</span><span class="p">,</span> <span class="mi">8080</span><span class="p">))</span>
@@ -202,15 +196,15 @@ Mude <code>abc</code> para seu nome. Dê refresh no navegador.</p>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">bottle</span> <span class="kn">import</span> <span class="n">route</span><span class="p">,</span> <span class="n">run</span><span class="p">,</span> <span class="n">template</span>
 
-<span class="n">index_html</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;My first web app! By {{=&lt;</span><span class="si">% %</span><span class="s">&gt;=}}{{ author }}&lt;%={{ }}=%&gt;&#39;&#39;&#39;</span>
+<span class="n">index_html</span> <span class="o">=</span> <span class="s">&#39;&#39;&#39;Minha primeira aplicação wweb! Por {{=&lt;</span><span class="si">% %</span><span class="s">&gt;=}}{{ autor }}&lt;%={{ }}=%&gt;&#39;&#39;&#39;</span>
 
-<span class="nd">@route</span><span class="p">(</span><span class="s">&#39;/:anything&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">something</span><span class="p">(</span><span class="n">anything</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">):</span>
-   <span class="k">return</span> <span class="n">template</span><span class="p">(</span><span class="n">index_html</span><span class="p">,</span> <span class="n">author</span><span class="o">=</span><span class="n">anything</span><span class="p">)</span>
+<span class="nd">@route</span><span class="p">(</span><span class="s">&#39;/:qualquer&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">alguma_coisa</span><span class="p">(</span><span class="n">qualquer</span><span class="o">=</span><span class="s">&#39;&#39;</span><span class="p">):</span>
+   <span class="k">return</span> <span class="n">template</span><span class="p">(</span><span class="n">index_html</span><span class="p">,</span> <span class="n">autor</span><span class="o">=</span><span class="n">qualquer</span><span class="p">)</span>
 
 <span class="nd">@route</span><span class="p">(</span><span class="s">&#39;/&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
-   <span class="k">return</span> <span class="n">template</span><span class="p">(</span><span class="n">index_html</span><span class="p">,</span> <span class="n">author</span><span class="o">=</span><span class="s">&#39;your name here&#39;</span><span class="p">)</span>
+   <span class="k">return</span> <span class="n">template</span><span class="p">(</span><span class="n">index_html</span><span class="p">,</span> <span class="n">autor</span><span class="o">=</span><span class="s">&#39;Seu nome aqui:&#39;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">port</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;PORT&#39;</span><span class="p">,</span> <span class="mi">8080</span><span class="p">))</span>
@@ -233,7 +227,7 @@ Mude <code>abc</code> para seu nome. Dê refresh no navegador.</p>
 <h1>Próximos passos</h1>
 <p>A partir desse ponto, é tão fácil adicionando uma nova <code>@route</code>-decorated functions() para criar novas páginas, assim como fizemos com essas duas páginas.</p>
 <p>Criar o HTML é simples: Nessa aplicação, nós apenas adicionamos HTML na mesma linha e arquivo.Isto é fácil de modificar(usando, por exemplo, <code>open('index.html').read())</code> para ler o template de um arquivo.</p>
-<p>Referências para a <a href="http://bottlepy.org/docs/dev/">documentação</a> do Bottle para mais informações</p>
+<p>Referências para a <a href="http://bottlepy.org/docs/dev/">documentação</a> do Bottle para mais informações.</p>
 
             <div class="licence">
                 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Licença Creative Commons"
