@@ -95,14 +95,14 @@
             <h3>O que é?</h3>
 <p>O Cloudinary é um serviço de gerenciamento de imagens e arquivos na nuvem, muito útil por exemplo para utilização junto ao Heroku, que não oferece o serviço de hospedagem de arquivos. Além de nos oferecer o serviço de hospedagem de imagens, o Cloudinary disponibiliza diversas manipulações, uso de efeitos, detecção facial e muitos outros recursos para as imagens enviadas.</p>
 <h3>O que é preciso?</h3>
-<p>Para iniciarmos é preciso se <strong>cadastrar</strong> no site. O cadstro pode ser feito com uma conta gratuita limitada.</p>
+<p>Para iniciarmos é preciso se <strong>cadastrar</strong> no site. O cadastro pode ser feito com uma conta gratuita limitada.</p>
 <p><a href="https://cloudinary.com/users/register/free">Cadastro Gratuito</a></p>
 <p><br>
 Ao finalizar o cadastro, uma tela como a exibida abaixo estará disponível. Atenção nos itens Cloud name, API Key e API Secret, eles serão úteis mais adiante.</p>
 <p><img alt="Cadastro Cloudinary" src="/images/dyesten/cadastro_cloudinary.png" /></p>
 <p><br></p>
 <h3>Configurando o ambiente</h3>
-<p>A instação do pacote pode ser feita via <strong>pip</strong>:</p>
+<p>A instalação do pacote pode ser feita via <strong>pip</strong>:</p>
 <div class="highlight"><pre>pip install cloudinary
 </pre></div>
 
@@ -125,7 +125,7 @@ Ao finalizar o cadastro, uma tela como a exibida abaixo estará disponível. Ate
 
 
 <p>Ainda no settings adicione ao seu arquivo os parâmetros de configuração do Cloudinary:</p>
-<p><small><em>Obs.: estes parâmetros são os mesmo da imagem inicial. E os abaixo apresentados são apenas ficticios</em></small></p>
+<p><small><em>Obs.: estes parâmetros são os mesmo da imagem inicial. E os abaixo apresentados são apenas ficticios.</em></small></p>
 <div class="highlight"><pre>CLOUDINARY = {
     &#39;cloud_name&#39; : seu_app_cloud,
     &#39;api_key&#39; : &#39;00998877665544&#39;,
@@ -144,7 +144,7 @@ Ao finalizar o cadastro, uma tela como a exibida abaixo estará disponível. Ate
 </pre></div>
 
 
-<p><small><em>Obs.: execute o syncdb. No caso de utilização do South, acresencete o seguinte código:</em></small></p>
+<p><small><em>Obs.: execute o syncdb. No caso de utilização do South, acrescente o seguinte código:</em></small></p>
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">south.modelsinspector</span> <span class="kn">import</span> <span class="n">add_introspection_rules</span>
 <span class="n">add_introspection_rules</span><span class="p">([],</span> <span class="p">[</span><span class="s">&quot;^cloudinary\.models\.CloudinaryField&quot;</span><span class="p">])</span>
 </pre></div>

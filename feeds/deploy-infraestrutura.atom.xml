@@ -2,14 +2,14 @@
 <feed xmlns="http://www.w3.org/2005/Atom"><title>PythonClub</title><link href="http://pythonclub.com.br/" rel="alternate"></link><link href="http://pythonclub.com.br/feeds/deploy-infraestrutura.atom.xml" rel="self"></link><id>http://pythonclub.com.br/</id><updated>2014-12-09T23:08:00-02:00</updated><entry><title>Integrando o Django com Cloudinary</title><link href="http://pythonclub.com.br/integrando-django-com-cloudinary.html" rel="alternate"></link><updated>2014-12-09T23:08:00-02:00</updated><author><name>Dyesten Paulon</name></author><id>tag:pythonclub.com.br,2014-12-09:integrando-django-com-cloudinary.html</id><summary type="html">&lt;h3&gt;O que é?&lt;/h3&gt;
 &lt;p&gt;O Cloudinary é um serviço de gerenciamento de imagens e arquivos na nuvem, muito útil por exemplo para utilização junto ao Heroku, que não oferece o serviço de hospedagem de arquivos. Além de nos oferecer o serviço de hospedagem de imagens, o Cloudinary disponibiliza diversas manipulações, uso de efeitos, detecção facial e muitos outros recursos para as imagens enviadas.&lt;/p&gt;
 &lt;h3&gt;O que é preciso?&lt;/h3&gt;
-&lt;p&gt;Para iniciarmos é preciso se &lt;strong&gt;cadastrar&lt;/strong&gt; no site. O cadstro pode ser feito com uma conta gratuita limitada.&lt;/p&gt;
+&lt;p&gt;Para iniciarmos é preciso se &lt;strong&gt;cadastrar&lt;/strong&gt; no site. O cadastro pode ser feito com uma conta gratuita limitada.&lt;/p&gt;
 &lt;p&gt;&lt;a href="https://cloudinary.com/users/register/free"&gt;Cadastro Gratuito&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;br&gt;
 Ao finalizar o cadastro, uma tela como a exibida abaixo estará disponível. Atenção nos itens Cloud name, API Key e API Secret, eles serão úteis mais adiante.&lt;/p&gt;
 &lt;p&gt;&lt;img alt="Cadastro Cloudinary" src="/images/dyesten/cadastro_cloudinary.png" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 &lt;h3&gt;Configurando o ambiente&lt;/h3&gt;
-&lt;p&gt;A instação do pacote pode ser feita via &lt;strong&gt;pip&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;A instalação do pacote pode ser feita via &lt;strong&gt;pip&lt;/strong&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;pip install cloudinary
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -32,7 +32,7 @@ Ao finalizar o cadastro, uma tela como a exibida abaixo estará disponível. Ate
 
 
 &lt;p&gt;Ainda no settings adicione ao seu arquivo os parâmetros de configuração do Cloudinary:&lt;/p&gt;
-&lt;p&gt;&lt;small&gt;&lt;em&gt;Obs.: estes parâmetros são os mesmo da imagem inicial. E os abaixo apresentados são apenas ficticios&lt;/em&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;em&gt;Obs.: estes parâmetros são os mesmo da imagem inicial. E os abaixo apresentados são apenas ficticios.&lt;/em&gt;&lt;/small&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;CLOUDINARY = {
     &amp;#39;cloud_name&amp;#39; : seu_app_cloud,
     &amp;#39;api_key&amp;#39; : &amp;#39;00998877665544&amp;#39;,
@@ -51,7 +51,7 @@ Ao finalizar o cadastro, uma tela como a exibida abaixo estará disponível. Ate
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;&lt;small&gt;&lt;em&gt;Obs.: execute o syncdb. No caso de utilização do South, acresencete o seguinte código:&lt;/em&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;em&gt;Obs.: execute o syncdb. No caso de utilização do South, acrescente o seguinte código:&lt;/em&gt;&lt;/small&gt;&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;south.modelsinspector&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;add_introspection_rules&lt;/span&gt;
 &lt;span class="n"&gt;add_introspection_rules&lt;/span&gt;&lt;span class="p"&gt;([],&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;^cloudinary\.models\.CloudinaryField&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
