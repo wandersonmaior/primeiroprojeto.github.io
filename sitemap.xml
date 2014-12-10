@@ -5,37 +5,44 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/index.html</loc>
-<lastmod>2014-12-04T19:25:37-00:00</lastmod>
+<lastmod>2014-12-10T02:30:59-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/archives.html</loc>
-<lastmod>2014-12-04T19:25:37-00:00</lastmod>
+<lastmod>2014-12-10T02:30:59-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/tags.html</loc>
-<lastmod>2014-12-04T19:25:37-00:00</lastmod>
+<lastmod>2014-12-10T02:30:59-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/categories.html</loc>
-<lastmod>2014-12-04T19:25:37-00:00</lastmod>
+<lastmod>2014-12-10T02:30:59-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://pythonclub.com.br/pages/about.html</loc>
-<lastmod>2014-12-04T19:25:37-00:00</lastmod>
+<lastmod>2014-12-10T02:30:59-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/integrando-django-com-cloudinary.html</loc>
+<lastmod>2014-12-09T23:08:00-02:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
 </url>
 
 <url>
@@ -278,7 +285,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/category/deploy-infraestrutura.html</loc>
-<lastmod>2014-05-13T16:00:00-03:06</lastmod>
+<lastmod>2014-12-09T23:08:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -494,6 +501,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://pythonclub.com.br/tag/heroku.html</loc>
+<lastmod>2014-12-09T23:08:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://pythonclub.com.br/tag/servidor-ftp.html</loc>
 <lastmod>2014-06-11T18:00:00-03:06</lastmod>
 <changefreq>daily</changefreq>
@@ -649,7 +663,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://pythonclub.com.br/tag/django.html</loc>
-<lastmod>2014-11-22T11:30:00-03:06</lastmod>
+<lastmod>2014-12-09T23:08:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -657,6 +671,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/tag/windows.html</loc>
 <lastmod>2014-05-14T10:30:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/tag/cloudinary.html</loc>
+<lastmod>2014-12-09T23:08:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -734,6 +755,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://pythonclub.com.br/author/bruno-cezar-rocha.html</loc>
 <lastmod>2014-06-19T22:30:00-03:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://pythonclub.com.br/author/dyesten-paulon.html</loc>
+<lastmod>2014-12-09T23:08:00-03:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
