@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 BRANCH=master
-TARGET_REPO=pythonclub/pythonclub.github.io
+TARGET_REPO=dojoto/dojoto.github.io
 PELICAN_OUTPUT_FOLDER=output
 
 echo -e "Testing travis-encrypt"
