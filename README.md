@@ -1,8 +1,8 @@
-[pythonclub.com.br][0]
+[dojoto.info][0]
 ======================
 Duvidas sobre este projeto, deixe sua mensagem em [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/pythonclub/pythonclub.github.io?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Blog colaborativo sobre tecnologias que envolvam a linguagem Python
+Blog colaborativo dos Coding Dojo que acontecem no Tocantins
 
 
 Como Contribuir
@@ -11,7 +11,7 @@ Como Contribuir
 * Faça um fork desse repositório, clicando no botão [![Fork][14]][15], na parte superior direita da pagina do Github
 * Clone seu fork:
 
-    ``git clone --recursive https://github.com/SEU_USUARIO_DO_GITHUB/pythonclub.github.io.git``
+    ``git clone --recursive https://github.com/SEU_USUARIO_DO_GITHUB/dojoto.github.io.git``
 
 * Instale os requirements ``pip install -r requirements.txt``
 * Todas as publicações ficam na pasta ``content``, os textos podem ser escritos
@@ -91,7 +91,7 @@ Você pode ver a lista contendo os nomes dos artigos nesta planilha no [Google D
 
 Quando tiver um assunto e uma data de entrega, adicione na planinha, ao finalizar o seu artigo, envie o pull request e atualize a planilha marcando que sua publicação já foi entregue.
 
-[0]: http://pythonclub.com.br/
+[0]: http://dojoto.info/
 [1]: https://pages.github.com/
 [2]: http://docs.getpelican.com/en/3.3.0/
 [3]: http://localhost:8000/
