@@ -9,8 +9,8 @@ echo -e "$VARNAME"
 if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
     echo -e "Starting to deploy to Github Pages\n"
     if [ "$TRAVIS" == "true" ]; then
-        git config --global user.email "contato+pythonclub@xdvl.info"
-        git config --global user.name "PythonClub-Bot"
+        git config --global user.email "bot@dojoto.info"
+        git config --global user.name "DojoTO-Bot"
     fi
     # using token clone gh-pages branch
     git clone --quiet --branch=$BRANCH https://${GH_TOKEN}@github.com/$TARGET_REPO built_website > /dev/null
