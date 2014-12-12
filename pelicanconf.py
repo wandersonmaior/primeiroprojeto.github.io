@@ -10,7 +10,9 @@ SITENAME = u'Coding Dojo Tocantins'
 SITEURL = 'http://dojoto.info'
 SITELOGO = 'http://res.cloudinary.com/diu8g9l0s/image/upload/v1400201393/pythonclub/logo_275x130.png'
 
-GITHUB_URL = 'https://github.com/dojoto/dojoto.github.io'
+GITHUB_USERNAME = 'dojoto'
+GITHUB_PROJECT = 'dojoto.github.io'
+GITHUB_URL = 'https://github.com/{0}/{1}'.format(GITHUB_USERNAME, GITHUB_PROJECT)
 DISQUS_SITENAME = 'dojotoinfo'
 
 GOOGLE_ANALYTICS = 'UA-57626842-1'
