@@ -1,10 +1,10 @@
-pyftpdlib - Criando um servidor FTP simples com python
+Postagem Teste - Teste
 ######################################################
 
 :date: 2014-06-11 18:00
-:tags: python,ftp,tutorial,servidor-ftp
+:tags: dojo,tdd,tutorial,python
 :category: Tutoriais
-:slug: pyftpdlib-criando-um-servidor-ftp-simples-com-python
+:slug: postagem-teste
 :author: Fábio C. Barrionuevo da Luz
 :email:  bnafta@gmail.com
 :github: luzfcb
@@ -16,8 +16,10 @@ pyftpdlib - Criando um servidor FTP simples com python
 
 
 #################################################################################################
-Criando um servidor FTP simples com python
+O que é códing Dojo
 #################################################################################################
+
+Testanto texto abaixo:
 
 O que é FTP?
 -----------------
