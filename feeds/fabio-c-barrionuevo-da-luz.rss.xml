@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PythonClub</title><link>http://pythonclub.com.br/</link><description></description><atom:link href="http://pythonclub.com.br/feeds/fabio-c-barrionuevo-da-luz.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 11 Jun 2014 18:00:00 -0300</lastBuildDate><item><title>pyftpdlib - Criando um servidor FTP simples com python</title><link>http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html</link><description>&lt;div class="section" id="criando-um-servidor-ftp-simples-com-python"&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>DojoTO</title><link>http://dojoto.info/</link><description></description><atom:link href="http://dojoto.info/feeds/fabio-c-barrionuevo-da-luz.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 11 Jun 2014 18:00:00 -0300</lastBuildDate><item><title>pyftpdlib - Criando um servidor FTP simples com python</title><link>http://dojoto.info/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html</link><description>&lt;div class="section" id="criando-um-servidor-ftp-simples-com-python"&gt;
 &lt;h2&gt;Criando um servidor FTP simples com python&lt;/h2&gt;
 &lt;div class="section" id="o-que-e-ftp"&gt;
 &lt;h3&gt;O que é FTP?&lt;/h3&gt;
@@ -193,4 +193,4 @@ ele poderá acessar o servidor em um endereço similar a &lt;tt class="docutils 
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Fábio C. Barrionuevo da Luz</dc:creator><pubDate>Wed, 11 Jun 2014 18:00:00 -0300</pubDate><guid>tag:pythonclub.com.br,2014-06-11:pyftpdlib-criando-um-servidor-ftp-simples-com-python.html</guid><category>python</category><category>ftp</category><category>tutorial</category><category>servidor-ftp</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Fábio C. Barrionuevo da Luz</dc:creator><pubDate>Wed, 11 Jun 2014 18:00:00 -0300</pubDate><guid>tag:dojoto.info,2014-06-11:pyftpdlib-criando-um-servidor-ftp-simples-com-python.html</guid><category>python</category><category>ftp</category><category>tutorial</category><category>servidor-ftp</category></item></channel></rss>

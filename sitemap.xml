@@ -4,85 +4,85 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>http://pythonclub.com.br/index.html</loc>
-<lastmod>2014-12-12T15:10:20-00:00</lastmod>
+<loc>http://dojoto.info/index.html</loc>
+<lastmod>2014-12-12T16:10:53-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/archives.html</loc>
-<lastmod>2014-12-12T15:10:20-00:00</lastmod>
+<loc>http://dojoto.info/archives.html</loc>
+<lastmod>2014-12-12T16:10:53-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tags.html</loc>
-<lastmod>2014-12-12T15:10:20-00:00</lastmod>
+<loc>http://dojoto.info/tags.html</loc>
+<lastmod>2014-12-12T16:10:53-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/categories.html</loc>
-<lastmod>2014-12-12T15:10:20-00:00</lastmod>
+<loc>http://dojoto.info/categories.html</loc>
+<lastmod>2014-12-12T16:10:53-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/pages/about.html</loc>
-<lastmod>2014-12-12T15:10:20-00:00</lastmod>
+<loc>http://dojoto.info/pages/about.html</loc>
+<lastmod>2014-12-12T16:10:53-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.3</priority>
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html</loc>
+<loc>http://dojoto.info/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html</loc>
 <lastmod>2014-06-11T18:00:00-03:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.8</priority>
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/category/tutoriais.html</loc>
-<lastmod>2014-06-11T18:00:00-03:06</lastmod>
+<loc>http://dojoto.info/category/tutoriais.html</loc>
+<lastmod>2014-06-11T18:00:00-03:13</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/python.html</loc>
-<lastmod>2014-06-11T18:00:00-03:06</lastmod>
+<loc>http://dojoto.info/tag/python.html</loc>
+<lastmod>2014-06-11T18:00:00-03:13</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/ftp.html</loc>
-<lastmod>2014-06-11T18:00:00-03:06</lastmod>
+<loc>http://dojoto.info/tag/ftp.html</loc>
+<lastmod>2014-06-11T18:00:00-03:13</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/tutorial.html</loc>
-<lastmod>2014-06-11T18:00:00-03:06</lastmod>
+<loc>http://dojoto.info/tag/tutorial.html</loc>
+<lastmod>2014-06-11T18:00:00-03:13</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/tag/servidor-ftp.html</loc>
-<lastmod>2014-06-11T18:00:00-03:06</lastmod>
+<loc>http://dojoto.info/tag/servidor-ftp.html</loc>
+<lastmod>2014-06-11T18:00:00-03:13</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://pythonclub.com.br/author/fabio-c-barrionuevo-da-luz.html</loc>
-<lastmod>2014-06-11T18:00:00-03:06</lastmod>
+<loc>http://dojoto.info/author/fabio-c-barrionuevo-da-luz.html</loc>
+<lastmod>2014-06-11T18:00:00-03:13</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
