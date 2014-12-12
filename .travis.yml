@@ -14,7 +14,7 @@ notifications:
     on_failure: never
 env:
   global:
-  - secure: oc1baJLwdWfhC8cpyshR7YZd8LN4j4KrKtXqHP+ZYBnfamq+6msj/Ynv2ZK5hMa663CMfE13TtPMoVkM0Q7zagtAspqa/irz/EP25bvHS6PVDRQfCjYQ6XKfxa999304q7aHVbGOirTMOgt6mcgnlWduVNLlMAhHXTQHSV9fb9U=
+  - secure: U=
 before_install:
 - git submodule update --remote --merge
 after_success: bash deploy.sh
