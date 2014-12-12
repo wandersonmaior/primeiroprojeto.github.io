@@ -4,19 +4,19 @@ from __future__ import unicode_literals
 import os
 BASE = os.path.dirname(__file__)
 
-AUTHOR = u'PythonClub'
-AUTHOR_EMAIL = u'gravatar@pythonclub.com.br'
-SITENAME = u'PythonClub'
-SITEURL = 'http://pythonclub.com.br'
+AUTHOR = u'DojoTO'
+AUTHOR_EMAIL = u'gravatar@dojoto.info'
+SITENAME = u'DojoTO'
+SITEURL = 'http://dojoto.info'
 SITELOGO = 'http://res.cloudinary.com/diu8g9l0s/image/upload/v1400201393/pythonclub/logo_275x130.png'
 
-GITHUB_URL = 'https://github.com/pythonclub/pythonclub.github.io'
-DISQUS_SITENAME = 'pythonclub'
+GITHUB_URL = 'https://github.com/dojoto/dojoto.github.io'
+DISQUS_SITENAME = 'dojotoinfo'
 
-GOOGLE_ANALYTICS = 'UA-50935105-1'
-FACEBOOK_APPID = '1487080281503641'
+GOOGLE_ANALYTICS = 'UA-57626842-1'
+FACEBOOK_APPID = '741446559283044'
 
-TIMEZONE = 'America/Sao_Paulo'
+TIMEZONE = 'America/Araguaina'
 
 DEFAULT_LANG = u'pt'
 
@@ -42,7 +42,7 @@ TEMPLATE_PAGES = {
 
 # Social widget
 SOCIAL = (
-    ('github', 'https://github.com/pythonclub/pythonclub.github.io'),
+    ('github', GITHUB_URL),
     ('rss', 'feeds/all.atom.xml'),
 )
 
