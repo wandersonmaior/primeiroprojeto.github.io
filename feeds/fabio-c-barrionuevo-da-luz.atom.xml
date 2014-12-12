@@ -193,28 +193,4 @@ ele poderá acessar o servidor em um endereço similar a &lt;tt class="docutils 
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="python"></category><category term="ftp"></category><category term="tutorial"></category><category term="servidor-ftp"></category></entry><entry><title>Como fazer fork, clone, push pull-request no Github</title><link href="http://pythonclub.com.br/como-fazer-fork-clone-push-pull-request-no-github.html" rel="alternate"></link><updated>2014-05-13T01:40:00-03:00</updated><author><name>Fábio C. Barrionuevo da Luz</name></author><id>tag:pythonclub.com.br,2014-05-13:como-fazer-fork-clone-push-pull-request-no-github.html</id><summary type="html">&lt;p&gt;Neste video, ensino o básico que vai lhe ajudar a dar seus primeiros passos no git, github e talvez lhe dar a habilidade necessaria para contribuir com postagens neste blog ou em qualquer outro projeto que você quiser.&lt;/p&gt;
-&lt;div class="section" id="como-fazer-fork-clone-push-pull-request-no-github-ou-como-contribuir-com-projetos-open-source"&gt;
-&lt;h2&gt;Como fazer fork, clone, push pull-request no Github, ou como contribuir com projetos open-source&lt;/h2&gt;
-&lt;div class="youtube" align="left"&gt;&lt;iframe width="420" height="315" src="https://www.youtube.com/embed/am1XMMKk0UI" frameborder="0"&gt;&lt;/iframe&gt;&lt;/div&gt;&lt;div class="section" id="referencias-uteis"&gt;
-&lt;h3&gt;Referências uteis:&lt;/h3&gt;
-&lt;p&gt;O que é URL Limpa: &lt;a class="reference external" href="http://en.wikipedia.org/wiki/Clean_URL"&gt;http://en.wikipedia.org/wiki/Clean_URL&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Livro oficial do Git em Portugues: &lt;a class="reference external" href="http://git-scm.com/book/pt-br/"&gt;http://git-scm.com/book/pt-br/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Outros protocolos para clonar alem do HTTPS : &lt;a class="reference external" href="http://git-scm.com/book/pt-br/Git-no-Servidor-Os-Protocolos"&gt;http://git-scm.com/book/pt-br/Git-no-Servidor-Os-Protocolos&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;SmartGit/Hg - Cliente Grafico para o git feito em Java com versões para Windows/Linux/Mac: &lt;a class="reference external" href="http://www.syntevo.com/smartgithg/download"&gt;http://www.syntevo.com/smartgithg/download&lt;/a&gt;&lt;/p&gt;
-&lt;div class="section" id="tutoriais"&gt;
-&lt;h4&gt;Tutoriais:&lt;/h4&gt;
-&lt;p&gt;Curso completo &amp;quot;Começando com o Git&amp;quot; do Fabio Akita: &lt;a class="reference external" href="http://www.akitaonrails.com/2010/08/17/screencast-comecando-com-git"&gt;http://www.akitaonrails.com/2010/08/17/screencast-comecando-com-git&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Git e GitHub para Iniciantes da Loiane Groner: &lt;a class="reference external" href="http://www.loiane.com/2013/11/screencast-git-e-github-para-iniciantes/"&gt;http://www.loiane.com/2013/11/screencast-git-e-github-para-iniciantes/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Tutorial oficial do Github: &lt;a class="reference external" href="http://try.github.com"&gt;http://try.github.com&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Tutorial Aprendendo Git Branching: &lt;a class="reference external" href="http://pcottle.github.io/learnGitBranching/?demo"&gt;http://pcottle.github.io/learnGitBranching/?demo&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="section" id="arquivo-gitignore"&gt;
-&lt;h4&gt;Arquivo .gitignore:&lt;/h4&gt;
-&lt;p&gt;O que é o arquivo .gitignore: &lt;a class="reference external" href="http://pt-br.gitready.com/iniciante/2009/01/19/ignoring-files.html"&gt;http://pt-br.gitready.com/iniciante/2009/01/19/ignoring-files.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Gerador de arquivo .gitignore: &lt;a class="reference external" href="http://www.gitignore.io/"&gt;http://www.gitignore.io/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Exemplos de arquivo .gitignore para diversas linguagens: &lt;a class="reference external" href="https://github.com/github/gitignore"&gt;https://github.com/github/gitignore&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</summary><category term="tutorial"></category><category term="git"></category><category term="github"></category></entry></feed>
+</summary><category term="python"></category><category term="ftp"></category><category term="tutorial"></category><category term="servidor-ftp"></category></entry></feed>
