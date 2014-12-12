@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Coding Dojo Tocantins</title><link href="http://dojoto.info/" rel="alternate"></link><link href="http://dojoto.info/feeds/fabio-c-barrionuevo-da-luz.atom.xml" rel="self"></link><id>http://dojoto.info/</id><updated>2014-06-11T18:00:00-03:00</updated><entry><title>pyftpdlib - Criando um servidor FTP simples com python</title><link href="http://dojoto.info/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html" rel="alternate"></link><updated>2014-06-11T18:00:00-03:00</updated><author><name>Fábio C. Barrionuevo da Luz</name></author><id>tag:dojoto.info,2014-06-11:pyftpdlib-criando-um-servidor-ftp-simples-com-python.html</id><summary type="html">&lt;div class="section" id="criando-um-servidor-ftp-simples-com-python"&gt;
-&lt;h2&gt;Criando um servidor FTP simples com python&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Coding Dojo Tocantins</title><link href="http://dojoto.info/" rel="alternate"></link><link href="http://dojoto.info/feeds/fabio-c-barrionuevo-da-luz.atom.xml" rel="self"></link><id>http://dojoto.info/</id><updated>2014-06-11T18:00:00-03:00</updated><entry><title>Postagem Teste - Teste</title><link href="http://dojoto.info/postagem-teste.html" rel="alternate"></link><updated>2014-06-11T18:00:00-03:00</updated><author><name>Fábio C. Barrionuevo da Luz</name></author><id>tag:dojoto.info,2014-06-11:postagem-teste.html</id><summary type="html">&lt;div class="section" id="o-que-e-coding-dojo"&gt;
+&lt;h2&gt;O que é códing Dojo&lt;/h2&gt;
+&lt;p&gt;Testanto texto abaixo:&lt;/p&gt;
 &lt;div class="section" id="o-que-e-ftp"&gt;
 &lt;h3&gt;O que é FTP?&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;FTP&lt;/strong&gt; é um acrônimo de &lt;strong&gt;F&lt;/strong&gt;ile &lt;strong&gt;T&lt;/strong&gt;ransfer &lt;strong&gt;P&lt;/strong&gt;rotocol. É um protocolo inventado
@@ -193,4 +194,4 @@ ele poderá acessar o servidor em um endereço similar a &lt;tt class="docutils 
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</summary><category term="python"></category><category term="ftp"></category><category term="tutorial"></category><category term="servidor-ftp"></category></entry></feed>
+</summary><category term="dojo"></category><category term="tdd"></category><category term="tutorial"></category><category term="python"></category></entry></feed>

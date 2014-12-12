@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Coding Dojo Tocantins</title><link>http://dojoto.info/</link><description></description><atom:link href="http://dojoto.info/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 11 Jun 2014 18:00:00 -0300</lastBuildDate><item><title>pyftpdlib - Criando um servidor FTP simples com python</title><link>http://dojoto.info/pyftpdlib-criando-um-servidor-ftp-simples-com-python.html</link><description>&lt;div class="section" id="criando-um-servidor-ftp-simples-com-python"&gt;
-&lt;h2&gt;Criando um servidor FTP simples com python&lt;/h2&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Coding Dojo Tocantins</title><link>http://dojoto.info/</link><description></description><atom:link href="http://dojoto.info/feeds/all.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 11 Jun 2014 18:00:00 -0300</lastBuildDate><item><title>Postagem Teste - Teste</title><link>http://dojoto.info/postagem-teste.html</link><description>&lt;div class="section" id="o-que-e-coding-dojo"&gt;
+&lt;h2&gt;O que é códing Dojo&lt;/h2&gt;
+&lt;p&gt;Testanto texto abaixo:&lt;/p&gt;
 &lt;div class="section" id="o-que-e-ftp"&gt;
 &lt;h3&gt;O que é FTP?&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;FTP&lt;/strong&gt; é um acrônimo de &lt;strong&gt;F&lt;/strong&gt;ile &lt;strong&gt;T&lt;/strong&gt;ransfer &lt;strong&gt;P&lt;/strong&gt;rotocol. É um protocolo inventado
@@ -193,4 +194,4 @@ ele poderá acessar o servidor em um endereço similar a &lt;tt class="docutils 
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
-</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Fábio C. Barrionuevo da Luz</dc:creator><pubDate>Wed, 11 Jun 2014 18:00:00 -0300</pubDate><guid>tag:dojoto.info,2014-06-11:pyftpdlib-criando-um-servidor-ftp-simples-com-python.html</guid><category>python</category><category>ftp</category><category>tutorial</category><category>servidor-ftp</category></item></channel></rss>
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Fábio C. Barrionuevo da Luz</dc:creator><pubDate>Wed, 11 Jun 2014 18:00:00 -0300</pubDate><guid>tag:dojoto.info,2014-06-11:postagem-teste.html</guid><category>dojo</category><category>tdd</category><category>tutorial</category><category>python</category></item></channel></rss>
