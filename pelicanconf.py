@@ -8,7 +8,7 @@ AUTHOR = u'DojoTO'
 AUTHOR_EMAIL = u'gravatar@dojoto.info'
 SITENAME = u'Coding Dojo Tocantins'
 SITEURL = 'http://dojoto.info'
-SITELOGO = 'http://res.cloudinary.com/diu8g9l0s/image/upload/v1400201393/pythonclub/logo_275x130.png'
+SITELOGO = 'images/logo-dojoto.svg'
 
 GITHUB_USERNAME = 'dojoto'
 GITHUB_PROJECT = 'dojoto.github.io'

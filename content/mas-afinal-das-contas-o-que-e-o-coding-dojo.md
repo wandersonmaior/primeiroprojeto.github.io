@@ -7,8 +7,8 @@ Author: Vinícius Aires Barros
 Email:  viniciusaires7@gmail.com
 Github: viniciusaires7
 Twitter: viniciusaires7
-Facebook: viniciusaires7
-Linkedin: viniciusaires7
+Facebook: viniciusa1r3s
+Linkedin: viniciusaires
 
 A palavra DOJO, em uma tradução literal do japonês, significa "lugar do caminho" e é originalmente usada para designar um espaço de meditação dos monges budistas. Em uma tradução livre dojo significa "lugar onde se estuda a vida", mas hoje em dia o termo é mais conhecido como lugar onde se pratica artes marciais em uma sala dentro de uma academia com o chão coberto de tapetes.
 
