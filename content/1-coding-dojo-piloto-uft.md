@@ -12,7 +12,7 @@ Linkedin: viniciusaires
 
 O 1° Piloto Coding Dojo aconteceu no dia 27/03/2015 na <a target="_blank" href="http://www.uft.edu.br">Universidade Federal do Tocantins</a> (UFT) campus Palmas, com tema na linguagem de programação <a target="_blank" href="http://pt.wikipedia.org/wiki/Java_%28linguagem_de_programa%C3%A7%C3%A3o%29">Java</a> e com o auxílio do
 <a target="_blank" href="http://junit.org/">JUnit</a> como ferramenta de teste unitário.
-O evento foi organizado pela parceiria entre o <a target="_blank" href="http://dojoto.info">DojoTO</a>, <a target="_blank" href="https://www.facebook.com/caccompuft">CACCOMP</a> (Centro Acadêmico de Ciência da Computação).
+O evento foi organizado pela parceria entre o <a target="_blank" href="http://dojoto.info">DojoTO</a>, <a target="_blank" href="https://www.facebook.com/caccompuft">CACCOMP</a> (Centro Acadêmico de Ciência da Computação).
 
 <p align="center">
   <img src="images/viniciusaires7/27-03-organizacao-coding-dojo.jpg"/>
