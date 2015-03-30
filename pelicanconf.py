@@ -6,7 +6,7 @@ BASE = os.path.dirname(__file__)
 
 AUTHOR = u'DojoTO'
 AUTHOR_EMAIL = u'gravatar@dojoto.info'
-SITENAME = u'Coding Dojo Tocantins'
+SITENAME = u'CodingDojoTocantins'
 SITEURL = 'http://dojoto.info'
 SITELOGO = '{0}/{1}'.format(SITEURL, 'images/dojo-white.png')
 
