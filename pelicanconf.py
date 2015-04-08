@@ -9,6 +9,7 @@ AUTHOR_EMAIL = u'gravatar@dojoto.info'
 SITENAME = u'CodingDojoTocantins'
 SITEURL = 'http://dojoto.info'
 SITELOGO = '{0}/{1}'.format(SITEURL, 'images/dojo-white.png')
+MASCOTEDOJO = '{0}/{1}'.format(SITEURL, 'images/ninja-dojo.png')
 
 GITHUB_USERNAME = 'dojoto'
 GITHUB_PROJECT = 'dojoto.github.io'
