@@ -1,4 +1,4 @@
-Title: Afinal de contas o que é o Coding Dojo?
+Title: Mas afinal de contas o que é o Coding Dojo?
 Date: 2015-03-22 18:00
 Tags: coding dojo, extreme programming, tdd, pair programming, baby steps
 Category: Geral
@@ -82,6 +82,20 @@ No final do Dojo temos o momento do Feedback, que é onde iremos anotar todos os
 E quem sabe, no final do Dojo...
 
 No final do Dojo os participantes podem combinar (se quiserem) de fazer uma vaquinha para comprar algum lanche, como pizza, x-burguers, ou qualquer coisa que sugerirem para terminar melhor o evento =D
+
+###Abaixo alguns vídeos explicativos de como é o funcionamento dos Dojo's!
+
+Video explicativo sobre o Coding Dojo (Globo.com)
+
+<p align="center">
+   <iframe width="638" height="359" src="https://www.youtube.com/embed/vqnwQ3oVM1M" frameborder="0" allowfullscreen></iframe>
+</p>
+
+Video explicativo sobre o Coding Dojo Muito além do código (Henrique Bastos)
+
+<p align="center">
+   <iframe width="638" height="359" src="https://www.youtube.com/embed/RaNcCOBb3RI" frameborder="0" allowfullscreen></iframe>
+</p>
 
 ###Agradecimento
 <p align="center">
