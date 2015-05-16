@@ -128,7 +128,7 @@ assert all([happy2(num) for num in lista])
 assert not all([happy2(num) for num in nao_felizes])
 ```
 
-<a href="https://github.com/dojoto/arquivos-dojos/tree/master/27_03_2015/FizzBuzz">Link para o repositório no GitHub</a>
+<a href="https://github.com/dojoto/arquivos-dojos/tree/master/30_04_2015/happynumbers">Link para o repositório no GitHub</a>
 
 FeedBack
 ------------
