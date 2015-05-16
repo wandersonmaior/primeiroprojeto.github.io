@@ -1,5 +1,5 @@
 Title: 2° Coding Dojo, como foi o evento?
-Date: 2015-03-30 8:00
+Date: 2015-04-30 19:00
 Tags: coding dojo, extreme programming, tdd, pair programming, baby steps, uft, caccomp, ciência da computacao
 Category: Geral
 Slug: 2-coding-dojo-uft
